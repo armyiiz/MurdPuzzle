@@ -1,5 +1,5 @@
 import React from 'react';
-import { Category } from '../data/mockData';
+import { Category } from '../types/level';
 import { CellState } from '../hooks/useGameLogic';
 import { GridCell } from './GridCell';
 
@@ -9,9 +9,10 @@ interface SubGridProps {
   getCellState: (cat1: Category, cat2: Category, item1: string, item2: string) => CellState;
   toggleCell: (cat1: Category, cat2: Category, item1: string, item2: string) => void;
   isDark?: boolean;
+  isCellError?: (cat1: Category, cat2: Category, item1: string, item2: string) => boolean;
 }
 
-export function SubGrid({ rowCategory, colCategory, getCellState, toggleCell, isDark }: SubGridProps) {
+export function SubGrid({ rowCategory, colCategory, getCellState, toggleCell, isDark, isCellError }: SubGridProps) {
   return (
     <div className="flex flex-col border-2 border-gray-800">
       {rowCategory.items.map((rowItem) => (
@@ -22,6 +23,7 @@ export function SubGrid({ rowCategory, colCategory, getCellState, toggleCell, is
               state={getCellState(rowCategory, colCategory, rowItem, colItem)}
               onClick={() => toggleCell(rowCategory, colCategory, rowItem, colItem)}
               isDark={isDark}
+              isError={isCellError ? isCellError(rowCategory, colCategory, rowItem, colItem) : false}
             />
           ))}
         </div>
