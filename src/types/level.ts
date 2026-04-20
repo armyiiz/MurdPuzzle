@@ -10,6 +10,6 @@ export type LevelData = {
   story_intro: string;
   categories: Category[];
   clues: string[];
-  testimonies: any[]; // Ignored for Phase 2
+  testimonies: { suspect: string; statement: string }[];
   solution: Record<string, string>[];
 };
