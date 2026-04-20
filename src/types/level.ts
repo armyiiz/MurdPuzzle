@@ -4,12 +4,39 @@ export type Category = {
   items: string[];
 };
 
+export type ProfileItem = {
+  name: string;
+  detail: string;
+};
+
+export type Profiles = {
+  suspects?: ProfileItem[];
+  weapons?: ProfileItem[];
+  locations?: ProfileItem[];
+  motives?: ProfileItem[];
+};
+
+export type Testimony = {
+  suspect: string;
+  statement: string;
+};
+
+export type CorrectAccusation = {
+  suspect: string;
+  weapon: string;
+  location: string;
+  motive?: string;
+};
+
 export type LevelData = {
+  id: string;
   level_name: string;
   difficulty: number;
   story_intro: string;
+  profiles?: Profiles;
   categories: Category[];
   clues: string[];
-  testimonies: { suspect: string; statement: string }[];
-  solution: Record<string, string>[];
+  testimonies?: Testimony[];
+  solution_grid?: Record<string, string>[];
+  correct_accusation: CorrectAccusation;
 };
