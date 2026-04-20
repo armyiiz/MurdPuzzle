@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Category, LevelData } from '../types/level';
+import { Category } from '../types/level';
 
 export type CellState = 'empty' | 'O' | 'X';
 
