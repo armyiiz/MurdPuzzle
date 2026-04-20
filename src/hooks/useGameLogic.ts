@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Category } from '../data/mockData';
+import { Category, LevelData } from '../types/level';
 
 export type CellState = 'empty' | 'O' | 'X';
 
@@ -10,13 +10,14 @@ export type BlockId = `${string}-${string}`;
 // Outer key is BlockId, inner key is `${rowItem}-${colItem}`
 export type GridState = Record<string, Record<string, CellState>>;
 
-export function useGameLogic(categories: Category[]) {
+export function useGameLogic(categories: Category[], solution: Record<string, string>[]) {
   const [gridState, setGridState] = useState<GridState>({});
 
   // Helper to generate the unique ID for a block
-  const getBlockId = (cat1: Category, cat2: Category): BlockId => {
-    // Sort to ensure consistency (e.g., suspects-weapons is same as weapons-suspects)
-    const sorted = [cat1.id, cat2.id].sort();
+  const getBlockId = (cat1: Category | string, cat2: Category | string): BlockId => {
+    const id1 = typeof cat1 === 'string' ? cat1 : cat1.id;
+    const id2 = typeof cat2 === 'string' ? cat2 : cat2.id;
+    const sorted = [id1, id2].sort();
     return `${sorted[0]}-${sorted[1]}`;
   };
 
@@ -74,10 +75,56 @@ export function useGameLogic(categories: Category[]) {
     return gridState[blockId][cellKey] || 'empty';
   }, [gridState]);
 
+  const validateSolution = useCallback(() => {
+    const validCells = new Set<string>();
+    const requiredOs = categories.length * (categories.length - 1) / 2 * categories[0].items.length;
+
+    // Precompute all valid O placements
+    for (const sol of solution) {
+      const keys = Object.keys(sol);
+      for (let i = 0; i < keys.length; i++) {
+        for (let j = i + 1; j < keys.length; j++) {
+          const cat1 = keys[i];
+          const cat2 = keys[j];
+          const item1 = sol[cat1];
+          const item2 = sol[cat2];
+
+          const blockId = getBlockId(cat1, cat2);
+          const cellKey = getCellKey(item1, item2);
+          validCells.add(`${blockId}:::${cellKey}`);
+        }
+      }
+    }
+
+    const incorrectCells: { blockId: string, cellKey: string }[] = [];
+    let placedOs = 0;
+
+    // Check user's grid state
+    for (const [blockId, cells] of Object.entries(gridState)) {
+      for (const [cellKey, state] of Object.entries(cells)) {
+        if (state === 'O') {
+          placedOs++;
+          if (!validCells.has(`${blockId}:::${cellKey}`)) {
+            incorrectCells.push({ blockId, cellKey });
+          }
+        }
+      }
+    }
+
+    const isComplete = placedOs === requiredOs && incorrectCells.length === 0;
+
+    return {
+      isComplete,
+      incorrectCells
+    };
+  }, [gridState, solution, categories]);
+
   return {
     gridState,
     toggleCell,
     getCellState,
-    getBlockId
+    getBlockId,
+    getCellKey,
+    validateSolution
   };
 }

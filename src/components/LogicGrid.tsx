@@ -1,5 +1,5 @@
 import React from 'react';
-import { Category } from '../data/mockData';
+import { Category } from '../types/level';
 import { CellState } from '../hooks/useGameLogic';
 import { SubGrid } from './SubGrid';
 
@@ -7,9 +7,10 @@ interface LogicGridProps {
   categories: Category[];
   getCellState: (cat1: Category, cat2: Category, item1: string, item2: string) => CellState;
   toggleCell: (cat1: Category, cat2: Category, item1: string, item2: string) => void;
+  isCellError?: (cat1: Category, cat2: Category, item1: string, item2: string) => boolean;
 }
 
-export function LogicGrid({ categories, getCellState, toggleCell }: LogicGridProps) {
+export function LogicGrid({ categories, getCellState, toggleCell, isCellError }: LogicGridProps) {
   const numCats = categories.length;
   if (numCats < 3) return null;
 
@@ -84,6 +85,7 @@ export function LogicGrid({ categories, getCellState, toggleCell }: LogicGridPro
                     getCellState={getCellState}
                     toggleCell={toggleCell}
                     isDark={isDark}
+                    isCellError={isCellError}
                   />
                 );
               })}
