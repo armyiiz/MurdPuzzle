@@ -119,12 +119,22 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
     };
   }, [gridState, solution, categories]);
 
+  // ----------------------------------------------------
+  // ฟังก์ชันใหม่สำหรับล้างตาราง (ที่อลิซเพิ่มเข้าไป)
+  // ----------------------------------------------------
+  const resetGrid = useCallback(() => {
+    if (window.confirm('คุณต้องการล้างข้อมูลในตารางทั้งหมดใช่หรือไม่?')) {
+      setGridState({});
+    }
+  }, []);
+
   return {
     gridState,
     toggleCell,
     getCellState,
     getBlockId,
     getCellKey,
-    validateSolution
+    validateSolution,
+    resetGrid // <--- ส่งฟังก์ชันนี้ออกไปให้หน้าเว็บใช้
   };
 }
