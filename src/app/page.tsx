@@ -14,19 +14,32 @@ export default function Home() {
   const [selectedCase, setSelectedCase] = useState<LevelData | null>(null);
   const [solvedCases, setSolvedCases] = useState<string[]>([]);
 
-  // โหลดข้อมูลเซฟเกม
   useEffect(() => {
     const saved = localStorage.getItem('solvedCases');
     if (saved) setSolvedCases(JSON.parse(saved));
   }, []);
 
+  // ฟังก์ชันจัดการปุ่มย้อนกลับตามลำดับ
+  const handleBack = () => {
+    if (screen === 'GAME') setScreen('CASE_SELECT');
+    else if (screen === 'CASE_SELECT') setScreen('LEVEL_SELECT');
+    else if (screen === 'LEVEL_SELECT') setScreen('MENU');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 font-sans pb-24">
       <header className="bg-slate-800 text-white p-4 shadow-md sticky top-0 z-10 flex justify-between items-center">
-        <h1 className="text-xl font-bold">🕵️‍♂️ Murdle (TH)</h1>
+        <div className="flex items-center gap-3">
+          {screen !== 'MENU' && (
+            <button onClick={handleBack} className="p-2 hover:bg-slate-700 rounded-full transition-colors text-xl">
+              ⬅️
+            </button>
+          )}
+          <h1 className="text-xl font-bold">🕵️‍♂️ แฟ้มคดีปริศนา โลจิโก</h1>
+        </div>
         {screen !== 'MENU' && (
-          <button onClick={() => setScreen('MENU')} className="text-sm bg-slate-700 px-3 py-1 rounded hover:bg-slate-600">
-            กลับเมนูหลัก
+          <button onClick={() => setScreen('MENU')} className="text-xs bg-slate-700 px-3 py-1 rounded hover:bg-slate-600 transition-colors">
+            หน้าหลัก
           </button>
         )}
       </header>
@@ -41,16 +54,12 @@ export default function Home() {
   );
 }
 
-// ------------------------------------------------------------------
-// UI Components
-// ------------------------------------------------------------------
-
 function MainMenu({ setScreen }: { setScreen: (s: ScreenState) => void }) {
   return (
     <div className="flex flex-col items-center justify-center mt-20 space-y-6">
-      <h1 className="text-4xl font-extrabold text-slate-800 mb-8 tracking-tight">แฟ้มคดีปริศนา โลจิโก</h1>
-      <button onClick={() => setScreen('LEVEL_SELECT')} className="bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-4 px-12 rounded-lg shadow-lg transition transform hover:scale-105">
-        เริ่มเล่น
+      <h1 className="text-4xl font-extrabold text-slate-800 mb-8 tracking-tight text-center">🕵️‍♂️ คดีฆาตกรรมปริศนา <br/> ฉบับภาษาไทย</h1>
+      <button onClick={() => setScreen('LEVEL_SELECT')} className="bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-4 px-12 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
+        เริ่มไขคดี
       </button>
     </div>
   );
@@ -65,14 +74,14 @@ function LevelSelect({ setScreen, setSelectedLevel }: { setScreen: (s: ScreenSta
   ];
 
   return (
-    <div>
+    <div className="animate-fadeIn">
       <h2 className="text-2xl font-bold mb-6 text-center">เลือกระดับความยาก</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {levels.map(l => (
           <button key={l.id} onClick={() => { setSelectedLevel(l.id); setScreen('CASE_SELECT'); }} 
-            className="bg-white p-6 rounded-lg shadow hover:shadow-md border border-slate-200 text-left transition">
+            className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md border border-slate-200 text-left transition hover:border-blue-400">
             <h3 className="text-xl font-bold text-slate-800">{l.name}</h3>
-            <p className="text-slate-500 mt-2">{l.desc}</p>
+            <p className="text-slate-500 mt-2 text-sm">{l.desc}</p>
           </button>
         ))}
       </div>
@@ -81,22 +90,24 @@ function LevelSelect({ setScreen, setSelectedLevel }: { setScreen: (s: ScreenSta
 }
 
 function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level: number, setScreen: (s: ScreenState) => void, setSelectedCase: (c: LevelData) => void, solvedCases: string[] }) {
-  const cases = allCases[level] || [];
+  const cases = (allCases as any)[level] || [];
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-6">คดีระดับที่ {level}</h2>
+    <div className="animate-fadeIn">
+      <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">📂 รายการคดีระดับ {level}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {cases.map((c: LevelData) => {
           const isSolved = solvedCases.includes(c.id);
           return (
             <button key={c.id} onClick={() => { setSelectedCase(c); setScreen('GAME'); }} 
-              className={`p-4 rounded-lg shadow border text-left flex flex-col justify-between h-full transition ${isSolved ? 'bg-green-50 border-green-300' : 'bg-white hover:border-blue-400'}`}>
+              className={`p-5 rounded-2xl shadow-sm border text-left flex flex-col justify-between h-full transition ${isSolved ? 'bg-green-50 border-green-300' : 'bg-white hover:border-blue-400'}`}>
               <div>
-                <h3 className="font-bold text-lg">{c.level_name}</h3>
-                <span className="text-xs font-semibold px-2 py-1 bg-slate-100 rounded mt-2 inline-block text-slate-600">ความยาก: {c.difficulty}</span>
+                <h3 className="font-bold text-lg leading-tight">{c.level_name}</h3>
+                <div className="mt-3 flex items-center gap-2">
+                  <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 rounded text-slate-500 uppercase tracking-wider">Case ID: {c.id}</span>
+                </div>
               </div>
-              {isSolved && <div className="mt-4 text-green-600 font-bold self-end text-xl">✅ ไขคดีแล้ว</div>}
+              {isSolved && <div className="mt-4 text-green-600 font-bold self-end flex items-center gap-1">✅ สำเร็จ</div>}
             </button>
           );
         })}
@@ -106,12 +117,8 @@ function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level:
 }
 
 function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: LevelData, setSolvedCases: any, solvedCases: string[] }) {
-  const { getCellState, toggleCell } = useGameLogic(levelData.categories, []); 
-  
-  // State สำหรับคำให้การ (0 = ?, 1 = พูดจริง, 2 = โกหก)
+  const { getCellState, toggleCell, resetGrid } = useGameLogic(levelData.categories, []); 
   const [testimonyStates, setTestimonyStates] = useState<Record<number, number>>({});
-  
-  // State สำหรับฟอร์มสรุปคดี
   const [accusation, setAccusation] = useState({ suspect: '', weapon: '', location: '', motive: '' });
   const [feedback, setFeedback] = useState<{ message: string; type: 'success' | 'error' | null }>({ message: '', type: null });
 
@@ -133,7 +140,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
         localStorage.setItem('solvedCases', JSON.stringify(newSolved));
       }
     } else {
-      setFeedback({ message: "❌ ลองใหม่อีกครั้ง! สรุปรูปคดีของคุณยังมีจุดผิดพลาดอยู่", type: 'error' });
+      setFeedback({ message: "❌ สรุปรูปคดีของคุณยังไม่ถูกต้อง ลองทบทวนเบาะแสอีกครั้งนะ", type: 'error' });
       setTimeout(() => setFeedback({ message: '', type: null }), 3000);
     }
   };
@@ -141,121 +148,141 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const getOptions = (catId: string) => levelData.categories.find(c => c.id === catId)?.items || [];
 
   return (
-    <div className="animate-fadeIn">
-      <h2 className="text-2xl font-bold mb-4">{levelData.level_name}</h2>
+    <div className="animate-fadeIn max-w-4xl mx-auto">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <h2 className="text-2xl font-bold text-slate-800">{levelData.level_name}</h2>
+        <button onClick={resetGrid} className="text-xs bg-red-50 text-red-600 border border-red-100 px-4 py-2 rounded-full hover:bg-red-100 transition-colors font-bold flex items-center gap-1 self-start">
+          🗑️ ล้างตาราง
+        </button>
+      </div>
       
-      {/* เนื้อเรื่อง */}
-      <div className="bg-white p-4 rounded shadow-sm border-l-4 border-slate-800 italic mb-6">
+      <div className="bg-white p-5 rounded-2xl shadow-sm border-l-8 border-slate-800 italic mb-8 text-lg text-slate-700 leading-relaxed">
         {levelData.story_intro}
       </div>
 
       {/* แฟ้มประวัติ Profiles */}
       {levelData.profiles && (
-        <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 mb-6">
-          <h3 className="text-xl font-bold mb-4 border-b pb-2 flex items-center gap-2">
-            📋 แฟ้มประวัติ (Profiles)
-          </h3>
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+          <h3 className="text-lg font-bold mb-5 border-b pb-2 flex items-center gap-2">📋 ข้อมูลเพิ่มเติม</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {Object.entries(levelData.profiles).map(([key, items]) => (
-              <div key={key} className="bg-slate-50 p-4 rounded-lg border border-slate-100 shadow-inner">
-                <h4 className="font-extrabold text-blue-800 capitalize mb-3 pb-2 border-b border-slate-200 text-lg">
-                  {key === 'suspects' ? 'ผู้ต้องสงสัย' : key === 'weapons' ? 'อาวุธ' : key === 'locations' ? 'สถานที่' : 'แรงจูงใจ'}
+              <div key={key} className="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-inner">
+                <h4 className="font-black text-blue-800 mb-3 text-sm uppercase tracking-widest flex items-center gap-2">
+                  {key === 'suspects' ? '👤 ผู้ต้องสงสัย' : key === 'weapons' ? '🔪 อาวุธ' : key === 'locations' ? '📍 สถานที่' : '❓ แรงจูงใจ'}
                 </h4>
-                <ul className="text-sm space-y-3 mt-2">
+                <div className="space-y-3">
                   {items.map((item: any) => (
-                    <li key={item.name} className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-start">
-                      <span className="font-bold text-slate-700 bg-white px-3 py-1 rounded-md border border-slate-200 min-w-[150px] shrink-0 text-center shadow-sm">
-                        {item.name}
-                      </span>
-                      <span className="text-slate-600 pt-1 leading-relaxed">
-                        {item.detail}
-                      </span>
-                    </li>
+                    <div key={item.name} className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                      <div className="font-bold text-slate-800 border-b mb-1 pb-1">{item.name}</div>
+                      <div className="text-slate-600 text-sm leading-relaxed">{item.detail}</div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {/* ตาราง Logic Grid */}
-      <section className="bg-white shadow-sm border border-gray-200 mb-6 overflow-x-auto">
-        <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} />
+      {/* Logic Grid */}
+      <section className="bg-white shadow-sm border border-gray-200 mb-8 rounded-2xl overflow-hidden">
+        <div className="bg-slate-50 p-3 text-[10px] text-slate-400 border-b text-center uppercase tracking-widest font-bold">
+          คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
+        </div>
+        <div className="overflow-x-auto p-4 flex justify-center">
+          <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} />
+        </div>
       </section>
 
-      {/* เบาะแส Clues */}
-      <div className="bg-white rounded-lg shadow p-6 mb-6">
-        <h3 className="text-xl font-bold mb-4 border-b pb-2">🔍 เบาะแส (Clues)</h3>
-        <ul className="space-y-2">
-          {levelData.clues.map((clue, idx) => (
-            <li key={idx} className="flex gap-3"><span className="font-bold text-slate-400">{idx + 1}.</span> <span>{clue}</span></li>
-          ))}
-        </ul>
-      </div>
-
-      {/* คำให้การ Testimonies */}
-      {levelData.testimonies && levelData.testimonies.length > 0 && (
-        <div className="bg-white rounded-lg shadow p-6 mb-6 border-l-4 border-red-400">
-          <h3 className="text-xl font-bold mb-4 border-b pb-2 text-red-700">🗣️ คำให้การ (มีคนโกหก 1 คน)</h3>
-          <ul className="space-y-3">
-            {levelData.testimonies.map((t, idx) => {
-              const state = testimonyStates[idx] || 0;
-              return (
-                <li key={idx} className="flex flex-col sm:flex-row sm:items-center gap-3 bg-slate-50 p-2 rounded">
-                  <button 
-                    onClick={() => setTestimonyStates({...testimonyStates, [idx]: (state + 1) % 3})}
-                    className={`px-3 py-1 font-bold rounded min-w-[80px] text-sm transition-colors ${state === 1 ? 'bg-green-500 text-white' : state === 2 ? 'bg-red-500 text-white' : 'bg-slate-300 text-slate-700'}`}
-                  >
-                    {state === 1 ? 'พูดจริง' : state === 2 ? 'โกหก' : '?'}
-                  </button>
-                  <div><span className="font-bold">{t.suspect}:</span> "{t.statement}"</div>
-                </li>
-              );
-            })}
+      {/* Clues & Testimonies */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="bg-white rounded-2xl shadow-sm p-6 border border-slate-200">
+          <h3 className="text-xl font-bold mb-5 border-b pb-2 flex items-center gap-2">🔍 เบาะแส (Facts)</h3>
+          <ul className="space-y-4">
+            {levelData.clues.map((clue, idx) => (
+              <li key={idx} className="flex gap-4 items-start text-slate-700">
+                <span className="font-black text-slate-200 text-2xl leading-none">{idx + 1}</span>
+                <span className="leading-relaxed font-medium">{clue}</span>
+              </li>
+            ))}
           </ul>
         </div>
-      )}
 
-      {/* ฟอร์มสรุปรูปคดี Final Accusation */}
-      <div className="bg-slate-100 border-2 border-slate-300 p-6 rounded-lg shadow-inner flex flex-col items-center mb-10">
-        <h3 className="text-xl font-extrabold mb-4 text-slate-800 text-center">⚖️ สรุปรูปคดี</h3>
-        <div className="flex flex-wrap items-center justify-center gap-3 text-lg font-medium text-slate-700">
-          <span>คนร้ายคือ</span>
-          <select className="p-2 border rounded shadow-sm bg-white" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
-            <option value="">- ผู้ต้องสงสัย -</option>
-            {getOptions('suspects').map(i => <option key={i} value={i}>{i}</option>)}
-          </select>
+        {levelData.testimonies && levelData.testimonies.length > 0 && (
+          <div className="bg-white rounded-2xl shadow-sm p-6 border-l-8 border-red-500 border border-slate-200">
+            <h3 className="text-xl font-bold mb-5 border-b pb-2 text-red-700 flex items-center gap-2">🗣️ คำให้การ (Testimonies)</h3>
+            <ul className="space-y-4">
+              {levelData.testimonies.map((t, idx) => {
+                const state = testimonyStates[idx] || 0;
+                return (
+                  <li key={idx} className="bg-slate-50 p-4 rounded-xl flex flex-col gap-3">
+                    <div className="flex justify-between items-center border-b pb-2">
+                      <span className="font-bold text-slate-800">{t.suspect}</span>
+                      <button 
+                        onClick={() => setTestimonyStates({...testimonyStates, [idx]: (state + 1) % 3})}
+                        className={`text-[10px] px-3 py-1 font-black rounded-full transition-all uppercase tracking-widest ${
+                          state === 1 ? 'bg-green-500 text-white shadow-md' : 
+                          state === 2 ? 'bg-red-500 text-white shadow-md' : 
+                          'bg-slate-200 text-slate-500'
+                        }`}
+                      >
+                        {state === 1 ? '✓ พูดจริง' : state === 2 ? '✗ โกหก' : 'สถานะ ?'}
+                      </button>
+                    </div>
+                    <p className="text-slate-600 italic font-medium leading-relaxed">"{t.statement}"</p>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+      </div>
 
-          <span>ใช้</span>
-          <select className="p-2 border rounded shadow-sm bg-white" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
-            <option value="">- อาวุธ -</option>
-            {getOptions('weapons').map(i => <option key={i} value={i}>{i}</option>)}
-          </select>
+      {/* Final Accusation */}
+      <div className="bg-slate-900 text-white p-10 rounded-3xl shadow-2xl flex flex-col items-center">
+        <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-blue-400">⚖️ สรุปรูปคดี (Accusation)</h3>
+        <div className="flex flex-wrap items-center justify-center gap-6 text-xl mb-10">
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">คนร้าย</span>
+            <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
+              <option value="">- เลือกผู้ต้องสงสัย -</option>
+              {getOptions('suspects').map(i => <option key={i} value={i}>{i}</option>)}
+            </select>
+          </div>
 
-          <span>ก่อเหตุที่</span>
-          <select className="p-2 border rounded shadow-sm bg-white" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
-            <option value="">- สถานที่ -</option>
-            {getOptions('locations').map(i => <option key={i} value={i}>{i}</option>)}
-          </select>
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">อาวุธ</span>
+            <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
+              <option value="">- เลือกอาวุธ -</option>
+              {getOptions('weapons').map(i => <option key={i} value={i}>{i}</option>)}
+            </select>
+          </div>
+
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">สถานที่</span>
+            <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
+              <option value="">- เลือกสถานที่ -</option>
+              {getOptions('locations').map(i => <option key={i} value={i}>{i}</option>)}
+            </select>
+          </div>
 
           {hasMotives && (
-            <>
-              <span>เพราะ</span>
-              <select className="p-2 border rounded shadow-sm bg-white" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
-                <option value="">- แรงจูงใจ -</option>
+            <div className="flex flex-col items-center gap-2">
+              <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">แรงจูงใจ</span>
+              <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
+                <option value="">- เลือกแรงจูงใจ -</option>
                 {getOptions('motives').map(i => <option key={i} value={i}>{i}</option>)}
               </select>
-            </>
+            </div>
           )}
         </div>
 
-        <button onClick={handleCheckAnswer} className="mt-6 bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-8 rounded-lg shadow-lg text-lg transition transform hover:scale-105">
+        <button onClick={handleCheckAnswer} className="bg-blue-600 hover:bg-blue-500 px-12 py-5 rounded-full font-black text-xl shadow-lg transition-transform hover:scale-105 active:scale-95 uppercase tracking-widest">
           ตรวจคำตอบ
         </button>
 
         {feedback.type && (
-          <div className={`mt-4 w-full max-w-md px-6 py-4 rounded-lg font-bold text-center text-lg animate-pulse ${feedback.type === 'success' ? 'bg-green-100 text-green-800 border-2 border-green-400' : 'bg-red-100 text-red-800 border-2 border-red-400'}`}>
+          <div className={`mt-8 w-full max-w-md px-6 py-4 rounded-2xl font-bold text-center text-lg animate-bounce shadow-xl ${feedback.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
             {feedback.message}
           </div>
         )}
