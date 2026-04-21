@@ -151,17 +151,26 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
       {/* แฟ้มประวัติ Profiles */}
       {levelData.profiles && (
-        <div className="bg-white p-4 rounded shadow-sm border border-slate-200 mb-6">
-          <h3 className="text-lg font-bold mb-3 border-b pb-2">📋 แฟ้มประวัติ (Profiles)</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 mb-6">
+          <h3 className="text-xl font-bold mb-4 border-b pb-2 flex items-center gap-2">
+            📋 แฟ้มประวัติ (Profiles)
+          </h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {Object.entries(levelData.profiles).map(([key, items]) => (
-              <div key={key}>
-                <h4 className="font-semibold text-blue-700 capitalize">
+              <div key={key} className="bg-slate-50 p-4 rounded-lg border border-slate-100 shadow-inner">
+                <h4 className="font-extrabold text-blue-800 capitalize mb-3 pb-2 border-b border-slate-200 text-lg">
                   {key === 'suspects' ? 'ผู้ต้องสงสัย' : key === 'weapons' ? 'อาวุธ' : key === 'locations' ? 'สถานที่' : 'แรงจูงใจ'}
                 </h4>
-                <ul className="text-sm space-y-1 mt-1">
+                <ul className="text-sm space-y-3 mt-2">
                   {items.map((item: any) => (
-                    <li key={item.name}><span className="font-medium">{item.name}:</span> <span className="text-slate-600">{item.detail}</span></li>
+                    <li key={item.name} className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-start">
+                      <span className="font-bold text-slate-700 bg-white px-3 py-1 rounded-md border border-slate-200 min-w-[150px] shrink-0 text-center shadow-sm">
+                        {item.name}
+                      </span>
+                      <span className="text-slate-600 pt-1 leading-relaxed">
+                        {item.detail}
+                      </span>
+                    </li>
                   ))}
                 </ul>
               </div>
