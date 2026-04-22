@@ -127,13 +127,13 @@
   ],
   "testimonies": [],
   "solution_grid": [
-    { "suspects": "บิชอปอะซูร์", "weapons": "รูปปั้นแนวแอ็บสแตรกต์", "locations": "โถงทางเข้า" },
-    { "suspects": "กัปตันสเลต", "weapons": "ไวน์ผสมยาพิษ", "locations": "สวนดาดฟ้า" },
-    { "suspects": "แบล็กสโตน", "weapons": "แจกันหายาก", "locations": "สตูดิโอศิลปะ" }
+    { "suspects": "แบล็กสโตน", "weapons": "แจกันหายาก", "locations": "สตูดิโอศิลปะ" },
+    { "suspects": "กัปตันสเลต", "weapons": "ไวน์ผสมยาพิษ", "locations": "โถงทางเข้า" },
+    { "suspects": "บิชอปอะซูร์", "weapons": "รูปปั้นแนวแอ็บสแตรกต์", "locations": "สวนดาดฟ้า" }
   ],
   "correct_accusation": {
-    "suspect": "บิชอปอะซูร์",
-    "weapon": "รูปปั้นแนวแอ็บสแตรกต์",
+    "suspect": "กัปตันสเลต",
+    "weapon": "ไวน์ผสมยาพิษ",
     "location": "โถงทางเข้า"
   }
 },
