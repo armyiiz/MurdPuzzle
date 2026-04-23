@@ -1,18 +1,17 @@
 import React, { ReactNode } from 'react';
 
-const SHADOW_COLORS = [
-  'drop-shadow-[0_0_0_rgba(0,0,0,0.8)]',          // 0: Black
-  'drop-shadow-[0_0_0_rgba(239,68,68,0.8)]',      // 1: Red
-  'drop-shadow-[0_0_0_rgba(59,130,246,0.8)]',     // 2: Blue
-  'drop-shadow-[0_0_0_rgba(34,197,94,0.8)]',      // 3: Green
-  'drop-shadow-[0_0_0_rgba(168,85,247,0.8)]',     // 4: Purple
+const TINT_COLORS = [
+  '#000000', // 0: Black
+  '#A30B37', // 1: Deep Red
+  '#228B22', // 2: Forest Green
+  '#1E90FF', // 3: Royal Blue
 ];
 
 const BASE_EMOJIS: Record<string, string> = {
-  suspects: '👤',
-  weapons: '🔪',
-  locations: '📍',
-  motives: '❓',
+  suspects: '🕺',
+  weapons: '🗡️',
+  locations: '🏠',
+  motives: '💬',
 };
 
 // Extractor logic
@@ -28,7 +27,7 @@ export const extractEmojiAndText = (itemName: string) => {
 };
 
 export const getCategoryEmoji = (category: string, index: number, itemName?: string): ReactNode => {
-  const colorClass = SHADOW_COLORS[index % SHADOW_COLORS.length];
+  const hexColor = TINT_COLORS[index % TINT_COLORS.length];
   let emojiToRender = BASE_EMOJIS[category] || '❓';
 
   if (itemName) {
@@ -39,7 +38,11 @@ export const getCategoryEmoji = (category: string, index: number, itemName?: str
   }
 
   return (
-    <span className={`${colorClass} text-base leading-none inline-block`} title={itemName}>
+    <span
+      className="text-base leading-none inline-block"
+      title={itemName}
+      style={{ color: 'transparent', textShadow: `0 0 0 ${hexColor}` }}
+    >
       {emojiToRender}
     </span>
   );

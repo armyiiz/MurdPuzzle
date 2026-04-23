@@ -47,7 +47,7 @@ export default function Home() {
         )}
       </header>
 
-      <main className="max-w-6xl mx-auto mt-6 px-4">
+      <main className="max-w-6xl mx-auto mt-6">
         {screen === 'MENU' && <MainMenu setScreen={setScreen} />}
         {screen === 'LEVEL_SELECT' && <LevelSelect setScreen={setScreen} setSelectedLevel={setSelectedLevel} />}
         {screen === 'CASE_SELECT' && <CaseSelect level={selectedLevel} setScreen={setScreen} setSelectedCase={setSelectedCase} solvedCases={solvedCases} />}
@@ -206,11 +206,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {levelData.profiles && (levelData.profiles as any)[activeTab]?.map((item: any, index: number) => {
                   return (
-                    <div key={item.name} className="bg-neo-notebook border-[3px] border-black shadow-[4px_4px_0_#222222] flex flex-col h-full overflow-hidden">
-                      <ImageWithFallback category={activeTab} index={index} />
-                      <div className="p-4 flex flex-col flex-grow">
+                    <div key={item.name} className="bg-neo-notebook border-[3px] border-black shadow-[4px_4px_0_#222222] flex flex-row items-stretch h-full overflow-hidden">
+                      <ImageWithFallback category={activeTab} index={index} itemName={item.name} />
+                      <div className="p-3 flex flex-col justify-center flex-grow">
                         <div className="font-black text-black border-b-[2px] border-black mb-2 pb-2 text-lg flex items-center gap-2">
-                          {getCategoryEmoji(activeTab, index, item.name)}
                           <span>{extractEmojiAndText(item.name).text}</span>
                         </div>
                         <div className="text-black text-sm leading-relaxed flex-grow">{item.detail}</div>
@@ -331,7 +330,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <div className="bg-neo-notebook p-3 text-[10px] text-black border-b-[3px] border-black text-center uppercase tracking-widest font-bold">
               คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
             </div>
-            <div className="overflow-x-auto p-4 flex justify-center bg-neo-bg">
+            <div className="overflow-x-auto py-4 px-0 flex justify-center bg-neo-bg">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} />
             </div>
           </section>
