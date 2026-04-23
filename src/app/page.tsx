@@ -228,12 +228,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 flex items-center gap-2 text-black">🔍 เบาะแส (Facts)</h3>
               <ul className="space-y-4">
                 {levelData.clues.map((clue, idx) => {
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                  const clueText = React.useMemo(() => {
-                    return typeof clue === 'string'
-                      ? clue
-                      : generateFlavorText(clue.subject, clue.relation, clue.object);
-                  }, [clue]);
+                  const clueText = typeof clue === 'string'
+                    ? clue
+                    : generateFlavorText(clue.subject, clue.relation, clue.object);
+                    
                   return (
                     <li key={idx} className="flex gap-4 items-start text-black">
                       <span className="font-black text-black bg-white border-[2px] border-black px-2 py-1 text-xl leading-none shadow-[2px_2px_0_#222222]">{idx + 1}</span>
