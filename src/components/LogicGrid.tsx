@@ -63,7 +63,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
     <div className="w-full max-w-3xl mx-auto overflow-x-auto pb-4">
       <div className="inline-block min-w-max p-4">
         {/* Outer border for the entire grid area */}
-        <div className="border-[2px] border-black flex flex-col bg-white">
+        <div className="border-t-[2px] border-l-[2px] border-black flex flex-col bg-white">
 
           {/* Top Headers Row */}
           <div className="flex border-b-[2px] border-black">

@@ -292,24 +292,24 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-neo-accent">⚖️ สรุปรูปคดี (Accusation)</h3>
             <div className="text-xl mb-10 leading-loose text-center max-w-2xl font-bold">
               ฉันขอสรุปว่า
-              <select className="mx-2 bg-transparent border-b-2 border-black outline-none focus:border-neo-accent transition-colors text-xl font-bold text-black cursor-pointer appearance-none text-center" style={{ textAlignLast: 'center' }} value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
+              <select className="mx-2 bg-transparent border-b-2 border-black outline-none focus:border-neo-accent transition-colors text-xl font-bold text-black cursor-pointer appearance-none text-center" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
                 <option value="">[ เลือกผู้ต้องสงสัย ]</option>
                 {getOptions('suspects').map(i => <option key={i} value={i}>{i}</option>)}
               </select>
               ฆาตกรรมโดยใช้
-              <select className="mx-2 bg-transparent border-b-2 border-black outline-none focus:border-neo-accent transition-colors text-xl font-bold text-black cursor-pointer appearance-none text-center" style={{ textAlignLast: 'center' }} value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
+              <select className="mx-2 bg-transparent border-b-2 border-black outline-none focus:border-neo-accent transition-colors text-xl font-bold text-black cursor-pointer appearance-none text-center" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
                 <option value="">[ เลือกอาวุธ ]</option>
                 {getOptions('weapons').map(i => <option key={i} value={i}>{i}</option>)}
               </select>
               เหตุเกิดที่
-              <select className="mx-2 bg-transparent border-b-2 border-black outline-none focus:border-neo-accent transition-colors text-xl font-bold text-black cursor-pointer appearance-none text-center" style={{ textAlignLast: 'center' }} value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
+              <select className="mx-2 bg-transparent border-b-2 border-black outline-none focus:border-neo-accent transition-colors text-xl font-bold text-black cursor-pointer appearance-none text-center" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
                 <option value="">[ เลือกสถานที่ ]</option>
                 {getOptions('locations').map(i => <option key={i} value={i}>{i}</option>)}
               </select>
               {hasMotives && (
                 <>
                   โดยมีแรงจูงใจคือ
-                  <select className="mx-2 bg-transparent border-b-2 border-black outline-none focus:border-neo-accent transition-colors text-xl font-bold text-black cursor-pointer appearance-none text-center" style={{ textAlignLast: 'center' }} value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
+                  <select className="mx-2 bg-transparent border-b-2 border-black outline-none focus:border-neo-accent transition-colors text-xl font-bold text-black cursor-pointer appearance-none text-center" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
                     <option value="">[ เลือกแรงจูงใจ ]</option>
                     {getOptions('motives').map(i => <option key={i} value={i}>{i}</option>)}
                   </select>

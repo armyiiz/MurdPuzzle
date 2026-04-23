@@ -60,6 +60,8 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
 
         if (conflict) {
           console.warn("Conflict: Cannot place 'O' because there is already an 'O' in this row or column.");
+          // Pop the history we eagerly pushed above
+          setGridHistory(h => h.slice(0, -1));
           return prev; // Block the action, state unchanged
         }
       }
