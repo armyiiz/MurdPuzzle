@@ -2,6 +2,7 @@ import React from 'react';
 import { Category } from '../types/level';
 import { CellState } from '../hooks/useGameLogic';
 import { SubGrid } from './SubGrid';
+import { getCategoryEmoji } from '../utils/emojiHelper';
 
 interface LogicGridProps {
   categories: Category[];
@@ -15,25 +16,20 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
   if (numCats < 3) return null;
 
   const renderTopHeader = (category: Category) => (
-    <div className="flex">
-      {category.items.map(item => (
-        <div key={item} className="w-10 h-32 flex items-center justify-center border border-gray-200 overflow-hidden">
-          <span
-            className="text-sm whitespace-nowrap"
-            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-          >
-            {item}
-          </span>
+    <div className="flex border-l-4 border-t-4 border-slate-800">
+      {category.items.map((item, index) => (
+        <div key={item} className="w-12 h-12 flex items-center justify-center border border-gray-200 overflow-hidden bg-slate-50">
+          {getCategoryEmoji(category.id, index)}
         </div>
       ))}
     </div>
   );
 
   const renderLeftHeader = (category: Category) => (
-    <div className="flex flex-col">
-      {category.items.map(item => (
-        <div key={item} className="h-10 w-32 flex items-center justify-end pr-2 border border-gray-200 text-sm whitespace-nowrap overflow-hidden text-right">
-          {item}
+    <div className="flex flex-col border-t-4 border-l-4 border-slate-800">
+      {category.items.map((item, index) => (
+        <div key={item} className="h-12 w-12 flex items-center justify-center border border-gray-200 bg-slate-50">
+          {getCategoryEmoji(category.id, index)}
         </div>
       ))}
     </div>
@@ -43,12 +39,14 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
   const leftCategories = [categories[0], ...[...categories.slice(2)].reverse()];
 
   return (
-    <div className="overflow-auto p-4 w-full">
-      <div className="inline-block min-w-max">
+    <div className="w-full max-w-3xl mx-auto overflow-x-auto pb-4">
+      <div className="inline-block min-w-max p-4">
         {/* Top Headers Row */}
         <div className="flex">
           {/* Top-Left Empty Corner */}
-          <div className="w-32 h-32"></div>
+          <div className="w-12 h-12 flex items-end justify-end p-1 text-[8px] text-slate-400 font-bold tracking-widest leading-none">
+            GRID
+          </div>
           {/* Top Headers */}
           <div className="flex">
             {topCategories.map((cat) => (
@@ -73,15 +71,17 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
               {rowTopCategories.map((colCat, colIndex) => {
                 const isDark = (rowIndex + colIndex) % 2 === 1;
                 return (
-                  <SubGrid
-                    key={`subgrid-${rowCat.id}-${colCat.id}`}
-                    rowCategory={rowCat}
-                    colCategory={colCat}
-                    getCellState={getCellState}
-                    toggleCell={toggleCell}
-                    isDark={isDark}
-                    isCellError={isCellError}
-                  />
+                  <div key={`subgrid-wrap-${rowCat.id}-${colCat.id}`} className="border-t-4 border-l-4 border-slate-800">
+                    <SubGrid
+                      key={`subgrid-${rowCat.id}-${colCat.id}`}
+                      rowCategory={rowCat}
+                      colCategory={colCat}
+                      getCellState={getCellState}
+                      toggleCell={toggleCell}
+                      isDark={isDark}
+                      isCellError={isCellError}
+                    />
+                  </div>
                 );
               })}
             </div>

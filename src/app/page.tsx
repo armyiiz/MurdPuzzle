@@ -5,6 +5,7 @@ import { LevelData, Category } from '../types/level';
 import { useGameLogic } from '../hooks/useGameLogic';
 import { LogicGrid } from '../components/LogicGrid';
 import { allCases } from '../data/allCases';
+import { getCategoryEmoji } from '../utils/emojiHelper';
 
 type ScreenState = 'MENU' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME';
 
@@ -117,10 +118,21 @@ function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level:
 }
 
 function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: LevelData, setSolvedCases: any, solvedCases: string[] }) {
-  const { getCellState, toggleCell, resetGrid } = useGameLogic(levelData.categories, []); 
+  const { getCellState, toggleCell, resetGrid, undo, saveGridState, loadGridState, canUndo } = useGameLogic(levelData.categories, []);
   const [testimonyStates, setTestimonyStates] = useState<Record<number, number>>({});
   const [accusation, setAccusation] = useState({ suspect: '', weapon: '', location: '', motive: '' });
   const [feedback, setFeedback] = useState<{ message: string; type: 'success' | 'error' | null }>({ message: '', type: null });
+  const [activeView, setActiveView] = useState<'clues' | 'grid'>('clues');
+  const [notes, setNotes] = useState<string>('');
+  const [activeTab, setActiveTab] = useState<'suspects' | 'weapons' | 'locations' | 'motives'>('suspects');
+
+  useEffect(() => {
+    const loaded = loadGridState(levelData.id);
+    if (loaded) {
+      setTestimonyStates(loaded.testimonyStates);
+      setNotes(loaded.notes);
+    }
+  }, [levelData.id, loadGridState]);
 
   const hasMotives = levelData.categories.some(c => c.id === 'motives');
 
@@ -148,145 +160,210 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const getOptions = (catId: string) => levelData.categories.find(c => c.id === catId)?.items || [];
 
   return (
-    <div className="animate-fadeIn max-w-4xl mx-auto">
+    <div className="animate-fadeIn max-w-4xl mx-auto relative pb-24">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <h2 className="text-2xl font-bold text-slate-800">{levelData.level_name}</h2>
-        <button onClick={resetGrid} className="text-xs bg-red-50 text-red-600 border border-red-100 px-4 py-2 rounded-full hover:bg-red-100 transition-colors font-bold flex items-center gap-1 self-start">
-          🗑️ ล้างตาราง
-        </button>
-      </div>
-      
-      <div className="bg-white p-5 rounded-2xl shadow-sm border-l-8 border-slate-800 italic mb-8 text-lg text-slate-700 leading-relaxed">
-        {levelData.story_intro}
       </div>
 
-      {/* แฟ้มประวัติ Profiles */}
-      {levelData.profiles && (
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
-          <h3 className="text-lg font-bold mb-5 border-b pb-2 flex items-center gap-2">📋 ข้อมูลเพิ่มเติม</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {Object.entries(levelData.profiles).map(([key, items]) => (
-              <div key={key} className="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-inner">
-                <h4 className="font-black text-blue-800 mb-3 text-sm uppercase tracking-widest flex items-center gap-2">
-                  {key === 'suspects' ? '👤 ผู้ต้องสงสัย' : key === 'weapons' ? '🔪 อาวุธ' : key === 'locations' ? '📍 สถานที่' : '❓ แรงจูงใจ'}
-                </h4>
-                <div className="space-y-3">
-                  {items.map((item: any) => (
-                    <div key={item.name} className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-                      <div className="font-bold text-slate-800 border-b mb-1 pb-1">{item.name}</div>
-                      <div className="text-slate-600 text-sm leading-relaxed">{item.detail}</div>
-                    </div>
-                  ))}
-                </div>
+      {activeView === 'clues' && (
+        <div className="animate-in fade-in duration-300">
+          <div className="bg-white p-5 rounded-2xl shadow-sm border-l-8 border-slate-800 italic mb-8 text-lg text-slate-700 leading-relaxed">
+            {levelData.story_intro}
+          </div>
+
+          {/* แฟ้มประวัติ Profiles (Tab System) */}
+          {levelData.profiles && (
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+              <h3 className="text-lg font-bold mb-4 flex items-center gap-2">📋 ข้อมูลเพิ่มเติม</h3>
+
+              <div className="flex flex-wrap gap-2 mb-6 border-b border-slate-100 pb-2">
+                {Object.keys(levelData.profiles).map(key => {
+                  const items = (levelData.profiles as any)[key];
+                  if (!items || items.length === 0) return null;
+                  const isActive = activeTab === key;
+                  const label = key === 'suspects' ? '👤 ผู้ต้องสงสัย' : key === 'weapons' ? '🔪 อาวุธ' : key === 'locations' ? '📍 สถานที่' : '❓ แรงจูงใจ';
+
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => setActiveTab(key as any)}
+                      className={`px-4 py-2 rounded-full text-sm font-bold transition-colors ${
+                        isActive ? 'bg-slate-800 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
-            ))}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {(levelData.profiles as any)[activeTab]?.map((item: any, index: number) => (
+                  <div key={item.name} className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
+                    <div className="font-bold text-slate-800 border-b pb-2 flex items-center gap-3 text-lg">
+                      {getCategoryEmoji(activeTab, index)}
+                      <span>{item.name}</span>
+                    </div>
+                    <div className="text-slate-600 text-sm leading-relaxed mt-1">{item.detail}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Clues & Testimonies */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div className="bg-white rounded-2xl shadow-sm p-6 border border-slate-200">
+              <h3 className="text-xl font-bold mb-5 border-b pb-2 flex items-center gap-2">🔍 เบาะแส (Facts)</h3>
+              <ul className="space-y-4">
+                {levelData.clues.map((clue, idx) => (
+                  <li key={idx} className="flex gap-4 items-start text-slate-700">
+                    <span className="font-black text-slate-200 text-2xl leading-none">{idx + 1}</span>
+                    <span className="leading-relaxed font-medium">{clue}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {levelData.testimonies && levelData.testimonies.length > 0 && (
+              <div className="bg-white rounded-2xl shadow-sm p-6 border-l-8 border-red-500 border border-slate-200">
+                <h3 className="text-xl font-bold mb-5 border-b pb-2 text-red-700 flex items-center gap-2">🗣️ คำให้การ (Testimonies)</h3>
+                <ul className="space-y-4">
+                  {levelData.testimonies.map((t, idx) => {
+                    const state = testimonyStates[idx] || 0;
+                    return (
+                      <li key={idx} className="bg-slate-50 p-4 rounded-xl flex flex-col gap-3">
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <span className="font-bold text-slate-800">{t.suspect}</span>
+                          <button
+                            onClick={() => setTestimonyStates({...testimonyStates, [idx]: (state + 1) % 3})}
+                            className={`text-[10px] px-3 py-1 font-black rounded-full transition-all uppercase tracking-widest ${
+                              state === 1 ? 'bg-green-500 text-white shadow-md' :
+                              state === 2 ? 'bg-red-500 text-white shadow-md' :
+                              'bg-slate-200 text-slate-500'
+                            }`}
+                          >
+                            {state === 1 ? '✓ พูดจริง' : state === 2 ? '✗ โกหก' : 'สถานะ ?'}
+                          </button>
+                        </div>
+                        <p className="text-slate-600 italic font-medium leading-relaxed">"{t.statement}"</p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {/* Final Accusation */}
+          <div className="bg-slate-900 text-white p-10 rounded-3xl shadow-2xl flex flex-col items-center">
+            <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-blue-400">⚖️ สรุปรูปคดี (Accusation)</h3>
+            <div className="flex flex-wrap items-center justify-center gap-6 text-xl mb-10">
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">คนร้าย</span>
+                <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
+                  <option value="">- เลือกผู้ต้องสงสัย -</option>
+                  {getOptions('suspects').map(i => <option key={i} value={i}>{i}</option>)}
+                </select>
+              </div>
+
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">อาวุธ</span>
+                <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
+                  <option value="">- เลือกอาวุธ -</option>
+                  {getOptions('weapons').map(i => <option key={i} value={i}>{i}</option>)}
+                </select>
+              </div>
+
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">สถานที่</span>
+                <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
+                  <option value="">- เลือกสถานที่ -</option>
+                  {getOptions('locations').map(i => <option key={i} value={i}>{i}</option>)}
+                </select>
+              </div>
+
+              {hasMotives && (
+                <div className="flex flex-col items-center gap-2">
+                  <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">แรงจูงใจ</span>
+                  <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
+                    <option value="">- เลือกแรงจูงใจ -</option>
+                    {getOptions('motives').map(i => <option key={i} value={i}>{i}</option>)}
+                  </select>
+                </div>
+              )}
+            </div>
+
+            <button onClick={handleCheckAnswer} className="bg-blue-600 hover:bg-blue-500 px-12 py-5 rounded-full font-black text-xl shadow-lg transition-transform hover:scale-105 active:scale-95 uppercase tracking-widest">
+              ตรวจคำตอบ
+            </button>
+
+            {feedback.type && (
+              <div className={`mt-8 w-full max-w-md px-6 py-4 rounded-2xl font-bold text-center text-lg animate-bounce shadow-xl ${feedback.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
+                {feedback.message}
+              </div>
+            )}
           </div>
         </div>
       )}
 
-      {/* Logic Grid */}
-      <section className="bg-white shadow-sm border border-gray-200 mb-8 rounded-2xl overflow-hidden">
-        <div className="bg-slate-50 p-3 text-[10px] text-slate-400 border-b text-center uppercase tracking-widest font-bold">
-          คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
-        </div>
-        <div className="overflow-x-auto p-4 flex justify-center">
-          <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} />
-        </div>
-      </section>
-
-      {/* Clues & Testimonies */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-        <div className="bg-white rounded-2xl shadow-sm p-6 border border-slate-200">
-          <h3 className="text-xl font-bold mb-5 border-b pb-2 flex items-center gap-2">🔍 เบาะแส (Facts)</h3>
-          <ul className="space-y-4">
-            {levelData.clues.map((clue, idx) => (
-              <li key={idx} className="flex gap-4 items-start text-slate-700">
-                <span className="font-black text-slate-200 text-2xl leading-none">{idx + 1}</span>
-                <span className="leading-relaxed font-medium">{clue}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {levelData.testimonies && levelData.testimonies.length > 0 && (
-          <div className="bg-white rounded-2xl shadow-sm p-6 border-l-8 border-red-500 border border-slate-200">
-            <h3 className="text-xl font-bold mb-5 border-b pb-2 text-red-700 flex items-center gap-2">🗣️ คำให้การ (Testimonies)</h3>
-            <ul className="space-y-4">
-              {levelData.testimonies.map((t, idx) => {
-                const state = testimonyStates[idx] || 0;
-                return (
-                  <li key={idx} className="bg-slate-50 p-4 rounded-xl flex flex-col gap-3">
-                    <div className="flex justify-between items-center border-b pb-2">
-                      <span className="font-bold text-slate-800">{t.suspect}</span>
-                      <button 
-                        onClick={() => setTestimonyStates({...testimonyStates, [idx]: (state + 1) % 3})}
-                        className={`text-[10px] px-3 py-1 font-black rounded-full transition-all uppercase tracking-widest ${
-                          state === 1 ? 'bg-green-500 text-white shadow-md' : 
-                          state === 2 ? 'bg-red-500 text-white shadow-md' : 
-                          'bg-slate-200 text-slate-500'
-                        }`}
-                      >
-                        {state === 1 ? '✓ พูดจริง' : state === 2 ? '✗ โกหก' : 'สถานะ ?'}
-                      </button>
-                    </div>
-                    <p className="text-slate-600 italic font-medium leading-relaxed">"{t.statement}"</p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
-      </div>
-
-      {/* Final Accusation */}
-      <div className="bg-slate-900 text-white p-10 rounded-3xl shadow-2xl flex flex-col items-center">
-        <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-blue-400">⚖️ สรุปรูปคดี (Accusation)</h3>
-        <div className="flex flex-wrap items-center justify-center gap-6 text-xl mb-10">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">คนร้าย</span>
-            <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
-              <option value="">- เลือกผู้ต้องสงสัย -</option>
-              {getOptions('suspects').map(i => <option key={i} value={i}>{i}</option>)}
-            </select>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">อาวุธ</span>
-            <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
-              <option value="">- เลือกอาวุธ -</option>
-              {getOptions('weapons').map(i => <option key={i} value={i}>{i}</option>)}
-            </select>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">สถานที่</span>
-            <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
-              <option value="">- เลือกสถานที่ -</option>
-              {getOptions('locations').map(i => <option key={i} value={i}>{i}</option>)}
-            </select>
-          </div>
-
-          {hasMotives && (
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">แรงจูงใจ</span>
-              <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
-                <option value="">- เลือกแรงจูงใจ -</option>
-                {getOptions('motives').map(i => <option key={i} value={i}>{i}</option>)}
-              </select>
+      {activeView === 'grid' && (
+        <div className="animate-in fade-in duration-300">
+          {/* Logic Grid */}
+          <section className="bg-white shadow-sm border border-gray-200 mb-8 rounded-2xl overflow-hidden">
+            <div className="bg-slate-50 p-3 text-[10px] text-slate-400 border-b text-center uppercase tracking-widest font-bold">
+              คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
             </div>
-          )}
-        </div>
+            <div className="overflow-x-auto p-4 flex justify-center">
+              <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} />
+            </div>
+          </section>
 
-        <button onClick={handleCheckAnswer} className="bg-blue-600 hover:bg-blue-500 px-12 py-5 rounded-full font-black text-xl shadow-lg transition-transform hover:scale-105 active:scale-95 uppercase tracking-widest">
-          ตรวจคำตอบ
-        </button>
+          {/* Notepad Area */}
+          <section className="bg-white shadow-sm border border-gray-200 mb-20 rounded-2xl overflow-hidden p-6">
+            <h3 className="text-lg font-bold mb-3 flex items-center gap-2">📝 สมุดโน้ต (Scratchpad)</h3>
+            <textarea
+              className="w-full h-32 p-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow resize-none"
+              placeholder="จดบันทึกของคุณที่นี่..."
+              value={notes}
+              onChange={e => setNotes(e.target.value)}
+            ></textarea>
+          </section>
 
-        {feedback.type && (
-          <div className={`mt-8 w-full max-w-md px-6 py-4 rounded-2xl font-bold text-center text-lg animate-bounce shadow-xl ${feedback.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
-            {feedback.message}
+          {/* Grid Action Menu */}
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-800 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-4">
+            <button onClick={() => console.log('Hint clicked')} className="hover:scale-110 transition-transform flex flex-col items-center gap-1">
+              <span className="text-xl">💡</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">คำใบ้</span>
+            </button>
+            <div className="w-px h-8 bg-slate-600"></div>
+            <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} className="hover:scale-110 transition-transform flex flex-col items-center gap-1">
+              <span className="text-xl">💾</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">บันทึก</span>
+            </button>
+            <div className="w-px h-8 bg-slate-600"></div>
+            <button onClick={undo} disabled={!canUndo} className={`transition-transform flex flex-col items-center gap-1 ${canUndo ? 'hover:scale-110' : 'opacity-50 cursor-not-allowed'}`}>
+              <span className="text-xl">♻️</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">ย้อน</span>
+            </button>
+            <div className="w-px h-8 bg-slate-600"></div>
+            <button onClick={resetGrid} className="hover:scale-110 transition-transform flex flex-col items-center gap-1 text-red-400">
+              <span className="text-xl">🗑️</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">ล้าง</span>
+            </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
+      {/* Main View Toggle FAB */}
+      <button
+        onClick={() => setActiveView(activeView === 'clues' ? 'grid' : 'clues')}
+        className="fixed bottom-6 right-6 z-50 rounded-full shadow-2xl p-4 bg-slate-800 text-white text-2xl hover:scale-110 transition-transform flex items-center justify-center w-14 h-14"
+        aria-label={activeView === 'clues' ? "Switch to Grid" : "Switch to Clues"}
+      >
+        {activeView === 'clues' ? '📔' : '🔍'}
+      </button>
+
     </div>
   );
 }
