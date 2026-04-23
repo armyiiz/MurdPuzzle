@@ -2,6 +2,7 @@ import React from 'react';
 import { Category } from '../types/level';
 import { CellState } from '../hooks/useGameLogic';
 import { SubGrid } from './SubGrid';
+import { getCategoryEmoji } from '../utils/emojiHelper';
 
 interface LogicGridProps {
   categories: Category[];
@@ -14,44 +15,12 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
   const numCats = categories.length;
   if (numCats < 3) return null;
 
-  const shadowColors = [
-    'drop-shadow-[0_0_0_rgba(255,102,204,0.8)]', // Pink
-    'drop-shadow-[0_0_0_rgba(102,204,255,0.8)]', // Blue
-    'drop-shadow-[0_0_0_rgba(102,255,153,0.8)]', // Green
-    'drop-shadow-[0_0_0_rgba(255,204,102,0.8)]', // Yellow
-  ];
-
-  const getEmojiTint = (category: Category, index: number) => {
-    if (category.id === 'suspects') {
-      return shadowColors[index % shadowColors.length];
-    }
-    return 'drop-shadow-[0_0_0_rgba(0,0,0,0.8)]';
-  };
-
-  const parseItemEmoji = (item: string) => {
-    const emojiRegex = /(\p{Emoji_Presentation}|\p{Emoji}\uFE0F)/u;
-    const match = item.match(emojiRegex);
-    if (match) {
-      const emoji = match[0];
-      const text = item.replace(emoji, '').trim();
-      return { emoji, text };
-    }
-    return { emoji: null, text: item };
-  };
-
   const renderTopHeader = (category: Category) => (
     <div className="flex border-l-4 border-t-4 border-slate-800">
       {category.items.map((item, index) => {
-        const { emoji, text } = parseItemEmoji(item);
         return (
-          <div key={item} className="w-10 h-32 flex items-center justify-center border border-gray-200 overflow-hidden bg-slate-50">
-            <span
-              className="text-xs tracking-widest whitespace-nowrap flex items-center gap-1"
-              style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-            >
-              <span className="font-bold text-slate-700">{text}</span>
-              {emoji && <span className={`${getEmojiTint(category, index)} text-base`}>{emoji}</span>}
-            </span>
+          <div key={item} className="w-10 h-10 flex items-center justify-center border border-gray-200 bg-slate-50">
+            {getCategoryEmoji(category.id, index, item)}
           </div>
         );
       })}
@@ -61,11 +30,9 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
   const renderLeftHeader = (category: Category) => (
     <div className="flex flex-col border-t-4 border-l-4 border-slate-800">
       {category.items.map((item, index) => {
-        const { emoji, text } = parseItemEmoji(item);
         return (
-          <div key={item} className="h-10 w-32 flex items-center justify-end pr-2 border border-gray-200 text-sm whitespace-nowrap overflow-hidden text-right bg-slate-50">
-            <span className="font-bold text-slate-700 mr-2">{text}</span>
-            {emoji && <span className={`${getEmojiTint(category, index)} text-base`}>{emoji}</span>}
+          <div key={item} className="h-10 w-10 flex items-center justify-center border border-gray-200 bg-slate-50">
+            {getCategoryEmoji(category.id, index, item)}
           </div>
         );
       })}
@@ -81,7 +48,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
         {/* Top Headers Row */}
         <div className="flex">
           {/* Top-Left Empty Corner */}
-          <div className="w-32 h-32 flex items-end justify-end p-2 text-xs text-slate-400 font-bold tracking-widest">
+          <div className="w-10 h-10 flex items-center justify-center p-1 text-[8px] text-slate-400 font-bold tracking-tighter leading-none text-center">
             LOGIC GRID
           </div>
           {/* Top Headers */}

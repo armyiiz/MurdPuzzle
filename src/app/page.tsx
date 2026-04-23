@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { LevelData, Category } from '../types/level';
+import { getCategoryEmoji, extractEmojiAndText } from '../utils/emojiHelper';
 import { useGameLogic } from '../hooks/useGameLogic';
 import { LogicGrid } from '../components/LogicGrid';
 import { allCases } from '../data/allCases';
@@ -122,6 +123,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [accusation, setAccusation] = useState({ suspect: '', weapon: '', location: '', motive: '' });
   const [feedback, setFeedback] = useState<{ message: string; type: 'success' | 'error' | null }>({ message: '', type: null });
   const [activeView, setActiveView] = useState<'clues' | 'grid'>('clues');
+  const [activeTab, setActiveTab] = useState<'suspects' | 'weapons' | 'locations' | 'motives'>('suspects');
   const [notes, setNotes] = useState<string>('');
 
   useEffect(() => {
@@ -169,26 +171,45 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             {levelData.story_intro}
           </div>
 
-          {/* แฟ้มประวัติ Profiles */}
+          {/* แฟ้มประวัติ Profiles (Tabbed View) */}
           {levelData.profiles && (
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
-              <h3 className="text-lg font-bold mb-5 border-b pb-2 flex items-center gap-2">📋 ข้อมูลเพิ่มเติม</h3>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {Object.entries(levelData.profiles).map(([key, items]) => (
-                  <div key={key} className="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-inner">
-                    <h4 className="font-black text-blue-800 mb-3 text-sm uppercase tracking-widest flex items-center gap-2">
-                      {key === 'suspects' ? '👤 ผู้ต้องสงสัย' : key === 'weapons' ? '🔪 อาวุธ' : key === 'locations' ? '📍 สถานที่' : '❓ แรงจูงใจ'}
-                    </h4>
-                    <div className="space-y-3">
-                      {items.map((item: any) => (
-                        <div key={item.name} className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-                          <div className="font-bold text-slate-800 border-b mb-1 pb-1">{item.name}</div>
-                          <div className="text-slate-600 text-sm leading-relaxed">{item.detail}</div>
-                        </div>
-                      ))}
+              <h3 className="text-lg font-bold mb-4 border-b pb-2 flex items-center gap-2">📋 ข้อมูลเพิ่มเติม</h3>
+
+              {/* Tabs Row */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {(['suspects', 'weapons', 'locations', 'motives'] as const).map(tabKey => {
+                  if (!levelData.profiles || !(levelData.profiles as any)[tabKey]) return null;
+                  const isActive = activeTab === tabKey;
+                  const label = tabKey === 'suspects' ? 'ผู้ต้องสงสัย' : tabKey === 'weapons' ? 'อาวุธ' : tabKey === 'locations' ? 'สถานที่' : 'แรงจูงใจ';
+
+                  return (
+                    <button
+                      key={tabKey}
+                      onClick={() => setActiveTab(tabKey)}
+                      className={`px-4 py-2 rounded-full text-sm font-bold transition-colors shadow-sm flex items-center gap-2
+                        ${isActive ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}
+                      `}
+                    >
+                      {getCategoryEmoji(tabKey, 0)} {label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Active Tab Content (Profile Cards) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {levelData.profiles && (levelData.profiles as any)[activeTab]?.map((item: any, index: number) => {
+                  return (
+                    <div key={item.name} className="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col h-full">
+                      <div className="font-black text-slate-800 border-b mb-2 pb-2 text-lg flex items-center gap-2">
+                        {getCategoryEmoji(activeTab, index, item.name)}
+                        <span>{extractEmojiAndText(item.name).text}</span>
+                      </div>
+                      <div className="text-slate-600 text-sm leading-relaxed flex-grow">{item.detail}</div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
