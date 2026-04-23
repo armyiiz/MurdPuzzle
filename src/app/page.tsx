@@ -127,6 +127,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [activeView, setActiveView] = useState<'clues' | 'grid'>('clues');
   const [activeTab, setActiveTab] = useState<'suspects' | 'weapons' | 'locations' | 'motives'>('suspects');
   const [notes, setNotes] = useState<string>('');
+  const [cluesScrollY, setCluesScrollY] = useState(0);
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -164,14 +165,29 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
   const getOptions = (catId: string) => levelData.categories.find(c => c.id === catId)?.items || [];
 
+  const handleToggleView = () => {
+    if (activeView === 'clues') {
+      // Going to Grid: Save current scroll, then jump to top
+      setCluesScrollY(window.scrollY);
+      setActiveView('grid');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    } else {
+      // Going to Clues: Switch view, then restore old scroll position
+      setActiveView('clues');
+      setTimeout(() => {
+        window.scrollTo({ top: cluesScrollY, behavior: 'instant' });
+      }, 10); // Small timeout to allow DOM to render the clues first
+    }
+  };
+
   return (
     <div className="animate-fadeIn max-w-4xl mx-auto relative pb-24">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <h2 className="text-2xl font-bold text-black">{levelData.level_name}</h2>
-      </div>
-
       {activeView === 'clues' && (
         <div className="animate-in fade-in duration-300">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <h2 className="text-2xl font-bold text-black">{levelData.level_name}</h2>
+          </div>
+
           <div className="bg-white p-5 border-[3px] border-black shadow-[4px_4px_0_#222222] italic mb-8 text-lg text-black leading-relaxed">
             {levelData.story_intro}
           </div>
@@ -335,17 +351,6 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             </div>
           </section>
 
-          {/* Notepad Area */}
-          <section className="bg-neo-notebook border-[3px] border-black shadow-[4px_4px_0_#222222] mb-20 overflow-hidden p-6">
-            <h3 className="text-lg font-bold mb-3 flex items-center gap-2 text-black">📝 สมุดโน้ต (Scratchpad)</h3>
-            <textarea
-              className="w-full h-32 p-3 border-[3px] border-black bg-white focus:outline-none focus:border-neo-accent transition-shadow resize-none text-black"
-              placeholder="จดบันทึกของคุณที่นี่..."
-              value={notes}
-              onChange={e => setNotes(e.target.value)}
-            ></textarea>
-          </section>
-
           {/* Grid Action Menu */}
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-4">
             <button onClick={() => console.log('Hint clicked')} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
@@ -373,7 +378,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
       {/* Main View Toggle FAB */}
       <button
-        onClick={() => setActiveView(activeView === 'clues' ? 'grid' : 'clues')}
+        onClick={handleToggleView}
         className="fixed bottom-6 right-6 z-50 border-[3px] border-black shadow-[4px_4px_0_#222222] p-4 bg-black text-white text-2xl hover:bg-neo-accent transition-colors flex items-center justify-center w-14 h-14"
         aria-label={activeView === 'clues' ? "Switch to Grid" : "Switch to Clues"}
       >
