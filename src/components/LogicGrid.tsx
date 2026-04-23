@@ -1,7 +1,6 @@
 import React from 'react';
 import { Category } from '../types/level';
 import { CellState } from '../hooks/useGameLogic';
-import { SubGrid } from './SubGrid';
 import { getCategoryEmoji } from '../utils/emojiHelper';
 
 interface LogicGridProps {
@@ -15,83 +14,90 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
   const numCats = categories.length;
   if (numCats < 3) return null;
 
-  const renderTopHeader = (category: Category) => (
-    <div className="flex border-l-[4px] border-t-[4px] border-black">
-      {category.items.map((item, index) => {
-        return (
-          <div key={item} className="w-10 h-10 flex items-center justify-center border border-black bg-white">
-            {getCategoryEmoji(category.id, index, item)}
-          </div>
-        );
-      })}
-    </div>
-  );
-
-  const renderLeftHeader = (category: Category) => (
-    <div className="flex flex-col border-t-[4px] border-l-[4px] border-black">
-      {category.items.map((item, index) => {
-        return (
-          <div key={item} className="h-10 w-10 flex items-center justify-center border border-black bg-white">
-            {getCategoryEmoji(category.id, index, item)}
-          </div>
-        );
-      })}
-    </div>
-  );
-
   const topCategories = categories.slice(1);
   const leftCategories = [categories[0], ...[...categories.slice(2)].reverse()];
 
   return (
     <div className="w-full max-w-3xl mx-auto overflow-x-auto pb-4">
-      <div className="inline-block min-w-max p-4">
-        {/* Top Headers Row */}
-        <div className="flex">
-          {/* Top-Left Empty Corner */}
-          <div className="w-10 h-10 flex items-center justify-center p-1 text-[8px] text-black font-bold tracking-tighter leading-none text-center border border-transparent">
-            LOGIC GRID
-          </div>
-          {/* Top Headers */}
-          <div className="flex">
-            {topCategories.map((cat) => (
-              <React.Fragment key={`top-header-${cat.id}`}>
-                {renderTopHeader(cat)}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-
-        {/* Rows */}
-        {leftCategories.map((rowCat, rowIndex) => {
-          const numCols = numCats - 1 - rowIndex;
-          const rowTopCategories = topCategories.slice(0, numCols);
-
-          return (
-            <div key={`row-${rowCat.id}`} className="flex">
-              {/* Left Header */}
-              {renderLeftHeader(rowCat)}
-
-              {/* SubGrids left aligned */}
-              {rowTopCategories.map((colCat, colIndex) => {
-                const isDark = (rowIndex + colIndex) % 2 === 1;
+      <table className="border-collapse mx-auto">
+        <tbody>
+          {/* Top Header Row */}
+          <tr>
+            <td className="w-10 h-10 p-1 text-[8px] text-black font-bold tracking-tighter leading-none text-center border border-transparent align-middle">
+              LOGIC GRID
+            </td>
+            {topCategories.map((cat, catIndex) => (
+              cat.items.map((item, itemIndex) => {
+                const isFirstOfBlock = itemIndex === 0;
                 return (
-                  <div key={`subgrid-wrap-${rowCat.id}-${colCat.id}`} className="border-t-[4px] border-l-[4px] border-black">
-                    <SubGrid
-                      key={`subgrid-${rowCat.id}-${colCat.id}`}
-                      rowCategory={rowCat}
-                      colCategory={colCat}
-                      getCellState={getCellState}
-                      toggleCell={toggleCell}
-                      isDark={isDark}
-                      isCellError={isCellError}
-                    />
-                  </div>
+                  <td
+                    key={`top-${cat.id}-${item}`}
+                    className={`w-10 h-10 border border-black bg-white align-middle text-center p-0
+                      border-t-[4px] ${isFirstOfBlock ? 'border-l-[4px]' : ''}
+                    `}
+                  >
+                    <div className="flex items-center justify-center w-full h-full">
+                      {getCategoryEmoji(cat.id, itemIndex, item)}
+                    </div>
+                  </td>
                 );
-              })}
-            </div>
-          );
-        })}
-      </div>
+              })
+            ))}
+          </tr>
+
+          {/* Rows for Left Categories */}
+          {leftCategories.map((rowCat, rowCatIndex) => {
+            const numCols = numCats - 1 - rowCatIndex;
+            const rowTopCategories = topCategories.slice(0, numCols);
+
+            return rowCat.items.map((rowItem, rowItemIndex) => {
+              const isFirstOfRowBlock = rowItemIndex === 0;
+
+              return (
+                <tr key={`row-${rowCat.id}-${rowItem}`}>
+                  {/* Left Header Cell */}
+                  <td
+                    className={`w-10 h-10 border border-black bg-white align-middle text-center p-0
+                      border-l-[4px] ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
+                    `}
+                  >
+                    <div className="flex items-center justify-center w-full h-full">
+                      {getCategoryEmoji(rowCat.id, rowItemIndex, rowItem)}
+                    </div>
+                  </td>
+
+                  {/* Grid Cells */}
+                  {rowTopCategories.map((colCat, colCatIndex) => {
+                    const isDark = (rowCatIndex + colCatIndex) % 2 === 1;
+
+                    return colCat.items.map((colItem, colItemIndex) => {
+                      const state = getCellState(rowCat, colCat, rowItem, colItem);
+                      const isError = isCellError ? isCellError(rowCat, colCat, rowItem, colItem) : false;
+                      const isFirstColOfBlock = colItemIndex === 0;
+
+                      return (
+                        <td
+                          key={`cell-${rowCat.id}-${rowItem}-${colCat.id}-${colItem}`}
+                          onClick={() => toggleCell(rowCat, colCat, rowItem, colItem)}
+                          className={`w-10 h-10 border border-black align-middle text-center p-0 cursor-pointer select-none text-xl font-bold transition-colors
+                            ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
+                            ${isFirstColOfBlock ? 'border-l-[4px]' : ''}
+                            ${isError ? 'bg-red-400' : isDark ? 'bg-neo-notebook' : 'bg-white'}
+                            hover:bg-gray-200
+                          `}
+                        >
+                          {state === 'O' && <span className="text-green-600">O</span>}
+                          {state === 'X' && <span className="text-red-500">X</span>}
+                        </td>
+                      );
+                    });
+                  })}
+                </tr>
+              );
+            });
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
