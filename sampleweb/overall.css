@@ -1,0 +1,295 @@
+body {
+        font-size: 18px;
+        line-height: 1.7;
+        font-family: Courier;
+        background: #fbfbf9;
+            
+        }
+
+        #container {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 600px;
+            width: 90%;
+            margin-bottom: 1em;
+            
+        }
+        
+        #headline {
+            line-height: 0.2;
+            font-size: 700%;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-top: .3em;
+        }
+        
+        #subtitle {
+               font-size: 150%;
+               margin-bottom: 1em;
+               
+               color: grey;
+               
+           }
+
+           select {
+                
+                height: 3em;
+                font-weight: bold;
+                font-size: 100%;
+                width: 100%;
+                max-width: 600px;
+                font-family: Courier;
+                border: 3px black solid;
+                text-align: center;
+               background: ##F5F5F5;
+            
+            }
+
+        #second-line {
+            font-weight: bold;
+            position: relative;
+            left: -5px;
+            
+        }
+
+           input[type=text], input[type=button], input[type=select] {
+            -webkit-appearance: none;
+            -webkit-border-radius: 0;
+               width: 100%;
+               font-family: Courier New;
+            
+            }
+        
+        #guess-reply {
+            
+            color: #A30B37;
+        }
+        
+        #final-eval {
+            
+            color: #A30B37;
+            
+        }
+        
+        p {
+            
+            /*margin-bottom: 1.5em; */
+            
+        }
+        
+        a {
+            
+            color: #A30B37;
+            
+        }
+        
+        .subject-header {
+            
+            margin-top: 3em;
+            font-weight: bold;
+            
+        }
+        
+        .intro {
+            
+            font-style: italic;
+            color: darkgrey;
+            
+        }
+        
+        .intro a {
+            
+            color: #8a5050;
+            
+        }
+        
+        #part-two {
+            
+            display: none;
+            
+        }
+        
+    #mailchimp-two{
+        background:#fff;
+        clear:left;
+        /* font:14px Courier,serif; */
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        text-align: center;
+    }
+    
+.clear {
+    
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    
+}
+
+        
+    #mailchimp{
+        /*background:#fff; */
+        clear:left;
+        /* font:14px Courier,serif; */
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 25px;
+        text-align: center;
+    }
+
+	.email {
+        width: 90%;
+        border-style: solid;
+        /* margin-left: 120px; */
+            height: 2em;
+        /* font-style: Courier;
+        font-weight: bold; */
+        font-size: 1.2em;
+        height: 47px;
+        border-radius: 2px;
+        border-width: medium;
+        border-color: black;
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        font-family: Courier;
+        box-sizing: content-box; 
+
+	}
+
+	.button {
+        border-style: solid;
+            position: relative;
+        /* left: 79%;
+        top: -55px; */
+        height: 2.5em;
+        font-size: 1.5em;
+        -webkit-appearance: none;
+        border-radius: 4px;
+        border-width: medium;
+        border-color: black;
+        background: #A30B37;
+        color: white;
+        padding-left: 10px;
+        padding-right: 10px;
+        -moz-appearance: none;
+        font-family: Courier;
+        margin-top: .2em;
+        margin-left: auto;
+        margin-right: auto;
+            width: 100%;
+
+	}
+        
+        #signature {
+            
+            font-style: italic;
+            
+            margin-left: 50%;
+        }
+        
+        #story {
+            /* font-style: italic; */
+            margin-left: .5em;
+            margin-top: 2em;
+            margin-right: 1em;
+            
+        }
+        
+        .story-header {
+            
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: -0.5em;
+            text-align: center;
+            font-size: 150%;
+            
+        }
+        
+        .divider {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 90%;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            
+        }
+        
+        @media only screen and (max-width: 600px) {
+          #story {
+            margin-left: 1em;
+            margin-right: 1em;
+          }
+            #signature {
+            
+            margin-left: 40%;
+        }  
+            .button {
+                
+                width: 100%;
+                
+            }
+            
+            .email {
+                
+               width: calc(100% - 20px);
+                
+            }
+          
+        }
+
+           input[type=button] {
+               
+               width: 100%;
+               max-width: 600px;
+               border-radius: 0px;
+               height: 4em;
+               /* width: 10em; */
+               font-size: 100%;
+               background-color: black;
+               color: white;
+               font-family: Courier New;
+               font-weight: bold;
+               border: 3px black solid;
+               
+           }
+           
+           input[type=text], input[type=button], input[type=select] {
+            -webkit-appearance: none;
+            -webkit-border-radius: 0;
+               width: 100%;
+               font-family: Courier New;
+            
+            }
+
+        .black-button {
+
+            background: black;
+
+        }
+        
+        #header-box {
+            
+            text-align: center;
+            padding-bottom: 25px;
+    margin-bottom: 2em;
+            padding-top: 25px;
+            background: #A30B37;
+            color: white;
+            border: 5px black solid;
+            border-radius: 5px;
+            padding-left: 2em;
+            padding-right: 2em;
+        }
+        
+        #header-image {
+            
+            
+            /* filter: invert(100%); */
+            
+        }
