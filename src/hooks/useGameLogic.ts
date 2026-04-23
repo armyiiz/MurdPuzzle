@@ -12,6 +12,7 @@ export type GridState = Record<string, Record<string, CellState>>;
 
 export function useGameLogic(categories: Category[], solution: Record<string, string>[]) {
   const [gridState, setGridState] = useState<GridState>({});
+  const [gridHistory, setGridHistory] = useState<GridState[]>([]);
 
   // Helper to generate the unique ID for a block
   const getBlockId = (cat1: Category | string, cat2: Category | string): BlockId => {
@@ -28,6 +29,12 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
 
   const toggleCell = useCallback((cat1: Category, cat2: Category, item1: string, item2: string) => {
     setGridState(prev => {
+      // First, capture the previous state and save to history
+      // Note: We use a separate effect/callback for history normally to avoid side effects in updater,
+      // but since toggleCell is an action, we can capture prev here. A cleaner way in React is to
+      // do setGridHistory outside the setGridState updater.
+      // Let's refactor:
+
       const newState = { ...prev };
       const blockId = getBlockId(cat1, cat2);
 
@@ -65,6 +72,41 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
 
       return newState;
     });
+    // Push the current state to history BEFORE we update it via setGridState
+    setGridHistory(h => [...h, gridState]);
+  }, [gridState]);
+
+  const undo = useCallback(() => {
+    setGridHistory(prevHistory => {
+      if (prevHistory.length === 0) return prevHistory;
+      const newHistory = [...prevHistory];
+      const previousState = newHistory.pop()!;
+      setGridState(previousState);
+      return newHistory;
+    });
+  }, []);
+
+  const saveGridState = useCallback((testimonyStates: Record<number, number>, notes: string, levelId: string) => {
+    const saveData = {
+      gridState,
+      testimonyStates,
+      notes,
+    };
+    localStorage.setItem(`murdle_save_${levelId}`, JSON.stringify(saveData));
+  }, [gridState]);
+
+  const loadGridState = useCallback((levelId: string): { testimonyStates: Record<number, number>, notes: string } | null => {
+    const saved = localStorage.getItem(`murdle_save_${levelId}`);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      setGridState(parsed.gridState || {});
+      setGridHistory([]);
+      return {
+        testimonyStates: parsed.testimonyStates || {},
+        notes: parsed.notes || '',
+      };
+    }
+    return null;
   }, []);
 
   const getCellState = useCallback((cat1: Category, cat2: Category, item1: string, item2: string): CellState => {
@@ -124,9 +166,10 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
   // ----------------------------------------------------
   const resetGrid = useCallback(() => {
     if (window.confirm('คุณต้องการล้างข้อมูลในตารางทั้งหมดใช่หรือไม่?')) {
+      setGridHistory(h => [...h, gridState]);
       setGridState({});
     }
-  }, []);
+  }, [gridState]);
 
   return {
     gridState,
@@ -135,6 +178,10 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
     getBlockId,
     getCellKey,
     validateSolution,
-    resetGrid // <--- ส่งฟังก์ชันนี้ออกไปให้หน้าเว็บใช้
+    resetGrid,
+    undo,
+    saveGridState,
+    loadGridState,
+    canUndo: gridHistory.length > 0
   };
 }
