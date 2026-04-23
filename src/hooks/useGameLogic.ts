@@ -28,28 +28,46 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
   };
 
   const toggleCell = useCallback((cat1: Category, cat2: Category, item1: string, item2: string) => {
+    // Capture the current grid state outside the setGridState updater
+    // to avoid duplicating history entries in React Strict Mode
+    setGridHistory(h => [...h, gridState]);
+
     setGridState(prev => {
-      // First, capture the previous state and save to history
-      // Note: We use a separate effect/callback for history normally to avoid side effects in updater,
-      // but since toggleCell is an action, we can capture prev here. A cleaner way in React is to
-      // do setGridHistory outside the setGridState updater.
-      // Let's refactor:
-
-      const newState = { ...prev };
       const blockId = getBlockId(cat1, cat2);
-
-      if (!newState[blockId]) {
-        newState[blockId] = {};
-      }
-
       const cellKey = getCellKey(item1, item2);
-      const currentState = newState[blockId][cellKey] || 'empty';
+      const currentState = prev[blockId]?.[cellKey] || 'empty';
 
       let nextState: CellState;
       if (currentState === 'empty') nextState = 'X';
       else if (currentState === 'X') nextState = 'O';
       else nextState = 'empty';
 
+      // Conflict detection for 'O'
+      if (nextState === 'O') {
+        let conflict = false;
+        // Check row conflicts
+        cat1.items.forEach(i1 => {
+          if (i1 !== item1 && prev[blockId]?.[getCellKey(i1, item2)] === 'O') {
+            conflict = true;
+          }
+        });
+        // Check col conflicts
+        cat2.items.forEach(i2 => {
+          if (i2 !== item2 && prev[blockId]?.[getCellKey(item1, i2)] === 'O') {
+            conflict = true;
+          }
+        });
+
+        if (conflict) {
+          console.warn("Conflict: Cannot place 'O' because there is already an 'O' in this row or column.");
+          return prev; // Block the action, state unchanged
+        }
+      }
+
+      const newState = { ...prev };
+      if (!newState[blockId]) {
+        newState[blockId] = {};
+      }
       newState[blockId] = { ...newState[blockId], [cellKey]: nextState };
 
       // Auto-fill logic when placing an 'O'
@@ -72,8 +90,6 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
 
       return newState;
     });
-    // Push the current state to history BEFORE we update it via setGridState
-    setGridHistory(h => [...h, gridState]);
   }, [gridState]);
 
   const undo = useCallback(() => {

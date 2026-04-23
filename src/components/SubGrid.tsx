@@ -14,17 +14,21 @@ interface SubGridProps {
 
 export function SubGrid({ rowCategory, colCategory, getCellState, toggleCell, isDark, isCellError }: SubGridProps) {
   return (
-    <div className="flex flex-col border-[2px] border-black">
-      {rowCategory.items.map((rowItem) => (
-        <div key={rowItem} className="flex">
-          {colCategory.items.map((colItem) => (
-            <GridCell
+    <div className="flex flex-col border-r-[2px] border-b-[2px] border-black h-full">
+      {rowCategory.items.map((rowItem, rowIndex) => (
+        <div key={rowItem} className="flex flex-1">
+          {colCategory.items.map((colItem, colIndex) => (
+            <div
               key={`${rowItem}-${colItem}`}
-              state={getCellState(rowCategory, colCategory, rowItem, colItem)}
-              onClick={() => toggleCell(rowCategory, colCategory, rowItem, colItem)}
-              isDark={isDark}
-              isError={isCellError ? isCellError(rowCategory, colCategory, rowItem, colItem) : false}
-            />
+              className={`flex-1 border-black ${colIndex !== colCategory.items.length - 1 ? 'border-r-[2px]' : ''} ${rowIndex !== rowCategory.items.length - 1 ? 'border-b-[2px]' : ''}`}
+            >
+              <GridCell
+                state={getCellState(rowCategory, colCategory, rowItem, colItem)}
+                onClick={() => toggleCell(rowCategory, colCategory, rowItem, colItem)}
+                isDark={isDark}
+                isError={isCellError ? isCellError(rowCategory, colCategory, rowItem, colItem) : false}
+              />
+            </div>
           ))}
         </div>
       ))}
