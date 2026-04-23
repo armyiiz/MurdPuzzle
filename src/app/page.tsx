@@ -6,6 +6,8 @@ import { getCategoryEmoji, extractEmojiAndText } from '../utils/emojiHelper';
 import { useGameLogic } from '../hooks/useGameLogic';
 import { LogicGrid } from '../components/LogicGrid';
 import { allCases } from '../data/allCases';
+import { ImageWithFallback } from '../components/ImageWithFallback';
+import { generateFlavorText } from '../utils/storyGenerator';
 
 type ScreenState = 'MENU' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME';
 
@@ -28,18 +30,18 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans pb-24">
-      <header className="bg-slate-800 text-white p-4 shadow-md sticky top-0 z-10 flex justify-between items-center">
+    <div className="min-h-screen bg-neo-bg text-black font-mono pb-24">
+      <header className="bg-black text-white p-4 sticky top-0 z-10 flex justify-between items-center border-b-[3px] border-black shadow-[0_4px_0_#222222]">
         <div className="flex items-center gap-3">
           {screen !== 'MENU' && (
-            <button onClick={handleBack} className="p-2 hover:bg-slate-700 rounded-full transition-colors text-xl">
+            <button onClick={handleBack} className="p-2 hover:text-neo-accent transition-colors text-xl font-bold">
               ⬅️
             </button>
           )}
-          <h1 className="text-xl font-bold">🕵️‍♂️ แฟ้มคดีปริศนา โลจิโก</h1>
+          <h1 className="text-xl font-bold tracking-widest uppercase">🕵️‍♂️ แฟ้มคดีปริศนา โลจิโก</h1>
         </div>
         {screen !== 'MENU' && (
-          <button onClick={() => setScreen('MENU')} className="text-xs bg-slate-700 px-3 py-1 rounded hover:bg-slate-600 transition-colors">
+          <button onClick={() => setScreen('MENU')} className="text-xs bg-white text-black px-3 py-1 border-[2px] border-black hover:bg-neo-accent hover:text-white transition-colors uppercase font-bold tracking-wider">
             หน้าหลัก
           </button>
         )}
@@ -58,8 +60,8 @@ export default function Home() {
 function MainMenu({ setScreen }: { setScreen: (s: ScreenState) => void }) {
   return (
     <div className="flex flex-col items-center justify-center mt-20 space-y-6">
-      <h1 className="text-4xl font-extrabold text-slate-800 mb-8 tracking-tight text-center">🕵️‍♂️ คดีฆาตกรรมปริศนา <br/> ฉบับภาษาไทย</h1>
-      <button onClick={() => setScreen('LEVEL_SELECT')} className="bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-4 px-12 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
+      <h1 className="text-4xl font-extrabold text-black mb-8 tracking-tight text-center">🕵️‍♂️ คดีฆาตกรรมปริศนา <br/> ฉบับภาษาไทย</h1>
+      <button onClick={() => setScreen('LEVEL_SELECT')} className="bg-black text-white hover:bg-[#A30B37] hover:-translate-y-1 transition-all text-xl font-bold py-4 px-12 border-[3px] border-black shadow-[4px_4px_0_#222222]">
         เริ่มไขคดี
       </button>
     </div>
@@ -80,9 +82,9 @@ function LevelSelect({ setScreen, setSelectedLevel }: { setScreen: (s: ScreenSta
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {levels.map(l => (
           <button key={l.id} onClick={() => { setSelectedLevel(l.id); setScreen('CASE_SELECT'); }} 
-            className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md border border-slate-200 text-left transition hover:border-blue-400">
-            <h3 className="text-xl font-bold text-slate-800">{l.name}</h3>
-            <p className="text-slate-500 mt-2 text-sm">{l.desc}</p>
+            className="bg-neo-notebook p-6 border-[3px] border-black shadow-[4px_4px_0_#222222] text-left transition hover:-translate-y-1">
+            <h3 className="text-xl font-bold text-black">{l.name}</h3>
+            <p className="text-black mt-2 text-sm">{l.desc}</p>
           </button>
         ))}
       </div>
@@ -96,19 +98,19 @@ function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level:
   return (
     <div className="animate-fadeIn">
       <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">📂 รายการคดีระดับ {level}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cases.map((c: LevelData) => {
           const isSolved = solvedCases.includes(c.id);
           return (
             <button key={c.id} onClick={() => { setSelectedCase(c); setScreen('GAME'); }} 
-              className={`p-5 rounded-2xl shadow-sm border text-left flex flex-col justify-between h-full transition ${isSolved ? 'bg-green-50 border-green-300' : 'bg-white hover:border-blue-400'}`}>
+              className={`p-5 border-[3px] border-black shadow-[4px_4px_0_#222222] text-left flex flex-col justify-between h-full transition hover:-translate-y-1 ${isSolved ? 'bg-green-200' : 'bg-neo-notebook'}`}>
               <div>
-                <h3 className="font-bold text-lg leading-tight">{c.level_name}</h3>
+                <h3 className="font-bold text-lg leading-tight text-black">{c.level_name}</h3>
                 <div className="mt-3 flex items-center gap-2">
-                  <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 rounded text-slate-500 uppercase tracking-wider">Case ID: {c.id}</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 border border-black text-black uppercase tracking-wider bg-white">Case ID: {c.id}</span>
                 </div>
               </div>
-              {isSolved && <div className="mt-4 text-green-600 font-bold self-end flex items-center gap-1">✅ สำเร็จ</div>}
+              {isSolved && <div className="mt-4 text-black font-bold self-end flex items-center gap-1">✅ สำเร็จ</div>}
             </button>
           );
         })}
@@ -145,7 +147,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       (!hasMotives || accusation.motive === correct.motive);
 
     if (isCorrect) {
-      setFeedback({ message: "🎉 ยินดีด้วย! คุณไขคดีสำเร็จแล้ว!", type: 'success' });
+      const killerProfile = levelData.profiles?.suspects?.find(s => s.name === correct.suspect);
+      const confessionText = killerProfile?.confession ? `คำสารภาพ: "${killerProfile.confession}"` : "🎉 ยินดีด้วย! คุณไขคดีสำเร็จแล้ว!";
+
+      setFeedback({ message: confessionText, type: 'success' });
       if (!solvedCases.includes(levelData.id)) {
         const newSolved = [...solvedCases, levelData.id];
         setSolvedCases(newSolved);
@@ -162,19 +167,19 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   return (
     <div className="animate-fadeIn max-w-4xl mx-auto relative pb-24">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <h2 className="text-2xl font-bold text-slate-800">{levelData.level_name}</h2>
+        <h2 className="text-2xl font-bold text-black">{levelData.level_name}</h2>
       </div>
 
       {activeView === 'clues' && (
         <div className="animate-in fade-in duration-300">
-          <div className="bg-white p-5 rounded-2xl shadow-sm border-l-8 border-slate-800 italic mb-8 text-lg text-slate-700 leading-relaxed">
+          <div className="bg-white p-5 border-[3px] border-black shadow-[4px_4px_0_#222222] italic mb-8 text-lg text-black leading-relaxed">
             {levelData.story_intro}
           </div>
 
           {/* แฟ้มประวัติ Profiles (Tabbed View) */}
           {levelData.profiles && (
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
-              <h3 className="text-lg font-bold mb-4 border-b pb-2 flex items-center gap-2">📋 ข้อมูลเพิ่มเติม</h3>
+            <div className="bg-white p-6 border-[3px] border-black shadow-[4px_4px_0_#222222] mb-8">
+              <h3 className="text-lg font-bold mb-4 border-b-[3px] border-black pb-2 flex items-center gap-2 text-black uppercase tracking-widest">📋 ข้อมูลเพิ่มเติม</h3>
 
               {/* Tabs Row */}
               <div className="flex flex-wrap gap-2 mb-6">
@@ -187,8 +192,8 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                     <button
                       key={tabKey}
                       onClick={() => setActiveTab(tabKey)}
-                      className={`px-4 py-2 rounded-full text-sm font-bold transition-colors shadow-sm flex items-center gap-2
-                        ${isActive ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}
+                      className={`px-4 py-2 border-[2px] border-black text-sm font-bold transition-colors flex items-center gap-2 tracking-wider
+                        ${isActive ? 'bg-black text-white shadow-[2px_2px_0_#A30B37]' : 'bg-white text-black hover:bg-neo-notebook shadow-[2px_2px_0_#222222]'}
                       `}
                     >
                       {getCategoryEmoji(tabKey, 0)} {label}
@@ -198,15 +203,18 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               </div>
 
               {/* Active Tab Content (Profile Cards) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {levelData.profiles && (levelData.profiles as any)[activeTab]?.map((item: any, index: number) => {
                   return (
-                    <div key={item.name} className="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col h-full">
-                      <div className="font-black text-slate-800 border-b mb-2 pb-2 text-lg flex items-center gap-2">
-                        {getCategoryEmoji(activeTab, index, item.name)}
-                        <span>{extractEmojiAndText(item.name).text}</span>
+                    <div key={item.name} className="bg-neo-notebook border-[3px] border-black shadow-[4px_4px_0_#222222] flex flex-col h-full overflow-hidden">
+                      <ImageWithFallback category={activeTab} index={index} />
+                      <div className="p-4 flex flex-col flex-grow">
+                        <div className="font-black text-black border-b-[2px] border-black mb-2 pb-2 text-lg flex items-center gap-2">
+                          {getCategoryEmoji(activeTab, index, item.name)}
+                          <span>{extractEmojiAndText(item.name).text}</span>
+                        </div>
+                        <div className="text-black text-sm leading-relaxed flex-grow">{item.detail}</div>
                       </div>
-                      <div className="text-slate-600 text-sm leading-relaxed flex-grow">{item.detail}</div>
                     </div>
                   );
                 })}
@@ -216,40 +224,48 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
           {/* Clues & Testimonies */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white rounded-2xl shadow-sm p-6 border border-slate-200">
-              <h3 className="text-xl font-bold mb-5 border-b pb-2 flex items-center gap-2">🔍 เบาะแส (Facts)</h3>
+            <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6">
+              <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 flex items-center gap-2 text-black">🔍 เบาะแส (Facts)</h3>
               <ul className="space-y-4">
-                {levelData.clues.map((clue, idx) => (
-                  <li key={idx} className="flex gap-4 items-start text-slate-700">
-                    <span className="font-black text-slate-200 text-2xl leading-none">{idx + 1}</span>
-                    <span className="leading-relaxed font-medium">{clue}</span>
-                  </li>
-                ))}
+                {levelData.clues.map((clue, idx) => {
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
+                  const clueText = React.useMemo(() => {
+                    return typeof clue === 'string'
+                      ? clue
+                      : generateFlavorText(clue.subject, clue.relation, clue.object);
+                  }, [clue]);
+                  return (
+                    <li key={idx} className="flex gap-4 items-start text-black">
+                      <span className="font-black text-black bg-white border-[2px] border-black px-2 py-1 text-xl leading-none shadow-[2px_2px_0_#222222]">{idx + 1}</span>
+                      <span className="leading-relaxed font-bold">{clueText}</span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
             {levelData.testimonies && levelData.testimonies.length > 0 && (
-              <div className="bg-white rounded-2xl shadow-sm p-6 border-l-8 border-red-500 border border-slate-200">
-                <h3 className="text-xl font-bold mb-5 border-b pb-2 text-red-700 flex items-center gap-2">🗣️ คำให้การ (Testimonies)</h3>
+              <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6 border-l-[8px] border-l-neo-accent">
+                <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 text-neo-accent flex items-center gap-2">🗣️ คำให้การ (Testimonies)</h3>
                 <ul className="space-y-4">
                   {levelData.testimonies.map((t, idx) => {
                     const state = testimonyStates[idx] || 0;
                     return (
-                      <li key={idx} className="bg-slate-50 p-4 rounded-xl flex flex-col gap-3">
-                        <div className="flex justify-between items-center border-b pb-2">
-                          <span className="font-bold text-slate-800">{t.suspect}</span>
+                      <li key={idx} className="bg-neo-notebook p-4 border-[2px] border-black flex flex-col gap-3 shadow-[2px_2px_0_#222222]">
+                        <div className="flex justify-between items-center border-b-[2px] border-black pb-2">
+                          <span className="font-bold text-black">{t.suspect}</span>
                           <button
                             onClick={() => setTestimonyStates({...testimonyStates, [idx]: (state + 1) % 3})}
-                            className={`text-[10px] px-3 py-1 font-black rounded-full transition-all uppercase tracking-widest ${
-                              state === 1 ? 'bg-green-500 text-white shadow-md' :
-                              state === 2 ? 'bg-red-500 text-white shadow-md' :
-                              'bg-slate-200 text-slate-500'
+                            className={`text-[10px] px-3 py-1 font-black border-[2px] border-black transition-all uppercase tracking-widest ${
+                              state === 1 ? 'bg-green-400 text-black shadow-[2px_2px_0_#222222]' :
+                              state === 2 ? 'bg-neo-accent text-white shadow-[2px_2px_0_#222222]' :
+                              'bg-white text-black'
                             }`}
                           >
                             {state === 1 ? '✓ พูดจริง' : state === 2 ? '✗ โกหก' : 'สถานะ ?'}
                           </button>
                         </div>
-                        <p className="text-slate-600 italic font-medium leading-relaxed">"{t.statement}"</p>
+                        <p className="text-black italic font-bold leading-relaxed">"{t.statement}"</p>
                       </li>
                     );
                   })}
@@ -259,28 +275,28 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           </div>
 
           {/* Final Accusation */}
-          <div className="bg-slate-900 text-white p-10 rounded-3xl shadow-2xl flex flex-col items-center">
-            <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-blue-400">⚖️ สรุปรูปคดี (Accusation)</h3>
+          <div className="bg-neo-notebook text-black p-10 border-[3px] border-black shadow-[4px_4px_0_#222222] flex flex-col items-center">
+            <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-neo-accent">⚖️ สรุปรูปคดี (Accusation)</h3>
             <div className="flex flex-wrap items-center justify-center gap-6 text-xl mb-10">
               <div className="flex flex-col items-center gap-2">
-                <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">คนร้าย</span>
-                <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
+                <span className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">คนร้าย</span>
+                <select className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
                   <option value="">- เลือกผู้ต้องสงสัย -</option>
                   {getOptions('suspects').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
 
               <div className="flex flex-col items-center gap-2">
-                <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">อาวุธ</span>
-                <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
+                <span className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">อาวุธ</span>
+                <select className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
                   <option value="">- เลือกอาวุธ -</option>
                   {getOptions('weapons').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
 
               <div className="flex flex-col items-center gap-2">
-                <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">สถานที่</span>
-                <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
+                <span className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">สถานที่</span>
+                <select className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
                   <option value="">- เลือกสถานที่ -</option>
                   {getOptions('locations').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
@@ -288,8 +304,8 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
               {hasMotives && (
                 <div className="flex flex-col items-center gap-2">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">แรงจูงใจ</span>
-                  <select className="bg-slate-800 border-b-2 border-slate-600 p-2 outline-none focus:border-blue-500 transition-colors rounded-t text-sm" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
+                  <span className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">แรงจูงใจ</span>
+                  <select className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
                     <option value="">- เลือกแรงจูงใจ -</option>
                     {getOptions('motives').map(i => <option key={i} value={i}>{i}</option>)}
                   </select>
@@ -297,12 +313,12 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               )}
             </div>
 
-            <button onClick={handleCheckAnswer} className="bg-blue-600 hover:bg-blue-500 px-12 py-5 rounded-full font-black text-xl shadow-lg transition-transform hover:scale-105 active:scale-95 uppercase tracking-widest">
+            <button onClick={handleCheckAnswer} className="bg-black hover:bg-neo-accent text-white px-12 py-5 font-black text-xl border-[3px] border-black shadow-[4px_4px_0_#222222] transition-transform hover:-translate-y-1 uppercase tracking-widest">
               ตรวจคำตอบ
             </button>
 
             {feedback.type && (
-              <div className={`mt-8 w-full max-w-md px-6 py-4 rounded-2xl font-bold text-center text-lg animate-bounce shadow-xl ${feedback.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
+              <div className={`mt-8 w-full max-w-md px-6 py-4 font-bold text-center text-lg shadow-[4px_4px_0_#222222] border-[3px] border-black ${feedback.type === 'success' ? 'bg-green-400 text-black' : 'bg-red-500 text-white'}`}>
                 {feedback.message}
               </div>
             )}
@@ -313,20 +329,20 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {activeView === 'grid' && (
         <div className="animate-in fade-in duration-300">
           {/* Logic Grid */}
-          <section className="bg-white shadow-sm border border-gray-200 mb-8 rounded-2xl overflow-hidden">
-            <div className="bg-slate-50 p-3 text-[10px] text-slate-400 border-b text-center uppercase tracking-widest font-bold">
+          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] mb-8 overflow-hidden">
+            <div className="bg-neo-notebook p-3 text-[10px] text-black border-b-[3px] border-black text-center uppercase tracking-widest font-bold">
               คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
             </div>
-            <div className="overflow-x-auto p-4 flex justify-center">
+            <div className="overflow-x-auto p-4 flex justify-center bg-neo-bg">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} />
             </div>
           </section>
 
           {/* Notepad Area */}
-          <section className="bg-white shadow-sm border border-gray-200 mb-20 rounded-2xl overflow-hidden p-6">
-            <h3 className="text-lg font-bold mb-3 flex items-center gap-2">📝 สมุดโน้ต (Scratchpad)</h3>
+          <section className="bg-neo-notebook border-[3px] border-black shadow-[4px_4px_0_#222222] mb-20 overflow-hidden p-6">
+            <h3 className="text-lg font-bold mb-3 flex items-center gap-2 text-black">📝 สมุดโน้ต (Scratchpad)</h3>
             <textarea
-              className="w-full h-32 p-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow resize-none"
+              className="w-full h-32 p-3 border-[3px] border-black bg-white focus:outline-none focus:border-neo-accent transition-shadow resize-none text-black"
               placeholder="จดบันทึกของคุณที่นี่..."
               value={notes}
               onChange={e => setNotes(e.target.value)}
@@ -334,23 +350,23 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           </section>
 
           {/* Grid Action Menu */}
-          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-800 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-4">
-            <button onClick={() => console.log('Hint clicked')} className="hover:scale-110 transition-transform flex flex-col items-center gap-1">
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-4">
+            <button onClick={() => console.log('Hint clicked')} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
               <span className="text-xl">💡</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">คำใบ้</span>
             </button>
-            <div className="w-px h-8 bg-slate-600"></div>
-            <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} className="hover:scale-110 transition-transform flex flex-col items-center gap-1">
+            <div className="w-[3px] h-8 bg-white"></div>
+            <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
               <span className="text-xl">💾</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">บันทึก</span>
             </button>
-            <div className="w-px h-8 bg-slate-600"></div>
-            <button onClick={undo} disabled={!canUndo} className={`transition-transform flex flex-col items-center gap-1 ${canUndo ? 'hover:scale-110' : 'opacity-50 cursor-not-allowed'}`}>
+            <div className="w-[3px] h-8 bg-white"></div>
+            <button onClick={undo} disabled={!canUndo} className={`transition-colors flex flex-col items-center gap-1 ${canUndo ? 'hover:text-neo-accent' : 'opacity-50 cursor-not-allowed'}`}>
               <span className="text-xl">♻️</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">ย้อน</span>
             </button>
-            <div className="w-px h-8 bg-slate-600"></div>
-            <button onClick={resetGrid} className="hover:scale-110 transition-transform flex flex-col items-center gap-1 text-red-400">
+            <div className="w-[3px] h-8 bg-white"></div>
+            <button onClick={resetGrid} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1 text-neo-accent">
               <span className="text-xl">🗑️</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">ล้าง</span>
             </button>
@@ -361,7 +377,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {/* Main View Toggle FAB */}
       <button
         onClick={() => setActiveView(activeView === 'clues' ? 'grid' : 'clues')}
-        className="fixed bottom-6 right-6 z-50 rounded-full shadow-2xl p-4 bg-slate-800 text-white text-2xl hover:scale-110 transition-transform flex items-center justify-center w-14 h-14"
+        className="fixed bottom-6 right-6 z-50 border-[3px] border-black shadow-[4px_4px_0_#222222] p-4 bg-black text-white text-2xl hover:bg-neo-accent transition-colors flex items-center justify-center w-14 h-14"
         aria-label={activeView === 'clues' ? "Switch to Grid" : "Switch to Clues"}
       >
         {activeView === 'clues' ? '📔' : '🔍'}

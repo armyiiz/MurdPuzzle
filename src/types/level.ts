@@ -7,6 +7,7 @@ export type Category = {
 export type ProfileItem = {
   name: string;
   detail: string;
+  confession?: string;
 };
 
 export type Profiles = {
@@ -28,6 +29,13 @@ export type CorrectAccusation = {
   motive?: string;
 };
 
+export type DynamicClue = {
+  dynamic: true;
+  subject: string;
+  relation: 'WITH' | 'NOT_WITH';
+  object: string;
+};
+
 export type LevelData = {
   id: string;
   level_name: string;
@@ -35,7 +43,7 @@ export type LevelData = {
   story_intro: string;
   profiles?: Profiles;
   categories: Category[];
-  clues: string[];
+  clues: (string | DynamicClue)[];
   testimonies?: Testimony[];
   solution_grid?: Record<string, string>[];
   correct_accusation: CorrectAccusation;

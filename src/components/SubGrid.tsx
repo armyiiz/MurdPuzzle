@@ -14,7 +14,7 @@ interface SubGridProps {
 
 export function SubGrid({ rowCategory, colCategory, getCellState, toggleCell, isDark, isCellError }: SubGridProps) {
   return (
-    <div className="flex flex-col border-2 border-gray-800">
+    <div className="flex flex-col border-[2px] border-black">
       {rowCategory.items.map((rowItem) => (
         <div key={rowItem} className="flex">
           {colCategory.items.map((colItem) => (

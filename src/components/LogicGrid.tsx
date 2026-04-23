@@ -16,10 +16,10 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
   if (numCats < 3) return null;
 
   const renderTopHeader = (category: Category) => (
-    <div className="flex border-l-4 border-t-4 border-slate-800">
+    <div className="flex border-l-[4px] border-t-[4px] border-black">
       {category.items.map((item, index) => {
         return (
-          <div key={item} className="w-10 h-10 flex items-center justify-center border border-gray-200 bg-slate-50">
+          <div key={item} className="w-10 h-10 flex items-center justify-center border border-black bg-white">
             {getCategoryEmoji(category.id, index, item)}
           </div>
         );
@@ -28,10 +28,10 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
   );
 
   const renderLeftHeader = (category: Category) => (
-    <div className="flex flex-col border-t-4 border-l-4 border-slate-800">
+    <div className="flex flex-col border-t-[4px] border-l-[4px] border-black">
       {category.items.map((item, index) => {
         return (
-          <div key={item} className="h-10 w-10 flex items-center justify-center border border-gray-200 bg-slate-50">
+          <div key={item} className="h-10 w-10 flex items-center justify-center border border-black bg-white">
             {getCategoryEmoji(category.id, index, item)}
           </div>
         );
@@ -48,7 +48,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
         {/* Top Headers Row */}
         <div className="flex">
           {/* Top-Left Empty Corner */}
-          <div className="w-10 h-10 flex items-center justify-center p-1 text-[8px] text-slate-400 font-bold tracking-tighter leading-none text-center">
+          <div className="w-10 h-10 flex items-center justify-center p-1 text-[8px] text-black font-bold tracking-tighter leading-none text-center border border-transparent">
             LOGIC GRID
           </div>
           {/* Top Headers */}
@@ -75,7 +75,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
               {rowTopCategories.map((colCat, colIndex) => {
                 const isDark = (rowIndex + colIndex) % 2 === 1;
                 return (
-                  <div key={`subgrid-wrap-${rowCat.id}-${colCat.id}`} className="border-t-4 border-l-4 border-slate-800">
+                  <div key={`subgrid-wrap-${rowCat.id}-${colCat.id}`} className="border-t-[4px] border-l-[4px] border-black">
                     <SubGrid
                       key={`subgrid-${rowCat.id}-${colCat.id}`}
                       rowCategory={rowCat}

@@ -11,9 +11,9 @@ interface GridCellProps {
 export function GridCell({ state, onClick, isDark, isError }: GridCellProps) {
   return (
     <div
-      className={`w-10 h-10 border border-gray-300 flex items-center justify-center cursor-pointer select-none text-xl font-bold transition-colors
-        ${isError ? 'bg-red-200' : isDark ? 'bg-gray-100' : 'bg-white'}
-        hover:bg-blue-50
+      className={`w-10 h-10 border border-black flex items-center justify-center cursor-pointer select-none text-xl font-bold transition-colors
+        ${isError ? 'bg-red-400' : isDark ? 'bg-neo-notebook' : 'bg-white'}
+        hover:bg-gray-200
       `}
       onClick={onClick}
     >

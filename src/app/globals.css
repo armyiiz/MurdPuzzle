@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@theme {
+  --color-neo-bg: #fbfbf9;
+  --color-neo-notebook: #fff5e2;
+  --color-neo-accent: #A30B37;
+}
+
+@layer base {
+  body {
+    @apply bg-neo-bg font-mono text-black;
+  }
+}
