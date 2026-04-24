@@ -1,0 +1,1093 @@
+{
+    "weapons_master": [
+        {
+            "name": "Murdle: Volume 1",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "The #1 Sunday Times and USA Today Bestseller. It's a great book of puzzles, and it's heavy enough to use to kill! <a href='https://murdle.com/book' target='_blank'>Order your copy today today!</a>",
+            "materials": [
+                "paper"
+            ],
+            "weight": "medium",
+            "clue": "a copy of a first-rate puzzle book",
+            "emoji": "📕",
+            "fulldescription": true
+        },
+        {
+            "name": "Murdle: Volume 2",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "Uncover the secret of the Violet Isles, explore the tomb of Pythagoras, and journey to the spooky nation of Drakonia in Murdle: Volume 2, which is known as \"More Killer Puzzles\" in the UK! <a href='https://murdle.com/book' target='_blank'>Order today!</a>",
+            "materials": [
+                "paper"
+            ],
+            "weight": "medium",
+            "clue": "a book that reveals the secret of the Violet Isles",
+            "emoji": "📗",
+            "fulldescription": true
+        },
+        {
+            "name": "Murdle: Volume 3",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "Visit TekTopia, study the marot, join S.P.Y., and much much more in this climactic final installment of the First Murdle Trilogy, which is known as \"Even More Killer Puzzles\" in the UK! <a href='https://murdle.com/book' target='_blank'>Pre-order today!</a>",
+            "materials": [
+                "paper"
+            ],
+            "weight": "medium",
+            "clue": "a book that reveals how Logico and Irratino met",
+            "emoji": "📗",
+            "fulldescription": true
+        },
+        {
+            "name": "The Big Red Book",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "A collection of political quotes by Major Red, the murderous tyrant/benevolent dictator who freed Drakonia from the Iron Tsar. For example: <em>\"Revolution is one of the few things that is easier on an empty stomach.\"</em><br><br>(Read more in <a href='https://murdle.com/book'>Murdle: Volume 2</a>.)",
+            "materials": [
+                "paper"
+            ],
+            "weight": "heavy",
+            "clue": "a collection of political quotes",
+            "emoji": "📕",
+            "fulldescription": true
+        },
+        {
+            "name": "a corgi stampede",
+            "method": [
+                "trampled"
+            ],
+            "description": "The cutest and fluffiest way to die.<br><br><em>(Submitted by Venus.)</em>",
+            "materials": [
+                "corgis"
+            ],
+            "weight": "heavy",
+            "clue": "",
+            "emoji": "🐕",
+            "fulldescription": true
+        },
+        {
+            "name": "kindness",
+            "method": [
+                "trampled"
+            ],
+            "description": "Have you ever made a cake for a diabetic? You're half-way there. Alternatively, you can simply smother them to death.<br><br><em>(Submitted by Mia.)</em>",
+            "materials": [
+                "generosity",
+                "warmth"
+            ],
+            "weight": "light",
+            "clue": "",
+            "emoji": "🤗",
+            "fulldescription": true
+        },
+        {
+            "name": "a rolled-up newspaper with a crowbar inside",
+            "method": [
+                "beaten",
+                "bashed"
+            ],
+            "description": "It features an interesting article from the <em>City Times</em>: “Someone Needs to do Something About All These Murders!”",
+            "fulldescription": true,
+            "weight": "medium",
+            "materials": [
+                "paper",
+                "metal"
+            ],
+            "clue": "next to an interesting article",
+            "emoji": "🗞️",
+            "divinarray": [
+                "partnerships",
+                "syncretic unions"
+            ]
+        },
+        {
+            "name": "a golden bird",
+            "method": [
+                "beaten",
+                "bashed"
+            ],
+            "description": "This flamingo statue is worth a fortune. Or is it?",
+            "materials": [
+                "fake gold"
+            ],
+            "weight": "heavy",
+            "clue": "a statue of a bird",
+            "emoji": "🦩",
+            "fulldescription": true
+        },
+        {
+            "name": "a ghost detector",
+            "method": [
+                "shocked"
+            ],
+            "description": "It's not great at detecting ghosts, but it's pretty good at electrocuting people.",
+            "materials": [
+                "metal",
+                "tech"
+            ],
+            "weight": "medium",
+            "clue": "",
+            "emoji": "📟",
+            "fulldescription": true
+        },
+        {
+            "name": "a Deduction College diploma",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "Framed in a heavy oak frame and covered in glass, you could really do some damage. And they say a degree in logic is useless.",
+            "materials": [
+                "glass",
+                "wood"
+            ],
+            "weight": "heavy",
+            "clue": "",
+            "emoji": "🔲",
+            "fulldescription": true
+        },
+        {
+            "name": "a deck of marot cards",
+            "method": [
+                "sliced"
+            ],
+            "description": "You can use these murder-themed tarot cards to read your future. <a href='https://murdle.com/marot/' target='_blank'>Draw three now!</a>",
+            "materials": [
+                "paper"
+            ],
+            "weight": "light",
+            "clue": "a fortune-telling card",
+            "emoji": "🎴",
+            "fulldescription": true
+        },
+        {
+            "name": "a chainsaw",
+            "method": [
+                "sawed"
+            ],
+            "description": "Rarely seen in whodunits (because of the mess).",
+            "materials": [
+                "metal",
+                "plastic"
+            ],
+            "weight": "heavy",
+            "clue": "",
+            "emoji": "⛓",
+            "fulldescription": true
+        },
+        {
+            "name": "a heavy codebook",
+            "method": [
+                "beaten",
+                "bashed"
+            ],
+            "description": "Filled with keywords and ciphers, you can use it to crack codes or skulls.",
+            "materials": [
+                "paper"
+            ],
+            "weight": "heavy",
+            "clue": "a page with a cipher on it",
+            "emoji": "📖",
+            "fulldescription": true
+        },
+        {
+            "name": "a human skull",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "\"Alas, poor Yorick, I knew him. And now I'm swinging his skull at people.\"",
+            "materials": [
+                "bone"
+            ],
+            "weight": "medium",
+            "clue": "the remains of a human head",
+            "emoji": "💀",
+            "fulldescription": true
+        },
+        {
+            "name": "a poisoned muffin",
+            "method": [
+                "poisoned"
+            ],
+            "description": "Not only poisoned, but also rock hard. So you could use it two ways.",
+            "materials": [
+                "flour",
+                "sugar",
+                "raisins",
+                "poison"
+            ],
+            "weight": "light",
+            "clue": "a rock-hard raisin",
+            "emoji": "🧁",
+            "fulldescription": true
+        },
+        {
+            "name": "a pencil",
+            "method": [
+                "stabbed"
+            ],
+            "description": "For solving a murder-mystery puzzle or stabbing somebody.",
+            "materials": [
+                "wood"
+            ],
+            "weight": "light",
+            "clue": "",
+            "emoji": "✏️",
+            "fulldescription": true
+        },
+        {
+            "name": "a pair of leather gloves",
+            "method": [
+                "strangled"
+            ],
+            "description": "Beware someone who wears leather gloves. They've already killed a cow: who's next?!",
+            "materials": [
+                "leather"
+            ],
+            "weight": "light",
+            "clue": "a cowhide glove",
+            "emoji": "👐",
+            "fulldescription": true
+        },
+        {
+            "name": "a pair of karate hands",
+            "method": [
+                "chopped"
+            ],
+            "description": "If someone is sufficiently schooled in a martial art, their hands are deadly weapons.",
+            "materials": [
+                "hands"
+            ],
+            "weight": "medium",
+            "clue": "someone sufficiently schooled in a martial art",
+            "emoji": "👊🏼",
+            "fulldescription": true
+        },
+        {
+            "name": "a hammer and sickle",
+            "method": [
+                "hammered and sickled"
+            ],
+            "description": "When one weapon won't do, you can use these two!",
+            "materials": [
+                "metal"
+            ],
+            "weight": "heavy",
+            "clue": "two-weapons-in-one",
+            "emoji": "☭",
+            "fulldescription": true
+        },
+        {
+            "name": "a Bookie",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "The diminutive nickname of the most prestigious award in publishing. The fake gold is flaking off.",
+            "materials": [
+                "metal"
+            ],
+            "weight": "medium",
+            "clue": "a flake of fake gold",
+            "emoji": "🏆",
+            "fulldescription": true
+        },
+        {
+            "name": "a spork",
+            "method": [
+                "stabbed"
+            ],
+            "description": "At one point in time, sporks were hilarious. Now, they aren't. Now, they're just deadly.",
+            "materials": [
+                "plastic"
+            ],
+            "weight": "light",
+            "clue": "",
+            "emoji": "🥄",
+            "fulldescription": true
+        },
+        {
+            "name": "an exploding pipe",
+            "method": [
+                "exploded"
+            ],
+            "description": "Smoking kills, especially when you use a literal pipe bomb.",
+            "materials": [
+                "a pipe",
+                "a bomb"
+            ],
+            "weight": "light",
+            "clue": "",
+            "emoji": "✔",
+            "fulldescription": true
+        },
+        {
+            "name": "a Murdle board game",
+            "method": [
+                "bashed"
+            ],
+            "description": "Logico wonders if it's right to make a game about real murders. But it is fun, and a great value!",
+            "materials": [
+                "paper"
+            ],
+            "weight": "medium",
+            "clue": "a great value",
+            "emoji": "📦",
+            "fulldescription": true
+        },
+        {
+            "name": "Murdle: Volume 1",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "The #1 Sunday Times and USA Today Bestseller. It's a great book of puzzles, and it's heavy enough to use to kill! <a href='https://murdle.com/book' target='_blank'>Order your copy today today!</a>",
+            "materials": [
+                "paper"
+            ],
+            "weight": "medium",
+            "clue": "a copy of a first-rate puzzle book",
+            "emoji": "📕",
+            "fulldescription": true
+        },
+        {
+            "name": "a bottle of cheap liquor",
+            "method": [
+                "poisoned"
+            ],
+            "description": "Denatured and deadly.",
+            "weight": "light",
+            "materials": [
+                "glass",
+                "chemicals"
+            ],
+            "clue": "a drop of methanol",
+            "emoji": "🍾",
+            "divinarray": [
+                "cutting corners"
+            ]
+        },
+        {
+            "name": "a fake sword",
+            "weight": "heavy",
+            "description": "Supposedly it collapses when it's stabbed into you. Supposedly.",
+            "materials": [
+                "metal"
+            ],
+            "method": [
+                "stabbed",
+                "slashed"
+            ],
+            "clue": "a slash mark",
+            "emoji": "🗡️",
+            "divinarray": [
+                "doing a dangerous stunt",
+                "a false attack, or feint"
+            ]
+        },
+        {
+            "name": "a trained vicious rabbit",
+            "method": [
+                "bitten"
+            ],
+            "materials": [
+                "rabbit",
+                "rabbit fur"
+            ],
+            "description": "Check your hats before you put them on.",
+            "weight": "medium",
+            "clue": "a clump of white fur",
+            "emoji": "🐰",
+            "divinarray": [
+                "leaping into something quickly"
+            ]
+        },
+        {
+            "name": "a saw",
+            "method": [
+                "sawed in half"
+            ],
+            "description": "For sawing a woman in two, or honestly, for sawing anyone in two.",
+            "materials": [
+                "metal",
+                "wood"
+            ],
+            "weight": "medium",
+            "clue": "a pile of sawdust",
+            "divinarray": [
+                "making a tough decision",
+                "cutting something out of your life"
+            ],
+            "emoji": "🪚"
+        },
+        {
+            "name": "the ace of spades",
+            "method": [
+                "sliced"
+            ],
+            "description": "Thrown hard enough, it could slice a human throat. Even worse, it could be used for a card trick.",
+            "weight": "light",
+            "materials": [
+                "paper"
+            ],
+            "clue": "a playing card",
+            "emoji": "♠️",
+            "divinarray": [
+                "getting lucky"
+            ]
+        },
+        {
+            "name": "a brain in a jar",
+            "method": [
+                "bashed"
+            ],
+            "description": "Philosophers argue you might be a brain in a jar. A great rebuttal is to hit them over the head with one.",
+            "materials": [
+                "metal",
+                "glass",
+                "brains"
+            ],
+            "weight": "heavy",
+            "clue": "",
+            "emoji": "🧠",
+            "fulldescription": true,
+            "divinarray": [
+                "making a careful choice"
+            ]
+        },
+        {
+            "name": "a poisoned apple",
+            "method": [
+                "poisoned"
+            ],
+            "description": "If you're a teacher and you get an apple, ask yourself if the student wants you dead.",
+            "materials": [
+                "apple",
+                "toxins"
+            ],
+            "weight": "medium",
+            "clue": "",
+            "emoji": "🍎",
+            "fulldescription": true,
+            "divinarray": [
+                "indulging in something bad for you"
+            ]
+        },
+        {
+            "name": "an exploding beaker",
+            "method": [
+                "blown up"
+            ],
+            "description": "Science can be dangerous. You can overturn entire paradigms or make a beaker that explodes.",
+            "materials": [
+                "glass",
+                "chemicals"
+            ],
+            "weight": "light",
+            "clue": "a scientific weapon",
+            "emoji": "🥃",
+            "fulldescription": true,
+            "divinarray": [
+                "experimenting with something dangerous"
+            ]
+        },
+        {
+            "name": "a pair of safety goggles",
+            "method": [
+                "strangled"
+            ],
+            "description": "Ironic to be killed by safety goggles, if you ask me.",
+            "materials": [
+                "plastic"
+            ],
+            "weight": "light",
+            "clue": "an ironic weapon",
+            "emoji": "🥽",
+            "fulldescription": true,
+            "divinarray": [
+                "taking safety precautions"
+            ]
+        },
+        {
+            "name": "a trumpet",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "Half of the freshmen are given a roommate who plays the trumpet. (The other half are given a trumpet.)",
+            "materials": [
+                "metal"
+            ],
+            "weight": "medium",
+            "clue": "",
+            "emoji": "🎺",
+            "fulldescription": true,
+            "divinarray": [
+                "bragging about yourself"
+            ]
+        },
+        {
+            "name": "a board game",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "The rulebook is 120 pages long, and the box contains 460 different tokens.",
+            "materials": [
+                "paper",
+                "plastic"
+            ],
+            "weight": "medium",
+            "clue": "a long rulebook",
+            "emoji": "🎲",
+            "fulldescription": true,
+            "divinarray": [
+                "making careful choices"
+            ]
+        },
+        {
+            "name": "a yo-yo",
+            "method": [
+                "beaten"
+            ],
+            "description": "",
+            "materials": [
+                "plastic",
+                "twine"
+            ],
+            "weight": "light",
+            "clue": "",
+            "emoji": "🪀",
+            "fulldescription": true
+        },
+        {
+            "name": "a pair of scissors",
+            "method": [
+                "stabbed"
+            ],
+            "description": "This could be used for arts & crafts, especially if the art is murder and the craft is getting away with it.",
+            "materials": [
+                "metal"
+            ],
+            "weight": "light",
+            "clue": "an arts & craft supply",
+            "emoji": "✂️",
+            "fulldescription": true,
+            "divinarray": [
+                "doing something you've done before"
+            ]
+        },
+        {
+            "name": "a graduation cord",
+            "method": [
+                "strangled"
+            ],
+            "description": "It would be an honor to be strangled by one of these.",
+            "materials": [
+                "cloth"
+            ],
+            "weight": "light",
+            "clue": "",
+            "emoji": "➰",
+            "fulldescription": true,
+            "divinarray": [
+                "showing gratitude to someone"
+            ]
+        },
+        {
+            "name": "a heavy backpack",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "Finally, a use for all of those logic textbooks.",
+            "materials": [
+                "cloth",
+                "books"
+            ],
+            "weight": "heavy",
+            "clue": "a logic textbook",
+            "emoji": "🎒",
+            "fulldescription": true,
+            "divinarray": [
+                "carrying a heavy burden"
+            ]
+        },
+        {
+            "name": "a sharp pencil",
+            "method": [
+                "stabbed"
+            ],
+            "description": "Back then, they used actual lead. One stab and you'd die from lead poisoning.",
+            "materials": [
+                "wood",
+                "metal"
+            ],
+            "weight": "light",
+            "clue": "a tiny lead shaving",
+            "emoji": "✏️",
+            "fulldescription": true,
+            "divinarray": [
+                "planning your day"
+            ]
+        },
+        {
+            "name": "a laptop",
+            "method": [
+                "bashed",
+                "beaten"
+            ],
+            "description": "The machine you work on. It's connected to every distraction ever made.",
+            "materials": [
+                "metal",
+                "tech"
+            ],
+            "weight": "medium",
+            "clue": "a distracting machine",
+            "emoji": "💻",
+            "fulldescription": true,
+            "divinarray": [
+                "doing your own research"
+            ]
+        },
+        {
+            "name": "the infamous list",
+            "method": [
+                "poisoned"
+            ],
+            "description": "A list of all the world's children, divided into naughty and nice. A clear privacy violation.",
+            "materials": [
+                "paper"
+            ],
+            "weight": "medium",
+            "clue": "a clear privacy violation",
+            "emoji": "📜",
+            "fulldescription": true
+        },
+        {
+            "name": "an unopened present",
+            "method": [
+                "murdered"
+            ],
+            "description": "Is it a set of Murdle books, or a boxing glove on a spring? Only one way to find out.",
+            "materials": [
+                "who knows"
+            ],
+            "weight": "heavy",
+            "clue": "",
+            "emoji": "🎁",
+            "fulldescription": true
+        },
+        {
+            "name": "that one famous reindeer",
+            "method": [
+                "stampeded"
+            ],
+            "description": "Legally, his red nose is still under copyright, so we can't say which one. But you know.",
+            "materials": [
+                "reindeer"
+            ],
+            "weight": "heavy",
+            "clue": "a famous red nose",
+            "emoji": "🦌",
+            "fulldescription": true
+        },
+        {
+            "name": "a set of ghostly chains",
+            "method": [
+                "choked"
+            ],
+            "description": "You forged these chains in life. Now they'll be use to take one.",
+            "materials": [
+                "metal",
+                "crimes"
+            ],
+            "weight": "heavy",
+            "clue": "",
+            "emoji": "⛓",
+            "fulldescription": true
+        }
+    ],
+    "rooms_master": [
+        {
+            "name": "the private library",
+            "preposition": "in",
+            "description": "A vast collection of documents the magicians keep for themselves, hiding zealously from outsiders. (As far as Logico can tell, they are mostly dirty magazines.)",
+            "indoors": true,
+            "emoji": "📚",
+            "feature": "beneath a bunch of magazines",
+            "divinarray": [
+                "keeping secrets",
+                "staying in and reading"
+            ]
+        },
+        {
+            "name": "the piano room",
+            "preposition": "in",
+            "description": "In this mysterious room is a piano that seems to play by itself-- it even takes requests! Is it a ghost, or is it uncredited low-wage labor?",
+            "indoors": true,
+            "emoji": "🎼",
+            "feature": "inside a piano",
+            "divinarray": [
+                "getting lost in nostalgia",
+                "enjoying sophisticated pleasures"
+            ]
+        },
+        {
+            "name": "the main stage",
+            "preposition": "on",
+            "description": "Where only the best or most well-connected magicians perform the classics, like the milk can escape.",
+            "indoors": true,
+            "emoji": "🍶",
+            "feature": "in a puddle of milk",
+            "divinarray": [
+                "enjoying yourself",
+                "taking a moment for reflection"
+            ]
+        },
+        {
+            "name": "the close-up table",
+            "preposition": "at",
+            "description": "Where you watch card and coin tricks. Watch your hands and your wallets! Unlucky patrons have been known to have their pockets picked “as part of a trick”",
+            "indoors": true,
+            "emoji": "👐",
+            "feature": "beside a bunch of coins and cards",
+            "divinarray": [
+                "looking closely"
+            ]
+        },
+        {
+            "name": "the parking lot",
+            "preposition": "in",
+            "description": "There is only valet parking and it costs a fortune.",
+            "indoors": false,
+            "emoji": "🚗",
+            "feature": "under somebody's car",
+            "divinarray": [
+                "being in-between two options",
+                "change",
+                "a new journey"
+            ]
+        },
+        {
+            "name": "the computer lab",
+            "preposition": "in",
+            "description": "Here they have the most advanced computers that money could buy in 1982.",
+            "indoors": true,
+            "emoji": "🖥️",
+            "feature": "by a computer from the 80s",
+            "divinarray": [
+                "technological improvements"
+            ]
+        },
+        {
+            "name": "the campus observatory",
+            "preposition": "at",
+            "description": "You can study the stars here, and a secret underground esoteric group uses it for astrology.",
+            "indoors": true,
+            "emoji": "🔭",
+            "feature": "in a place to study the stars",
+            "divinarray": [
+                "widening opportunities"
+            ]
+        },
+        {
+            "name": "the statue to reason",
+            "preposition": "by",
+            "description": "It's really hard to make an abstract idea concrete, so they used marble.",
+            "indoors": false,
+            "emoji": "🪦",
+            "feature": "beside a block of marble",
+            "divinarray": [
+                "deep contemplation"
+            ]
+        },
+        {
+            "name": "the radio station",
+            "preposition": "at",
+            "description": "It's most popular program is a series of numbers, broadcast in a pattern it's up to you to figure out.",
+            "indoors": true,
+            "emoji": "📡",
+            "feature": "",
+            "divinarray": [
+                "hearing new ideas"
+            ]
+        },
+        {
+            "name": "the freshman dormitory",
+            "preposition": "in",
+            "description": "Where the youngest students learn the basics of rhetoric by arguing with their roommates.",
+            "indoors": true,
+            "emoji": "🏢",
+            "feature": "where the youngest students are",
+            "divinarray": [
+                "productive socializing"
+            ]
+        },
+        {
+            "name": "the quad",
+            "preposition": "on",
+            "description": "The students love to hang out by the fountain when they cut class and it's nice out.",
+            "indoors": false,
+            "emoji": "⛲",
+            "feature": "next to a fountain",
+            "divinarray": [
+                "recreation"
+            ]
+        },
+        {
+            "name": "the Greek theater",
+            "preposition": "in",
+            "description": "A perfect theater for Socratic dialogues, outdoor murder theater, or just hanging out.",
+            "indoors": false,
+            "emoji": "🎭",
+            "feature": "",
+            "divinarray": [
+                "learning and eduction"
+            ]
+        },
+        {
+            "name": "Parking Lot A",
+            "preposition": "at",
+            "description": "This parking lot is incredibly expensive, and within walking distance of Old Main.",
+            "indoors": false,
+            "emoji": "🅰",
+            "feature": "in the parking lot in walking distance",
+            "divinarray": [
+                "waiting around",
+                "contemplation"
+            ]
+        },
+        {
+            "name": "Parking Lot B",
+            "preposition": "at",
+            "description": "This parking lot is only mildly expensive, and it's a forty-five minute bus ride to campus.",
+            "indoors": false,
+            "emoji": "🅱",
+            "feature": "in the mildly expensive parking lot",
+            "divinarray": [
+                "an arduous journey"
+            ]
+        },
+        {
+            "name": "the bad cafeteria",
+            "preposition": "in",
+            "description": "There are two cafeterias on campus, and everyone agrees this is the bad one.",
+            "indoors": true,
+            "emoji": "🥦",
+            "feature": "",
+            "divinarray": [
+                "a distasteful task"
+            ]
+        },
+        {
+            "name": "the good cafeteria",
+            "preposition": "in",
+            "description": "There are two cafeterias on campus, and everybody knows this is the good one.",
+            "indoors": true,
+            "emoji": "🍕",
+            "feature": ""
+        },
+        {
+            "name": "the library",
+            "preposition": "in",
+            "description": "They have more than one million books, including a book on every number from one to a million.",
+            "indoors": true,
+            "emoji": "📚",
+            "feature": "beside a million books",
+            "divinarray": [
+                "a delicious feast",
+                "contentment"
+            ]
+        },
+        {
+            "name": "the history building",
+            "preposition": "in",
+            "description": "The building itself has so much history that you spend most of the history classes studying it.",
+            "indoors": true,
+            "emoji": "🏫",
+            "feature": "in a historic building",
+            "divinarray": [
+                "getting lost in the past",
+                "a period of deep study"
+            ]
+        },
+        {
+            "name": "the mathematics department",
+            "preposition": "in",
+            "description": "They are currently doing experimental research into a new biggest number.",
+            "indoors": true,
+            "emoji": "🧮",
+            "feature": "",
+            "divinarray": [
+                "well-made decisions"
+            ]
+        },
+        {
+            "name": "the student union",
+            "preposition": "in",
+            "description": "This is where the student government sits. But anybody can sit here: there are a lot of chairs.",
+            "indoors": true,
+            "emoji": "🏛️",
+            "feature": "where the student government sits",
+            "divinarray": [
+                "a desire for community"
+            ]
+        },
+        {
+            "name": "the big cement cube",
+            "preposition": "by",
+            "description": "This is a big cement cube that was supposedly donated by an early alumnus.",
+            "indoors": true,
+            "emoji": "⬜",
+            "feature": "beside a donation from an early alumnus",
+            "divinarray": [
+                "a mysterious past"
+            ]
+        },
+        {
+            "name": "the in memoriam plaque",
+            "preposition": "by",
+            "description": "Unfortunately (and ironically), nobody remembers what this is about.",
+            "indoors": true,
+            "emoji": "🪧",
+            "feature": "beside a forgotten plaque",
+            "divinarray": [
+                "a forgotten sadness"
+            ]
+        },
+        {
+            "name": "the chessboxing gym",
+            "preposition": "in",
+            "description": "Here is where the best athletes at Deduction College train to become even better.",
+            "indoors": true,
+            "emoji": "🥊",
+            "feature": "alongside the best athletes at Deduction College",
+            "divinarray": [
+                "holding onto something"
+            ]
+        },
+        {
+            "name": "Old Main",
+            "preposition": "in",
+            "description": "The first building on campus, the most important, and the least maintained. Paint is peeling off the wall!",
+            "indoors": true,
+            "emoji": "🏰",
+            "feature": "beside peeling paint",
+            "divinarray": [
+                "holding onto something"
+            ]
+        },
+        {
+            "name": "the combination coffeeshop bookstore",
+            "preposition": "in",
+            "description": "The biggest moneymaker on campus. A sign offers a 2-for-$500 deal on textbooks and lattes.",
+            "indoors": true,
+            "emoji": "💲",
+            "feature": "beneath a pile of pricey textbooks",
+            "divinarray": [
+                "a large expense"
+            ]
+        },
+        {
+            "name": "the arboretum",
+            "preposition": "in",
+            "description": "An arboretum in the middle of campus. It's overgrown with weeds.",
+            "indoors": false,
+            "emoji": "🌳",
+            "feature": "next to trees and weeds",
+            "divinarray": [
+                "a slow afternoon",
+                "contemplation"
+            ]
+        },
+        {
+            "name": "the reindeer stables",
+            "description": "Here is where the reindeer spend most of the year being pampered and groomed.",
+            "indoors": true,
+            "emoji": "🛖",
+            "feature": "where the reindeer are usually pampered and groomed",
+            "vibes": "n/a",
+            "preposition": "in"
+        },
+        {
+            "name": "the workshop",
+            "description": "Is it an egalitarian cooperative, or brutal capitalist exploitation? You be the judge.",
+            "indoors": true,
+            "emoji": "🛠️",
+            "feature": "",
+            "vibes": "n/a",
+            "preposition": "in"
+        },
+        {
+            "name": "the actual North Pole",
+            "description": "It’s marked with a literal pole and everything.",
+            "indoors": false,
+            "emoji": "💈",
+            "feature": "next to a literal pole",
+            "vibes": "n/a",
+            "preposition": "by"
+        },
+        {
+            "name": "Mrs. Claus’s cottage",
+            "description": "Here is where she bakes cookies and minds her own business.",
+            "indoors": true,
+            "emoji": "🏠",
+            "feature": "where Mrs. Claus sleeps",
+            "vibes": "n/a",
+            "preposition": "in"
+        }
+    ],
+    "suspect_names": [
+        "Secretary Celadon",
+        "The Amazing Aureolin",
+        "Father Mango",
+        "Sister Lapis",
+        "Baron Maroon",
+        "Babyface Blue",
+        "Dean Glaucous",
+        "Miss Saffron",
+        "Mayor Honey",
+        "Mrs. Ruby",
+        "Judge Pine",
+        "Earl Grey",
+        "Uncle Midnight",
+        "General Coffee",
+        "Brother Brownstone",
+        "Deacon Verdigris",
+        "Dr. Crimson",
+        "Lady Violet",
+        "Signor Emerald",
+        "Mx. Tangerine",
+        "Captain Slate",
+        "Président Amaranth",
+        "Chef Aubergine",
+        "Comrade Champagne",
+        "Vice President Mauve",
+        "The Duchess of Vermillion",
+        "Admiral Navy",
+        "Dame Obsidian",
+        "Sir Rulean",
+        "Chancellor Tuscany",
+        "Officer Copper",
+        "Grandmaster Rose",
+        "Bishop Azure",
+        "Principal Applegreen",
+        "Lord Lavender",
+        "Coach Raspberry",
+        "Major Red",
+        "Viscount Eminence",
+        "Agent Fuchsia",
+        "Silverton the Legend"
+    ]
+}

@@ -1,0 +1,131 @@
+{
+  "exhibit_b": {
+    "title_en": "Inspector Irratino's Astrological Primer",
+    "title_th": "คู่มือโหราศาสตร์เบื้องต้นของสารวัตรอิร์ราติโน",
+    "description": "ข้อมูลอ้างอิงสำหรับถอดรหัสวันเกิด ราศี ธาตุ และสัญลักษณ์การเล่นแร่แปรธาตุในคดีระดับสูง",
+    "zodiac_signs": {
+      "aries": { 
+        "symbol": "♈", 
+        "name_en": "Aries", 
+        "name_th": "เมษ", 
+        "element_en": "FIRE", 
+        "element_th": "ไฟ", 
+        "dates_en": "MAR 21 - APRIL 19", 
+        "dates_th": "21 มี.ค. - 19 เม.ย." 
+      },
+      "taurus": { 
+        "symbol": "♉", 
+        "name_en": "Taurus", 
+        "name_th": "พฤษภ", 
+        "element_en": "EARTH", 
+        "element_th": "ดิน", 
+        "dates_en": "APRIL 20 - MAY 20", 
+        "dates_th": "20 เม.ย. - 20 พ.ค." 
+      },
+      "gemini": { 
+        "symbol": "♊", 
+        "name_en": "Gemini", 
+        "name_th": "เมถุน", 
+        "element_en": "AIR", 
+        "element_th": "ลม", 
+        "dates_en": "MAY 21 - JUNE 21", 
+        "dates_th": "21 พ.ค. - 21 มิ.ย." 
+      },
+      "cancer": { 
+        "symbol": "♋", 
+        "name_en": "Cancer", 
+        "name_th": "กรกฎ", 
+        "element_en": "WATER", 
+        "element_th": "น้ำ", 
+        "dates_en": "JUNE 22 - JULY 22", 
+        "dates_th": "22 มิ.ย. - 22 ก.ค." 
+      },
+      "leo": { 
+        "symbol": "♌", 
+        "name_en": "Leo", 
+        "name_th": "สิงห์", 
+        "element_en": "FIRE", 
+        "element_th": "ไฟ", 
+        "dates_en": "JULY 23 - AUG 22", 
+        "dates_th": "23 ก.ค. - 22 ส.ค." 
+      },
+      "virgo": { 
+        "symbol": "♍", 
+        "name_en": "Virgo", 
+        "name_th": "กันย์", 
+        "element_en": "EARTH", 
+        "element_th": "ดิน", 
+        "dates_en": "AUG 23 - SEP 22", 
+        "dates_th": "23 ส.ค. - 22 ก.ย." 
+      },
+      "libra": { 
+        "symbol": "♎", 
+        "name_en": "Libra", 
+        "name_th": "ตุลย์", 
+        "element_en": "AIR", 
+        "element_th": "ลม", 
+        "dates_en": "SEP 23 - OCT 22", 
+        "dates_th": "23 ก.ย. - 22 ต.ค." 
+      },
+      "scorpio": { 
+        "symbol": "♏", 
+        "name_en": "Scorpio", 
+        "name_th": "พิจิก", 
+        "element_en": "WATER", 
+        "element_th": "น้ำ", 
+        "dates_en": "OCT 23 - NOV 21", 
+        "dates_th": "23 ต.ค. - 21 พ.ย." 
+      },
+      "sagittarius": { 
+        "symbol": "♐", 
+        "name_en": "Sagittarius", 
+        "name_th": "ธนู", 
+        "element_en": "FIRE", 
+        "element_th": "ไฟ", 
+        "dates_en": "NOV 22 - DEC 21", 
+        "dates_th": "22 พ.ย. - 21 ธ.ค." 
+      },
+      "capricorn": { 
+        "symbol": "♑", 
+        "name_en": "Capricorn", 
+        "name_th": "มังกร", 
+        "element_en": "EARTH", 
+        "element_th": "ดิน", 
+        "dates_en": "DEC 22 - JAN 19", 
+        "dates_th": "22 ธ.ค. - 19 ม.ค." 
+      },
+      "aquarius": { 
+        "symbol": "♒", 
+        "name_en": "Aquarius", 
+        "name_th": "กุมภ์", 
+        "element_en": "AIR", 
+        "element_th": "ลม", 
+        "dates_en": "JAN 20 - FEB 18", 
+        "dates_th": "20 ม.ค. - 18 ก.พ." 
+      },
+      "pisces": { 
+        "symbol": "♓", 
+        "name_en": "Pisces", 
+        "name_th": "มีน", 
+        "element_en": "WATER", 
+        "element_th": "น้ำ", 
+        "dates_en": "FEB 19 - MAR 20", 
+        "dates_th": "19 ก.พ. - 20 มี.ค." 
+      }
+    },
+    "alchemical_symbols": {
+      "mercury": { "symbol": "☿", "name_en": "MERCURY", "name_th": "ปรอท" },
+      "iron": { "symbol": "♂", "name_en": "IRON", "name_th": "เหล็ก" },
+      "earth": { "symbol": "🜃", "name_en": "EARTH", "name_th": "ดิน" },
+      "uranus": { "symbol": "♅", "name_en": "URANUS", "name_th": "ดาวยูเรนัส" },
+      "brimstone": { "symbol": "🜏", "name_en": "BRIMSTONE", "name_th": "กำมะถัน" },
+      "oil": { "symbol": "🜢", "name_en": "OIL", "name_th": "น้ำมัน" },
+      "fire": { "symbol": "🜂", "name_en": "FIRE", "name_th": "ไฟ" },
+      "dissolve": { "symbol": "🝆", "name_en": "DISSOLVE", "name_th": "การละลาย (สลายตัว)" },
+      "hematite": { "symbol": "🜤", "name_en": "HEMATITE", "name_th": "แร่เฮมาไทต์" },
+      "niter": { "symbol": "🜔", "name_en": "NITER", "name_th": "ดินประสิว" },
+      "radium": { "symbol": "☢", "name_en": "RADIUM", "name_th": "เรเดียม" },
+      "yeast": { "symbol": "🜲", "name_en": "YEAST", "name_th": "ยีสต์" }
+    }
+  }
+}
