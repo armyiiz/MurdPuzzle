@@ -11,6 +11,7 @@ const withPWA = withPWAInit({
 
 const nextConfig: NextConfig = {
   /* existing config */
+  output: "export",
   turbopack: {},
 };
 
