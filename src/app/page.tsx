@@ -38,7 +38,7 @@ export default function Home() {
               ⬅️
             </button>
           )}
-          <h1 className="text-xl font-bold tracking-widest uppercase">🕵️‍♂️ แฟ้มลับ คดีปริศนา</h1>
+          <h1 className="text-xl font-bold tracking-widest uppercase">🕵️‍♂️ สืบคดีปริศนา</h1>
         </div>
         {screen !== 'MENU' && (
           <button onClick={() => setScreen('MENU')} className="text-xs bg-white text-black px-3 py-1 border-[2px] border-black hover:bg-neo-accent hover:text-white transition-colors uppercase font-bold tracking-wider">
