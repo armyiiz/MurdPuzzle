@@ -7,7 +7,6 @@ import { useGameLogic } from '../hooks/useGameLogic';
 import { LogicGrid } from '../components/LogicGrid';
 import { allCases } from '../data/allCases';
 import { ImageWithFallback } from '../components/ImageWithFallback';
-import { generateFlavorText } from '../utils/storyGenerator';
 
 type ScreenState = 'MENU' | 'HOW_TO_PLAY' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME';
 
@@ -249,10 +248,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       (!hasMotives || accusation.motive === correct.motive);
 
     if (isCorrect) {
-      const killerProfile = levelData.profiles?.suspects?.find(s => s.name === correct.suspect);
-      const confessionText = killerProfile?.confession ? `คำสารภาพ: "${killerProfile.confession}"` : "🎉 ยินดีด้วย! คุณไขคดีสำเร็จแล้ว!";
-
-      setFeedback({ message: confessionText, type: 'success' });
+      setFeedback({ message: "🎉 ยินดีด้วย! คุณไขคดีสำเร็จแล้ว!", type: 'success' });
       if (!solvedCases.includes(levelData.id)) {
         const newSolved = [...solvedCases, levelData.id];
         setSolvedCases(newSolved);
@@ -400,14 +396,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 flex items-center gap-2 text-black">🔍 เบาะแส</h3>
               <ul className="space-y-4">
                 {levelData.clues.map((clue, idx) => {
-                  const clueText = typeof clue === 'string'
-                    ? clue
-                    : generateFlavorText(clue.subject, clue.relation, clue.object);
-                    
                   return (
                     <li key={idx} className="flex gap-4 items-start text-black">
                       <span className="font-black text-black bg-white border-[2px] border-black px-2 py-1 text-xl leading-none shadow-[2px_2px_0_#222222]">{idx + 1}</span>
-                      <span className="leading-relaxed font-bold">{clueText}</span>
+                      <span className="leading-relaxed font-bold">{clue}</span>
                     </li>
                   );
                 })}
