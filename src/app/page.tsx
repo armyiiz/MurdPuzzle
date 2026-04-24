@@ -38,7 +38,7 @@ export default function Home() {
               ⬅️
             </button>
           )}
-          <h1 className="text-xl font-bold tracking-widest uppercase">🕵️‍♂️ สืบคดีปริศนา</h1>
+          <h1 className="text-xl font-bold tracking-widest uppercase">🕵️‍♂️ ไขคดีปริศนา</h1>
         </div>
         {screen !== 'MENU' && (
           <button onClick={() => setScreen('MENU')} className="text-xs bg-white text-black px-3 py-1 border-[2px] border-black hover:bg-neo-accent hover:text-white transition-colors uppercase font-bold tracking-wider">
@@ -60,7 +60,7 @@ export default function Home() {
 function MainMenu({ setScreen }: { setScreen: (s: ScreenState) => void }) {
   return (
     <div className="flex flex-col items-center justify-center mt-20 space-y-6">
-      <h1 className="text-4xl font-extrabold text-black mb-8 tracking-tight text-center">🕵️‍♂️ คดีฆาตกรรมปริศนา <br/> ฉบับภาษาไทย</h1>
+      <h1 className="text-4xl font-extrabold text-black mb-8 tracking-tight text-center">🕵️‍♂️ ไขคดีปริศนา <br/> ฉบับภาษาไทย</h1>
       <button onClick={() => setScreen('LEVEL_SELECT')} className="bg-black text-white hover:bg-[#A30B37] hover:-translate-y-1 transition-all text-xl font-bold py-4 px-12 border-[3px] border-black shadow-[4px_4px_0_#222222]">
         เริ่มไขคดี
       </button>
