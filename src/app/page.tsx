@@ -228,6 +228,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [activeTab, setActiveTab] = useState<'suspects' | 'weapons' | 'locations' | 'motives'>('suspects');
   const [notes, setNotes] = useState<string>('');
   const [cluesScrollY, setCluesScrollY] = useState(0);
+  const [selectedProfileIndex, setSelectedProfileIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -318,21 +319,77 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 })}
               </div>
 
-              {/* Active Tab Content (Profile Cards) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Active Tab Content (Mini-Tiles) */}
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
                 {levelData.profiles && (levelData.profiles as any)[activeTab]?.map((item: any, index: number) => {
                   return (
-                    <div key={item.name} className="bg-neo-notebook border-[3px] border-black shadow-[4px_4px_0_#222222] flex flex-row items-stretch h-full overflow-hidden">
-                      <ImageWithFallback category={activeTab} index={index} itemName={item.name} />
-                      <div className="p-3 flex flex-col justify-center flex-grow">
-                        <div className="font-black text-black border-b-[2px] border-black mb-2 pb-2 text-lg flex items-center gap-2">
-                          <span>{extractEmojiAndText(item.name).text}</span>
-                        </div>
-                        <div className="text-black text-sm leading-relaxed flex-grow">{item.detail}</div>
+                    <button
+                      key={item.name}
+                      onClick={() => setSelectedProfileIndex(index)}
+                      className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] hover:-translate-y-1 hover:shadow-[6px_6px_0_#222222] transition-all flex flex-col items-center justify-center p-3 aspect-square"
+                    >
+                      <div className="mb-2">
+                        {getCategoryEmoji(activeTab, index, item.name, "text-3xl sm:text-4xl leading-none inline-block")}
                       </div>
-                    </div>
+                      <div className="font-black text-black text-xs text-center break-words w-full">
+                        {extractEmojiAndText(item.name).text}
+                      </div>
+                    </button>
                   );
                 })}
+              </div>
+            </div>
+          )}
+
+          {/* Pop-up Modal */}
+          {selectedProfileIndex !== null && levelData.profiles && (
+            <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setSelectedProfileIndex(null)}>
+              <div
+                className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] max-w-sm w-full p-6 flex flex-col items-center relative"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Modal Content */}
+                <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] w-24 h-24 flex items-center justify-center mb-4">
+                  {getCategoryEmoji(activeTab, selectedProfileIndex, (levelData.profiles as any)[activeTab][selectedProfileIndex].name, "text-5xl leading-none inline-block")}
+                </div>
+
+                <h3 className="text-2xl font-black text-black mb-4 border-b-[3px] border-black pb-2 text-center w-full">
+                  {extractEmojiAndText((levelData.profiles as any)[activeTab][selectedProfileIndex].name).text}
+                </h3>
+
+                <p className="text-black text-base leading-relaxed mb-8 w-full">
+                  {(levelData.profiles as any)[activeTab][selectedProfileIndex].detail}
+                </p>
+
+                {/* Navigation Buttons */}
+                <div className="flex justify-between w-full mb-4">
+                  <button
+                    onClick={() => {
+                      const total = (levelData.profiles as any)[activeTab].length;
+                      setSelectedProfileIndex((selectedProfileIndex - 1 + total) % total);
+                    }}
+                    className="bg-white border-[3px] border-black text-black px-4 py-2 font-bold shadow-[4px_4px_0_#222222] hover:bg-gray-100 hover:-translate-y-1 transition-all"
+                  >
+                    ⬅️ ก่อนหน้า
+                  </button>
+                  <button
+                    onClick={() => {
+                      const total = (levelData.profiles as any)[activeTab].length;
+                      setSelectedProfileIndex((selectedProfileIndex + 1) % total);
+                    }}
+                    className="bg-white border-[3px] border-black text-black px-4 py-2 font-bold shadow-[4px_4px_0_#222222] hover:bg-gray-100 hover:-translate-y-1 transition-all"
+                  >
+                    ถัดไป ➡️
+                  </button>
+                </div>
+
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedProfileIndex(null)}
+                  className="bg-black text-white w-full border-[3px] border-black py-3 font-black text-lg shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest"
+                >
+                  ❌ ปิด
+                </button>
               </div>
             </div>
           )}
@@ -446,7 +503,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <div className="bg-neo-notebook p-3 text-[10px] text-black border-b-[3px] border-black text-center uppercase tracking-widest font-bold">
               คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
             </div>
-            <div className="overflow-x-auto py-4 px-0 flex justify-center bg-neo-bg">
+            <div className="overflow-x-auto p-0 flex justify-center bg-neo-bg">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} />
             </div>
           </section>
