@@ -26,7 +26,7 @@ export const extractEmojiAndText = (itemName: string) => {
   return { emoji: null, text: itemName };
 };
 
-export const getCategoryEmoji = (category: string, index: number, itemName?: string): ReactNode => {
+export const getCategoryEmoji = (category: string, index: number, itemName?: string, className: string = "text-base sm:text-2xl leading-none inline-block"): ReactNode => {
   const hexColor = TINT_COLORS[index % TINT_COLORS.length];
   let emojiToRender = BASE_EMOJIS[category] || '❓';
 
@@ -39,7 +39,7 @@ export const getCategoryEmoji = (category: string, index: number, itemName?: str
 
   return (
     <span
-      className="text-base leading-none inline-block"
+      className={className}
       title={itemName}
       style={{ color: 'transparent', textShadow: `0 0 0 ${hexColor}` }}
     >
