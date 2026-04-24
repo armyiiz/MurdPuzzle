@@ -7,6 +7,7 @@ import { useGameLogic } from '../hooks/useGameLogic';
 import { LogicGrid } from '../components/LogicGrid';
 import { allCases } from '../data/allCases';
 import { ImageWithFallback } from '../components/ImageWithFallback';
+import exhibitBData from '../data/ExhibitB.json';
 
 type ScreenState = 'MENU' | 'HOW_TO_PLAY' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME';
 
@@ -228,6 +229,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [notes, setNotes] = useState<string>('');
   const [cluesScrollY, setCluesScrollY] = useState(0);
   const [selectedProfileIndex, setSelectedProfileIndex] = useState<number | null>(null);
+  const [showExhibitB, setShowExhibitB] = useState(false);
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -502,6 +504,15 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
           {/* Grid Action Menu */}
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-4">
+            {levelData.difficulty >= 2 && (
+              <>
+                <button onClick={() => setShowExhibitB(true)} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
+                  <span className="text-xl">📖</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Exhibit B</span>
+                </button>
+                <div className="w-[3px] h-8 bg-white"></div>
+              </>
+            )}
             <button onClick={() => console.log('Hint clicked')} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
               <span className="text-xl">💡</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">คำใบ้</span>
@@ -533,6 +544,63 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       >
         {activeView === 'clues' ? '📔' : '🔍'}
       </button>
+
+      {/* Exhibit B Modal */}
+      {showExhibitB && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowExhibitB(false)}>
+          <div
+            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 flex flex-col relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest">
+              {exhibitBData.exhibit_b.title_th}
+            </h3>
+            <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
+              {exhibitBData.exhibit_b.description}
+            </p>
+
+            {/* Astrological Primer */}
+            <div className="mb-8">
+              <h4 className="text-xl font-bold mb-4 bg-black text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#222222]">
+                ✨ จักรราศี
+              </h4>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                {Object.values(exhibitBData.exhibit_b.zodiac_signs).map((sign: any) => (
+                  <div key={sign.name_en} className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-3 flex flex-col items-center text-center">
+                    <span className="text-4xl mb-2">{sign.symbol}</span>
+                    <span className="font-black text-black text-sm">{sign.name_th}</span>
+                    <span className="text-xs font-bold bg-gray-200 px-2 py-0.5 mt-1 border border-black">{sign.element_th}</span>
+                    <span className="text-[10px] mt-2 font-bold">{sign.dates_th}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Alchemical Symbols */}
+            <div className="mb-6">
+              <h4 className="text-xl font-bold mb-4 bg-black text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#222222]">
+                ⚗️ สัญลักษณ์การเล่นแร่แปรธาตุ
+              </h4>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                {Object.values(exhibitBData.exhibit_b.alchemical_symbols).map((symbol: any) => (
+                  <div key={symbol.name_en} className="bg-white border-[3px] border-black shadow-[2px_2px_0_#222222] p-2 flex flex-col items-center text-center">
+                    <span className="text-3xl mb-1">{symbol.symbol}</span>
+                    <span className="font-black text-black text-[10px] sm:text-xs leading-tight">{symbol.name_th}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setShowExhibitB(false)}
+              className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest sticky bottom-0"
+            >
+              ❌ ปิดเอกสาร
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );

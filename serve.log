@@ -1,6 +1,12 @@
-npm warn exec The following package was not found and will be installed: serve@14.2.6
- INFO  Accepting connections at http://localhost:3000
- HTTP  4/24/2026 9:24:45 AM ::1 GET /
- HTTP  4/24/2026 9:24:45 AM ::1 Returned 404 in 253 ms
- HTTP  4/24/2026 9:32:31 AM ::1 GET /
- HTTP  4/24/2026 9:32:31 AM ::1 Returned 404 in 2 ms
+
+> my-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 608ms
+
+○ Compiling / ...
+ GET / 200 in 6.2s (next.js: 5.7s, application-code: 534ms)
+ GET / 200 in 97ms (next.js: 11ms, application-code: 86ms)

@@ -1,4 +1,7 @@
 import React, { ReactNode } from 'react';
+import motivesData from '../data/Motive.json';
+import suspectsData from '../data/suspect_details.json';
+import masterData from '../data/masterdata.json';
 
 const TINT_COLORS = [
   '#000000', // 0: Black
@@ -31,9 +34,24 @@ export const getCategoryEmoji = (category: string, index: number, itemName?: str
   let emojiToRender = BASE_EMOJIS[category] || '❓';
 
   if (itemName) {
-    const { emoji } = extractEmojiAndText(itemName);
+    const { emoji, text } = extractEmojiAndText(itemName);
     if (emoji) {
       emojiToRender = emoji;
+    } else {
+      const cleanName = text.trim();
+      if (category === 'suspects') {
+        const suspect = (suspectsData as Record<string, any>)[cleanName];
+        if (suspect && suspect.emoji) emojiToRender = suspect.emoji;
+      } else if (category === 'motives') {
+        const motive = (motivesData as Record<string, any>)[cleanName];
+        if (motive && motive.emoji) emojiToRender = motive.emoji;
+      } else if (category === 'weapons') {
+        const weapon = masterData.weapons_master.find(w => w.name === cleanName);
+        if (weapon && weapon.emoji) emojiToRender = weapon.emoji;
+      } else if (category === 'locations') {
+        const room = masterData.rooms_master.find(r => r.name === cleanName);
+        if (room && room.emoji) emojiToRender = room.emoji;
+      }
     }
   }
 
