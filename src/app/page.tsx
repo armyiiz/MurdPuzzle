@@ -38,7 +38,7 @@ export default function Home() {
               ⬅️
             </button>
           )}
-          <h1 className="text-xl font-bold tracking-widest uppercase">🕵️‍♂️ แฟ้มคดีปริศนา โลจิโก</h1>
+          <h1 className="text-xl font-bold tracking-widest uppercase">🕵️‍♂️ แฟ้มลับ คดีปริศนา</h1>
         </div>
         {screen !== 'MENU' && (
           <button onClick={() => setScreen('MENU')} className="text-xs bg-white text-black px-3 py-1 border-[2px] border-black hover:bg-neo-accent hover:text-white transition-colors uppercase font-bold tracking-wider">
@@ -70,10 +70,10 @@ function MainMenu({ setScreen }: { setScreen: (s: ScreenState) => void }) {
 
 function LevelSelect({ setScreen, setSelectedLevel }: { setScreen: (s: ScreenState) => void, setSelectedLevel: (l: number) => void }) {
   const levels = [
-    { id: 1, name: "ระดับ 1: มือใหม่หัดสืบ", desc: "ตาราง 3x3 คดีตรงไปตรงมา" },
-    { id: 2, name: "ระดับ 2: นักสืบฝึกหัด", desc: "ตาราง 3x3 มีคนโกหก 1 คน" },
-    { id: 3, name: "ระดับ 3: ยอดนักสืบ", desc: "ตาราง 4x4 เพิ่มแรงจูงใจ" },
-    { id: 4, name: "ระดับ 4: ปรมาจารย์", desc: "ตาราง 4x4 มีคนโกหก 1 คน" },
+    { id: 1, name: "ระดับ 1: มือใหม่หัดสืบ", desc: "ผู้ต้องสงสัย 3 คน" },
+    { id: 2, name: "ระดับ 2: นักสืบฝึกหัด", desc: "ผู้ต้องสงสัย 3 คน พร้อมคำให้การ แต่จะมี 1 คนที่โกหก" },
+    { id: 3, name: "ระดับ 3: ยอดนักสืบ", desc: "ผู้ต้องสงสัย 4 คน พร้อมแรงจูงใจ" },
+    { id: 4, name: "ระดับ 4: ปรมาจารย์", desc: "ผู้ต้องสงสัย 4 คน พร้อมแรงจูงใจและคำให้การ" },
   ];
 
   return (
@@ -107,10 +107,10 @@ function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level:
               <div>
                 <h3 className="font-bold text-lg leading-tight text-black">{c.level_name}</h3>
                 <div className="mt-3 flex items-center gap-2">
-                  <span className="text-[10px] font-bold px-2 py-0.5 border border-black text-black uppercase tracking-wider bg-white">Case ID: {c.id}</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 border border-black text-black uppercase tracking-wider bg-white">หมายเลขคดี: {c.id}</span>
                 </div>
               </div>
-              {isSolved && <div className="mt-4 text-black font-bold self-end flex items-center gap-1">✅ สำเร็จ</div>}
+              {isSolved && <div className="mt-4 text-black font-bold self-end flex items-center gap-1">✅ ปิดคดี</div>}
             </button>
           );
         })}
@@ -240,7 +240,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           {/* Clues & Testimonies */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6">
-              <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 flex items-center gap-2 text-black">🔍 เบาะแส (Facts)</h3>
+              <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 flex items-center gap-2 text-black">🔍 เบาะแส</h3>
               <ul className="space-y-4">
                 {levelData.clues.map((clue, idx) => {
                   const clueText = typeof clue === 'string'
@@ -259,7 +259,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
             {levelData.testimonies && levelData.testimonies.length > 0 && (
               <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6 border-l-[8px] border-l-neo-accent">
-                <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 text-neo-accent flex items-center gap-2">🗣️ คำให้การ (Testimonies)</h3>
+                <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 text-neo-accent flex items-center gap-2">🗣️ คำให้การ</h3>
                 <ul className="space-y-4">
                   {levelData.testimonies.map((t, idx) => {
                     const state = testimonyStates[idx] || 0;
@@ -289,7 +289,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
           {/* Final Accusation */}
           <div className="bg-neo-notebook text-black p-10 border-[3px] border-black shadow-[4px_4px_0_#222222] flex flex-col items-center">
-            <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-neo-accent">⚖️ สรุปรูปคดี (Accusation)</h3>
+            <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-neo-accent">⚖️ สรุปรูปคดี</h3>
             <div className="flex flex-wrap items-center justify-center gap-6 text-xl mb-10">
               <div className="flex flex-col items-center gap-2">
                 <span className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">คนร้าย</span>
