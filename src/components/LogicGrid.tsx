@@ -86,8 +86,8 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                             hover:bg-gray-200
                           `}
                         >
-                          {state === 'O' && <span className="text-green-600">O</span>}
-                          {state === 'X' && <span className="text-red-500">X</span>}
+                          {state === 'O' && <span className="text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">✅</span>}
+                          {state === 'X' && <span className="text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">❌</span>}
                         </td>
                       );
                     });
