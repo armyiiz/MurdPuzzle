@@ -2,11 +2,19 @@
 > my-app@0.1.0 dev
 > next dev
 
+⚠ Port 3000 is in use by process 65577, using available port 3001 instead.
 ▲ Next.js 16.2.4 (Turbopack)
-- Local:         http://localhost:3000
-- Network:       http://192.168.0.2:3000
-✓ Ready in 522ms
+- Local:         http://localhost:3001
+- Network:       http://192.168.0.2:3001
+✓ Ready in 582ms
 
 ○ Compiling / ...
- GET / 200 in 5.5s (next.js: 5.1s, application-code: 416ms)
- GET / 200 in 85ms (next.js: 8ms, application-code: 78ms)
+ GET / 200 in 5.3s (next.js: 4.9s, application-code: 446ms)
+ GET / 200 in 176ms (next.js: 6ms, application-code: 170ms)
+ GET / 200 in 65ms (next.js: 4ms, application-code: 62ms)
+ GET / 200 in 58ms (next.js: 5ms, application-code: 54ms)
+ GET / 200 in 161ms (next.js: 7ms, application-code: 154ms)
+ GET / 200 in 71ms (next.js: 5ms, application-code: 66ms)
+ GET / 200 in 68ms (next.js: 4ms, application-code: 65ms)
+ GET / 200 in 61ms (next.js: 4ms, application-code: 56ms)
+ GET / 200 in 62ms (next.js: 5ms, application-code: 57ms)

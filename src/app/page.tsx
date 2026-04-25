@@ -239,17 +239,6 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
     }
   }, [levelData.id, loadGridState]);
 
-  useEffect(() => {
-    if (activeView === 'grid') {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [activeView]);
-
   const hasMotives = levelData.categories.some(c => c.id === 'motives');
 
   const handleCheckAnswer = () => {
@@ -406,14 +395,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           {/* Clues & Testimonies */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6">
-              <div className="flex items-center justify-between mb-5 border-b-[3px] border-black pb-2">
-                <h3 className="text-xl font-bold flex items-center gap-2 text-black">🔍 เบาะแส</h3>
-                {levelData.difficulty === 2 && (
-                  <button onClick={() => setShowExhibitB(true)} className="ml-auto bg-neo-accent text-white px-3 py-1 text-sm font-bold border-[2px] border-black shadow-[2px_2px_0_#222222] hover:-translate-y-0.5 transition-transform flex items-center gap-1">
-                    📖 คู่มือ Exhibit B
-                  </button>
-                )}
-              </div>
+              <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 flex items-center gap-2 text-black">🔍 เบาะแส</h3>
               <ul className="space-y-4">
                 {levelData.clues.map((clue, idx) => {
                   return (
@@ -509,19 +491,28 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       )}
 
       {activeView === 'grid' && (
-        <div className="fixed inset-0 top-[65px] bottom-0 overflow-hidden flex flex-col items-center justify-center bg-neo-bg z-0 animate-in fade-in duration-300">
+        <div className="animate-in fade-in duration-300">
           {/* Logic Grid */}
-          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-hidden mb-24 max-h-[calc(100vh-180px)] flex flex-col">
-            <div className="bg-neo-notebook p-2 sm:p-3 text-[10px] text-black border-b-[3px] border-black text-center uppercase tracking-widest font-bold shrink-0">
+          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] mb-8 overflow-hidden">
+            <div className="bg-neo-notebook p-3 text-[10px] text-black border-b-[3px] border-black text-center uppercase tracking-widest font-bold">
               คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
             </div>
-            <div className="overflow-auto p-0 flex justify-center items-center bg-neo-bg flex-1 min-h-0">
+            <div className="overflow-x-auto p-0 flex justify-center bg-neo-bg">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} />
             </div>
           </section>
 
           {/* Grid Action Menu */}
-          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-4 sm:px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-3 sm:gap-4 max-w-[95vw] overflow-x-auto whitespace-nowrap">
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-4">
+            {levelData.difficulty >= 2 && (
+              <>
+                <button onClick={() => setShowExhibitB(true)} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
+                  <span className="text-xl">📖</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Exhibit B</span>
+                </button>
+                <div className="w-[3px] h-8 bg-white"></div>
+              </>
+            )}
             <button onClick={() => console.log('Hint clicked')} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
               <span className="text-xl">💡</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">คำใบ้</span>
