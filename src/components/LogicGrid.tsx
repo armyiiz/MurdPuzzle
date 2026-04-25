@@ -23,7 +23,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
         <tbody>
           {/* Top Header Row */}
           <tr>
-            <td className="w-[10vw] h-[10vw] min-w-[24px] min-h-[24px] max-w-[40px] max-h-[40px] p-1 text-[2vw] sm:text-[8px] text-black font-bold tracking-tighter leading-none text-center border border-transparent align-middle">
+            <td className="w-8 h-8 sm:w-10 sm:h-10 p-1 text-[8px] text-black font-bold tracking-tighter leading-none text-center border border-transparent align-middle">
               LOGIC GRID
             </td>
             {topCategories.map((cat, catIndex) => (
@@ -32,7 +32,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                 return (
                   <td
                     key={`top-${cat.id}-${item}`}
-                    className={`w-[10vw] h-[10vw] min-w-[24px] min-h-[24px] max-w-[40px] max-h-[40px] border border-black bg-white align-middle text-center p-0
+                    className={`w-8 h-8 sm:w-10 sm:h-10 border border-black bg-white align-middle text-center p-0
                       border-t-[4px] ${isFirstOfBlock ? 'border-l-[4px]' : ''}
                     `}
                   >
@@ -57,7 +57,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                 <tr key={`row-${rowCat.id}-${rowItem}`}>
                   {/* Left Header Cell */}
                   <td
-                    className={`w-[10vw] h-[10vw] min-w-[24px] min-h-[24px] max-w-[40px] max-h-[40px] border border-black bg-white align-middle text-center p-0
+                    className={`w-8 h-8 sm:w-10 sm:h-10 border border-black bg-white align-middle text-center p-0
                       border-l-[4px] ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
                     `}
                   >
@@ -79,15 +79,15 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                         <td
                           key={`cell-${rowCat.id}-${rowItem}-${colCat.id}-${colItem}`}
                           onClick={() => toggleCell(rowCat, colCat, rowItem, colItem)}
-                          className={`w-[10vw] h-[10vw] min-w-[24px] min-h-[24px] max-w-[40px] max-h-[40px] border border-black align-middle text-center p-0 cursor-pointer select-none font-bold transition-colors
+                          className={`w-8 h-8 sm:w-10 sm:h-10 border border-black align-middle text-center p-0 cursor-pointer select-none text-xl font-bold transition-colors
                             ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
                             ${isFirstColOfBlock ? 'border-l-[4px]' : ''}
                             ${isError ? 'bg-red-400' : isDark ? 'bg-neo-notebook' : 'bg-white'}
                             hover:bg-gray-200
                           `}
                         >
-                          {state === 'O' && <span className="text-[4vw] sm:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">✅</span>}
-                          {state === 'X' && <span className="text-[4vw] sm:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">❌</span>}
+                          {state === 'O' && <span className="text-base sm:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">✅</span>}
+                          {state === 'X' && <span className="text-base sm:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">❌</span>}
                         </td>
                       );
                     });
