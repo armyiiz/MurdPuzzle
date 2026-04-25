@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { LevelData, Category } from '../types/level';
 import { getCategoryEmoji, extractEmojiAndText } from '../utils/emojiHelper';
 import { useGameLogic } from '../hooks/useGameLogic';
@@ -235,6 +236,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [selectedProfileIndex, setSelectedProfileIndex] = useState<number | null>(null);
   const [showExhibitB, setShowExhibitB] = useState(false);
   const [showExhibitC, setShowExhibitC] = useState(false);
+  const [showExhibitD, setShowExhibitD] = useState(false);
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -421,6 +423,11 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 {levelData.difficulty === 3 && (
                   <button onClick={() => setShowExhibitC(true)} className="ml-auto bg-neo-accent text-white px-3 py-1 text-sm font-bold border-[2px] border-black shadow-[2px_2px_0_#222222] hover:-translate-y-0.5 transition-transform flex items-center gap-1">
                     📖 คู่มือ Exhibit C
+                  </button>
+                )}
+                {levelData.difficulty === 4 && (
+                  <button onClick={() => setShowExhibitD(true)} className="ml-auto bg-neo-accent text-white px-3 py-1 text-sm font-bold border-[2px] border-black shadow-[2px_2px_0_#222222] hover:-translate-y-0.5 transition-transform flex items-center gap-1">
+                    📖 แผนผัง Exhibit D
                   </button>
                 )}
               </div>
@@ -689,6 +696,43 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <button
               onClick={() => setShowExhibitC(false)}
               className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest sticky bottom-0"
+            >
+              ❌ ปิด
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Exhibit D Modal */}
+      {showExhibitD && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowExhibitD(false)}>
+          <div
+            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] p-6 max-w-4xl max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
+              Exhibit D: แผนผังประกอบคดี
+            </h3>
+            <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
+              ใช้แผนผังนี้เพื่อระบุตำแหน่งที่ตั้งและทิศทางของสถานที่ต่างๆ ในคดี
+            </p>
+
+            <div className="mb-6 flex justify-center w-full relative h-[50vh] sm:h-[60vh] md:h-[70vh]">
+              <div className="relative w-full h-full border-[3px] border-black shadow-[4px_4px_0_rgba(0,0,0,1)] bg-white overflow-hidden">
+                <Image
+                  src="/Exhibit D.webp"
+                  alt="Exhibit D"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setShowExhibitD(false)}
+              className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase tracking-widest sticky bottom-0"
             >
               ❌ ปิด
             </button>
