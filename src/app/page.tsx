@@ -22,6 +22,10 @@ export default function Home() {
     if (saved) setSolvedCases(JSON.parse(saved));
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [screen, selectedCase]);
+
   // ฟังก์ชันจัดการปุ่มย้อนกลับตามลำดับ
   const handleBack = () => {
     if (screen === 'GAME') setScreen('CASE_SELECT');
@@ -230,6 +234,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [cluesScrollY, setCluesScrollY] = useState(0);
   const [selectedProfileIndex, setSelectedProfileIndex] = useState<number | null>(null);
   const [showExhibitB, setShowExhibitB] = useState(false);
+  const [showExhibitC, setShowExhibitC] = useState(false);
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -411,6 +416,11 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 {levelData.difficulty === 2 && (
                   <button onClick={() => setShowExhibitB(true)} className="ml-auto bg-neo-accent text-white px-3 py-1 text-sm font-bold border-[2px] border-black shadow-[2px_2px_0_#222222] hover:-translate-y-0.5 transition-transform flex items-center gap-1">
                     📖 คู่มือ Exhibit B
+                  </button>
+                )}
+                {levelData.difficulty === 3 && (
+                  <button onClick={() => setShowExhibitC(true)} className="ml-auto bg-neo-accent text-white px-3 py-1 text-sm font-bold border-[2px] border-black shadow-[2px_2px_0_#222222] hover:-translate-y-0.5 transition-transform flex items-center gap-1">
+                    📖 คู่มือ Exhibit C
                   </button>
                 )}
               </div>
@@ -606,6 +616,81 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest sticky bottom-0"
             >
               ❌ ปิดเอกสาร
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Exhibit C Modal */}
+      {showExhibitC && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowExhibitC(false)}>
+          <div
+            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] p-6 max-w-md max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest">
+              🏛️ คู่มือ Exhibit C: วงกตบนซากปรักหักพังโบราณ
+            </h3>
+            <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
+              แผนผังความสัมพันธ์เชิงตรรกะที่สลักไว้บนหินโบราณ โดยใช้การเชื่อมโยงระหว่าง "หมายเลขห้อง (Chambers)" และ "กลุ่มตัวอักษร (Letters)" เพื่อใช้ถอดรหัสคำใบ้
+            </p>
+
+            <div className="mb-6">
+              <h4 className="text-xl font-bold mb-4 bg-black text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#222222]">
+                โครงสร้างการเชื่อมต่อ (Chamber Mapping)
+              </h4>
+              <ul className="list-none space-y-3 font-bold text-black">
+                <li className="flex items-start gap-2"><span className="text-xl">▪️</span> <span><strong>ห้องหมายเลข 1:</strong> เชื่อมต่อกับกลุ่มตัวอักษร O, A และ N</span></li>
+                <li className="flex items-start gap-2"><span className="text-xl">▪️</span> <span><strong>ห้องหมายเลข 2:</strong> เชื่อมต่อกับกลุ่มตัวอักษร N, I และ R</span></li>
+                <li className="flex items-start gap-2"><span className="text-xl">▪️</span> <span><strong>ห้องหมายเลข 3:</strong> เชื่อมต่อกับกลุ่มตัวอักษร U, L และ E</span></li>
+              </ul>
+            </div>
+
+            <div className="mb-6">
+              <h4 className="text-xl font-bold mb-4 bg-black text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#222222]">
+                ตารางอ้างอิงตัวอักษร (Letter Lookup)
+              </h4>
+              <table className="border-[2px] border-black w-full text-center text-black font-bold">
+                <thead>
+                  <tr className="bg-white border-b-[2px] border-black">
+                    <th className="border-r-[2px] border-black p-2">ตัวอักษร</th>
+                    <th className="p-2">ห้องที่สังกัด (Chamber)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b-[2px] border-black bg-neo-bg">
+                    <td className="border-r-[2px] border-black p-2">U, L, E</td>
+                    <td className="p-2">ห้องหมายเลข 3</td>
+                  </tr>
+                  <tr className="border-b-[2px] border-black bg-white">
+                    <td className="border-r-[2px] border-black p-2">I, R, N</td>
+                    <td className="p-2">ห้องหมายเลข 2</td>
+                  </tr>
+                  <tr className="bg-neo-bg">
+                    <td className="border-r-[2px] border-black p-2">O, A, N</td>
+                    <td className="p-2">ห้องหมายเลข 1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="bg-yellow-200 p-4 border-[2px] border-black mt-4 mb-6 shadow-[4px_4px_0_#222222]">
+              <h4 className="text-lg font-black text-black mb-2 flex items-center gap-2">💡 วิธีใช้งานเพื่อการสืบสวน</h4>
+              <p className="text-black font-bold text-sm leading-relaxed mb-2">ในการไขคดีระดับสูง คำใบ้มักจะไม่บอกความจริงตรงๆ เช่น:</p>
+              <ul className="list-none space-y-1 text-black font-bold text-sm italic mb-2 ml-4">
+                <li>- "ตัวอักษรลำดับที่ X ของชื่อผู้ต้องสงสัย เชื่อมต่อกับห้องหมายเลข Y"</li>
+              </ul>
+              <p className="text-black font-bold text-sm leading-relaxed">
+                เพียงแค่ดูว่า <strong>ตัวอักษร</strong> ที่โจทย์ให้มา ตรงกับ <strong>เลขห้อง</strong> ใดใน Exhibit นี้ แล้วนำเลขห้องนั้นไปเทียบหาความเชื่อมโยงถัดไป!
+              </p>
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setShowExhibitC(false)}
+              className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest sticky bottom-0"
+            >
+              ❌ ปิด
             </button>
           </div>
         </div>
