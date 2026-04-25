@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ReactNode } from 'react';
 import motivesData from '../data/Motive.json';
 import suspectsData from '../data/suspect_details.json';
