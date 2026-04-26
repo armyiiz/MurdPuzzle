@@ -72,15 +72,7 @@ export default function DailyCasePage() {
     });
   };
 
-  if (!dailyCase) {
-    return (
-      <div className="min-h-screen bg-neo-bg flex items-center justify-center font-mono">
-        <div className="text-2xl font-bold bg-white border-[3px] border-black shadow-[4px_4px_0_#000] p-6 animate-pulse">
-          กำลังเตรียมคดีประจำวัน... 🕵️‍♂️
-        </div>
-      </div>
-    );
-  }
+
 
   return (
     <div className="min-h-screen bg-neo-bg text-black font-mono pb-24">
@@ -100,7 +92,7 @@ export default function DailyCasePage() {
 
               <div className="bg-neo-notebook border-[2px] border-black p-4 mb-8 w-full shadow-[inset_2px_2px_0_rgba(0,0,0,0.1)]">
                 <div className="text-3xl tracking-widest mb-4">
-                  {Array(dailyCase.categories.length).fill('🟩').join('')}
+                  {Array(dailyCase?.categories.length || 3).fill('🟩').join('')}
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col items-center">
@@ -124,12 +116,18 @@ export default function DailyCasePage() {
               <p className="mt-8 text-sm font-bold opacity-70">กลับมาใหม่พรุ่งนี้สำหรับคดีต่อไป!</p>
             </div>
           </div>
-        ) : (
+        ) : dailyCase ? (
           <GamePlay
             levelData={dailyCase}
             onSolve={handleSolve}
             isSolved={false}
           />
+        ) : (
+          <div className="flex flex-col justify-center items-center min-h-[50vh] gap-4">
+            <h2 className="text-2xl font-black font-mono animate-pulse text-black">
+              กำลังเตรียมคดีปริศนา... 🕵️‍♀️
+            </h2>
+          </div>
         )}
       </main>
     </div>

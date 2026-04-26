@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any, react/no-unescaped-entities, react-hooks/set-state-in-effect, react-hooks/purity */
-"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any, react-hooks/set-state-in-effect, react-hooks/purity */
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -269,7 +268,7 @@ export function GamePlay({ levelData, onSolve, isSolved }: { levelData: LevelDat
                             {state === 1 ? '✓ พูดจริง' : state === 2 ? '✗ โกหก' : 'สถานะ ?'}
                           </button>
                         </div>
-                        <p className="text-black italic font-bold leading-relaxed">"{t.statement}"</p>
+                        <p className="text-black italic font-bold leading-relaxed">&quot;{t.statement}&quot;</p>
                       </li>
                     );
                   })}
