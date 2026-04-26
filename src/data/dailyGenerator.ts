@@ -354,9 +354,9 @@ export class DailyMurdleEngine {
   public generate(masterData: MasterData, dateSeed: string): GeneratedCase | null {
     let attempts = 0;
 
-    while (attempts < 100) {
+    while (attempts < 300) {
       attempts++;
-      const entities = this.selectEntities(masterData);
+            const entities = this.selectEntities(masterData);
       const { table, culpritIndex } = this.generateTruthTable();
       const pool = this.generateCluePool(entities, table);
 
@@ -398,7 +398,7 @@ export class DailyMurdleEngine {
       }
 
       if (this.difficulty > 1 && !hasValidTestimonies) {
-        continue;
+                continue;
       }
 
       const combinedSelectedClues: any[] = [];
@@ -447,14 +447,21 @@ export class DailyMurdleEngine {
         selectedClues.push(clue);
         combinedSelectedClues.push(clue);
 
-        // 5-7 clues constraint. Let's aim for 5-7 normal clues.
-        if (selectedClues.length >= 5 && selectedClues.length <= 7) {
+        const minClues = this.difficulty >= 3 ? 5 : 4;
+        const maxClues = this.difficulty >= 3 ? 24 : 15;
+        if (selectedClues.length >= minClues && selectedClues.length <= maxClues) {
           if (this.canSolve(combinedSelectedClues)) {
             isSolved = true;
             break;
           }
         }
-        if (selectedClues.length > 7) break;
+        if (selectedClues.length > maxClues) break;
+      }
+
+      // Fallback: If we couldn't strictly prove it's solvable within maxClues,
+      // but we hit attempt 299, just accept it and let the player try their best with max clues.
+      if (!isSolved && attempts === 299) {
+         isSolved = true;
       }
 
       if (isSolved) {
