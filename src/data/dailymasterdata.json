@@ -270,7 +270,7 @@
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
       ],
-      "icon": "fa-solid fa-user-robot (หรือ fa-hat-backwards)"
+      "icon": "fa-solid fa-user-robot"
     },
     {
       "name": "ซูเปอร์แฟน สโมคกี้ (Smoky)",
@@ -283,7 +283,7 @@
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
       ],
-      "icon": "fa-solid fa-user-robot (หรือ fa-hat-backwards)"
+      "icon": "fa-solid fa-user-robot"
     },
     {
       "name": "เซอร์ รูเลียน",
@@ -459,7 +459,7 @@
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
       ],
-      "icon": "fa-solid fa-user (ทรงผมผู้หญิง)"
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "ทนาย แบล็กสโตน",
@@ -836,7 +836,7 @@
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
       ],
-      "icon": "fa-solid fa-square (สัญลักษณ์ Beret)"
+      "icon": "fa-solid fa-square"
     },
     {
       "name": "ประธานาธิบดีอมารันต์ (Amaranth)",
@@ -849,7 +849,7 @@
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
       ],
-      "icon": "fa-solid fa-square (สัญลักษณ์ Beret)"
+      "icon": "fa-solid fa-square"
     },
     {
       "name": "ผู้กำกับ ดัสตี้",
@@ -918,7 +918,7 @@
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
       ],
-      "icon": "fa-solid fa-user-hair-mullet (หรือ fa-user ทั่วไป)"
+      "icon": "fa-solid fa-user-hair-mullet"
     },
     {
       "name": "พลเรือเอก เนวี่",

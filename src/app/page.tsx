@@ -329,7 +329,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                         ${isActive ? 'bg-black text-white shadow-[2px_2px_0_#A30B37]' : 'bg-white text-black hover:bg-neo-notebook shadow-[2px_2px_0_#222222]'}
                       `}
                     >
-                      <i className={`${getIconClass(tabKey)} text-base sm:text-2xl leading-none inline-block drop-shadow-[2px_2px_0_rgba(0,0,0,1)]`} style={{ color: getIconColor(0) }}></i> {label}
+                      <i className={`${getIconClass(tabKey)} text-base sm:text-2xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(0, String(levelData.id)) }}></i> {label}
                     </button>
                   );
                 })}
@@ -345,7 +345,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                       className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] hover:-translate-y-1 hover:shadow-[6px_6px_0_#222222] transition-all flex flex-col items-center justify-center p-3 aspect-square"
                     >
                       <div className="mb-2">
-                        <i className={`${getIconClass(activeTab, item.name)} text-3xl sm:text-4xl leading-none inline-block drop-shadow-[2px_2px_0_rgba(0,0,0,1)]`} style={{ color: getIconColor(index) }}></i>
+                        <i className={`${getIconClass(activeTab, item.name)} text-3xl sm:text-4xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(index, String(levelData.id)) }}></i>
                       </div>
                       <div className="font-black text-black text-xs text-center break-words w-full">
                         {extractEmojiAndText(item.name).text}
@@ -366,7 +366,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               >
                 {/* Modal Content */}
                 <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] w-24 h-24 flex items-center justify-center mb-4">
-                  <i className={`${getIconClass(activeTab, (levelData.profiles as any)[activeTab][selectedProfileIndex].name)} text-5xl leading-none inline-block drop-shadow-[2px_2px_0_rgba(0,0,0,1)]`} style={{ color: getIconColor(selectedProfileIndex) }}></i>
+                  <i className={`${getIconClass(activeTab, (levelData.profiles as any)[activeTab][selectedProfileIndex].name)} text-5xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(selectedProfileIndex, String(levelData.id)) }}></i>
                 </div>
 
                 <h3 className="text-2xl font-black text-black mb-4 border-b-[3px] border-black pb-2 text-center w-full">
@@ -533,7 +533,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
             </div>
             <div className="overflow-auto p-0 flex justify-center items-center bg-neo-bg flex-1 min-h-0 w-full">
-              <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} />
+              <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
             </div>
           </section>
 
