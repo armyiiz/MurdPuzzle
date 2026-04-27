@@ -2,10 +2,16 @@ import React, { ReactNode } from 'react';
 import dailyMasterData from '../data/dailymasterdata.json';
 
 const TINT_COLORS = [
-  '#000000', // 0: Black
-  '#A30B37', // 1: Deep Red
-  '#228B22', // 2: Forest Green
-  '#1E90FF', // 3: Royal Blue
+  '#000000', // Black
+  '#A30B37', // Deep Red
+  '#228B22', // Forest Green
+  '#1E90FF', // Royal Blue
+  '#FF1493', // Hot Pink
+  '#FF4500', // Orange Red
+  '#8A2BE2', // Blue Violet
+  '#FFD700', // Bright Gold
+  '#00CED1', // Dark Turquoise
+  '#8B4513', // Saddle Brown
 ];
 
 const BASE_ICONS: Record<string, string> = {
@@ -64,6 +70,8 @@ export const getIconClass = (category: string, itemName?: string): string => {
   return iconClassToRender;
 };
 
-export const getIconColor = (index: number): string => {
-  return TINT_COLORS[index % TINT_COLORS.length];
+export const getIconColor = (index: number, seedString: string = ''): string => {
+  const hash = seedString.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const offsetIndex = (index + hash) % TINT_COLORS.length;
+  return TINT_COLORS[offsetIndex];
 };

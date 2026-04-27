@@ -8,9 +8,10 @@ interface LogicGridProps {
   getCellState: (cat1: Category, cat2: Category, item1: string, item2: string) => CellState;
   toggleCell: (cat1: Category, cat2: Category, item1: string, item2: string) => void;
   isCellError?: (cat1: Category, cat2: Category, item1: string, item2: string) => boolean;
+  seedString?: string;
 }
 
-export function LogicGrid({ categories, getCellState, toggleCell, isCellError }: LogicGridProps) {
+export function LogicGrid({ categories, getCellState, toggleCell, isCellError, seedString }: LogicGridProps) {
   const numCats = categories.length;
   if (numCats < 3) return null;
 
@@ -50,7 +51,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full">
-                      <i className={`${getIconClass(cat.id, item)} text-[3vw] sm:text-[2vw] md:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]`} style={{ color: getIconColor(itemIndex) }}></i>
+                      <i className={`${getIconClass(cat.id, item)} text-[3vw] sm:text-[2vw] md:text-2xl [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(itemIndex, seedString) }}></i>
                     </div>
                   </td>
                 );
@@ -76,7 +77,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full">
-                      <i className={`${getIconClass(rowCat.id, rowItem)} text-[3vw] sm:text-[2vw] md:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]`} style={{ color: getIconColor(rowItemIndex) }}></i>
+                      <i className={`${getIconClass(rowCat.id, rowItem)} text-[3vw] sm:text-[2vw] md:text-2xl [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(rowItemIndex, seedString) }}></i>
                     </div>
                   </td>
 
@@ -101,8 +102,8 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                             hover:bg-gray-200
                           `}
                         >
-                          {state === 'O' && <span className={`${textSizeScale} sm:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]`}>✅</span>}
-                          {state === 'X' && <span className={`${textSizeScale} sm:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]`}>❌</span>}
+                          {state === 'O' && <span className={`${textSizeScale} sm:text-2xl [text-shadow:2px_2px_0_#000]`}>✅</span>}
+                          {state === 'X' && <span className={`${textSizeScale} sm:text-2xl [text-shadow:2px_2px_0_#000]`}>❌</span>}
                         </td>
                       );
                     });
