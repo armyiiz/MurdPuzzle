@@ -1,7 +1,7 @@
 import React from 'react';
 import { Category } from '../types/level';
 import { CellState } from '../hooks/useGameLogic';
-import { getCategoryEmoji } from '../utils/emojiHelper';
+import { getIconClass, getIconColor } from '../utils/emojiHelper';
 
 interface LogicGridProps {
   categories: Category[];
@@ -50,7 +50,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full">
-                      {getCategoryEmoji(cat.id, itemIndex, item)}
+                      <i className={`${getIconClass(cat.id, item)} text-[3vw] sm:text-[2vw] md:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]`} style={{ color: getIconColor(itemIndex) }}></i>
                     </div>
                   </td>
                 );
@@ -76,7 +76,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full">
-                      {getCategoryEmoji(rowCat.id, rowItemIndex, rowItem)}
+                      <i className={`${getIconClass(rowCat.id, rowItem)} text-[3vw] sm:text-[2vw] md:text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]`} style={{ color: getIconColor(rowItemIndex) }}></i>
                     </div>
                   </td>
 
