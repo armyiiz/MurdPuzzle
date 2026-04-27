@@ -15,7 +15,8 @@
         "Case 36: A Cruise to Die For (ล่องเรือมรณะ)",
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)",
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-astronaut"
     },
     {
       "name": "แกรนด์มาสเตอร์ โรส",
@@ -31,7 +32,8 @@
         "Case 42: The Return of the Coffee Shop Killer (การกลับมาของฆาตกรร้านกาแฟ)",
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)",
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)"
-      ]
+      ],
+      "icon": "fa-solid fa-chess"
     },
     {
       "name": "คณบดี กลอคัส",
@@ -43,7 +45,8 @@
       "zodiac": "กันย์",
       "appearIn": [
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-graduate"
     },
     {
       "name": "คณบดี กลอคัส (Glocus)",
@@ -55,7 +58,8 @@
       "zodiac": "กันย์",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-graduate"
     },
     {
       "name": "คริปโตซูโอโลจิสต์ คลาวด์",
@@ -70,7 +74,8 @@
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)",
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)",
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-paw"
     },
     {
       "name": "ครูใหญ่ แอปเปิลกรีน",
@@ -85,7 +90,8 @@
         "Case 46: A Cruise to Die For 2 (ล่องเรือมรณะ ภาค 2)",
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)",
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-chalkboard-user"
     },
     {
       "name": "คาวบอย แรสเบอร์รี",
@@ -97,7 +103,8 @@
       "zodiac": "-",
       "appearIn": [
         "Case 13: The Killing of a Cowboy (การสังหารคาวบอย)"
-      ]
+      ],
+      "icon": "fa-solid fa-hat-cowboy"
     },
     {
       "name": "เคราดำ",
@@ -109,7 +116,8 @@
       "zodiac": "-",
       "appearIn": [
         "Case 15: The Perplexing Problem of the Parrot (ปัญหาชวนฉงนของนกแก้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-skull-crossbones"
     },
     {
       "name": "เคราน้ำเงิน",
@@ -121,7 +129,8 @@
       "zodiac": "-",
       "appearIn": [
         "Case 15: The Perplexing Problem of the Parrot (ปัญหาชวนฉงนของนกแก้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-skull-crossbones"
     },
     {
       "name": "โค้ช แรสเบอร์รี",
@@ -139,7 +148,8 @@
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)",
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)",
         "Case 84: The Tour of Death (ทัวร์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-whistle"
     },
     {
       "name": "จอมเทพโคบอลต์",
@@ -151,7 +161,8 @@
       "zodiac": "กุมภ์",
       "appearIn": [
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)"
-      ]
+      ],
+      "icon": "fa-solid fa-bolt"
     },
     {
       "name": "เจ้าหน้าที่ คอปเปอร์",
@@ -173,7 +184,8 @@
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)",
         "Case 84: The Tour of Death (ทัวร์มรณะ)",
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-police"
     },
     {
       "name": "เชฟออเบอร์จีน",
@@ -187,7 +199,8 @@
         "Case 04: The Last Train to Murder (รถไฟขบวนสุดท้ายสู่ความตาย)",
         "Case 28: Investigation at the Investigation Institute (การสืบสวน ณ สถาบันการสอบสวน)",
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-hat-chef"
     },
     {
       "name": "ซินยอร์ เอเมอรัลด์",
@@ -201,7 +214,8 @@
         "Case 02: And Then There Was Another One (แล้วก็มีอีกราย)",
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)",
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "ซิลเวอร์ตัน ระดับตำนาน",
@@ -218,7 +232,8 @@
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)",
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-coins"
     },
     {
       "name": "ซิสเตอร์ ลาพิส",
@@ -236,7 +251,8 @@
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)",
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)",
         "Case 84: The Tour of Death (ทัวร์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-cross"
     },
     {
       "name": "ซูเปอร์แฟน สโมคกี้",
@@ -253,7 +269,8 @@
         "Case 84: The Tour of Death (ทัวร์มรณะ)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "ซูเปอร์แฟน สโมคกี้ (Smoky)",
@@ -265,7 +282,8 @@
       "zodiac": "กันย์",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "เซอร์ รูเลียน",
@@ -281,7 +299,8 @@
         "Case 49: Death in the Dead Woods (ความตายในป่ามรณะ)",
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)",
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "ดยุคแห่งเวอร์มิลเลียน",
@@ -296,7 +315,8 @@
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)",
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "ดร. คริมสัน",
@@ -314,7 +334,8 @@
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)",
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-doctor"
     },
     {
       "name": "ดร. ซีเชลล์",
@@ -328,7 +349,8 @@
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)",
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-doctor"
     },
     {
       "name": "ดัชเชสแห่งเวอร์มิลเลียน",
@@ -343,7 +365,8 @@
         "Case 41: The Psychic Who Didn't Foresee His Death (ร่างทรงผู้ไม่รู้อนาคตความตายของตัวเอง)",
         "Case 43: The Heinous Crime of Penguicide (อาชญากรรมร้ายแรงแห่งการฆ่านกเพนกวิน)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "ดาราดัง อะบาลอน",
@@ -357,7 +380,8 @@
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-star"
     },
     {
       "name": "ดิ อะเมซิ่ง ออรีโอลิน",
@@ -372,7 +396,8 @@
         "Case 25: The Death of Justice (อวสานแห่งความยุติธรรม)",
         "Case 41: The Psychic Who Didn't Foresee His Death (ร่างทรงผู้ไม่รู้อนาคตความตายของตัวเอง)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-wand-magic-sparkles"
     },
     {
       "name": "ดิ อะเมซิ่ง ออรีโอลิน (Aureolin)",
@@ -384,7 +409,8 @@
       "zodiac": "เมษ",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-wand-magic-sparkles"
     },
     {
       "name": "เดม ออบซิเดียน",
@@ -403,7 +429,8 @@
         "Case 24: Will the Foreman Please Die? (หัวหน้าลูกขุนจะยอมตายดี ๆ ไหม?)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)",
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-crown"
     },
     {
       "name": "เดม ออบซิเดียน (Obsidian)",
@@ -415,7 +442,8 @@
       "zodiac": "สิงห์",
       "appearIn": [
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-crown"
     },
     {
       "name": "ตัวประกอบ มาเรนโก",
@@ -430,7 +458,8 @@
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-masks-theater"
     },
     {
       "name": "ทนาย แบล็กสโตน",
@@ -447,7 +476,8 @@
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)",
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)",
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-scale-balanced"
     },
     {
       "name": "เทพธิดาคริสตัล",
@@ -459,7 +489,8 @@
       "zodiac": "สิงห์",
       "appearIn": [
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)"
-      ]
+      ],
+      "icon": "fa-solid fa-star"
     },
     {
       "name": "นักปรัชญา โบน",
@@ -474,7 +505,8 @@
         "Case 18: Throw the (Bookie-Winning) Book at Them! (จงขว้างหนังสือใส่พวกเขา!)",
         "Case 48: The Body in the Moonlit Ruins (ศพในซากปรักหักพังใต้แสงจันทร์)",
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-brain"
     },
     {
       "name": "นักภาษาศาสตร์ ฟลินต์",
@@ -488,7 +520,8 @@
         "Case 29: Oh No, Not in the Chateau! (โอ้ไม่นะ ไม่ใช่ในคฤหาสน์!)",
         "Case 35: Murder at the Cult: A True-Crime Documentary (ฆาตกรรมในลัทธิ: สารคดีอาชญากรรมจริง)",
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-language"
     },
     {
       "name": "นักเลขศาสตร์ ไนท์",
@@ -504,7 +537,8 @@
         "Case 35: Murder at the Cult: A True-Crime Documentary (ฆาตกรรมในลัทธิ: สารคดีอาชญากรรมจริง)",
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)",
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)"
-      ]
+      ],
+      "icon": "fa-solid fa-calculator"
     },
     {
       "name": "นักสมุนไพร ออนิกซ์",
@@ -519,7 +553,8 @@
         "Case 30: The Case of the Definitely Dead President (คดีท่านประธานาธิบดีที่ตายสนิท)",
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "นักสังคมวิทยา อัมเบอร์",
@@ -533,7 +568,8 @@
         "Case 29: Oh No, Not in the Chateau! (โอ้ไม่นะ ไม่ใช่ในคฤหาสน์!)",
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-users"
     },
     {
       "name": "นักสืบ โลจิโก",
@@ -545,7 +581,8 @@
       "zodiac": "-",
       "appearIn": [
         "Case 18: Throw the (Bookie-Winning) Book at Them! (จงขว้างหนังสือใส่พวกเขา!)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "นักโหราศาสตร์ อะซูร์",
@@ -560,7 +597,8 @@
         "Case 47: The Mystery of the Mysterious Island (ความลึกลับของเกาะลึกลับ)",
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-moon"
     },
     {
       "name": "นายกเทศมนตรี ฮันนี่",
@@ -577,7 +615,8 @@
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)",
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)",
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-building-columns"
     },
     {
       "name": "นายพล คอฟฟี่",
@@ -596,7 +635,8 @@
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)",
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-medal"
     },
     {
       "name": "บรรณาธิการ ไอวอรี่",
@@ -612,7 +652,8 @@
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)",
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-pen-nib"
     },
     {
       "name": "บราเธอร์ บราวน์สโตน",
@@ -630,7 +671,8 @@
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)",
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-place-of-worship"
     },
     {
       "name": "บอส ชาร์โคล",
@@ -644,7 +686,8 @@
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)",
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)",
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-ninja"
     },
     {
       "name": "บารอน มารูน",
@@ -660,7 +703,8 @@
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)",
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "บิชอป อะซูร์",
@@ -675,7 +719,8 @@
         "Case 33: A Recent Death in an Ancient Temple (ความตายครั้งใหม่ในวิหารโบราณ)",
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)",
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-place-of-worship"
     },
     {
       "name": "บุ๊กกี้-วินเนอร์ เกนส์โบโร",
@@ -691,7 +736,8 @@
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)",
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-trophy"
     },
     {
       "name": "เบบี้เฟซ บลู",
@@ -703,7 +749,8 @@
       "zodiac": "เมถุน",
       "appearIn": [
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ปรมาจารย์เล่นแร่แปรธาตุ เรเวน",
@@ -716,7 +763,8 @@
       "appearIn": [
         "Case 30: The Case of the Definitely Dead President (คดีท่านประธานาธิบดีที่ตายสนิท)",
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "ปรมาจารย์เล่นแร่แปรธาตุ เรเวน (Raven)",
@@ -728,7 +776,8 @@
       "zodiac": "มีน",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "ประธาน ชอล์ก",
@@ -743,7 +792,8 @@
         "Case 21: Oil Kill You For This (น้ำมันนอง เลือดนอง)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-tie"
     },
     {
       "name": "ประธาน มิดไนท์",
@@ -758,7 +808,8 @@
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-tie"
     },
     {
       "name": "ประธาน มิดไนท์ (Midnight)",
@@ -770,7 +821,8 @@
       "zodiac": "มังกร",
       "appearIn": [
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-tie"
     },
     {
       "name": "ประธานาธิบดีอมารันต์",
@@ -783,7 +835,8 @@
       "appearIn": [
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-tie"
     },
     {
       "name": "ประธานาธิบดีอมารันต์ (Amaranth)",
@@ -795,7 +848,8 @@
       "zodiac": "เมถุน",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-tie"
     },
     {
       "name": "ผู้กำกับ ดัสตี้",
@@ -812,7 +866,8 @@
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)",
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-clapperboard"
     },
     {
       "name": "ผู้ช่วย แอปเปิลกรีน",
@@ -828,7 +883,8 @@
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-chalkboard-user"
     },
     {
       "name": "ผู้พิพากษา ไพน์",
@@ -845,7 +901,8 @@
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)",
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)",
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-gavel"
     },
     {
       "name": "ผู้อำนวยการผลิต สตีล",
@@ -860,7 +917,8 @@
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)",
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-briefcase"
     },
     {
       "name": "พลเรือเอก เนวี่",
@@ -874,7 +932,8 @@
         "Case 36: A Cruise to Die For (ล่องเรือมรณะ)",
         "Case 46: A Cruise to Die For 2 (ล่องเรือมรณะ ภาค 2)",
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-anchor"
     },
     {
       "name": "พลเรือเอก มารีน (Marine)",
@@ -886,7 +945,8 @@
       "zodiac": "กรกฎ",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-anchor"
     },
     {
       "name": "เพิร์ล เอจ",
@@ -902,7 +962,8 @@
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)",
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-pen-nib"
     },
     {
       "name": "มนุษย์อวกาศ บลูสกี้",
@@ -917,7 +978,8 @@
         "Case 20: Dead Tired (เหนื่อยตายชัก)",
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-rocket"
     },
     {
       "name": "มัคนายิกา เวอร์ดิกริส",
@@ -931,7 +993,8 @@
         "Case 07: A Quaint Little Village Slaying (การสังหารในหมู่บ้านอันเงียบสงบ)",
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)",
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-church"
     },
     {
       "name": "มิกซ์ แทนเจอรีน",
@@ -949,7 +1012,8 @@
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)",
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "มิดไนท์ ที่ 1",
@@ -961,7 +1025,8 @@
       "zodiac": "เมถุน",
       "appearIn": [
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "มิดไนท์ ที่ 3",
@@ -981,7 +1046,8 @@
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)",
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "มิดไนท์ ที่ 3 (Midnight 3)",
@@ -993,7 +1059,8 @@
       "zodiac": "ตุลย์",
       "appearIn": [
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-coins"
     },
     {
       "name": "มิดไนท์ วัยทีน",
@@ -1005,7 +1072,8 @@
       "zodiac": "มังกร",
       "appearIn": [
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "มิส ซัฟฟรอน",
@@ -1022,7 +1090,8 @@
         "Case 25: The Death of Justice (อวสานแห่งความยุติธรรม)",
         "Case 39: The Case of the Haunted Hotel (คดีโรงแรมผีสิง)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "มิส ซัฟฟรอน (Saffron)",
@@ -1034,7 +1103,8 @@
       "zodiac": "ตุลย์",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "มิสเตอร์ แชโดว์",
@@ -1049,7 +1119,8 @@
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)",
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)",
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "มิสเตอร์ แชโดว์ (Shadow)",
@@ -1062,7 +1133,8 @@
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)",
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "มิสเตอร์ออร์ดินารี่ บลูสกาย",
@@ -1074,7 +1146,8 @@
       "zodiac": "เมษ",
       "appearIn": [
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "รองประธานมอฟ",
@@ -1092,7 +1165,8 @@
         "Case 32: The Case of the Lab with Legal Issues (คดีแล็บมีปัญหาทางกฎหมาย)",
         "Case 46: A Cruise to Die For 2 (ล่องเรือมรณะ ภาค 2)",
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-tie"
     },
     {
       "name": "รัฐมนตรี เซลาดอน",
@@ -1109,7 +1183,8 @@
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-jet-fighter"
     },
     {
       "name": "ไร้เครา",
@@ -1121,7 +1196,8 @@
       "zodiac": "-",
       "appearIn": [
         "Case 15: The Perplexing Problem of the Parrot (ปัญหาชวนฉงนของนกแก้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-skull-crossbones"
     },
     {
       "name": "ลอร์ด ลาเวนเดอร์",
@@ -1140,7 +1216,8 @@
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)",
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-masks-theater"
     },
     {
       "name": "ลุงมิดไนท์",
@@ -1156,7 +1233,8 @@
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)",
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-house-chimney"
     },
     {
       "name": "เลดี้ ไวโอเล็ต",
@@ -1170,7 +1248,8 @@
         "Case 31: The New Moon Murder (ฆาตกรรมคืนเดือนดับ)",
         "Case 39: The Case of the Haunted Hotel (คดีโรงแรมผีสิง)",
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "วิสเคานต์ เอมิเนนซ์",
@@ -1185,7 +1264,8 @@
         "Case 34: The Body in the Graveyard (ศพในสุสาน)",
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "วิสเคานต์ เอมิเนนซ์ (Eminence)",
@@ -1197,7 +1277,8 @@
       "zodiac": "มีน",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "สหายแชมเปญ",
@@ -1213,7 +1294,8 @@
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)",
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "สหายแชมเปญ (Champagne)",
@@ -1225,7 +1307,8 @@
       "zodiac": "มังกร",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "สารวัตร อิร์ราติโน",
@@ -1237,7 +1320,8 @@
       "zodiac": "กุมภ์",
       "appearIn": [
         "Case 33: A Recent Death in an Ancient Temple (ความตายครั้งใหม่ในวิหารโบราณ)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "สารวัตร อิร์ราติโน (Irratino)",
@@ -1249,7 +1333,8 @@
       "zodiac": "กุมภ์",
       "appearIn": [
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "สิบตรี คอฟฟี่",
@@ -1261,7 +1346,8 @@
       "zodiac": "-",
       "appearIn": [
         "Case 13: The Killing of a Cowboy (การสังหารคาวบอย)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "หลวงพ่อ แมงโก้",
@@ -1278,7 +1364,8 @@
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)",
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)",
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "อธิการบดีทัสคานี",
@@ -1295,7 +1382,8 @@
         "Case 49: Death in the Dead Woods (ความตายในป่ามรณะ)",
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)",
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "อธิการบดีทัสคานี (Tuscany)",
@@ -1307,7 +1395,8 @@
       "zodiac": "ตุลย์",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "เอเจนท์ อาร์ไกล์",
@@ -1322,7 +1411,8 @@
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)",
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-id-badge"
     },
     {
       "name": "เอเจนท์ อิงก์",
@@ -1337,7 +1427,8 @@
         "Case 17: The Case of the Contract & the Captain (คดีสัญญาเลือดและกัปตัน)",
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-id-badge"
     },
     {
       "name": "เอิร์ล เกรย์",
@@ -1354,7 +1445,8 @@
         "Case 49: Death in the Dead Woods (ความตายในป่ามรณะ)",
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)",
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     },
     {
       "name": "แฮก แบล็กซ์ตัน",
@@ -1371,7 +1463,8 @@
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-user"
     }
   ],
   "weapons": [
@@ -1382,7 +1475,8 @@
       "material": "โลหะ",
       "appearIn": [
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-scissors"
     },
     {
       "name": "กรรไกรตัดแต่งกิ่งไม้",
@@ -1393,7 +1487,8 @@
         "Case 07: A Quaint Little Village Slaying (การสังหารในหมู่บ้านอันเงียบสงบ)",
         "Case 09: Hedge Your Bets, The Constable Cried (เดิมพันด้วยชีวิต ตำรวจตะโกนก้อง)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-scissors"
     },
     {
       "name": "กระดานผีถ้วยแก้ว",
@@ -1402,7 +1497,8 @@
       "material": "-",
       "appearIn": [
         "Case 38: Irratino Returns to His Estate (อิร์ราติโนกลับคฤหาสน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-ghost"
     },
     {
       "name": "กระดาษหนึ่งรีม",
@@ -1411,7 +1507,8 @@
       "material": "-",
       "appearIn": [
         "Case 16: Fifteen Percent of Murder (ค่าหัวคิวสิบห้าเปอร์เซ็นต์)"
-      ]
+      ],
+      "icon": "fa-solid fa-file-lines"
     },
     {
       "name": "กระดูกยักษ์",
@@ -1420,7 +1517,8 @@
       "material": "กระดูก",
       "appearIn": [
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-bone"
     },
     {
       "name": "กระต่ายที่ฝึกมาอย่างดีแต่อันตราย",
@@ -1429,7 +1527,8 @@
       "material": "กระต่าย",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-rabbit"
     },
     {
       "name": "กระถางดอกไม้",
@@ -1439,7 +1538,8 @@
       "appearIn": [
         "Case 09: Hedge Your Bets, The Constable Cried (เดิมพันด้วยชีวิต ตำรวจตะโกนก้อง)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-seedling"
     },
     {
       "name": "กระบอง",
@@ -1449,7 +1549,8 @@
       "appearIn": [
         "Case 24: Will the Foreman Please Die? (หัวหน้าลูกขุนจะยอมตายดี ๆ ไหม?)",
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gavel"
     },
     {
       "name": "กระบองเพชร",
@@ -1458,7 +1559,8 @@
       "material": "-",
       "appearIn": [
         "Case 13: The Killing of a Cowboy (การสังหารคาวบอย)"
-      ]
+      ],
+      "icon": "fa-solid fa-gavel"
     },
     {
       "name": "กระเป๋าเดินทางหนัง",
@@ -1467,7 +1569,8 @@
       "material": "-",
       "appearIn": [
         "Case 04: The Last Train to Murder (รถไฟขบวนสุดท้ายสู่ความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-suitcase"
     },
     {
       "name": "กระเป๋าใส่เงินสด",
@@ -1476,7 +1579,8 @@
       "material": "ผ้าและกระดาษ",
       "appearIn": [
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-suitcase"
     },
     {
       "name": "กริชคริสตัล",
@@ -1487,7 +1591,8 @@
         "Case 38: Irratino Returns to His Estate (อิร์ราติโนกลับคฤหาสน์)",
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-dagger"
     },
     {
       "name": "กริชต้องคำสาป",
@@ -1497,7 +1602,8 @@
       "appearIn": [
         "Case 29: Oh No, Not in the Chateau! (โอ้ไม่นะ ไม่ใช่ในคฤหาสน์!)",
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-dagger"
     },
     {
       "name": "กริชพิธีกรรม",
@@ -1508,7 +1614,8 @@
         "Case 27: A Mysterious Murder in the Mysterious Woods (ฆาตกรรมปริศนาในป่าลึกลับ)",
         "Case 33: A Recent Death in an Ancient Temple (ความตายครั้งใหม่ในวิหารโบราณ)",
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-dagger"
     },
     {
       "name": "กริชหยาดน้ำแข็ง",
@@ -1517,7 +1624,8 @@
       "material": "-",
       "appearIn": [
         "Case 43: The Heinous Crime of Penguicide (อาชญากรรมร้ายแรงแห่งการฆ่านกเพนกวิน)"
-      ]
+      ],
+      "icon": "fa-solid fa-dagger"
     },
     {
       "name": "กล้องจุลทรรศน์หนัก",
@@ -1526,7 +1634,8 @@
       "material": "-",
       "appearIn": [
         "Case 05: Physician, Heal Myself! (หมอรักษาตัวเองเถอะ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-microscope"
     },
     {
       "name": "กองหนังสือขนาดยักษ์",
@@ -1535,7 +1644,8 @@
       "material": "-",
       "appearIn": [
         "Case 16: Fifteen Percent of Murder (ค่าหัวคิวสิบห้าเปอร์เซ็นต์)"
-      ]
+      ],
+      "icon": "fa-solid fa-book"
     },
     {
       "name": "กองเอกสารมหึมา",
@@ -1545,7 +1655,8 @@
       "appearIn": [
         "Case 23: The Courthouse Killing (ฆาตกรรมคาศาล)",
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-file-lines"
     },
     {
       "name": "ก้อนหิน",
@@ -1558,7 +1669,8 @@
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)",
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)",
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-hill-rockslide"
     },
     {
       "name": "กะโหลกคริสตัล",
@@ -1569,7 +1681,8 @@
         "Case 33: A Recent Death in an Ancient Temple (ความตายครั้งใหม่ในวิหารโบราณ)",
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)",
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-skull"
     },
     {
       "name": "กะโหลกมนุษย์",
@@ -1578,7 +1691,8 @@
       "material": "กระดูก",
       "appearIn": [
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-skull"
     },
     {
       "name": "กับดักหมี",
@@ -1588,7 +1702,8 @@
       "appearIn": [
         "Case 02: And Then There Was Another One (แล้วก็มีอีกราย)",
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-trap"
     },
     {
       "name": "กุญแจมือทองคำ",
@@ -1597,7 +1712,8 @@
       "material": "-",
       "appearIn": [
         "Case 25: The Death of Justice (อวสานแห่งความยุติธรรม)"
-      ]
+      ],
+      "icon": "fa-solid fa-handcuffs"
     },
     {
       "name": "กุหลาบปลอม",
@@ -1607,7 +1723,8 @@
       "appearIn": [
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-rose"
     },
     {
       "name": "ขนมแท่งค้างคืน",
@@ -1616,7 +1733,8 @@
       "material": "ช็อกโกแลต",
       "appearIn": [
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-candy-cane"
     },
     {
       "name": "ขวดไซยาไนด์",
@@ -1626,7 +1744,8 @@
       "appearIn": [
         "Case 07: A Quaint Little Village Slaying (การสังหารในหมู่บ้านอันเงียบสงบ)",
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-bottle-droplet"
     },
     {
       "name": "ขวดน้ำมัน",
@@ -1635,7 +1754,8 @@
       "material": "-",
       "appearIn": [
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)"
-      ]
+      ],
+      "icon": "fa-solid fa-bottle-droplet"
     },
     {
       "name": "ขวดน้ำมันศักดิ์สิทธิ์",
@@ -1644,7 +1764,8 @@
       "material": "น้ำมันและสารพิษ",
       "appearIn": [
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-bottle-droplet"
     },
     {
       "name": "ขวดยาพิษ",
@@ -1655,7 +1776,8 @@
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)",
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-bottle-droplet"
     },
     {
       "name": "ขวดยาพิษร้ายแรง",
@@ -1664,7 +1786,8 @@
       "material": "-",
       "appearIn": [
         "Case 34: The Body in the Graveyard (ศพในสุสาน)"
-      ]
+      ],
+      "icon": "fa-solid fa-bottle-droplet"
     },
     {
       "name": "ขวดไวน์",
@@ -1678,7 +1801,8 @@
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)",
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-bottle-droplet"
     },
     {
       "name": "ขวดหมึกผสมยาพิษ",
@@ -1687,7 +1811,8 @@
       "material": "-",
       "appearIn": [
         "Case 22: They Bill You For Dying (ตายก็ต้องจ่ายค่าธรรมเนียม)"
-      ]
+      ],
+      "icon": "fa-solid fa-bottle-droplet"
     },
     {
       "name": "ขวาน",
@@ -1700,7 +1825,8 @@
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)",
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)",
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)"
-      ]
+      ],
+      "icon": "fa-solid fa-axe"
     },
     {
       "name": "ขวานน้ำแข็ง",
@@ -1709,7 +1835,8 @@
       "material": "-",
       "appearIn": [
         "Case 43: The Heinous Crime of Penguicide (อาชญากรรมร้ายแรงแห่งการฆ่านกเพนกวิน)"
-      ]
+      ],
+      "icon": "fa-solid fa-axe"
     },
     {
       "name": "ขวานปีนเขา",
@@ -1718,7 +1845,8 @@
       "material": "โลหะและไม้",
       "appearIn": [
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-axe"
     },
     {
       "name": "ของประดับผนัง",
@@ -1727,7 +1855,8 @@
       "material": "โลหะ",
       "appearIn": [
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-image"
     },
     {
       "name": "ขาตั้งไฟ",
@@ -1737,7 +1866,8 @@
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-skull"
     },
     {
       "name": "เข็มกลัดสุดพิเศษ",
@@ -1746,7 +1876,8 @@
       "material": "-",
       "appearIn": [
         "Case 29: Oh No, Not in the Chateau! (โอ้ไม่นะ ไม่ใช่ในคฤหาสน์!)"
-      ]
+      ],
+      "icon": "fa-solid fa-syringe"
     },
     {
       "name": "เข็มโบท็อกซ์",
@@ -1755,7 +1886,8 @@
       "material": "-",
       "appearIn": [
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)"
-      ]
+      ],
+      "icon": "fa-solid fa-syringe"
     },
     {
       "name": "แขนโครงกระดูก",
@@ -1766,7 +1898,8 @@
         "Case 33: A Recent Death in an Ancient Temple (ความตายครั้งใหม่ในวิหารโบราณ)",
         "Case 34: The Body in the Graveyard (ศพในสุสาน)",
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)"
-      ]
+      ],
+      "icon": "fa-solid fa-bone"
     },
     {
       "name": "คทาประดับเพชร",
@@ -1775,7 +1908,8 @@
       "material": "-",
       "appearIn": [
         "Case 14: A Very Proper Murder (การฆาตกรรมที่สมเกียรติเกินไป)"
-      ]
+      ],
+      "icon": "fa-solid fa-wand-magic"
     },
     {
       "name": "คทาศักดิ์สิทธิ์",
@@ -1784,7 +1918,8 @@
       "material": "แก้วและสารพิษ",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-wand-magic"
     },
     {
       "name": "คบเพลิง",
@@ -1793,7 +1928,8 @@
       "material": "ไม้และไฟ",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-fire"
     },
     {
       "name": "ค้อนไม้พิพากษา",
@@ -1802,7 +1938,8 @@
       "material": "-",
       "appearIn": [
         "Case 24: Will the Foreman Please Die? (หัวหน้าลูกขุนจะยอมตายดี ๆ ไหม?)"
-      ]
+      ],
+      "icon": "fa-solid fa-gavel"
     },
     {
       "name": "คอมพิวเตอร์เครื่องเก่า",
@@ -1811,7 +1948,8 @@
       "material": "พลาสติกและเทคโนโลยี",
       "appearIn": [
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-computer"
     },
     {
       "name": "เครื่องจักรพลังงานกึ่งนิรันดร์",
@@ -1822,7 +1960,8 @@
         "Case 28: Investigation at the Investigation Institute (การสืบสวน ณ สถาบันการสอบสวน)",
         "Case 41: The Psychic Who Didn't Foresee His Death (ร่างทรงผู้ไม่รู้อนาคตความตายของตัวเอง)",
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "เครื่องตรวจจับวิญญาณ",
@@ -1832,7 +1971,8 @@
       "appearIn": [
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)",
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "เครื่องพิมพ์",
@@ -1841,7 +1981,8 @@
       "material": "พลาสติกและเทคโนโลยี",
       "appearIn": [
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "เครื่องพิมพ์ดีดโบราณ",
@@ -1853,7 +1994,8 @@
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)",
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "เครื่องมือเทียมวิทยาศาสตร์",
@@ -1864,7 +2006,8 @@
         "Case 30: The Case of the Definitely Dead President (คดีท่านประธานาธิบดีที่ตายสนิท)",
         "Case 35: Murder at the Cult: A True-Crime Documentary (ฆาตกรรมในลัทธิ: สารคดีอาชญากรรมจริง)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "จอกศักดิ์สิทธิ์",
@@ -1873,7 +2016,8 @@
       "material": "-",
       "appearIn": [
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-wine-glass"
     },
     {
       "name": "จานหรู",
@@ -1882,7 +2026,8 @@
       "material": "เซรามิก",
       "appearIn": [
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)"
-      ]
+      ],
+      "icon": "fa-solid fa-plate-wheat"
     },
     {
       "name": "แจกันหายาก",
@@ -1892,7 +2037,8 @@
       "appearIn": [
         "Case 03: The Art of the Kill (ศิลปะแห่งการสังหาร)",
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-vase"
     },
     {
       "name": "ฉมวก",
@@ -1901,7 +2047,8 @@
       "material": "-",
       "appearIn": [
         "Case 02: And Then There Was Another One (แล้วก็มีอีกราย)"
-      ]
+      ],
+      "icon": "fa-solid fa-anchor"
     },
     {
       "name": "ฉมวกหาปลา",
@@ -1910,7 +2057,8 @@
       "material": "-",
       "appearIn": [
         "Case 46: A Cruise to Die For 2 (ล่องเรือมรณะ ภาค 2)"
-      ]
+      ],
+      "icon": "fa-solid fa-anchor"
     },
     {
       "name": "ช็อกโกแลตร้อนผสมยาพิษ",
@@ -1919,7 +2067,8 @@
       "material": "-",
       "appearIn": [
         "Case 43: The Heinous Crime of Penguicide (อาชญากรรมร้ายแรงแห่งการฆ่านกเพนกวิน)"
-      ]
+      ],
+      "icon": "fa-solid fa-mug-hot"
     },
     {
       "name": "ช้อน",
@@ -1928,7 +2077,8 @@
       "material": "โลหะ",
       "appearIn": [
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-spoon"
     },
     {
       "name": "ช้อนงอ",
@@ -1937,7 +2087,8 @@
       "material": "โลหะ",
       "appearIn": [
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)"
-      ]
+      ],
+      "icon": "fa-solid fa-spoon"
     },
     {
       "name": "ชะแลง",
@@ -1949,7 +2100,8 @@
         "Case 21: Oil Kill You For This (น้ำมันนอง เลือดนอง)",
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-crowbar"
     },
     {
       "name": "ชุดดีวีดีบ็อกซ์เซ็ต",
@@ -1958,7 +2110,8 @@
       "material": "ไม้",
       "appearIn": [
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-compact-disc"
     },
     {
       "name": "เชือกกะลาสี",
@@ -1968,7 +2121,8 @@
       "appearIn": [
         "Case 36: A Cruise to Die For (ล่องเรือมรณะ)",
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)"
-      ]
+      ],
+      "icon": "fa-solid fa-ring"
     },
     {
       "name": "เชือกที่ทำจากเสื้อผ้าแบรนด์เนม",
@@ -1977,7 +2131,8 @@
       "material": "-",
       "appearIn": [
         "Case 25: The Death of Justice (อวสานแห่งความยุติธรรม)"
-      ]
+      ],
+      "icon": "fa-solid fa-ring"
     },
     {
       "name": "เชื้อกาฬโรค",
@@ -1986,7 +2141,8 @@
       "material": "-",
       "appearIn": [
         "Case 14: A Very Proper Murder (การฆาตกรรมที่สมเกียรติเกินไป)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "เซกซ์แทนท์ (เครื่องมือวัดมุมดาว)",
@@ -1995,7 +2151,8 @@
       "material": "-",
       "appearIn": [
         "Case 19: Death on the Book Tour (ความตายในทัวร์โปรโมตหนังสือ)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ดาบเก่า",
@@ -2007,7 +2164,8 @@
         "Case 47: The Mystery of the Mysterious Island (ความลึกลับของเกาะลึกลับ)",
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)",
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-sword"
     },
     {
       "name": "ดาบซิมิทาร์",
@@ -2017,7 +2175,8 @@
       "appearIn": [
         "Case 15: The Perplexing Problem of the Parrot (ปัญหาชวนฉงนของนกแก้ว)",
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)"
-      ]
+      ],
+      "icon": "fa-solid fa-sword"
     },
     {
       "name": "ดาบประกอบฉาก",
@@ -2026,7 +2185,8 @@
       "material": "-",
       "appearIn": [
         "Case 44: Murder on the Stage (ฆาตกรรมบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-sword"
     },
     {
       "name": "ดินสอแหลม",
@@ -2035,7 +2195,8 @@
       "material": "ไม้และโลหะ",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-pencil"
     },
     {
       "name": "ตราประทับ",
@@ -2044,7 +2205,8 @@
       "material": "-",
       "appearIn": [
         "Case 26: The Murder of a Mailman (ฆาตกรรมพนักงานไปรษณีย์)"
-      ]
+      ],
+      "icon": "fa-solid fa-stamp"
     },
     {
       "name": "ตราประทับทนายความ",
@@ -2053,7 +2215,8 @@
       "material": "-",
       "appearIn": [
         "Case 23: The Courthouse Killing (ฆาตกรรมคาศาล)"
-      ]
+      ],
+      "icon": "fa-solid fa-scale-balanced"
     },
     {
       "name": "ตะเกียบ",
@@ -2062,7 +2225,8 @@
       "material": "ไม้",
       "appearIn": [
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)"
-      ]
+      ],
+      "icon": "fa-solid fa-utensils"
     },
     {
       "name": "ตาชั่งแห่งยุติธรรม",
@@ -2071,7 +2235,8 @@
       "material": "-",
       "appearIn": [
         "Case 23: The Courthouse Killing (ฆาตกรรมคาศาล)"
-      ]
+      ],
+      "icon": "fa-solid fa-scale-balanced"
     },
     {
       "name": "ตำราการเมือง",
@@ -2080,7 +2245,8 @@
       "material": "กระดาษ",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-book-open"
     },
     {
       "name": "ถ้วยกาแฟผสมยาพิษ",
@@ -2089,7 +2255,8 @@
       "material": "-",
       "appearIn": [
         "Case 11: The Case of the Coffee Shop Killer (คดีฆาตกรในร้านกาแฟ)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask-vial"
     },
     {
       "name": "ถ้วยรางวัล",
@@ -2109,7 +2276,8 @@
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)",
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-coins"
     },
     {
       "name": "ถังดับเพลิง",
@@ -2120,7 +2288,8 @@
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)",
         "Case 84: The Tour of Death (ทัวร์มรณะ)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ถังน้ำมัน",
@@ -2131,7 +2300,8 @@
         "Case 21: Oil Kill You For This (น้ำมันนอง เลือดนอง)",
         "Case 98: Stage Fright (ความกลัวบนเวที)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ถังออกซิเจน",
@@ -2140,7 +2310,8 @@
       "material": "โลหะและอากาศ",
       "appearIn": [
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ถุงซักผ้าใส่มีดเต็มถุง",
@@ -2149,7 +2320,8 @@
       "material": "-",
       "appearIn": [
         "Case 39: The Case of the Haunted Hotel (คดีโรงแรมผีสิง)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "ถุงทราย",
@@ -2158,7 +2330,8 @@
       "material": "ทรายและผ้าใบ",
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ถุงผ้าโท้ท",
@@ -2168,7 +2341,8 @@
       "appearIn": [
         "Case 12: The Mysterious Mystery Bookshop Mystery (คดีปริศนาในร้านหนังสือปริศนาสุดลึกลับ)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ถุงมือหนัง",
@@ -2179,7 +2353,8 @@
         "Case 20: Dead Tired (เหนื่อยตายชัก)",
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "แถบฟิล์ม",
@@ -2188,7 +2363,8 @@
       "material": "พลาสติก",
       "appearIn": [
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ทนายความค่าตัวสองแสนห้าหมื่นดอลลาร์",
@@ -2197,7 +2373,8 @@
       "material": "-",
       "appearIn": [
         "Case 25: The Death of Justice (อวสานแห่งความยุติธรรม)"
-      ]
+      ],
+      "icon": "fa-solid fa-scale-balanced"
     },
     {
       "name": "ท่อนไม้",
@@ -2208,7 +2385,8 @@
         "Case 31: The New Moon Murder (ฆาตกรรมคืนเดือนดับ)",
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)",
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ท่ออะลูมิเนียม",
@@ -2219,7 +2397,8 @@
         "Case 01: Murder in Hollywood (ฆาตกรรมในฮอลลีวูด)",
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)",
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ทัพพีตักซุป",
@@ -2229,7 +2408,8 @@
       "appearIn": [
         "Case 32: The Case of the Lab with Legal Issues (คดีแล็บมีปัญหาทางกฎหมาย)",
         "Case 35: Murder at the Cult: A True-Crime Documentary (ฆาตกรรมในลัทธิ: สารคดีอาชญากรรมจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask"
     },
     {
       "name": "ที่เปิดจดหมาย",
@@ -2239,7 +2419,8 @@
       "appearIn": [
         "Case 26: The Murder of a Mailman (ฆาตกรรมพนักงานไปรษณีย์)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "ที่เปิดจุกไวน์",
@@ -2248,7 +2429,8 @@
       "material": "-",
       "appearIn": [
         "Case 10: Eat, Drink, and Be Merry, for a Jerk Just Died (กิน ดื่ม และรื่นเริง เพราะไอ้คนเฮงซวยเพิ่งตายไป!)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "เทียนไขผสมยาพิษ",
@@ -2257,7 +2439,8 @@
       "material": "-",
       "appearIn": [
         "Case 19: Death on the Book Tour (ความตายในทัวร์โปรโมตหนังสือ)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask-vial"
     },
     {
       "name": "เทียนไขหนัก",
@@ -2268,7 +2451,8 @@
         "Case 01: Murder in Hollywood (ฆาตกรรมในฮอลลีวูด)",
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "เทียนอธิษฐาน",
@@ -2279,7 +2463,8 @@
         "Case 49: Death in the Dead Woods (ความตายในป่ามรณะ)",
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)",
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ธง",
@@ -2289,7 +2474,8 @@
       "appearIn": [
         "Case 24: Will the Foreman Please Die? (หัวหน้าลูกขุนจะยอมตายดี ๆ ไหม?)",
         "Case 84: The Tour of Death (ทัวร์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ธงรูปดอกกุหลาบ",
@@ -2298,7 +2484,8 @@
       "material": "ผ้าใบ",
       "appearIn": [
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-rose"
     },
     {
       "name": "ธนูและลูกศร",
@@ -2307,7 +2494,8 @@
       "material": "เซรามิก",
       "appearIn": [
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-bow-arrow"
     },
     {
       "name": "นกทองคำ",
@@ -2316,7 +2504,8 @@
       "material": "ทองคำ",
       "appearIn": [
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-coins"
     },
     {
       "name": "นาฬิกาโบราณ",
@@ -2327,7 +2516,8 @@
         "Case 08: The Butler Did It (Die) (พ่อบ้านเป็นคนทำ... ที่หมายถึงพังพินาศน่ะนะ)",
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)",
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "นาฬิกาพกสะกดจิต",
@@ -2339,7 +2529,8 @@
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "น้ำชาผสมยาพิษ",
@@ -2349,7 +2540,8 @@
       "appearIn": [
         "Case 09: Hedge Your Bets, The Constable Cried (เดิมพันด้วยชีวิต ตำรวจตะโกนก้อง)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask-vial"
     },
     {
       "name": "น้ำมันก่อภูมิแพ้รุนแรง",
@@ -2359,7 +2551,8 @@
       "appearIn": [
         "Case 28: Investigation at the Investigation Institute (การสืบสวน ณ สถาบันการสอบสวน)",
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "บทภาพยนตร์ขนาดยักษ์",
@@ -2370,7 +2563,8 @@
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)",
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-scroll"
     },
     {
       "name": "บันทึกสื่อวิญญาณ",
@@ -2379,7 +2573,8 @@
       "material": "กระดาษ",
       "appearIn": [
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "แบตเตอรี่ก้อนใหญ่",
@@ -2388,7 +2583,8 @@
       "material": "โลหะและเทคโนโลยี",
       "appearIn": [
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ใบปริญญาจากวิทยาลัยสืบสวน",
@@ -2397,7 +2593,8 @@
       "material": "-",
       "appearIn": [
         "Case 20: Dead Tired (เหนื่อยตายชัก)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "ปลาปักเป้าเน่าพิษ",
@@ -2406,7 +2603,8 @@
       "material": "-",
       "appearIn": [
         "Case 47: The Mystery of the Mysterious Island (ความลึกลับของเกาะลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ปลาปักเป้าพิษ",
@@ -2416,7 +2614,8 @@
       "appearIn": [
         "Case 46: A Cruise to Die For 2 (ล่องเรือมรณะ ภาค 2)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ปลาเฮอริ่งแดง",
@@ -2428,7 +2627,8 @@
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)",
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ป๊อปคอร์นผสมยาพิษ",
@@ -2439,7 +2639,8 @@
         "Case 44: Murder on the Stage (ฆาตกรรมบนเวที)",
         "Case 45: Fade In to a Murder Mystery (ฉากเปิดของปริศนาฆาตกรรม)",
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask-vial"
     },
     {
       "name": "ปากกาทองคำ",
@@ -2451,7 +2652,8 @@
         "Case 39: The Case of the Haunted Hotel (คดีโรงแรมผีสิง)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)",
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-coins"
     },
     {
       "name": "ปากกาหมึกซึม",
@@ -2461,7 +2663,8 @@
       "appearIn": [
         "Case 18: Throw the (Bookie-Winning) Book at Them! (จงขว้างหนังสือใส่พวกเขา!)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ปืนคาบศิลาโบราณ",
@@ -2471,7 +2674,8 @@
       "appearIn": [
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)",
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ปืนใหญ่",
@@ -2480,7 +2684,8 @@
       "material": "-",
       "appearIn": [
         "Case 15: The Perplexing Problem of the Parrot (ปัญหาชวนฉงนของนกแก้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "เป้หนังสือหนัก",
@@ -2489,7 +2694,8 @@
       "material": "ผ้าและหนังสือ",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-book-open"
     },
     {
       "name": "ไปป์ระเบิด",
@@ -2498,7 +2704,8 @@
       "material": "ไปป์และระเบิด",
       "appearIn": [
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ผ้าพันคอสังหาร",
@@ -2507,7 +2714,8 @@
       "material": "ผ้าฝ้าย",
       "appearIn": [
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "แผนที่สมบัติปลอม",
@@ -2516,7 +2724,8 @@
       "material": "-",
       "appearIn": [
         "Case 15: The Perplexing Problem of the Parrot (ปัญหาชวนฉงนของนกแก้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-trap"
     },
     {
       "name": "พลั่ว",
@@ -2530,7 +2739,8 @@
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)",
         "Case 98: Stage Fright (ความกลัวบนเวที)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "พลุไฟ",
@@ -2539,7 +2749,8 @@
       "material": "-",
       "appearIn": [
         "Case 36: A Cruise to Die For (ล่องเรือมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "พวงมาลัยเรือ",
@@ -2548,7 +2759,8 @@
       "material": "-",
       "appearIn": [
         "Case 46: A Cruise to Die For 2 (ล่องเรือมรณะ ภาค 2)"
-      ]
+      ],
+      "icon": "fa-solid fa-ship"
     },
     {
       "name": "พัสดุหนัก",
@@ -2557,7 +2769,8 @@
       "material": "-",
       "appearIn": [
         "Case 26: The Murder of a Mailman (ฆาตกรรมพนักงานไปรษณีย์)"
-      ]
+      ],
+      "icon": "fa-solid fa-droplet"
     },
     {
       "name": "ไพ่เอซโพดำ",
@@ -2566,7 +2779,8 @@
       "material": "กระดาษ",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ไฟผี",
@@ -2575,7 +2789,8 @@
       "material": "โลหะและแก้ว",
       "appearIn": [
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-ghost"
     },
     {
       "name": "ม้วนฟิล์ม",
@@ -2584,7 +2799,8 @@
       "material": "พลาสติก",
       "appearIn": [
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "มัฟฟินผสมยาพิษ",
@@ -2593,7 +2809,8 @@
       "material": "-",
       "appearIn": [
         "Case 39: The Case of the Haunted Hotel (คดีโรงแรมผีสิง)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask-vial"
     },
     {
       "name": "มีด",
@@ -2604,7 +2821,8 @@
         "Case 04: The Last Train to Murder (รถไฟขบวนสุดท้ายสู่ความตาย)",
         "Case 14: A Very Proper Murder (การฆาตกรรมที่สมเกียรติเกินไป)",
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "มีดทาเนย",
@@ -2613,7 +2831,8 @@
       "material": "-",
       "appearIn": [
         "Case 42: The Return of the Coffee Shop Killer (การกลับมาของฆาตกรร้านกาแฟ)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "มีดประกอบฉาก",
@@ -2623,7 +2842,8 @@
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "มีดผ่าตัดศัลยกรรม",
@@ -2632,7 +2852,8 @@
       "material": "-",
       "appearIn": [
         "Case 05: Physician, Heal Myself! (หมอรักษาตัวเองเถอะ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "มีดสำหรับจ้วง",
@@ -2641,7 +2862,8 @@
       "material": "-",
       "appearIn": [
         "Case 13: The Killing of a Cowboy (การสังหารคาวบอย)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "มีดเหล็ก",
@@ -2650,7 +2872,8 @@
       "material": "โลหะ",
       "appearIn": [
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "แมงมุมพิษ",
@@ -2660,7 +2883,8 @@
       "appearIn": [
         "Case 27: A Mysterious Murder in the Mysterious Woods (ฆาตกรรมปริศนาในป่าลึกลับ)",
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "แม่เหล็กยักษ์",
@@ -2670,7 +2894,8 @@
       "appearIn": [
         "Case 32: The Case of the Lab with Legal Issues (คดีแล็บมีปัญหาทางกฎหมาย)",
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-golf-ball-tee"
     },
     {
       "name": "ไม้กวาด",
@@ -2681,7 +2906,8 @@
         "Case 31: The New Moon Murder (ฆาตกรรมคืนเดือนดับ)",
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)",
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ไม้กอล์ฟ",
@@ -2690,7 +2916,8 @@
       "material": "-",
       "appearIn": [
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ไม้กายสิทธิ์เซเลไนต์",
@@ -2703,7 +2930,8 @@
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)",
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-skull"
     },
     {
       "name": "ไมโครโฟน ADR",
@@ -2712,7 +2940,8 @@
       "material": "โลหะ",
       "appearIn": [
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ไม้เท้าดาบ",
@@ -2721,7 +2950,8 @@
       "material": "-",
       "appearIn": [
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-sword"
     },
     {
       "name": "ไม้นิตติ้ง",
@@ -2730,7 +2960,8 @@
       "material": "โลหะ",
       "appearIn": [
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ไม้พยากรณ์หาแหล่งน้ำ",
@@ -2743,7 +2974,8 @@
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)",
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ไม้พาย",
@@ -2752,7 +2984,8 @@
       "material": "ไม้",
       "appearIn": [
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-ship"
     },
     {
       "name": "ยางอะไหล่",
@@ -2761,7 +2994,8 @@
       "material": "-",
       "appearIn": [
         "Case 45: Fade In to a Murder Mystery (ฉากเปิดของปริศนาฆาตกรรม)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ยาสกัดปนเปื้อนพิษ",
@@ -2770,7 +3004,8 @@
       "material": "น้ำมันและยาพิษ",
       "appearIn": [
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "รถกอล์ฟ",
@@ -2781,7 +3016,8 @@
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)",
         "Case 84: The Tour of Death (ทัวร์มรณะ)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "รัมผสมยาพิษ",
@@ -2790,7 +3026,8 @@
       "material": "-",
       "appearIn": [
         "Case 36: A Cruise to Die For (ล่องเรือมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-bottle-droplet"
     },
     {
       "name": "รูปปั้นครึ่งตัวหินอ่อน",
@@ -2801,7 +3038,8 @@
         "Case 22: They Bill You For Dying (ตายก็ต้องจ่ายค่าธรรมเนียม)",
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-scale-balanced"
     },
     {
       "name": "รูปปั้นแนวแอ็บสแตรกต์",
@@ -2810,7 +3048,8 @@
       "material": "-",
       "appearIn": [
         "Case 03: The Art of the Kill (ศิลปะแห่งการสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ลิงที่ถูกฝึกมา",
@@ -2819,7 +3058,8 @@
       "material": "-",
       "appearIn": [
         "Case 49: Death in the Dead Woods (ความตายในป่ามรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "ลูกแก้วคริสตัล",
@@ -2831,7 +3071,8 @@
         "Case 41: The Psychic Who Didn't Foresee His Death (ร่างทรงผู้ไม่รู้อนาคตความตายของตัวเอง)",
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)",
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ลูกแก้วพยากรณ์",
@@ -2840,7 +3081,8 @@
       "material": "คริสตัล",
       "appearIn": [
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ลูกฉลาม",
@@ -2849,7 +3091,8 @@
       "material": "-",
       "appearIn": [
         "Case 17: The Case of the Contract & the Captain (คดีสัญญาเลือดและกัปตัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ลูกดอกอาบยาพิษ",
@@ -2858,7 +3101,8 @@
       "material": "-",
       "appearIn": [
         "Case 06: Murder in the Alley (ฆาตกรรมในซอยเปลี่ยว)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask-vial"
     },
     {
       "name": "ลูกโลก",
@@ -2868,7 +3112,8 @@
       "appearIn": [
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)",
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "เลื่อย",
@@ -2877,7 +3122,8 @@
       "material": "โลหะและไม้",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "แล็ปท็อป",
@@ -2889,7 +3135,8 @@
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)",
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "วัตถุโบราณเอเลี่ยน",
@@ -2898,7 +3145,8 @@
       "material": "พลาสติก",
       "appearIn": [
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "วัตถุมงคล",
@@ -2908,7 +3156,8 @@
       "appearIn": [
         "Case 48: The Body in the Moonlit Ruins (ศพในซากปรักหักพังใต้แสงจันทร์)",
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "แว่นขยาย",
@@ -2922,7 +3171,8 @@
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)",
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "ไวน์ผสมยาพิษ",
@@ -2931,7 +3181,8 @@
       "material": "-",
       "appearIn": [
         "Case 03: The Art of the Kill (ศิลปะแห่งการสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask-vial"
     },
     {
       "name": "ไวน์ศักดิ์สิทธิ์",
@@ -2940,7 +3191,8 @@
       "material": "แก้วและไวน์",
       "appearIn": [
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "สมองในโหลแก้ว",
@@ -2949,7 +3201,8 @@
       "material": "-",
       "appearIn": [
         "Case 32: The Case of the Lab with Legal Issues (คดีแล็บมีปัญหาทางกฎหมาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "สมอเรือโบราณ",
@@ -2960,7 +3213,8 @@
         "Case 17: The Case of the Contract & the Captain (คดีสัญญาเลือดและกัปตัน)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)",
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-ship"
     },
     {
       "name": "ส้อม",
@@ -2971,7 +3225,8 @@
         "Case 01: Murder in Hollywood (ฆาตกรรมในฮอลลีวูด)",
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)",
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "สัญญาที่น่าสับสน",
@@ -2981,7 +3236,8 @@
       "appearIn": [
         "Case 22: They Bill You For Dying (ตายก็ต้องจ่ายค่าธรรมเนียม)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-droplet"
     },
     {
       "name": "สัญญาหนึ่งพันหน้า",
@@ -2990,7 +3246,8 @@
       "material": "กระดาษ",
       "appearIn": [
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "สายเกียรติยศ",
@@ -2999,7 +3256,8 @@
       "material": "ผ้า",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "สายประคำ",
@@ -3010,7 +3268,8 @@
         "Case 34: The Body in the Graveyard (ศพในสุสาน)",
         "Case 48: The Body in the Moonlit Ruins (ศพในซากปรักหักพังใต้แสงจันทร์)",
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "สายเปียโน",
@@ -3020,7 +3279,8 @@
       "appearIn": [
         "Case 06: Murder in the Alley (ฆาตกรรมในซอยเปลี่ยว)",
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "สายไฟ",
@@ -3029,7 +3289,8 @@
       "material": "โลหะและยาง",
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "สำรับไพ่มาโรต์",
@@ -3040,7 +3301,8 @@
         "Case 30: The Case of the Definitely Dead President (คดีท่านประธานาธิบดีที่ตายสนิท)",
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "สูจิบัตรอาบยาพิษ",
@@ -3049,7 +3311,8 @@
       "material": "-",
       "appearIn": [
         "Case 44: Murder on the Stage (ฆาตกรรมบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask-vial"
     },
     {
       "name": "หนังสือปกแข็งฉบับภาพยนตร์",
@@ -3058,7 +3321,8 @@
       "material": "กระดาษ",
       "appearIn": [
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หนังสือปกอ่อน",
@@ -3067,7 +3331,8 @@
       "material": "-",
       "appearIn": [
         "Case 12: The Mysterious Mystery Bookshop Mystery (คดีปริศนาในร้านหนังสือปริศนาสุดลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หนังสือพิมพ์ม้วน (มีชะแลงข้างใน)",
@@ -3076,7 +3341,8 @@
       "material": "-",
       "appearIn": [
         "Case 04: The Last Train to Murder (รถไฟขบวนสุดท้ายสู่ความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-crowbar"
     },
     {
       "name": "หนังสือรหัสเล่มหนา",
@@ -3085,7 +3351,8 @@
       "material": "-",
       "appearIn": [
         "Case 38: Irratino Returns to His Estate (อิร์ราติโนกลับคฤหาสน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "หนังสือเล่มหนา",
@@ -3095,7 +3362,8 @@
       "appearIn": [
         "Case 18: Throw the (Bookie-Winning) Book at Them! (จงขว้างหนังสือใส่พวกเขา!)",
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หมวกเกราะโบราณ",
@@ -3105,7 +3373,8 @@
       "appearIn": [
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)",
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หมวกสักหลาดติดกับดัก",
@@ -3114,7 +3383,8 @@
       "material": "-",
       "appearIn": [
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-trap"
     },
     {
       "name": "หม้อต้มขนาดใหญ่",
@@ -3123,7 +3393,8 @@
       "material": "โลหะ",
       "appearIn": [
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หม้อต้มเดือด",
@@ -3132,7 +3403,8 @@
       "material": "-",
       "appearIn": [
         "Case 42: The Return of the Coffee Shop Killer (การกลับมาของฆาตกรร้านกาแฟ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หม้อต้มยา",
@@ -3142,7 +3414,8 @@
       "appearIn": [
         "Case 31: The New Moon Murder (ฆาตกรรมคืนเดือนดับ)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หลอดกรด",
@@ -3151,7 +3424,8 @@
       "material": "-",
       "appearIn": [
         "Case 05: Physician, Heal Myself! (หมอรักษาตัวเองเถอะ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หลอดโลหะ",
@@ -3161,7 +3435,8 @@
       "appearIn": [
         "Case 11: The Case of the Coffee Shop Killer (คดีฆาตกรในร้านกาแฟ)",
         "Case 42: The Return of the Coffee Shop Killer (การกลับมาของฆาตกรร้านกาแฟ)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หินดวงจันทร์",
@@ -3170,7 +3445,8 @@
       "material": "หิน",
       "appearIn": [
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "หีบบัตรเลือกตั้ง",
@@ -3179,7 +3455,8 @@
       "material": "ไม้และกระดาษ",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "เหล็กเส้น",
@@ -3190,7 +3467,8 @@
         "Case 21: Oil Kill You For This (น้ำมันนอง เลือดนอง)",
         "Case 98: Stage Fright (ความกลัวบนเวที)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "เหล้าเถื่อนปนเปื้อน",
@@ -3199,7 +3477,8 @@
       "material": "-",
       "appearIn": [
         "Case 13: The Killing of a Cowboy (การสังหารคาวบอย)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "เหล้าเถื่อนราคาถูก",
@@ -3208,7 +3487,8 @@
       "material": "แก้วและสารเคมี",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "เหล้าวิสกี้หนึ่งจอก",
@@ -3217,7 +3497,8 @@
       "material": "โลหะและสารพิษ",
       "appearIn": [
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-wine-glass"
     },
     {
       "name": "ไหมพรม",
@@ -3228,7 +3509,8 @@
         "Case 07: A Quaint Little Village Slaying (การสังหารในหมู่บ้านอันเงียบสงบ)",
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)",
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "อิฐธรรมดา",
@@ -3241,7 +3523,8 @@
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)",
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-gun"
     },
     {
       "name": "อุปกรณ์พับกระดาษทำจากกระดูก",
@@ -3250,7 +3533,8 @@
       "material": "-",
       "appearIn": [
         "Case 12: The Mysterious Mystery Bookshop Mystery (คดีปริศนาในร้านหนังสือปริศนาสุดลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-file-lines"
     },
     {
       "name": "เอกซ์คาลิเบอร์",
@@ -3259,7 +3543,8 @@
       "material": "โลหะ",
       "appearIn": [
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-hill-rockslide"
     }
   ],
   "locations": [
@@ -3269,7 +3554,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)"
-      ]
+      ],
+      "icon": "fa-solid fa-tombstone"
     },
     {
       "name": "กองไฟกลาง",
@@ -3277,7 +3563,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 31: The New Moon Murder (ฆาตกรรมคืนเดือนดับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "กำแพงกราฟฟิตี้",
@@ -3286,7 +3573,8 @@
       "appearIn": [
         "Case 06: Murder in the Alley (ฆาตกรรมในซอยเปลี่ยว)",
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "เขาวงกตต้นไม้ที่เป็นไปไม่ได้",
@@ -3295,7 +3583,8 @@
       "appearIn": [
         "Case 28: Investigation at the Investigation Institute (การสืบสวน ณ สถาบันการสอบสวน)",
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "คฤหาสน์",
@@ -3303,7 +3592,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 07: A Quaint Little Village Slaying (การสังหารในหมู่บ้านอันเงียบสงบ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house-chimney"
     },
     {
       "name": "คฤหาสน์ที่อาจมีผีสิง",
@@ -3311,7 +3601,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 14: A Very Proper Murder (การฆาตกรรมที่สมเกียรติเกินไป)"
-      ]
+      ],
+      "icon": "fa-solid fa-fire-burner"
     },
     {
       "name": "คฤหาสน์สุดหรู",
@@ -3319,7 +3610,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-house-chimney"
     },
     {
       "name": "คอกคณะลูกขุน",
@@ -3327,7 +3619,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 24: Will the Foreman Please Die? (หัวหน้าลูกขุนจะยอมตายดี ๆ ไหม?)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "คันโยกยักษ์",
@@ -3335,7 +3628,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 32: The Case of the Lab with Legal Issues (คดีแล็บมีปัญหาทางกฎหมาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "คาเมล็อต",
@@ -3343,7 +3637,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ค่ายที่พัก",
@@ -3352,7 +3647,8 @@
       "appearIn": [
         "Case 35: Murder at the Cult: A True-Crime Documentary (ฆาตกรรมในลัทธิ: สารคดีอาชญากรรมจริง)",
         "Case 43: The Heinous Crime of Penguicide (อาชญากรรมร้ายแรงแห่งการฆ่านกเพนกวิน)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "คุกบัสตีย์",
@@ -3360,7 +3656,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "เครื่องกีดขวาง",
@@ -3368,7 +3665,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "เครื่องจักรยักษ์",
@@ -3377,7 +3675,8 @@
       "appearIn": [
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)",
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "เครื่องปั่นไฟ",
@@ -3385,7 +3684,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "เครื่องสูบน้ำมัน",
@@ -3394,7 +3694,8 @@
       "appearIn": [
         "Case 98: Stage Fright (ความกลัวบนเวที)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "เคาน์เตอร์",
@@ -3402,7 +3703,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 11: The Case of the Coffee Shop Killer (คดีฆาตกรในร้านกาแฟ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "เคาน์เตอร์ขายขนม",
@@ -3410,7 +3712,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-candy-cane"
     },
     {
       "name": "เคาน์เตอร์ด้านหน้า",
@@ -3418,7 +3721,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 12: The Mysterious Mystery Bookshop Mystery (คดีปริศนาในร้านหนังสือปริศนาสุดลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "เคาน์เตอร์บาร์กลางร้าน",
@@ -3426,7 +3730,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 10: Eat, Drink, and Be Merry, for a Jerk Just Died (กิน ดื่ม และรื่นเริง เพราะไอ้คนเฮงซวยเพิ่งตายไป!)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "โคลัมบาเรียม (ที่เก็บอัฐิ)",
@@ -3434,7 +3739,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 34: The Body in the Graveyard (ศพในสุสาน)"
-      ]
+      ],
+      "icon": "fa-solid fa-bone"
     },
     {
       "name": "จัตุรัสกลางเมือง",
@@ -3442,7 +3748,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "จุดรับรถ",
@@ -3450,7 +3757,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "จุดลงทะเบียนชมสตูดิโอ",
@@ -3458,7 +3766,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 84: The Tour of Death (ทัวร์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "จุด UFO ตก",
@@ -3466,7 +3775,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "ฉากจำลองเมือง",
@@ -3474,7 +3784,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 84: The Tour of Death (ทัวร์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ชั้นลอยสำหรับคณะประสานเสียง",
@@ -3482,7 +3793,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ชั้นวางสินค้าลดราคา",
@@ -3490,7 +3802,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 12: The Mysterious Mystery Bookshop Mystery (คดีปริศนาในร้านหนังสือปริศนาสุดลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ซากปรักหักพังโบราณ",
@@ -3515,7 +3828,8 @@
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)",
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ซากปรักหักพังแห่งใหม่",
@@ -3523,7 +3837,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-stamp"
     },
     {
       "name": "ซากรถที่ถูกเผา",
@@ -3531,7 +3846,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ซากเรือสำราญ",
@@ -3539,7 +3855,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)"
-      ]
+      ],
+      "icon": "fa-solid fa-ship"
     },
     {
       "name": "ซาลูน",
@@ -3547,7 +3864,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 13: The Killing of a Cowboy (การสังหารคาวบอย)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โซนปราชญ์",
@@ -3555,7 +3873,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โซฟา",
@@ -3563,7 +3882,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 30: The Case of the Definitely Dead President (คดีท่านประธานาธิบดีที่ตายสนิท)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ฐานลูนาร์เบส",
@@ -3571,7 +3891,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ดาดฟ้า",
@@ -3582,7 +3903,8 @@
         "Case 41: The Psychic Who Didn't Foresee His Death (ร่างทรงผู้ไม่รู้อนาคตความตายของตัวเอง)",
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ดาดฟ้าเรือ",
@@ -3592,7 +3914,8 @@
         "Case 17: The Case of the Contract & the Captain (คดีสัญญาเลือดและกัปตัน)",
         "Case 46: A Cruise to Die For 2 (ล่องเรือมรณะ ภาค 2)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-ship"
     },
     {
       "name": "เดอะ เกรท พาร์ค",
@@ -3600,7 +3923,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "เดอะ เมจิก พาเลซ",
@@ -3608,7 +3932,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ตกเรือ",
@@ -3616,7 +3941,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-ship"
     },
     {
       "name": "ต้นไม้ด้านหน้า",
@@ -3624,7 +3950,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 44: Murder on the Stage (ฆาตกรรมบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ต้นไม้ที่บิดเบี้ยว",
@@ -3632,7 +3959,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "ต้นไม้หงิกงอ",
@@ -3640,7 +3968,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 49: Death in the Dead Woods (ความตายในป่ามรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ตัวประภาคาร",
@@ -3648,7 +3977,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)"
-      ]
+      ],
+      "icon": "fa-solid fa-lighthouse"
     },
     {
       "name": "ตึกโอลด์เมน",
@@ -3656,7 +3986,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ตู้เซฟยักษ์",
@@ -3664,7 +3995,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ตู้โดยสารท้ายขบวน",
@@ -3672,7 +4004,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 04: The Last Train to Murder (รถไฟขบวนสุดท้ายสู่ความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ตู้เสื้อผ้า",
@@ -3681,7 +4014,8 @@
       "appearIn": [
         "Case 20: Dead Tired (เหนื่อยตายชัก)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "เต็นท์รถมือสอง",
@@ -3690,7 +4024,8 @@
       "appearIn": [
         "Case 37: Logico Goes Home (โลจิโกกลับบ้าน)",
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-bomb"
     },
     {
       "name": "เตาย่าง",
@@ -3698,7 +4033,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-fire-burner"
     },
     {
       "name": "เตียงผ่าตัด",
@@ -3706,7 +4042,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 32: The Case of the Lab with Legal Issues (คดีแล็บมีปัญหาทางกฎหมาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "โต๊ะ",
@@ -3714,7 +4051,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โต๊ะข้างถังขยะ",
@@ -3722,7 +4060,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โต๊ะทำงาน",
@@ -3730,7 +4069,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 30: The Case of the Definitely Dead President (คดีท่านประธานาธิบดีที่ตายสนิท)"
-      ]
+      ],
+      "icon": "fa-solid fa-computer"
     },
     {
       "name": "โต๊ะผู้ถูกเสนอชื่อ",
@@ -3738,7 +4078,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 18: Throw the (Bookie-Winning) Book at Them! (จงขว้างหนังสือใส่พวกเขา!)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โต๊ะเล่นกลระยะประชิด",
@@ -3746,7 +4087,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ถนนสายเดียว",
@@ -3754,7 +4096,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 27: A Mysterious Murder in the Mysterious Woods (ฆาตกรรมปริศนาในป่าลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "ถนนหน้าคฤหาสน์",
@@ -3762,7 +4105,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 29: Oh No, Not in the Chateau! (โอ้ไม่นะ ไม่ใช่ในคฤหาสน์!)"
-      ]
+      ],
+      "icon": "fa-solid fa-house-chimney"
     },
     {
       "name": "ถังขยะยักษ์",
@@ -3771,7 +4115,8 @@
       "appearIn": [
         "Case 06: Murder in the Alley (ฆาตกรรมในซอยเปลี่ยว)",
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ถังน้ำมันยักษ์",
@@ -3779,7 +4124,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ถ้ำเคลื่อนที่",
@@ -3788,7 +4134,8 @@
       "appearIn": [
         "Case 49: Death in the Dead Woods (ความตายในป่ามรณะ)",
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-dungeon"
     },
     {
       "name": "ถ้ำที่มีชื่อเสียง",
@@ -3796,7 +4143,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-dungeon"
     },
     {
       "name": "แถวคอยที่ยาวเหยียด",
@@ -3804,7 +4152,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 26: The Murder of a Mailman (ฆาตกรรมพนักงานไปรษณีย์)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โถงต้อนรับ",
@@ -3814,7 +4163,8 @@
         "Case 22: They Bill You For Dying (ตายก็ต้องจ่ายค่าธรรมเนียม)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)",
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โถงทางเข้า",
@@ -3823,7 +4173,8 @@
       "appearIn": [
         "Case 03: The Art of the Kill (ศิลปะแห่งการสังหาร)",
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-palette"
     },
     {
       "name": "โถงทางเข้าหลัก",
@@ -3831,7 +4182,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 39: The Case of the Haunted Hotel (คดีโรงแรมผีสิง)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โถงทางเดินใหญ่",
@@ -3839,7 +4191,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-briefcase"
     },
     {
       "name": "ทะเลสาบต้องมนตร์",
@@ -3847,7 +4200,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-sword"
     },
     {
       "name": "ทะเลสาบปาร์ตี้",
@@ -3855,7 +4209,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ทางเข้าลับ",
@@ -3863,7 +4218,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-shop"
     },
     {
       "name": "ทางเข้าหลัก",
@@ -3871,7 +4227,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 33: A Recent Death in an Ancient Temple (ความตายครั้งใหม่ในวิหารโบราณ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ทางตัน",
@@ -3879,7 +4236,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ทางหนีไฟ",
@@ -3887,7 +4245,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "ท่าเรือ",
@@ -3896,7 +4255,8 @@
       "appearIn": [
         "Case 02: And Then There Was Another One (แล้วก็มีอีกราย)",
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-ship"
     },
     {
       "name": "ที่นั่งกำมะหยี่",
@@ -3904,7 +4264,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ที่นั่งผู้ชม",
@@ -3912,7 +4273,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ที่นั่งมุมร้าน",
@@ -3921,7 +4283,8 @@
       "appearIn": [
         "Case 10: Eat, Drink, and Be Merry, for a Jerk Just Died (กิน ดื่ม และรื่นเริง เพราะไอ้คนเฮงซวยเพิ่งตายไป!)",
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)"
-      ]
+      ],
+      "icon": "fa-solid fa-shop"
     },
     {
       "name": "ที่นั่งริมหน้าต่าง",
@@ -3929,7 +4292,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ที่นั่งสาธารณะ",
@@ -3937,7 +4301,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 24: Will the Foreman Please Die? (หัวหน้าลูกขุนจะยอมตายดี ๆ ไหม?)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ทุ่งน้ำแข็งรกร้าง",
@@ -3945,7 +4310,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 43: The Heinous Crime of Penguicide (อาชญากรรมร้ายแรงแห่งการฆ่านกเพนกวิน)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "เทคโทเปีย",
@@ -3953,7 +4319,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 19: Death on the Book Tour (ความตายในทัวร์โปรโมตหนังสือ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "แท่นขุดเจาะน้ำมัน",
@@ -3962,7 +4329,8 @@
       "appearIn": [
         "Case 21: Oil Kill You For This (น้ำมันนอง เลือดนอง)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "แท่นบูชา",
@@ -3970,7 +4338,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "แท่นบูชาร้าว",
@@ -3978,7 +4347,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 48: The Body in the Moonlit Ruins (ศพในซากปรักหักพังใต้แสงจันทร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "แท่นบูชาสูง",
@@ -3986,7 +4356,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 33: A Recent Death in an Ancient Temple (ความตายครั้งใหม่ในวิหารโบราณ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "แท่นพิมพ์",
@@ -3994,7 +4365,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "นอกเรือ",
@@ -4002,7 +4374,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 36: A Cruise to Die For (ล่องเรือมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-ship"
     },
     {
       "name": "น้ำพุ",
@@ -4012,7 +4385,8 @@
         "Case 09: Hedge Your Bets, The Constable Cried (เดิมพันด้วยชีวิต ตำรวจตะโกนก้อง)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)",
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "น้ำวนยักษ์",
@@ -4020,7 +4394,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 15: The Perplexing Problem of the Parrot (ปัญหาชวนฉงนของนกแก้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "เนินเขาเล็ก ๆ",
@@ -4028,7 +4403,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "บริเวณลานกว้าง",
@@ -4036,7 +4412,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 41: The Psychic Who Didn't Foresee His Death (ร่างทรงผู้ไม่รู้อนาคตความตายของตัวเอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "บริเวณสวน",
@@ -4045,7 +4422,8 @@
       "appearIn": [
         "Case 38: Irratino Returns to His Estate (อิร์ราติโนกลับคฤหาสน์)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "บ่อน้ำดื่ม",
@@ -4053,7 +4431,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 13: The Killing of a Cowboy (การสังหารคาวบอย)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "บังกะโล",
@@ -4061,7 +4440,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "บังกะโล 1",
@@ -4069,7 +4449,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "บังกะโล 2",
@@ -4077,7 +4458,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "บังกะโล 3",
@@ -4085,7 +4467,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-archway"
     },
     {
       "name": "บังกะโล 4",
@@ -4093,7 +4476,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "บันไดด้านหน้า",
@@ -4102,7 +4486,8 @@
       "appearIn": [
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)",
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "บันไดหนังสือ",
@@ -4110,7 +4495,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 30: The Case of the Definitely Dead President (คดีท่านประธานาธิบดีที่ตายสนิท)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "บัลลังก์ผู้พิพากษา",
@@ -4118,7 +4504,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 24: Will the Foreman Please Die? (หัวหน้าลูกขุนจะยอมตายดี ๆ ไหม?)"
-      ]
+      ],
+      "icon": "fa-solid fa-gavel"
     },
     {
       "name": "บาร์",
@@ -4127,7 +4514,8 @@
       "appearIn": [
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)",
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "บาร์ชั้นใต้ดิน",
@@ -4135,7 +4523,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-file-lines"
     },
     {
       "name": "บาร์ดาดฟ้า",
@@ -4143,7 +4532,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "บาร์และร้านปิ้งย่างริมหอคอยน้ำ",
@@ -4152,7 +4542,8 @@
       "appearIn": [
         "Case 84: The Tour of Death (ทัวร์มรณะ)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "โบสถ์ร้าง",
@@ -4161,7 +4552,8 @@
       "appearIn": [
         "Case 47: The Mystery of the Mysterious Island (ความลึกลับของเกาะลึกลับ)",
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)"
-      ]
+      ],
+      "icon": "fa-solid fa-church"
     },
     {
       "name": "ประตูทางเข้า",
@@ -4170,7 +4562,8 @@
       "appearIn": [
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)",
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ประภาคารริมหน้าผา",
@@ -4179,7 +4572,8 @@
       "appearIn": [
         "Case 47: The Mystery of the Mysterious Island (ความลึกลับของเกาะลึกลับ)",
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)"
-      ]
+      ],
+      "icon": "fa-solid fa-lighthouse"
     },
     {
       "name": "ป้อมขายตั๋ว",
@@ -4187,7 +4581,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 45: Fade In to a Murder Mystery (ฉากเปิดของปริศนาฆาตกรรม)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "ปากถ้ำ",
@@ -4195,7 +4590,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-dungeon"
     },
     {
       "name": "ปากปล่องภูเขาไฟ",
@@ -4203,7 +4599,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-volcano"
     },
     {
       "name": "ป่าต้องมนตร์",
@@ -4211,7 +4608,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "ป่าทึบ",
@@ -4219,7 +4617,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 31: The New Moon Murder (ฆาตกรรมคืนเดือนดับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "ป่ามรณะ",
@@ -4228,7 +4627,8 @@
       "appearIn": [
         "Case 47: The Mystery of the Mysterious Island (ความลึกลับของเกาะลึกลับ)",
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)"
-      ]
+      ],
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "ป้ายฮอลลีวูด",
@@ -4236,7 +4636,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-sign-hanging"
     },
     {
       "name": "ป่าหลังเวที",
@@ -4244,7 +4645,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 44: Murder on the Stage (ฆาตกรรมบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "ผ้าใบกันน้ำ",
@@ -4252,7 +4654,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-warehouse"
     },
     {
       "name": "พื้นที่จัดงาน",
@@ -4260,7 +4663,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "พื้นที่พัฒนาใหม่",
@@ -4268,7 +4672,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ม้านั่งที่ถูกน้ำท่วม",
@@ -4276,7 +4681,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 48: The Body in the Moonlit Ruins (ศพในซากปรักหักพังใต้แสงจันทร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "มิดไนท์ มูฟวี่ สตูดิโอ",
@@ -4284,7 +4690,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "แม่น้ำแซน",
@@ -4292,7 +4699,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-water"
     },
     {
       "name": "ยานลูนาร์โรเวอร์",
@@ -4300,7 +4708,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-rocket"
     },
     {
       "name": "ยานลูนาร์แลนเดอร์",
@@ -4308,7 +4717,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "รถตู้รัฐบาล",
@@ -4316,7 +4726,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "รถไปรษณีย์",
@@ -4324,7 +4735,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 26: The Murder of a Mailman (ฆาตกรรมพนักงานไปรษณีย์)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ระเบียง",
@@ -4336,7 +4748,8 @@
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-archway"
     },
     {
       "name": "ระเบียงดาดฟ้า",
@@ -4344,7 +4757,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ระเบียงด้านหน้า",
@@ -4352,7 +4766,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-sign-hanging"
     },
     {
       "name": "ระเบียงหลังร้าน",
@@ -4360,7 +4775,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-archway"
     },
     {
       "name": "รั้วเหล็ก",
@@ -4369,7 +4785,8 @@
       "appearIn": [
         "Case 06: Murder in the Alley (ฆาตกรรมในซอยเปลี่ยว)",
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ร้านกาแฟ",
@@ -4377,7 +4794,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 14: A Very Proper Murder (การฆาตกรรมที่สมเกียรติเกินไป)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ร้านเก็บอุปกรณ์ประกอบฉาก",
@@ -4385,7 +4803,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-knife"
     },
     {
       "name": "ร้านของมือสอง",
@@ -4394,7 +4813,8 @@
       "appearIn": [
         "Case 37: Logico Goes Home (โลจิโกกลับบ้าน)",
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-shop"
     },
     {
       "name": "ร้านขายขนม",
@@ -4402,7 +4822,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 45: Fade In to a Murder Mystery (ฉากเปิดของปริศนาฆาตกรรม)"
-      ]
+      ],
+      "icon": "fa-solid fa-candy-cane"
     },
     {
       "name": "ร้านขายของที่ระลึก",
@@ -4413,7 +4834,8 @@
         "Case 34: The Body in the Graveyard (ศพในสุสาน)",
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ร้านขายคริสตัล",
@@ -4421,7 +4843,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)"
-      ]
+      ],
+      "icon": "fa-solid fa-shop"
     },
     {
       "name": "ร้านหนังสือ",
@@ -4429,7 +4852,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-book-open"
     },
     {
       "name": "ร้านอาหารแฟรนไชส์",
@@ -4437,7 +4861,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 37: Logico Goes Home (โลจิโกกลับบ้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-shop"
     },
     {
       "name": "ร้านอาหารสุดเชย",
@@ -4445,7 +4870,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)"
-      ]
+      ],
+      "icon": "fa-solid fa-shop"
     },
     {
       "name": "รูปปั้นมิดไนท์ที่ 1",
@@ -4453,7 +4879,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 84: The Tour of Death (ทัวร์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "เรือโจรสลัด",
@@ -4461,7 +4888,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 15: The Perplexing Problem of the Parrot (ปัญหาชวนฉงนของนกแก้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-skull-crossbones"
     },
     {
       "name": "เรือนพักคนรับใช้",
@@ -4469,7 +4897,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-ship"
     },
     {
       "name": "โรงงานเก่า",
@@ -4477,7 +4906,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-industry"
     },
     {
       "name": "โรงภาพยนตร์สุดหรู",
@@ -4485,7 +4915,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โรงโม่เก่า",
@@ -4493,7 +4924,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "โรงรถห้าสิบคัน",
@@ -4502,7 +4934,8 @@
       "appearIn": [
         "Case 38: Irratino Returns to His Estate (อิร์ราติโนกลับคฤหาสน์)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "โรงแรม",
@@ -4510,7 +4943,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 13: The Killing of a Cowboy (การสังหารคาวบอย)"
-      ]
+      ],
+      "icon": "fa-solid fa-hotel"
     },
     {
       "name": "โรงละครกรีก",
@@ -4518,7 +4952,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "โรงหนัง",
@@ -4526,7 +4961,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-film"
     },
     {
       "name": "ลานกลางแจ้ง",
@@ -4535,7 +4971,8 @@
       "appearIn": [
         "Case 11: The Case of the Coffee Shop Killer (คดีฆาตกรในร้านกาแฟ)",
         "Case 42: The Return of the Coffee Shop Killer (การกลับมาของฆาตกรร้านกาแฟ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ลานกลางบ้าน",
@@ -4543,7 +4980,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ลานจอดรถ",
@@ -4556,7 +4994,8 @@
         "Case 42: The Return of the Coffee Shop Killer (การกลับมาของฆาตกรร้านกาแฟ)",
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)",
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ลานจอดรถ A",
@@ -4564,7 +5003,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ลานจอดรถ B",
@@ -4572,7 +5012,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ลานด้านหน้า",
@@ -4580,7 +5021,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ลานสมาธิกลางแจ้ง",
@@ -4588,7 +5030,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "เวที",
@@ -4598,7 +5041,8 @@
         "Case 18: Throw the (Bookie-Winning) Book at Them! (จงขว้างหนังสือใส่พวกเขา!)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)",
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-masks-theater"
     },
     {
       "name": "เวทีแสดง",
@@ -4606,7 +5050,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 44: Murder on the Stage (ฆาตกรรมบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-masks-theater"
     },
     {
       "name": "เวทีหลัก",
@@ -4614,7 +5059,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-masks-theater"
     },
     {
       "name": "ศูนย์อาหาร",
@@ -4622,7 +5068,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "สตูดิโอถ่ายทำ A",
@@ -4630,7 +5077,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
-      ]
+      ],
+      "icon": "fa-solid fa-dungeon"
     },
     {
       "name": "สตูดิโอถ่ายทำ B",
@@ -4638,7 +5086,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "สตูดิโอถ่ายทำ C",
@@ -4646,7 +5095,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "สตูดิโอถ่ายทำ D",
@@ -4654,7 +5104,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "สตูดิโอที่ถูกล็อค",
@@ -4662,7 +5113,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "สตูดิโอบันทึกเสียง",
@@ -4670,7 +5122,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "สตูดิโอศิลปะ",
@@ -4678,7 +5131,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 03: The Art of the Kill (ศิลปะแห่งการสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "สเตเดียม",
@@ -4686,7 +5140,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-golf-ball-tee"
     },
     {
       "name": "สถาบันการสอบสวน",
@@ -4694,7 +5149,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 14: A Very Proper Murder (การฆาตกรรมที่สมเกียรติเกินไป)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "สนามมินิกอล์ฟ",
@@ -4703,7 +5159,8 @@
       "appearIn": [
         "Case 28: Investigation at the Investigation Institute (การสืบสวน ณ สถาบันการสอบสวน)",
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-dungeon"
     },
     {
       "name": "สปา",
@@ -4711,7 +5168,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 25: The Death of Justice (อวสานแห่งความยุติธรรม)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "สปาน้ำพุร้อน",
@@ -4719,7 +5177,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "สระว่ายน้ำกลางแจ้ง",
@@ -4727,7 +5186,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "สวนดาดฟ้า",
@@ -4736,7 +5196,8 @@
       "appearIn": [
         "Case 03: The Art of the Kill (ศิลปะแห่งการสังหาร)",
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "สวนในคฤหาสน์",
@@ -4744,7 +5205,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 08: The Butler Did It (Die) (พ่อบ้านเป็นคนทำ... ที่หมายถึงพังพินาศน่ะนะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "สวนพฤกษชาติ",
@@ -4752,7 +5214,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "สวนลับ",
@@ -4760,7 +5223,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "สวนสัตว์เก่า",
@@ -4768,7 +5232,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "สวนแสนประณีต",
@@ -4776,7 +5241,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "สัญลักษณ์บนพื้น",
@@ -4784,7 +5250,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "สาธารณรัฐดราโกเนีย",
@@ -4792,7 +5259,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 19: Death on the Book Tour (ความตายในทัวร์โปรโมตหนังสือ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "สำนักงาน",
@@ -4801,7 +5269,8 @@
       "appearIn": [
         "Case 21: Oil Kill You For This (น้ำมันนอง เลือดนอง)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "สุสาน",
@@ -4809,7 +5278,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-tombstone"
     },
     {
       "name": "สุสานหินขนาดมหึมา",
@@ -4818,7 +5288,8 @@
       "appearIn": [
         "Case 34: The Body in the Graveyard (ศพในสุสาน)",
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)"
-      ]
+      ],
+      "icon": "fa-solid fa-tombstone"
     },
     {
       "name": "หน้าจอฉายหนัง",
@@ -4826,7 +5297,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 45: Fade In to a Murder Mystery (ฉากเปิดของปริศนาฆาตกรรม)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "หน้าผา",
@@ -4836,7 +5308,8 @@
         "Case 02: And Then There Was Another One (แล้วก็มีอีกราย)",
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)",
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "หลังคา",
@@ -4844,7 +5317,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 05: Physician, Heal Myself! (หมอรักษาตัวเองเถอะ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "หลังคารถไฟ",
@@ -4852,7 +5326,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 04: The Last Train to Murder (รถไฟขบวนสุดท้ายสู่ความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "หลังเวที",
@@ -4860,7 +5335,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 18: Throw the (Bookie-Winning) Book at Them! (จงขว้างหนังสือใส่พวกเขา!)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-pen"
     },
     {
       "name": "หอคอยน้ำ",
@@ -4868,7 +5344,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-tower-observation"
     },
     {
       "name": "หอคอยยักษ์",
@@ -4876,7 +5353,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-tower-observation"
     },
     {
       "name": "ห้องเก็บเมล็ดกาแฟ",
@@ -4884,7 +5362,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 11: The Case of the Coffee Shop Killer (คดีฆาตกรในร้านกาแฟ)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องเก็บสินค้า",
@@ -4892,7 +5371,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 36: A Cruise to Die For (ล่องเรือมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องขายตั๋ว",
@@ -4900,7 +5380,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-film"
     },
     {
       "name": "ห้องครัว",
@@ -4908,7 +5389,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องควบคุมไฟ",
@@ -4916,7 +5398,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องคัดแยก",
@@ -4924,7 +5407,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 26: The Murder of a Mailman (ฆาตกรรมพนักงานไปรษณีย์)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ห้องเครื่อง",
@@ -4933,7 +5417,8 @@
       "appearIn": [
         "Case 17: The Case of the Contract & the Captain (คดีสัญญาเลือดและกัปตัน)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ห้องจดหมาย",
@@ -4941,7 +5426,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องฉายภาพยนตร์",
@@ -4949,7 +5435,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 01: Murder in Hollywood (ฆาตกรรมในฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ห้องฉายหนัง",
@@ -4957,7 +5444,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องด้านหลัง",
@@ -4965,7 +5453,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องต้มน้ำ",
@@ -4973,7 +5462,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 39: The Case of the Haunted Hotel (คดีโรงแรมผีสิง)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องใต้หลังคาลึกลับ",
@@ -4981,7 +5471,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 29: Oh No, Not in the Chateau! (โอ้ไม่นะ ไม่ใช่ในคฤหาสน์!)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องใต้หลังคาสยองขวัญ",
@@ -4989,7 +5480,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 08: The Butler Did It (Die) (พ่อบ้านเป็นคนทำ... ที่หมายถึงพังพินาศน่ะนะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องโถงทางเข้าโบสถ์",
@@ -4997,7 +5489,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องทนายความสมทบ",
@@ -5005,7 +5498,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 22: They Bill You For Dying (ตายก็ต้องจ่ายค่าธรรมเนียม)"
-      ]
+      ],
+      "icon": "fa-solid fa-scale-balanced"
     },
     {
       "name": "ห้องทนายความหุ้นส่วน",
@@ -5013,7 +5507,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 22: They Bill You For Dying (ตายก็ต้องจ่ายค่าธรรมเนียม)"
-      ]
+      ],
+      "icon": "fa-solid fa-scale-balanced"
     },
     {
       "name": "ห้องทำงานของหุ้นส่วน",
@@ -5021,7 +5516,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องทำงานของอธิการบดี",
@@ -5029,7 +5525,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องนอน",
@@ -5037,7 +5534,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 01: Murder in Hollywood (ฆาตกรรมในฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องนอนขนาดยักษ์",
@@ -5045,7 +5543,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 38: Irratino Returns to His Estate (อิร์ราติโนกลับคฤหาสน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องนอนใหญ่",
@@ -5053,7 +5552,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 08: The Butler Did It (Die) (พ่อบ้านเป็นคนทำ... ที่หมายถึงพังพินาศน่ะนะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องนั่งรอ",
@@ -5062,7 +5562,8 @@
       "appearIn": [
         "Case 20: Dead Tired (เหนื่อยตายชัก)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-sign-hanging"
     },
     {
       "name": "ห้องน้ำ",
@@ -5073,7 +5574,8 @@
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)",
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-file-lines"
     },
     {
       "name": "ห้องน้ำขนาดมหึมา",
@@ -5081,7 +5583,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 01: Murder in Hollywood (ฆาตกรรมในฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "ห้องน้ำแคบ ๆ",
@@ -5089,7 +5592,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 10: Eat, Drink, and Be Merry, for a Jerk Just Died (กิน ดื่ม และรื่นเริง เพราะไอ้คนเฮงซวยเพิ่งตายไป!)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ห้องนิทรรศการ",
@@ -5097,7 +5601,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องนิรภัย",
@@ -5105,7 +5610,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-coins"
     },
     {
       "name": "ห้องบอยเลอร์",
@@ -5113,7 +5619,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องบอลรูม",
@@ -5122,7 +5629,8 @@
       "appearIn": [
         "Case 29: Oh No, Not in the Chateau! (โอ้ไม่นะ ไม่ใช่ในคฤหาสน์!)",
         "Case 39: The Case of the Haunted Hotel (คดีโรงแรมผีสิง)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องปิงปอง",
@@ -5130,7 +5638,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 43: The Heinous Crime of Penguicide (อาชญากรรมร้ายแรงแห่งการฆ่านกเพนกวิน)"
-      ]
+      ],
+      "icon": "fa-solid fa-candy-cane"
     },
     {
       "name": "ห้องเปียโน",
@@ -5138,7 +5647,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องพักกัปตัน",
@@ -5147,7 +5657,8 @@
       "appearIn": [
         "Case 36: A Cruise to Die For (ล่องเรือมรณะ)",
         "Case 46: A Cruise to Die For 2 (ล่องเรือมรณะ ภาค 2)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-astronaut"
     },
     {
       "name": "ห้องพักครู",
@@ -5155,7 +5666,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องพักเบรก",
@@ -5163,7 +5675,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องพักผู้พิพากษา",
@@ -5171,7 +5684,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 23: The Courthouse Killing (ฆาตกรรมคาศาล)"
-      ]
+      ],
+      "icon": "fa-solid fa-gavel"
     },
     {
       "name": "ห้องพิจารณาคดี",
@@ -5179,7 +5693,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 23: The Courthouse Killing (ฆาตกรรมคาศาล)"
-      ]
+      ],
+      "icon": "fa-solid fa-crown"
     },
     {
       "name": "ห้องพิจารณาต้นฉบับ",
@@ -5187,7 +5702,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 16: Fifteen Percent of Murder (ค่าหัวคิวสิบห้าเปอร์เซ็นต์)"
-      ]
+      ],
+      "icon": "fa-solid fa-fire-burner"
     },
     {
       "name": "ห้องเพนต์เฮาส์",
@@ -5195,7 +5711,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "ห้องฟันเฟืองนาฬิกา",
@@ -5203,7 +5720,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-coins"
     },
     {
       "name": "ห้องแยกตัว",
@@ -5211,7 +5729,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 41: The Psychic Who Didn't Foresee His Death (ร่างทรงผู้ไม่รู้อนาคตความตายของตัวเอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ห้องรวมนักข่าว",
@@ -5219,7 +5738,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-file-lines"
     },
     {
       "name": "ห้องรับประทานอาหาร",
@@ -5229,7 +5749,8 @@
         "Case 17: The Case of the Contract & the Captain (คดีสัญญาเลือดและกัปตัน)",
         "Case 46: A Cruise to Die For 2 (ล่องเรือมรณะ ภาค 2)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-hat-chef"
     },
     {
       "name": "ห้องรูหนู",
@@ -5237,7 +5758,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องลับ",
@@ -5245,7 +5767,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องแล็บหลังการผลิต",
@@ -5253,7 +5776,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-clapperboard"
     },
     {
       "name": "ห้องศักดิ์สิทธิ์",
@@ -5261,7 +5785,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 33: A Recent Death in an Ancient Temple (ความตายครั้งใหม่ในวิหารโบราณ)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องสมุด",
@@ -5270,7 +5795,8 @@
       "appearIn": [
         "Case 35: Murder at the Cult: A True-Crime Documentary (ฆาตกรรมในลัทธิ: สารคดีอาชญากรรมจริง)",
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องสมุดต้องห้าม",
@@ -5278,7 +5804,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องสวดมนต์",
@@ -5287,7 +5814,8 @@
       "appearIn": [
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)",
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องสีเขียว",
@@ -5295,7 +5823,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-door-open"
     },
     {
       "name": "ห้องสูทส่วนตัว",
@@ -5303,7 +5832,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 25: The Death of Justice (อวสานแห่งความยุติธรรม)"
-      ]
+      ],
+      "icon": "fa-solid fa-microchip"
     },
     {
       "name": "ห้องหนังสือหายาก",
@@ -5311,7 +5841,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 12: The Mysterious Mystery Bookshop Mystery (คดีปริศนาในร้านหนังสือปริศนาสุดลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-crown"
     },
     {
       "name": "ห้องหลัก",
@@ -5319,7 +5850,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "หอจดหมายเหตุ",
@@ -5327,7 +5859,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "หอดูดาว",
@@ -5335,7 +5868,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 28: Investigation at the Investigation Institute (การสืบสวน ณ สถาบันการสอบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "หอสังเกตการณ์",
@@ -5344,7 +5878,8 @@
       "appearIn": [
         "Case 09: Hedge Your Bets, The Constable Cried (เดิมพันด้วยชีวิต ตำรวจตะโกนก้อง)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "หัวรถจักร",
@@ -5352,7 +5887,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 04: The Last Train to Murder (รถไฟขบวนสุดท้ายสู่ความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "ห้างสรรพสินค้าซอมซ่อ",
@@ -5360,7 +5896,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-coins"
     },
     {
       "name": "หินรูปหัวกะโหลก",
@@ -5368,7 +5905,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 27: A Mysterious Murder in the Mysterious Woods (ฆาตกรรมปริศนาในป่าลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-hill-rockslide"
     },
     {
       "name": "อวาลอน",
@@ -5376,7 +5914,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "ออฟฟิศที่ดีที่สุด",
@@ -5385,7 +5924,8 @@
       "appearIn": [
         "Case 16: Fifteen Percent of Murder (ค่าหัวคิวสิบห้าเปอร์เซ็นต์)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)"
-      ]
+      ],
+      "icon": "fa-solid fa-briefcase"
     },
     {
       "name": "ออฟฟิศหลัก",
@@ -5394,7 +5934,8 @@
       "appearIn": [
         "Case 20: Dead Tired (เหนื่อยตายชัก)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-briefcase"
     },
     {
       "name": "ออฟฟิศหลังร้าน",
@@ -5402,7 +5943,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-shop"
     },
     {
       "name": "ออร์แกนที่ถูกเถาวัลย์ปกคลุม",
@@ -5410,7 +5952,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 48: The Body in the Moonlit Ruins (ศพในซากปรักหักพังใต้แสงจันทร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "อาคารประชุม",
@@ -5418,7 +5961,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "อาคารรักษาความปลอดภัย",
@@ -5426,7 +5970,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "อาร์ไกล์ ทาเลนต์ เอเจนซี",
@@ -5434,7 +5979,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "อ่าวโจรสลัด",
@@ -5442,7 +5988,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 15: The Perplexing Problem of the Parrot (ปัญหาชวนฉงนของนกแก้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-skull-crossbones"
     },
     {
       "name": "อ่าวอันเงียบสงบ",
@@ -5450,7 +5997,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)"
-      ]
+      ],
+      "icon": "fa-solid fa-house"
     },
     {
       "name": "อาสนวิหาร",
@@ -5458,7 +6006,8 @@
       "type": "ในร่ม",
       "appearIn": [
         "Case 07: A Quaint Little Village Slaying (การสังหารในหมู่บ้านอันเงียบสงบ)"
-      ]
+      ],
+      "icon": "fa-solid fa-church"
     },
     {
       "name": "ฮอลลีวูด",
@@ -5466,7 +6015,8 @@
       "type": "กลางแจ้ง",
       "appearIn": [
         "Case 19: Death on the Book Tour (ความตายในทัวร์โปรโมตหนังสือ)"
-      ]
+      ],
+      "icon": "fa-solid fa-industry"
     }
   ],
   "motives": [
@@ -5475,28 +6025,32 @@
       "detail": "การฆาตกรรมที่เป็นส่วนหนึ่งของแผนโกงที่ดิน",
       "appearIn": [
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-building"
     },
     {
       "name": "ขณะกำลังมึนเมา",
       "detail": "การลงมือในสภาวะที่สติสัมปชัญญะไม่ครบถ้วน",
       "appearIn": [
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)"
-      ]
+      ],
+      "icon": "fa-solid fa-beer-mug-empty"
     },
     {
       "name": "ความบ้าคลั่งจากอวกาศ",
       "detail": "สภาวะจิตใจที่ผิดปกติจากการอยู่นอกโลก",
       "appearIn": [
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-astronaut"
     },
     {
       "name": "ด้วยความกระหายเลือด",
       "detail": "การฆ่าที่เกิดจากแรงขับดันด้านมืด",
       "appearIn": [
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)"
-      ]
+      ],
+      "icon": "fa-solid fa-droplet"
     },
     {
       "name": "ด้วยความหึงหวง",
@@ -5505,14 +6059,16 @@
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)",
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ด้วยเหตุผลเชิงแนวคิด",
       "detail": "เพื่อให้เข้ากับธีมหรือเนื้อหาของเรื่อง",
       "appearIn": [
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "ด้วยเหตุผลทางศาสนา",
@@ -5522,7 +6078,8 @@
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)",
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)"
-      ]
+      ],
+      "icon": "fa-solid fa-hands-praying"
     },
     {
       "name": "ตามคำสั่งของลัทธิ",
@@ -5531,28 +6088,32 @@
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)",
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-users"
     },
     {
       "name": "ทำตามคำท้า",
       "detail": "การฆ่าเพียงเพราะต้องการพิสูจน์ตนเองจากการถูกท้าทาย",
       "appearIn": [
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "ทำไปตอนหน้ามืดตามัว",
       "detail": "การลงมือโดยขาดสติสัมปชัญญะชั่วขณะ",
       "appearIn": [
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "ทำไปเพราะความคุ้มคลั่ง",
       "detail": "การลงมือโดยไม่มีเหตุผลเนื่องจากสภาวะจิตที่ไม่ปกติ",
       "appearIn": [
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "ทำไปเพราะความหงุดหงิด",
@@ -5560,7 +6121,8 @@
       "appearIn": [
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-bomb"
     },
     {
       "name": "ในนามของวงการ",
@@ -5569,7 +6131,8 @@
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)",
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-film"
     },
     {
       "name": "เป็นการทดลองทางวิทยาศาสตร์",
@@ -5579,14 +6142,16 @@
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)",
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask"
     },
     {
       "name": "เป็นส่วนหนึ่งของแผนโกงอสังหาริมทรัพย์",
       "detail": "ฆาตกรรมเพื่อผลประโยชน์ที่ดิน",
       "appearIn": [
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-building"
     },
     {
       "name": "ผีบังคับให้ทำ",
@@ -5594,21 +6159,24 @@
       "appearIn": [
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)",
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-ghost"
     },
     {
       "name": "แผนโกงอสังหาริมทรัพย์",
       "detail": "การลงมือที่เป็นส่วนหนึ่งของแผนฮุบที่ดิน",
       "appearIn": [
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-building"
     },
     {
       "name": "เพราะกำลังรีบ",
       "detail": "ลงมือด้วยความลนลานเนื่องจากเร่งรีบ",
       "appearIn": [
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพราะคลื่นพลังงานไม่ดี",
@@ -5617,28 +6185,32 @@
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)",
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพราะความบ้าคลั่ง",
       "detail": "ลงมืออย่างไร้เหตุผลสิ้นดี",
       "appearIn": [
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-face-dizzy"
     },
     {
       "name": "เพราะความหงุดหงิด",
       "detail": "อารมณ์ชั่ววูบที่คุมไม่อยู่",
       "appearIn": [
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)"
-      ]
+      ],
+      "icon": "fa-solid fa-face-angry"
     },
     {
       "name": "เพราะความหึงหวง",
       "detail": "แรงริษยาที่เกินจะควบคุม",
       "appearIn": [
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-heart-crack"
     },
     {
       "name": "เพราะทำได้",
@@ -5646,42 +6218,48 @@
       "appearIn": [
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)",
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพราะพวกเขากำลังกลายเป็นเหมือนพ่อแม่ตัวเอง",
       "detail": "ความกลัวที่จะดำเนินรอยตามความผิดพลาดของบรรพบุรุษ",
       "appearIn": [
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพราะพวกเขาทำได้",
       "detail": "การฆ่าเพียงเพราะต้องการลองใช้อำนาจหรือความสามารถที่มี",
       "appearIn": [
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "เพราะพวกเขาทำลายรหัส",
       "detail": "การลงโทษคนที่ฝ่าฝืนกฎเหล็ก",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพราะมันสมเหตุสมผล",
       "detail": "การฆ่าที่ใช้เหตุผลส่วนตัวในการตัดสินว่าควรลงมือ",
       "appearIn": [
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อก่อตั้งสตูดิโอ",
       "detail": "ความโลภที่ต้องการครอบครองที่ดินเพื่อสร้างอาณาจักร",
       "appearIn": [
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "เพื่อการปฏิวัติ",
@@ -5689,14 +6267,16 @@
       "appearIn": [
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)",
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อการยอมรับที่สมควรได้รับ",
       "detail": "ความต้องการชื่อเสียงและเกียรติยศที่ขาดหายไป",
       "appearIn": [
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อแก้แค้น",
@@ -5708,7 +6288,8 @@
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)",
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-hand-fist"
     },
     {
       "name": "เพื่อแก้แค้นให้พ่อ",
@@ -5716,7 +6297,8 @@
       "appearIn": [
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-hand-fist"
     },
     {
       "name": "เพื่อขโมยคริสตัล",
@@ -5724,21 +6306,24 @@
       "appearIn": [
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)",
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-mask"
     },
     {
       "name": "เพื่อขโมยคฤหาสน์",
       "detail": "ต้องการครอบครองทรัพย์สินที่ดิน",
       "appearIn": [
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-house-chimney"
     },
     {
       "name": "เพื่อขโมยทับทิม",
       "detail": "ต้องการทรัพย์สินมีค่าของผู้เคราะห์ร้าย",
       "appearIn": [
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-mask"
     },
     {
       "name": "เพื่อขโมยบทบาท",
@@ -5746,14 +6331,16 @@
       "appearIn": [
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)",
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
-      ]
+      ],
+      "icon": "fa-solid fa-mask"
     },
     {
       "name": "เพื่อขโมยแผนที่ขุมทรัพย์",
       "detail": "ความโลภในสมบัติที่ซ่อนอยู่บนเกาะ",
       "appearIn": [
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-mask"
     },
     {
       "name": "เพื่อขโมยศพ",
@@ -5762,7 +6349,8 @@
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)",
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)",
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
-      ]
+      ],
+      "icon": "fa-solid fa-mask"
     },
     {
       "name": "เพื่อขโมยหนังสือล้ำค่า",
@@ -5772,7 +6360,8 @@
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)",
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-mask"
     },
     {
       "name": "เพื่อขโมยไอเดีย",
@@ -5782,42 +6371,48 @@
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)",
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)",
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-mask"
     },
     {
       "name": "เพื่อขโมย UFO",
       "detail": "ต้องการครอบครองเทคโนโลยีจากนอกโลก",
       "appearIn": [
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
-      ]
+      ],
+      "icon": "fa-solid fa-mask"
     },
     {
       "name": "เพื่อขอส่วนแบ่งที่สูงขึ้น",
       "detail": "ความโลภในผลประโยชน์ทางการเงิน",
       "appearIn": [
         "Case 91: They Bill You Double for Dying (ตายก็โดนเรียกเก็บเงินสองเท่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "เพื่อขึ้นเป็นกษัตริย์",
       "detail": "ความทะเยอทะยานส่วนตัวเพื่อครองบัลลังก์",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-rocket"
     },
     {
       "name": "เพื่อขุดเจาะน้ำมัน",
       "detail": "ความลับที่ซ่อนอยู่ใต้พื้นดินของสตูดิโอ",
       "appearIn": [
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "เพื่อเข้าร่วมลัทธิ",
       "detail": "พิธีกรรมลับที่ต้องสังเวยด้วยชีวิต",
       "appearIn": [
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-users"
     },
     {
       "name": "เพื่อเงิน",
@@ -5827,21 +6422,24 @@
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)",
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "เพื่อเงินสด",
       "detail": "แรงจูงใจพื้นฐานจากความโลภ",
       "appearIn": [
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "เพื่อเงินสดก้อนโต",
       "detail": "ความโลภที่ยากจะต้านทาน",
       "appearIn": [
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "เพื่อจุดประสงค์ทางการเมือง",
@@ -5850,7 +6448,8 @@
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)",
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อแจ้งเกิดในวงการ",
@@ -5859,7 +6458,8 @@
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)",
         "Case 84: The Tour of Death (ทัวร์มรณะ)",
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-film"
     },
     {
       "name": "เพื่อชนะรางวัล",
@@ -5870,21 +6470,24 @@
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)",
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-trophy"
     },
     {
       "name": "เพื่อช่วยขายบทภาพยนตร์",
       "detail": "หนทางสู่การเป็นนักเขียนบทชื่อดัง",
       "appearIn": [
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)"
-      ]
+      ],
+      "icon": "fa-solid fa-scroll"
     },
     {
       "name": "เพื่อช่วยขายบทหนัง",
       "detail": "ความทะเยอทะยานที่ต้องการให้ผลงานได้รับการยอมรับ",
       "appearIn": [
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-rocket"
     },
     {
       "name": "เพื่อช่วยให้ชนะสงคราม",
@@ -5893,28 +6496,32 @@
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)",
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-jet-fighter"
     },
     {
       "name": "เพื่อซ่อนความลับเรื่องชู้สาว",
       "detail": "ปกปิดความสัมพันธ์ที่บอกใครไม่ได้",
       "appearIn": [
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)"
-      ]
+      ],
+      "icon": "fa-solid fa-heart-crack"
     },
     {
       "name": "เพื่อซ่อนเรื่องชู้สาว",
       "detail": "การปกปิดความลับที่บอกใครไม่ได้",
       "appearIn": [
         "Case 84: The Tour of Death (ทัวร์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-heart-crack"
     },
     {
       "name": "เพื่อดูว่าการฆ่าคนจะรู้สึกอย่างไร",
       "detail": "ความอยากรู้อยากเห็นที่น่าสยดสยอง",
       "appearIn": [
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อดูว่าตัวเองจะทำได้ไหม",
@@ -5925,70 +6532,80 @@
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)",
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)",
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อตอบโต้คำสบประมาท",
       "detail": "ฆ่าเพื่อกู้ศักดิ์ศรีที่ถูกเหยียดหยามคืนมา",
       "appearIn": [
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อต่อรองสัญญาใหม่",
       "detail": "ต้องการข้อตกลงในการทำงานที่ดีขึ้น",
       "appearIn": [
         "Case 84: The Tour of Death (ทัวร์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อต่อสู้เพื่อความรัก",
       "detail": "ยอมทำทุกอย่างเพื่อหัวใจ",
       "appearIn": [
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อทดสอบพล็อตหนัง",
       "detail": "ความพยายามในการลองใช้พล็อตฆาตกรรมในชีวิตจริง",
       "appearIn": [
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อทำลายสหภาพแรงงาน",
       "detail": "การกำจัดอุปสรรคในการขูดรีดแรงงาน",
       "appearIn": [
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อทำลายอาชีพคู่แข่ง",
       "detail": "แรงจูงใจจากความริษยาในหน้าที่การงาน",
       "appearIn": [
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อทำให้ปาร์ตี้สนุกขึ้น",
       "detail": "สร้างสีสันในแบบที่คาดไม่ถึง",
       "appearIn": [
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อทำให้เลดี้ประทับใจ",
       "detail": "การลงมือเพื่อดึงดูดความสนใจจากสตรี",
       "appearIn": [
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อที่จอดรถที่ดีกว่า",
       "detail": "ความขัดแย้งเรื่องที่จอดรถที่บานปลาย",
       "appearIn": [
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "เพื่อเบี่ยงเบนความสนใจ",
@@ -5996,7 +6613,8 @@
       "appearIn": [
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อปกป้องความลับ",
@@ -6007,14 +6625,16 @@
         "Case 71: New Age, New Murder! (นิวเอจ... ฆาตกรรมใหม่!)",
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)",
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "เพื่อปกป้องความลับทางมายากล",
       "detail": "การรักษาความลับของกลไม่ให้รั่วไหล",
       "appearIn": [
         "Case 69: The Magical Mystery Murder (ปริศนาฆาตกรรมมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "เพื่อประโยชน์สุขส่วนรวม",
@@ -6022,7 +6642,8 @@
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)",
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อปล้นสุสาน",
@@ -6031,7 +6652,8 @@
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)",
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)",
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-tombstone"
     },
     {
       "name": "เพื่อปล้นเหยื่อ",
@@ -6039,21 +6661,24 @@
       "appearIn": [
         "Case 51: The Grave Death at the Graveyard (ความตายอันน่าหดหู่ ณ สุสาน)",
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อปลอบใจโลจิโก",
       "detail": "พยายามทำให้เรื่องมันง่ายขึ้นสำหรับนักสืบ",
       "appearIn": [
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "เพื่อป้องกันการเปลี่ยนพินัยกรรม",
       "detail": "ฆ่าเพื่อรักษาผลประโยชน์ทางการเงิน",
       "appearIn": [
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-sack-dollar"
     },
     {
       "name": "เพื่อปิดดีลธุรกิจ",
@@ -6061,7 +6686,8 @@
       "appearIn": [
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)",
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-wand-magic"
     },
     {
       "name": "เพื่อปิดปากพยาน",
@@ -6069,28 +6695,32 @@
       "appearIn": [
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)"
-      ]
+      ],
+      "icon": "fa-solid fa-rocket"
     },
     {
       "name": "เพื่อเป็นการทดลองทางวิทยาศาสตร์",
       "detail": "การใช้ความตายเพื่อหาคำตอบในเชิงประจักษ์",
       "appearIn": [
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
-      ]
+      ],
+      "icon": "fa-solid fa-flask"
     },
     {
       "name": "เพื่อเป็นการฝึกฝน",
       "detail": "การฆ่าเพื่อเตรียมพร้อมสำหรับเป้าหมายที่ใหญ่กว่า",
       "appearIn": [
         "Case 57: Sing a Hymn of Horror (ร้องเพลงสวดแห่งความสยอง)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อโปรโมตเมือง",
       "detail": "การฆ่าที่ทำไปเพื่อสร้างจุดสนใจให้การท่องเที่ยวของเมือง",
       "appearIn": [
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อโปรโมตเรื่องลี้ลับ",
@@ -6099,7 +6729,8 @@
         "Case 88: The Real Murder at the Fake Estate (ฆาตกรรมจริงที่คฤหาสน์จำลอง)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)",
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อโปรโมตหนัง",
@@ -6107,21 +6738,24 @@
       "appearIn": [
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อฝึกฝนฝีมือ",
       "detail": "ฆ่าเพื่อเตรียมพร้อมสำหรับงานใหญ่",
       "appearIn": [
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อพบดารา",
       "detail": "ความลุ่มหลงในตัวบุคคลที่มีชื่อเสียง",
       "appearIn": [
         "Case 84: The Tour of Death (ทัวร์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อพิสูจน์ความแข็งแกร่ง",
@@ -6130,7 +6764,8 @@
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)",
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)",
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อพิสูจน์ประเด็น",
@@ -6139,35 +6774,40 @@
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)",
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)",
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อพิสูจน์รัก",
       "detail": "การกระทำที่รุนแรงเพื่อแสดงความจงรักภักดีในความรัก",
       "appearIn": [
         "Case 72: Prism or Prison? (ปริซึมหรือคุก?)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อพิสูจน์ว่าตัวเองแกร่ง",
       "detail": "ความต้องการแสดงอำนาจและความแข็งแกร่งให้เป็นที่ประจักษ์",
       "appearIn": [
         "Case 63: The Body in the Snowdrift (ศพในกองหิมะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อเพิ่มยอดขายหนังสือ",
       "detail": "สร้างข่าวเพื่อกระตุ้นตลาด",
       "appearIn": [
         "Case 59: I Yacht to Kill You for This (เรือยอชต์มรณะ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อฟุตเทจดีๆ",
       "detail": "ต้องการเก็บภาพเหตุการณ์จริงเพื่อนำไปใช้ในงาน",
       "appearIn": [
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อยึดครองสตูดิโอ",
@@ -6177,7 +6817,8 @@
         "Case 90: Death at the Agency (ความตายที่บริษัทเอเจนซี่)",
         "Case 98: Stage Fright (ความกลัวบนเวที)",
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "เพื่อยึดครองฮอลลีวูด",
@@ -6186,21 +6827,24 @@
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)",
         "Case 96: Breaking and Investigating (บุกรุกและสืบสวน)"
-      ]
+      ],
+      "icon": "fa-solid fa-rocket"
     },
     {
       "name": "เพื่อยึดอำนาจ",
       "detail": "ความต้องการที่จะเป็นผู้กุมอำนาจในสำนักข่าว",
       "appearIn": [
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อแย่งที่นั่งที่ดีกว่า",
       "detail": "เหตุผลส่วนตัวเรื่องความสะดวกสบาย",
       "appearIn": [
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อรักษาหน้า",
@@ -6208,21 +6852,24 @@
       "appearIn": [
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "เพื่อรักษาอำนาจ",
       "detail": "ความพยายามในการกุมบังเหียนสตูดิโอไว้กับตัว",
       "appearIn": [
         "Case 100: Murder at the Murdle Premiere (ฆาตกรรมที่งานรอบปฐมทัศน์)"
-      ]
+      ],
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "เพื่อรับมรดก",
       "detail": "ต้องการทรัพย์สมบัติของครอบครัว",
       "appearIn": [
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อรับมรดกกองโต",
@@ -6230,63 +6877,72 @@
       "appearIn": [
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)",
         "Case 78: Plenty of Kills in the Sea (ฆาตกรรมเกลื่อนทะเล)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อล้างแค้นให้พ่อ",
       "detail": "แรงจูงใจจากความกตัญญูที่ดำมืด",
       "appearIn": [
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อเลื่อนตำแหน่ง",
       "detail": "ความต้องการก้าวหน้าในหน้าที่การงาน",
       "appearIn": [
         "Case 98: Stage Fright (ความกลัวบนเวที)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อไล่หมีไป",
       "detail": "ต้องการกำจัดสิ่งมีชีวิตที่เป็นอันตราย",
       "appearIn": [
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อส่งเสริมเรื่องลี้ลับ",
       "detail": "ต้องการสร้างกระแสความเชื่อทางไสยศาสตร์หรือวิญญาณ",
       "appearIn": [
         "Case 75: REVENGE IN THE CAVE (การล้างแค้นในถ้ำ)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อสร้างความไขว้เขว",
       "detail": "การเบี่ยงเบนความสนใจจากเหตุการณ์หรือแผนการอื่น",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อสร้างความประทับใจให้หญิงสาว",
       "detail": "ทำทุกอย่างเพื่อความรัก (ที่ผิดวิธี)",
       "appearIn": [
         "Case 54: And Then There Was Another One Again (แล้วก็มีอีกรายจนได้)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อสร้างแรงจูงใจให้โลจิโก",
       "detail": "การฆ่าเพื่อกระตุ้นให้นักสืบทำงาน",
       "appearIn": [
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "เพื่อสร้างสรรค์ศิลปะ",
       "detail": "ต้องการให้ความตายเป็นส่วนหนึ่งของงานศิลปะที่ยอดเยี่ยม",
       "appearIn": [
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
-      ]
+      ],
+      "icon": "fa-solid fa-palette"
     },
     {
       "name": "เพื่อสั่งสอนบทเรียน",
@@ -6294,7 +6950,8 @@
       "appearIn": [
         "Case 60: Death on the Commune: A True-Crime Sequel (ความตายในชุมชน: ภาคต่อของคดีจริง)",
         "Case 70: Death in an Even Darker Alley (ฆาตกรรมในซอยที่มืดกว่าเดิม)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อหนีการถูกแบล็กเมล์",
@@ -6302,14 +6959,16 @@
       "appearIn": [
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-rocket"
     },
     {
       "name": "เพื่อหนีจากการถูกแบล็กเมล์",
       "detail": "กำจัดพยานที่รู้ความลับ",
       "appearIn": [
         "Case 55: Unusual Webbing, Unnatural Crimes (ใยแมงมุมประหลาดกับอาชญากรรมผิดธรรมชาติ)"
-      ]
+      ],
+      "icon": "fa-solid fa-rocket"
     },
     {
       "name": "เพื่อหนีจากหนังห่วยๆ",
@@ -6318,56 +6977,64 @@
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)",
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อหยุดการปฏิวัติ",
       "detail": "การลงมือเพื่อรักษาความสงบเดิมเอาไว้",
       "appearIn": [
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อหยุดยั้งการปฏิวัติ",
       "detail": "การลงมือเพื่อรักษาอำนาจเดิมและระบอบการปกครองเดิมไว้",
       "appearIn": [
         "Case 66: Vive La Révolution! (จงเจริญเถิดการปฏิวัติ!)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อหยุดโลจิโก",
       "detail": "การกำจัดนักสืบที่กำลังเข้าใกล้ความจริงเกินไป",
       "appearIn": [
         "Case 64: Deduction College (วิทยาลัยการสืบนิรนัย)"
-      ]
+      ],
+      "icon": "fa-solid fa-user-secret"
     },
     {
       "name": "เพื่อหลอกให้หมีหนีไป",
       "detail": "การป้องกันตัวจากสัตว์ป่า",
       "appearIn": [
         "Case 53: The Walk in the Mysterious Woods (การเดินเล่นในป่าลึกลับ)"
-      ]
+      ],
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "เพื่อให้ได้ที่นั่งที่ดีกว่า",
       "detail": "ความเห็นแก่ตัวที่นำไปสู่ความรุนแรงเพียงเพื่อความสบาย",
       "appearIn": [
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อให้ได้บทพูดเพิ่ม",
       "detail": "ต้องการความโดดเด่นในภาพยนตร์มากขึ้น",
       "appearIn": [
         "Case 86: Murder on Sound Stage B (ฆาตกรรมในสตูดิโอถ่ายทำ B)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อให้ปาร์ตี้สนุกขึ้น",
       "detail": "เหตุผลที่บิดเบี้ยวและน่าขนลุกในการสร้างความบันเทิง",
       "appearIn": [
         "Case 73: Kitschy Kitschy Killing (การสังหารที่แสนเชย)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อให้ภาพยนตร์ได้รับการสร้าง",
@@ -6375,14 +7042,16 @@
       "appearIn": [
         "Case 76: Hooray for Hollywood! (ไชโย ฮอลลีวูด!)",
         "Case 79: Murder at the Movies (ฆาตกรรมที่โรงภาพยนตร์)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     },
     {
       "name": "เพื่อให้ภาพยนตร์เสร็จสมบูรณ์",
       "detail": "เป้าหมายหลักที่ต้องทำให้สำเร็จ",
       "appearIn": [
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
-      ]
+      ],
+      "icon": "fa-solid fa-comment-dots"
     }
   ]
 }

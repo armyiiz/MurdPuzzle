@@ -1,7 +1,7 @@
 import React from 'react';
 import { Category } from '../types/level';
 import { CellState } from '../hooks/useGameLogic';
-import { getCategoryEmoji } from '../utils/emojiHelper';
+import { getCategoryIcon } from '../utils/iconHelper';
 
 interface LogicGridProps {
   categories: Category[];
@@ -50,7 +50,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full">
-                      {getCategoryEmoji(cat.id, itemIndex, item)}
+                      {getCategoryIcon(cat.id, itemIndex, item)}
                     </div>
                   </td>
                 );
@@ -76,7 +76,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError }:
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full">
-                      {getCategoryEmoji(rowCat.id, rowItemIndex, rowItem)}
+                      {getCategoryIcon(rowCat.id, rowItemIndex, rowItem)}
                     </div>
                   </td>
 
