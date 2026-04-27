@@ -1,0 +1,92 @@
+﻿1. ผู้ต้องสงสัย (Suspects),,,
+ชื่อผู้ต้องสงสัย (ไทย),ลักษณะไอคอนในรูป,Font Awesome Pro Icon,
+ผู้อำนวยการผลิต สตีล,ทรงผมบ็อบตรง,fa-solid fa-user-hair-mullet (หรือ fa-user ทั่วไป),
+แฮก แบล็กซ์ตัน,ผมแสกข้างและมีหนวด,fa-solid fa-mustache,
+ซูเปอร์แฟน สโมคกี้,หมวกแก๊ปหันไปด้านหลัง,fa-solid fa-user-robot (หรือ fa-hat-backwards),
+ตัวประกอบ มาเรนโก,ผมมัดมวยสูง,fa-solid fa-user (ทรงผมผู้หญิง),
+มิดไนท์ ที่ 3,แว่นกันแดด,fa-solid fa-sunglasses,
+เอเจนท์ อาร์ไกล์,เนคไท,fa-solid fa-tie,
+ลุงมิดไนท์,หมวกปาร์ตี้,fa-solid fa-hat-party,
+บอส ชาร์โคล,แว่นกันแดดและเครา,fa-solid fa-user-bounty-hunter,
+รัฐมนตรี เซลาดอน,หมวกเหล็ก/หมวกนิรภัย,fa-solid fa-helmet-battle,
+แกรนด์มาสเตอร์ โรส,ผมบ็อบหนา,fa-solid fa-user,
+ซิลเวอร์ตัน ระดับตำนาน,ทรงผมย้อนยุคมีวอลลุ่ม,fa-solid fa-user-tie,
+เพิร์ล เอจ,แว่นตา,fa-solid fa-glasses,
+ผู้กำกับ ดัสตี้,โทรโข่ง,fa-solid fa-bullhorn,
+ประธาน มิดไนท์,หมวกทรงสูง (Top Hat),fa-solid fa-hat-top,
+ดร. คริมสัน,หูฟังแพทย์ (Stethoscope),fa-solid fa-stethoscope,
+ผู้พิพากษา ไพน์,ผมทรงแอฟโร/วิกผู้พิพากษา,fa-solid fa-gavel,
+มิกซ์ แทนเจอรีน,หมวกเดินป่า,fa-solid fa-hat-winter,
+ลอร์ด ลาเวนเดอร์,ทรงผมมีรอยหยักด้านข้าง,fa-solid fa-user-music,
+อธิการบดี ทัสคานี,หมวกปริญญา,fa-solid fa-graduation-cap,
+ซินยอร์ เอเมอรัลด์,หนวดโค้งสวยงาม,fa-solid fa-mustache (แบบหนา),
+เจ้าหน้าที่ คอปเปอร์,หมวกตำรวจ,fa-solid fa-hat-police,
+ซิสเตอร์ ลาพิส,ชุดแม่ชี,fa-solid fa-church,
+โค้ช แรสเบอร์รี,หมวกกันน็อคอเมริกันฟุตบอล,fa-solid fa-helmet-safety,
+มนุษย์อวกาศ บลูสกี้,หมวกนักบินอวกาศ,fa-solid fa-user-astronaut,
+นายพล คอฟฟี่,หมวกเบเร่ต์ทหาร,fa-solid fa-helmet-battle,
+ดิ อะเมซิ่ง ออรีโอลิน,หมวกมายากลและกระต่าย,fa-solid fa-hat-wizard,
+ดยุค ออฟ เวอร์มิลเลียน,มงกุฎ,fa-solid fa-crown,
+เดม ออบซิเดียน,หมวกปีกกว้างประดับดอกไม้,fa-solid fa-hat-beach,
+บราเธอร์ บราวน์สโตน,ฮู้ดนักบวช,fa-solid fa-user-hoodie,
+นักโหราศาสตร์ อะซูร์,หมวกพ่อมดทรงแหลม,fa-solid fa-hat-wizard,
+บรรณาธิการ ไอวอรี่,ผมยาวประบ่า,fa-solid fa-user,
+บุ๊กกี้-วินเนอร์ เกนส์โบโร,แว่นตาทรงกลมหนา,fa-solid fa-glasses-round,
+สหายแชมเปญ,หมวกขนสัตว์ยุโรปตะวันออก (Ushanka),fa-solid fa-hat-winter,
+บิชอป อะซูร์,หมวกนักบวชชั้นสูง,fa-solid fa-vatican,
+ผู้ช่วย แอปเปิลกรีน,ผมบ็อบสั้นมีหน้าม้า,fa-solid fa-user,
+มิดไนท์ ที่ 1,หมวกฟีโดร่า (Fedora),fa-solid fa-hat-cowboy,
+ประธานาธิบดีอมารันต์,หมวกเบเร่ต์แบบฝรั่งเศส,fa-solid fa-square (สัญลักษณ์ Beret),
+ประธาน ชอล์ก,ผมขาวสองข้าง (ทรงคลาสสิก),fa-solid fa-user-graduate,
+สารวัตร อิร์ราติโน,ผมยาวดัดลอน,fa-solid fa-user-hair-long,
+,,,
+2. อาวุธ (Weapons),,,
+อาวุธ (ไทย),Font Awesome Pro Icon,อาวุธ (ไทย),Font Awesome Pro Icon
+แว่นขยาย,fa-solid fa-magnifying-glass,รางวัล/ถ้วยรางวัล,fa-solid fa-award
+ชะแลง,fa-solid fa-crowbar,เหล็กเส้น,fa-solid fa-bars
+ไปป์ระเบิด,fa-solid fa-pipe-smoking,ถังน้ำมัน,fa-solid fa-oil-can
+หนังสือปกแข็ง,fa-solid fa-book,พลั่ว,fa-solid fa-shovel
+ถังดับเพลิง,fa-solid fa-fire-extinguisher,มีด,fa-solid fa-knife
+ท่อนไม้,fa-solid fa-tree,ขวดไวน์,fa-solid fa-wine-bottle
+หมวกเกราะโบราณ,fa-solid fa-helmet-battle,กุหลาบปลอม,fa-solid fa-flower
+ก้อนหิน,fa-solid fa-mountain,ชุดดีวีดีบ็อกซ์เซ็ต,fa-solid fa-compact-disc
+บทภาพยนตร์ขนาดยักษ์,fa-solid fa-file-lines,ส้อม,fa-solid fa-utensils
+รถกอล์ฟ,fa-solid fa-cart-shopping,ปากกาทองคำ,fa-solid fa-pen-fancy
+กระบอง,fa-solid fa-pen-nib,แถบฟิล์ม,fa-solid fa-film
+ถุงทราย,fa-solid fa-sack,ปลาปักเป้าพิษ,fa-solid fa-fish
+ขาตั้งไฟ (C-Stand),fa-solid fa-microphone-stand,ไมโครโฟน ADR,fa-solid fa-microphone
+สายไฟ,fa-solid fa-plug,สัญญาหนึ่งพันหน้า,fa-solid fa-file-contract
+หมวกสักหลาดติดกับดัก,fa-solid fa-hat-cowboy,ถุงมือหนัง,fa-solid fa-mitten
+ขวดยาพิษ,fa-solid fa-vial,สำรับไพ่มาโรต์,fa-solid fa-cards-blank
+ปลาเฮอริ่งแดง,fa-solid fa-fish,ไม้พยากรณ์หาแหล่งน้ำ,fa-solid fa-magic-wand-sparkles
+,,,
+3. สถานที่ (Locations),,,
+สถานที่ (ไทย),Font Awesome Pro Icon,สถานที่ (ไทย),Font Awesome Pro Icon
+ลานจอดรถ,fa-solid fa-square-p,โรงภาพยนตร์สุดหรู,fa-solid fa-display
+พื้นที่จัดงาน,fa-solid fa-users,บังกะโล,fa-solid fa-house-user
+ห้องนิทรรศการ,fa-solid fa-tent,ร้านเก็บอุปกรณ์,fa-solid fa-palette
+ศูนย์อาหาร,fa-solid fa-burger,สตูดิโอที่ถูกล็อค,fa-solid fa-lock
+โรงละครกรีก,fa-solid fa-masks-theater,น้ำพุ,fa-solid fa-fountain
+สวนสัตว์เก่า,fa-solid fa-cage,รูปปั้นมิดไนท์,fa-solid fa-monument
+ถ้ำที่มีชื่อเสียง,fa-solid fa-mountain-sun,สตูดิโอถ่ายทำ A/B/C/D,fa-solid fa-clapperboard
+ป้ายฮอลลีวูด,fa-solid fa-font-case,บาร์และร้านปิ้งย่าง,fa-solid fa-utensils
+อาคารรักษาความปลอดภัย,fa-solid fa-video,แท่นพิมพ์,fa-solid fa-print
+จุดลงทะเบียนชมสตูดิโอ,fa-solid fa-clipboard-check,ซากปรักหักพังโบราณ,fa-solid fa-archway
+ห้องจดหมาย,fa-solid fa-envelope,ดาดฟ้า,fa-solid fa-roof-top
+ออฟฟิศที่ดีที่สุด,fa-solid fa-briefcase,เครื่องสูบน้ำมัน,fa-solid fa-oil-well
+,,,
+4. แรงจูงใจ (Motives),,,
+แรงจูงใจ (ไทย),Font Awesome Pro Icon,,
+เพื่อโปรโมตหนัง,fa-solid fa-bullhorn,,
+เพื่อการยอมรับที่สมควรได้รับ,fa-solid fa-star,,
+เพื่อแก้แค้น,fa-solid fa-knives-crossed,,
+เพื่อยึดครองฮอลลีวูด / สตูดิโอ,fa-solid fa-city หรือ fa-building,,
+เพื่อเงิน / เงินสดก้อนโต,fa-solid fa-sack-dollar,,
+เพื่อปิดปากพยาน,fa-solid fa-shushing-face,,
+ด้วยเหตุผลทางศาสนา,fa-solid fa-person-praying,,
+เพื่อหนีจากหนังห่วยๆ,fa-solid fa-thumbs-down,,
+เพื่อชนะรางวัล,fa-solid fa-trophy,,
+ในนามของวงการ,fa-solid fa-gear,,
+เพื่อหยุดการปฏิวัติ,fa-solid fa-ban,,
+เพื่อขุดเจาะน้ำมัน,fa-solid fa-oil-well,,
+,,,
