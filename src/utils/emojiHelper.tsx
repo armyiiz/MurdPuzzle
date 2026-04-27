@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react';
-import motivesData from '../data/Motive.json';
-import suspectsData from '../data/suspect_details.json';
-import masterData from '../data/masterdata.json';
+import dailyMasterData from '../data/dailymasterdata.json';
 
 const TINT_COLORS = [
   '#000000', // 0: Black
@@ -10,28 +8,22 @@ const TINT_COLORS = [
   '#1E90FF', // 3: Royal Blue
 ];
 
-const BASE_EMOJIS: Record<string, string> = {
-  suspects: '🕺',
-  weapons: '🗡️',
-  locations: '🏠',
-  motives: '💬',
+const BASE_ICONS: Record<string, string> = {
+  suspects: 'fa-solid fa-user',
+  weapons: 'fa-solid fa-khanda',
+  locations: 'fa-solid fa-house',
+  motives: 'fa-solid fa-comment-dots',
 };
 
-const SUSPECT_EMOJIS = Object.values(suspectsData).map((s: any) => s.emoji).filter(Boolean);
-const WEAPON_EMOJIS = masterData.weapons_master.map((w: any) => w.emoji).filter(Boolean);
-const LOCATION_EMOJIS = masterData.rooms_master.map((r: any) => r.emoji).filter(Boolean);
-const MOTIVE_EMOJIS = Object.values(motivesData).map((m: any) => m.emoji).filter(Boolean);
-
-const hashString = (str: string) => {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash += str.charCodeAt(i);
-  }
-  return hash;
+// Normalize names (remove parenthesis contents and trim)
+const normalizeString = (str: string) => {
+  if (!str) return '';
+  return str.replace(/\s*\(.*?\)\s*/g, '').trim();
 };
 
-// Extractor logic
 export const extractEmojiAndText = (itemName: string) => {
+  // Keeping this for backwards compatibility if needed for text formatting,
+  // but it's largely obsolete if everything moves to FA.
   const emojiRegex = /(\p{Emoji_Presentation}|\p{Emoji}\uFE0F)/u;
   const match = itemName.match(emojiRegex);
   if (match) {
@@ -42,54 +34,36 @@ export const extractEmojiAndText = (itemName: string) => {
   return { emoji: null, text: itemName };
 };
 
-export const getCategoryEmoji = (category: string, index: number, itemName?: string, className: string = "text-base sm:text-2xl leading-none inline-block"): ReactNode => {
-  const hexColor = TINT_COLORS[index % TINT_COLORS.length];
-  let emojiToRender = BASE_EMOJIS[category] || '❓';
+export const getIconClass = (category: string, itemName?: string): string => {
+  let iconClassToRender = BASE_ICONS[category] || 'fa-solid fa-circle-question';
 
   if (itemName) {
-    const { emoji, text } = extractEmojiAndText(itemName);
-    if (emoji) {
-      emojiToRender = emoji;
-    } else {
-      const cleanName = text.trim();
-      let foundExact = false;
+    const cleanName = normalizeString(itemName);
 
-      if (category === 'suspects') {
-        const suspect = (suspectsData as Record<string, any>)[cleanName];
-        if (suspect && suspect.emoji) { emojiToRender = suspect.emoji; foundExact = true; }
-      } else if (category === 'motives') {
-        const motive = (motivesData as Record<string, any>)[cleanName];
-        if (motive && motive.emoji) { emojiToRender = motive.emoji; foundExact = true; }
-      } else if (category === 'weapons') {
-        const weapon = masterData.weapons_master.find(w => w.name === cleanName);
-        if (weapon && weapon.emoji) { emojiToRender = weapon.emoji; foundExact = true; }
-      } else if (category === 'locations') {
-        const room = masterData.rooms_master.find(r => r.name === cleanName);
-        if (room && room.emoji) { emojiToRender = room.emoji; foundExact = true; }
-      }
+    // Look up in dailyMasterData
+    let foundIcon = null;
+    if (category === 'suspects' && dailyMasterData.suspects) {
+      const item = dailyMasterData.suspects.find((s: any) => normalizeString(s.name) === cleanName);
+      if (item && item.icon) foundIcon = item.icon;
+    } else if (category === 'weapons' && dailyMasterData.weapons) {
+      const item = dailyMasterData.weapons.find((w: any) => normalizeString(w.name) === cleanName);
+      if (item && item.icon) foundIcon = item.icon;
+    } else if (category === 'locations' && dailyMasterData.locations) {
+      const item = dailyMasterData.locations.find((l: any) => normalizeString(l.name) === cleanName);
+      if (item && item.icon) foundIcon = item.icon;
+    } else if (category === 'motives' && dailyMasterData.motives) {
+      const item = dailyMasterData.motives.find((m: any) => normalizeString(m.name) === cleanName);
+      if (item && item.icon) foundIcon = item.icon;
+    }
 
-      if (!foundExact) {
-        let pool: string[] | null = null;
-        if (category === 'suspects' && SUSPECT_EMOJIS.length > 0) pool = SUSPECT_EMOJIS;
-        else if (category === 'weapons' && WEAPON_EMOJIS.length > 0) pool = WEAPON_EMOJIS;
-        else if (category === 'locations' && LOCATION_EMOJIS.length > 0) pool = LOCATION_EMOJIS;
-        else if (category === 'motives' && MOTIVE_EMOJIS.length > 0) pool = MOTIVE_EMOJIS;
-
-        if (pool) {
-          const hashIndex = hashString(cleanName) % pool.length;
-          emojiToRender = pool[hashIndex] || BASE_EMOJIS[category] || '❓';
-        }
-      }
+    if (foundIcon) {
+      iconClassToRender = foundIcon;
     }
   }
 
-  return (
-    <span
-      className={className}
-      title={itemName}
-      style={{ color: 'transparent', textShadow: `0 0 0 ${hexColor}` }}
-    >
-      {emojiToRender}
-    </span>
-  );
+  return iconClassToRender;
+};
+
+export const getIconColor = (index: number): string => {
+  return TINT_COLORS[index % TINT_COLORS.length];
 };
