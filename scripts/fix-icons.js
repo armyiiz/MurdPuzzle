@@ -1,28 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 
-// ชี้เป้าไปที่ไฟล์ dailymasterdata.json
-const dataPath = path.join(__dirname, 'src', 'data', 'dailymasterdata.json');
+const dataPath = path.join(__dirname, '..', 'src', 'data', 'dailymasterdata.json');
 let masterData = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
-// 💡 พจนานุกรมไอคอนฉบับอลิซ (อัปเกรดใหม่ ครอบคลุม 100%)
 const iconDictionary = {
-  // --- 1. กลุ่มพังเงียบ (เปลี่ยนไปใช้ไอคอนที่รันขึ้นชัวร์) ---
   "หลวงพ่อ แมงโก้": "fa-solid fa-cross",
   "นายพล คอฟฟี่": "fa-solid fa-star",
   "เอเจนท์ อาร์ไกล์": "fa-solid fa-user-secret",
   "ประธาน มิดไนท์": "fa-solid fa-crown",
-
-  // --- 2. กลุ่มสถานที่แบ่งพาร์ทิชัน ---
   "ลานจอดรถ A": "fa-solid fa-a",
   "ลานจอดรถ B": "fa-solid fa-b",
   "บังกะโล 1": "fa-solid fa-1",
   "บังกะโล 2": "fa-solid fa-2",
   "บังกะโล 3": "fa-solid fa-3",
   "บังกะโล 4": "fa-solid fa-4",
-
-  // --- 3. จัดการตัวสำรองที่เหลือ ---
-  // ผู้ต้องสงสัย
   "นายกเทศมนตรี ฮันนี่": "fa-solid fa-user-tie",
   "เลดี้ ไวโอเล็ต": "fa-solid fa-user-crown",
   "ดยุคแห่งเวอร์มิลเลียน": "fa-solid fa-user-tie",
@@ -35,8 +27,6 @@ const iconDictionary = {
   "ดร. ซีเชลล์": "fa-solid fa-user-doctor",
   "ดาราดัง อะบาลอน": "fa-solid fa-star",
   "มิดไนท์ วัยทีน": "fa-solid fa-user",
-  
-  // อาวุธ
   "หนังสือเล่มหนา": "fa-solid fa-book",
   "เทียนไขผสมยาพิษ": "fa-solid fa-candle-holder",
   "ใบปริญญาจากวิทยาลัยสืบสวน": "fa-solid fa-scroll",
@@ -127,12 +117,159 @@ const iconDictionary = {
   "ไฟผี": "fa-solid fa-ghost",
   "ไม้เท้าดาบ": "fa-solid fa-staff",
   "ธงรูปดอกกุหลาบ": "fa-solid fa-flag",
-  "เครื่องพิมพ์": "fa-solid fa-print"
+  "เครื่องพิมพ์": "fa-solid fa-print",
+  "หลังคา": "fa-solid fa-roof",
+  "ห้องน้ำแคบ ๆ": "fa-solid fa-restroom",
+  "สำนักงาน": "fa-solid fa-briefcase",
+  "ห้องทนายความสมทบ": "fa-solid fa-building",
+  "ห้องทนายความหุ้นส่วน": "fa-solid fa-building-user",
+  "ห้องสูทส่วนตัว": "fa-solid fa-door-closed",
+  "รถไปรษณีย์": "fa-solid fa-truck",
+  "แถวคอยที่ยาวเหยียด": "fa-solid fa-users",
+  "ห้องคัดแยก": "fa-solid fa-boxes-stacked",
+  "ห้องใต้หลังคาลึกลับ": "fa-solid fa-house-chimney-window",
+  "แท่นบูชาสูง": "fa-solid fa-place-of-worship",
+  "ห้องนอนขนาดยักษ์": "fa-solid fa-bed",
+  "โถงทางเข้าหลัก": "fa-solid fa-door-open",
+  "บริเวณลานกว้าง": "fa-solid fa-tree",
+  "ออร์แกนที่ถูกเถาวัลย์ปกคลุม": "fa-solid fa-music",
+  "กระท่อมประหลาด": "fa-solid fa-house-crack",
+  "ประตูทางเข้า": "fa-solid fa-door-open",
+  "คฤหาสน์สุดหรู": "fa-solid fa-house-chimney",
+  "หอคอยยักษ์": "fa-solid fa-chess-rook",
+  "ต้นไม้ที่บิดเบี้ยว": "fa-solid fa-tree",
+  "เนินเขาเล็ก ๆ": "fa-solid fa-mountain",
+  "ป่าต้องมนตร์": "fa-solid fa-tree",
+  "สปาน้ำพุร้อน": "fa-solid fa-hot-tub",
+  "ทะเลสาบปาร์ตี้": "fa-solid fa-water",
+  "พื้นที่พัฒนาใหม่": "fa-solid fa-crane",
+  "ห้องสวดมนต์": "fa-solid fa-church",
+  "สวนแสนประณีต": "fa-solid fa-leaf",
+  "ชั้นลอยสำหรับคณะประสานเสียง": "fa-solid fa-users",
+  "บันไดด้านหน้า": "fa-solid fa-stairs",
+  "สุสาน": "fa-solid fa-tombstone",
+  "ห้องโถงทางเข้าโบสถ์": "fa-solid fa-church",
+  "สวนลับ": "fa-solid fa-leaf",
+  "ตกเรือ": "fa-solid fa-water",
+  "อาคารประชุม": "fa-solid fa-building",
+  "โรงโม่เก่า": "fa-solid fa-industry",
+  "ซากเรือสำราญ": "fa-solid fa-ship",
+  "ห้างสรรพสินค้าซอมซ่อ": "fa-solid fa-shop",
+  "โรงงานเก่า": "fa-solid fa-industry",
+  "ลานกลางบ้าน": "fa-solid fa-house",
+  "ห้องสมุดต้องห้าม": "fa-solid fa-book-skull",
+  "ร้านหนังสือ": "fa-solid fa-book-open",
+  "ตึกโอลด์เมน": "fa-solid fa-building-columns",
+  "สเตเดียม": "fa-solid fa-stadium",
+  "สวนพฤกษชาติ": "fa-solid fa-tree",
+  "ห้องทำงานของอธิการบดี": "fa-solid fa-building-columns",
+  "ห้องพักครู": "fa-solid fa-chalkboard",
+  "เครื่องกีดขวาง": "fa-solid fa-road-barrier",
+  "คุกบัสตีย์": "fa-solid fa-dungeon",
+  "แม่น้ำแซน": "fa-solid fa-water",
+  "อวาลอน": "fa-solid fa-island-tropical",
+  "คาเมล็อต": "fa-solid fa-chess-rook",
+  "ทะเลสาบต้องมนตร์": "fa-solid fa-water",
+  "ยานลูนาร์โรเวอร์": "fa-solid fa-car",
+  "ฐานลูนาร์เบส": "fa-solid fa-satellite-dish",
+  "ยานลูนาร์แลนเดอร์": "fa-solid fa-rocket",
+  "ห้องเปียโน": "fa-solid fa-music",
+  "โต๊ะเล่นกลระยะประชิด": "fa-solid fa-table",
+  "เวทีหลัก": "fa-solid fa-masks-theater",
+  "ซากรถที่ถูกเผา": "fa-solid fa-car-burst",
+  "ร้านอาหารสุดเชย": "fa-solid fa-utensils",
+  "จัตุรัสกลางเมือง": "fa-solid fa-city",
+  "ร้านขายคริสตัล": "fa-solid fa-gem",
+  "จุด UFO ตก": "fa-solid fa-meteor",
+  "โซนปราชญ์": "fa-solid fa-brain",
+  "ตู้เซฟยักษ์": "fa-solid fa-vault",
+  "บาร์ดาดฟ้า": "fa-solid fa-martini-glass",
+  "ลานสมาธิกลางแจ้ง": "fa-solid fa-om",
+  "ห้องครัว": "fa-solid fa-kitchen-set",
+  "ที่นั่งริมหน้าต่าง": "fa-solid fa-window-maximize",
+  "ลานด้านหน้า": "fa-solid fa-tree",
+  "ปากปล่องภูเขาไฟ": "fa-solid fa-volcano",
+  "ปากถ้ำ": "fa-solid fa-cave",
+  "รถตู้รัฐบาล": "fa-solid fa-van-utility",
+  "เครื่องจักรยักษ์": "fa-solid fa-gears",
+  "ซากปรักหักพังแห่งใหม่": "fa-solid fa-building",
+  "โต๊ะ": "fa-solid fa-table",
+  "ทางตัน": "fa-solid fa-sign-hanging",
+  "มิดไนท์ มูฟวี่ สตูดิโอ": "fa-solid fa-video",
+  "เดอะ เกรท พาร์ค": "fa-solid fa-tree",
+  "อาร์ไกล์ ทาเลนต์ เอเจนซี": "fa-solid fa-building",
+  "เดอะ เมจิก พาเลซ": "fa-solid fa-wand-magic-sparkles",
+  "บาร์ชั้นใต้ดิน": "fa-solid fa-beer-mug-empty",
+  "ระเบียงดาดฟ้า": "fa-solid fa-roof",
+  "โถงทางเดินใหญ่": "fa-solid fa-door-open",
+  "สระว่ายน้ำกลางแจ้ง": "fa-solid fa-water-ladder",
+  "บาร์": "fa-solid fa-wine-glass",
+  "จุดรับรถ": "fa-solid fa-car",
+  "โต๊ะข้างถังขยะ": "fa-solid fa-trash",
+  "ห้องฉายหนัง": "fa-solid fa-film",
+  "ห้องขายตั๋ว": "fa-solid fa-ticket",
+  "โรงหนัง": "fa-solid fa-film",
+  "ห้องบอยเลอร์": "fa-solid fa-fire",
+  "ห้องรูหนู": "fa-solid fa-mouse",
+  "ห้องเพนต์เฮาส์": "fa-solid fa-building",
+  "พื้นที่จัดงาน": "fa-solid fa-calendar",
+  "ห้องนิทรรศการ": "fa-solid fa-image",
+  "ศูนย์อาหาร": "fa-solid fa-burger",
+  "โรงละครกรีก": "fa-solid fa-masks-theater",
+  "สวนสัตว์เก่า": "fa-solid fa-paw",
+  "ถ้ำที่มีชื่อเสียง": "fa-solid fa-cave",
+  "ป้ายฮอลลีวูด": "fa-solid fa-mountain-city",
+  "ลานจอดรถ A": "fa-solid fa-square-parking",
+  "อาคารรักษาความปลอดภัย": "fa-solid fa-shield-halved",
+  "ลานจอดรถ B": "fa-solid fa-square-parking",
+  "บาร์และร้านปิ้งย่างริมหอคอยน้ำ": "fa-solid fa-burger",
+  "รูปปั้นมิดไนท์ที่ 1": "fa-solid fa-monument",
+  "ฉากจำลองเมือง": "fa-solid fa-city",
+  "จุดลงทะเบียนชมสตูดิโอ": "fa-solid fa-pen-to-square",
+  "สตูดิโอถ่ายทำ A": "fa-solid fa-video",
+  "สตูดิโอถ่ายทำ B": "fa-solid fa-video",
+  "สตูดิโอถ่ายทำ C": "fa-solid fa-video",
+  "สตูดิโอถ่ายทำ D": "fa-solid fa-video",
+  "ระเบียงหลังร้าน": "fa-solid fa-door-open",
+  "เตาย่าง": "fa-solid fa-fire-burner",
+  "เรือนพักคนรับใช้": "fa-solid fa-house",
+  "หอคอยน้ำ": "fa-solid fa-water",
+  "สตูดิโอบันทึกเสียง": "fa-solid fa-microphone",
+  "ห้องแล็บหลังการผลิต": "fa-solid fa-computer",
+  "ห้องจดหมาย": "fa-solid fa-envelope",
+  "ห้องทำงานของหุ้นส่วน": "fa-solid fa-briefcase",
+  "หอจดหมายเหตุ": "fa-solid fa-box-archive",
+  "ห้องพักเบรก": "fa-solid fa-mug-hot",
+  "ที่นั่งผู้ชม": "fa-solid fa-users",
+  "ห้องควบคุมไฟ": "fa-solid fa-lightbulb",
+  "ห้องสีเขียว": "fa-solid fa-couch",
+  "ห้องลับ": "fa-solid fa-key",
+  "ออฟฟิศหลังร้าน": "fa-solid fa-briefcase",
+  "ระเบียงด้านหน้า": "fa-solid fa-door-open",
+  "ห้องหลัก": "fa-solid fa-house",
+  "ทางเข้าลับ": "fa-solid fa-door-closed",
+  "สัญลักษณ์บนพื้น": "fa-solid fa-shapes",
+  "แท่นบูชา": "fa-solid fa-place-of-worship",
+  "ห้องรวมนักข่าว": "fa-solid fa-newspaper",
+  "แท่นพิมพ์": "fa-solid fa-print",
+  "โรงภาพยนตร์สุดหรู": "fa-solid fa-film",
+  "บังกะโล": "fa-solid fa-house",
+  "ร้านเก็บอุปกรณ์ประกอบฉาก": "fa-solid fa-box",
+  "สตูดิโอที่ถูกล็อค": "fa-solid fa-lock",
+  "บังกะโล 1": "fa-solid fa-house",
+  "บังกะโล 2": "fa-solid fa-house",
+  "บังกะโล 3": "fa-solid fa-house",
+  "บังกะโล 4": "fa-solid fa-house",
+  "ผ้าใบกันน้ำ": "fa-solid fa-tarp",
+  "ถังน้ำมันยักษ์": "fa-solid fa-oil-well",
+  "เครื่องสูบน้ำมัน": "fa-solid fa-oil-well",
+  "ที่นั่งกำมะหยี่": "fa-solid fa-couch",
+  "ทางหนีไฟ": "fa-solid fa-stairs",
+  "เคาน์เตอร์ขายขนม": "fa-solid fa-popcorn"
 };
 
 let fixCount = 0;
 
-// โลจิกแก้ไข 3 จุดสีแดง (สร้างร่างแยกให้มันแมตช์กับในเกม)
 const fixRedErrors = () => {
   const redErrors = [
     { cat: 'suspects', name: 'พลเรือเอก มารีน', copyFrom: 'พลเรือเอก มารีน (Marine)' },
@@ -154,13 +291,9 @@ const fixRedErrors = () => {
 
 fixRedErrors();
 
-// โลจิกจับคู่ไอคอน (รวมถึงการตัดวงเล็บในใจ)
 ['suspects', 'weapons', 'locations'].forEach(category => {
   masterData[category].forEach(item => {
-    // ตัดวงเล็บออกเพื่อหาชื่อตั้งต้น (เช่น พลเรือเอก มารีน)
     let baseName = item.name.replace(/\s*\(.*?\)\s*/g, '').trim();
-
-    // หาไอคอนจากพจนานุกรม (เทียบชื่อเต็มก่อน ถ้าไม่เจอค่อยเทียบชื่อที่ตัดวงเล็บ)
     let newIcon = iconDictionary[item.name] || iconDictionary[baseName];
 
     if (newIcon) {
@@ -169,7 +302,6 @@ fixRedErrors();
         fixCount++;
       }
     } else if (!item.icon || item.icon.includes("fa-circle-question")) {
-      // 💡 Fallback อัจฉริยะ: ถ้ายังหลุดรอดไปได้อีก อลิซจะแจกไอคอนหมวดหมู่ให้
       if (category === 'suspects') item.icon = 'fa-solid fa-user';
       else if (category === 'weapons') item.icon = 'fa-solid fa-gavel';
       else if (category === 'locations') item.icon = 'fa-solid fa-location-dot';
@@ -179,4 +311,4 @@ fixRedErrors();
 });
 
 fs.writeFileSync(dataPath, JSON.stringify(masterData, null, 2), 'utf-8');
-console.log(`✅ อลิซจัดการอัปเดตไอคอนให้เรียบร้อยแล้ว จำนวน ${fixCount} จุด!`);
+console.log(`✅ Update complete! Fixed ${fixCount} items.`);
