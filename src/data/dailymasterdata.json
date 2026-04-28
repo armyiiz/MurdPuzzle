@@ -582,7 +582,7 @@
       "appearIn": [
         "Case 18: Throw the (Bookie-Winning) Book at Them! (จงขว้างหนังสือใส่พวกเขา!)"
       ],
-      "icon": "fa-solid fa-user-detective"
+      "icon": "fa-solid fa-magnifying-glass"
     },
     {
       "name": "นักโหราศาสตร์ อะซูร์",
@@ -764,7 +764,7 @@
         "Case 30: The Case of the Definitely Dead President (คดีท่านประธานาธิบดีที่ตายสนิท)",
         "Case 52: A Return to the Institute (การกลับมาสู่สถาบัน)"
       ],
-      "icon": "fa-solid fa-goggles"
+      "icon": "fa-solid fa-flask"
     },
     {
       "name": "ปรมาจารย์เล่นแร่แปรธาตุ เรเวน (Raven)",
@@ -1013,7 +1013,7 @@
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)",
         "Case 94: A Ritual Killing (พิธีกรรมสังหาร)"
       ],
-      "icon": "fa-solid fa-cap-front"
+      "icon": "fa-solid fa-martini-glass"
     },
     {
       "name": "มิดไนท์ ที่ 1",
@@ -1234,7 +1234,7 @@
         "Case 93: Death in the Magick Shoppe (ความตายในร้านมายากล)",
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
       ],
-      "icon": "fa-solid fa-hat-party"
+      "icon": "fa-solid fa-hat-cowboy"
     },
     {
       "name": "เลดี้ ไวโอเล็ต",
@@ -1265,7 +1265,7 @@
         "Case 40: The Big-Money Big-Bank Murder (ฆาตกรรมธนาคารยักษ์เงินล้าน)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
       ],
-      "icon": "fa-solid fa-vampire"
+      "icon": "fa-solid fa-chess-knight"
     },
     {
       "name": "วิสเคานต์ เอมิเนนซ์ (Eminence)",
@@ -1347,7 +1347,7 @@
       "appearIn": [
         "Case 13: The Killing of a Cowboy (การสังหารคาวบอย)"
       ],
-      "icon": "fa-solid fa-beret"
+      "icon": "fa-solid fa-medal"
     },
     {
       "name": "หลวงพ่อ แมงโก้",
@@ -1552,7 +1552,7 @@
         "Case 09: Hedge Your Bets, The Constable Cried (เดิมพันด้วยชีวิต ตำรวจตะโกนก้อง)",
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)"
       ],
-      "icon": "fa-solid fa-plant-pot"
+      "icon": "fa-solid fa-leaf"
     },
     {
       "name": "กระบอง",
@@ -1737,7 +1737,7 @@
         "Case 87: The Water Tower Bar & Kill (บาร์และฆาตกรรมที่หอคอยน้ำ)",
         "Case 92: Murder at the Mystery Show (ฆาตกรรมที่รายการปริศนา)"
       ],
-      "icon": "fa-solid fa-rose"
+      "icon": "fa-solid fa-seedling"
     },
     {
       "name": "ขนมแท่งค้างคืน",
@@ -2030,7 +2030,7 @@
       "appearIn": [
         "Case 67: King Arthur and the Murder of a Jester (กษัตริย์อาเธอร์กับการฆาตกรรมตัวตลก)"
       ],
-      "icon": "fa-solid fa-goblet"
+      "icon": "fa-solid fa-wine-glass"
     },
     {
       "name": "จานหรู",
@@ -2051,7 +2051,7 @@
         "Case 03: The Art of the Kill (ศิลปะแห่งการสังหาร)",
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
       ],
-      "icon": "fa-solid fa-vase"
+      "icon": "fa-solid fa-prescription-bottle"
     },
     {
       "name": "ฉมวก",
@@ -2114,7 +2114,7 @@
         "Case 81: The Murder at MysteryCon (ฆาตกรรมที่งานมิสเทอรี่คอน)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
       ],
-      "icon": "fa-solid fa-crowbar"
+      "icon": "fa-solid fa-wrench"
     },
     {
       "name": "ชุดดีวีดีบ็อกซ์เซ็ต",
@@ -2314,7 +2314,7 @@
         "Case 98: Stage Fright (ความกลัวบนเวที)",
         "Case 99: The Founding of Midnight Movies (จุดกำเนิดมิดไนท์มูฟวี่ส์)"
       ],
-      "icon": "fa-solid fa-barrel"
+      "icon": "fa-solid fa-oil-can"
     },
     {
       "name": "ถังออกซิเจน",
@@ -2324,7 +2324,7 @@
       "appearIn": [
         "Case 68: Houston, We Have a Body (ฮิวสตัน เราพบศพแล้ว)"
       ],
-      "icon": "fa-solid fa-cylinder"
+      "icon": "fa-solid fa-lungs"
     },
     {
       "name": "ถุงซักผ้าใส่มีดเต็มถุง",
@@ -3030,7 +3030,7 @@
         "Case 84: The Tour of Death (ทัวร์มรณะ)",
         "Case 89: The Post-Production Process (ขั้นตอนการหลังการผลิต)"
       ],
-      "icon": "fa-solid fa-golf-cart"
+      "icon": "fa-solid fa-car"
     },
     {
       "name": "รัมผสมยาพิษ",
@@ -3115,7 +3115,7 @@
       "appearIn": [
         "Case 06: Murder in the Alley (ฆาตกรรมในซอยเปลี่ยว)"
       ],
-      "icon": "fa-solid fa-dart"
+      "icon": "fa-solid fa-location-crosshairs"
     },
     {
       "name": "ลูกโลก",
@@ -3449,7 +3449,7 @@
         "Case 11: The Case of the Coffee Shop Killer (คดีฆาตกรในร้านกาแฟ)",
         "Case 42: The Return of the Coffee Shop Killer (การกลับมาของฆาตกรร้านกาแฟ)"
       ],
-      "icon": "fa-solid fa-straw"
+      "icon": "fa-solid fa-ruler"
     },
     {
       "name": "หินดวงจันทร์",
@@ -3537,7 +3537,7 @@
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)",
         "Case 62: You Can Go Home Again (กลับบ้านได้อีกครั้ง)"
       ],
-      "icon": "fa-solid fa-brick"
+      "icon": "fa-solid fa-cubes"
     },
     {
       "name": "อุปกรณ์พับกระดาษทำจากกระดูก",
@@ -3927,7 +3927,7 @@
         "Case 65: Like Old Times in Old Main (เหมือนวันวานในอาคารหลักหลังเก่า)",
         "Case 95: A Free Press Can Cost a Killing (เสรีภาพสื่อที่ต้องแลกด้วยความตาย)"
       ],
-      "icon": "fa-solid fa-roof-top"
+      "icon": "fa-solid fa-arrow-up"
     },
     {
       "name": "ดาดฟ้าเรือ",
@@ -4167,7 +4167,7 @@
       "appearIn": [
         "Case 82: Murder in the Park (ฆาตกรรมในสวนสาธารณะ)"
       ],
-      "icon": "fa-solid fa-cave"
+      "icon": "fa-solid fa-dungeon"
     },
     {
       "name": "แถวคอยที่ยาวเหยียด",
@@ -4409,7 +4409,7 @@
         "Case 58: A Maze of Death and Hedges (เขาวงกตแห่งความตายและพุ่มไม้)",
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
       ],
-      "icon": "fa-solid fa-fountain"
+      "icon": "fa-solid fa-water"
     },
     {
       "name": "น้ำวนยักษ์",
@@ -4473,7 +4473,7 @@
       "appearIn": [
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
       ],
-      "icon": "fa-solid fa-house"
+      "icon": "fa-solid fa-1"
     },
     {
       "name": "บังกะโล 2",
@@ -4482,7 +4482,7 @@
       "appearIn": [
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
       ],
-      "icon": "fa-solid fa-house"
+      "icon": "fa-solid fa-2"
     },
     {
       "name": "บังกะโล 3",
@@ -4491,7 +4491,7 @@
       "appearIn": [
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
       ],
-      "icon": "fa-solid fa-house"
+      "icon": "fa-solid fa-3"
     },
     {
       "name": "บังกะโล 4",
@@ -4500,7 +4500,7 @@
       "appearIn": [
         "Case 97: Bungalow Moral Character (ศีลธรรมในบังกะโล)"
       ],
-      "icon": "fa-solid fa-house"
+      "icon": "fa-solid fa-4"
     },
     {
       "name": "บันไดด้านหน้า",
@@ -4614,7 +4614,7 @@
       "appearIn": [
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
       ],
-      "icon": "fa-solid fa-cave"
+      "icon": "fa-solid fa-dungeon"
     },
     {
       "name": "ปากปล่องภูเขาไฟ",
@@ -4641,7 +4641,7 @@
       "appearIn": [
         "Case 31: The New Moon Murder (ฆาตกรรมคืนเดือนดับ)"
       ],
-      "icon": "fa-solid fa-tree-canopy"
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "ป่ามรณะ",
@@ -4651,7 +4651,7 @@
         "Case 47: The Mystery of the Mysterious Island (ความลึกลับของเกาะลึกลับ)",
         "Case 61: The Island of Bad Dreams (เกาะแห่งฝันร้าย)"
       ],
-      "icon": "fa-solid fa-tree-canopy"
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "ป้ายฮอลลีวูด",
@@ -4669,7 +4669,7 @@
       "appearIn": [
         "Case 44: Murder on the Stage (ฆาตกรรมบนเวที)"
       ],
-      "icon": "fa-solid fa-tree-canopy"
+      "icon": "fa-solid fa-tree"
     },
     {
       "name": "ผ้าใบกันน้ำ",
@@ -4696,7 +4696,7 @@
       "appearIn": [
         "Case 56: The Ruins of a Village (ซากปรักหักพังในหมู่บ้าน)"
       ],
-      "icon": "fa-solid fa-crane"
+      "icon": "fa-solid fa-hammer"
     },
     {
       "name": "ม้านั่งที่ถูกน้ำท่วม",
@@ -4750,7 +4750,7 @@
       "appearIn": [
         "Case 74: UFO, WHAT’D YOU KNOW? (UFO... คุณรู้อะไรบ้าง?)"
       ],
-      "icon": "fa-solid fa-van-utility"
+      "icon": "fa-solid fa-truck-pickup"
     },
     {
       "name": "รถไปรษณีย์",
@@ -4781,7 +4781,7 @@
       "appearIn": [
         "Case 77: Logico Goes to a Hollywood Party (โลจิโกไปงานปาร์ตี้ฮอลลีวูด)"
       ],
-      "icon": "fa-solid fa-roof"
+      "icon": "fa-solid fa-arrow-up"
     },
     {
       "name": "ระเบียงด้านหน้า",
@@ -5027,7 +5027,7 @@
       "appearIn": [
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
       ],
-      "icon": "fa-solid fa-square-parking"
+      "icon": "fa-solid fa-a"
     },
     {
       "name": "ลานจอดรถ B",
@@ -5036,7 +5036,7 @@
       "appearIn": [
         "Case 83: Parking is Murder (ที่จอดรถมรณะ)"
       ],
-      "icon": "fa-solid fa-square-parking"
+      "icon": "fa-solid fa-b"
     },
     {
       "name": "ลานด้านหน้า",
@@ -5101,7 +5101,7 @@
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
       ],
-      "icon": "fa-solid fa-video"
+      "icon": "fa-solid fa-a"
     },
     {
       "name": "สตูดิโอถ่ายทำ B",
@@ -5110,7 +5110,7 @@
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
       ],
-      "icon": "fa-solid fa-video"
+      "icon": "fa-solid fa-b"
     },
     {
       "name": "สตูดิโอถ่ายทำ C",
@@ -5119,7 +5119,7 @@
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
       ],
-      "icon": "fa-solid fa-video"
+      "icon": "fa-solid fa-c"
     },
     {
       "name": "สตูดิโอถ่ายทำ D",
@@ -5128,7 +5128,7 @@
       "appearIn": [
         "Case 85: Quiet on Set... Too Quiet! (เงียบกริบในกองถ่าย... เงียบเกินไปแล้ว!)"
       ],
-      "icon": "fa-solid fa-video"
+      "icon": "fa-solid fa-d"
     },
     {
       "name": "สตูดิโอที่ถูกล็อค",
@@ -5341,7 +5341,7 @@
       "appearIn": [
         "Case 05: Physician, Heal Myself! (หมอรักษาตัวเองเถอะ!)"
       ],
-      "icon": "fa-solid fa-roof"
+      "icon": "fa-solid fa-arrow-up"
     },
     {
       "name": "หลังคารถไฟ",
@@ -6048,7 +6048,7 @@
       "appearIn": [
         "Case 34: The Body in the Graveyard (ศพในสุสาน)"
       ],
-      "icon": "fa-solid fa-urn"
+      "icon": "fa-solid fa-box"
     }
   ],
   "motives": [
