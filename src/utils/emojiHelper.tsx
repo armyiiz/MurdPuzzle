@@ -64,14 +64,17 @@ export const getIconClass = (category: string, itemName?: string): string => {
 
     if (foundIcon) {
       iconClassToRender = foundIcon;
+    } else if (process.env.NODE_ENV === 'development') {
+      console.warn(`[Icon Warning] Missing icon for item: "${itemName}" (cleaned: "${cleanName}") in category "${category}"`);
     }
   }
 
   return iconClassToRender;
 };
 
-export const getIconColor = (index: number, seedString: string = ''): string => {
-  const hash = seedString.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+export const getIconColor = (index: number, seedString: string = '', categoryId: string = ''): string => {
+  const combinedSeed = seedString + categoryId;
+  const hash = combinedSeed.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const offsetIndex = (index + hash) % TINT_COLORS.length;
   return TINT_COLORS[offsetIndex];
 };
