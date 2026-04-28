@@ -51,7 +51,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full">
-                      <i className={`${getIconClass(cat.id, item)} text-[3vw] sm:text-[2vw] md:text-2xl [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(itemIndex, seedString) }}></i>
+                      <i className={`${getIconClass(cat.id, item)} text-[3vw] sm:text-[2vw] md:text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(itemIndex, seedString, cat.id) }}></i>
                     </div>
                   </td>
                 );
@@ -77,7 +77,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full">
-                      <i className={`${getIconClass(rowCat.id, rowItem)} text-[3vw] sm:text-[2vw] md:text-2xl [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(rowItemIndex, seedString) }}></i>
+                      <i className={`${getIconClass(rowCat.id, rowItem)} text-[3vw] sm:text-[2vw] md:text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(rowItemIndex, seedString, rowCat.id) }}></i>
                     </div>
                   </td>
 
