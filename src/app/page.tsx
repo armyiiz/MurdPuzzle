@@ -11,7 +11,7 @@ import { ImageWithFallback } from '../components/ImageWithFallback';
 import exhibitBData from '../data/ExhibitB.json';
 import anagramDict from '../data/anagramDictionary.json';
 
-type ScreenState = 'MENU' | 'HOW_TO_PLAY' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME';
+type ScreenState = 'MENU' | 'HOW_TO_PLAY' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME' | 'SETTINGS';
 
 export default function Home() {
   const [screen, setScreen] = useState<ScreenState>('MENU');
@@ -34,6 +34,7 @@ export default function Home() {
     else if (screen === 'CASE_SELECT') setScreen('LEVEL_SELECT');
     else if (screen === 'LEVEL_SELECT') setScreen('MENU');
     else if (screen === 'HOW_TO_PLAY') setScreen('MENU');
+    else if (screen === 'SETTINGS') setScreen('MENU');
   };
 
   return (
@@ -60,6 +61,7 @@ export default function Home() {
         {screen === 'LEVEL_SELECT' && <LevelSelect setScreen={setScreen} setSelectedLevel={setSelectedLevel} solvedCases={solvedCases} />}
         {screen === 'CASE_SELECT' && <CaseSelect level={selectedLevel} setScreen={setScreen} setSelectedCase={setSelectedCase} solvedCases={solvedCases} />}
         {screen === 'GAME' && selectedCase && <GamePlay levelData={selectedCase} setSolvedCases={setSolvedCases} solvedCases={solvedCases} />}
+        {screen === 'SETTINGS' && <SettingsScreen setScreen={setScreen} setSolvedCases={setSolvedCases} />}
       </main>
     </div>
   );
@@ -75,6 +77,62 @@ function MainMenu({ setScreen }: { setScreen: (s: ScreenState) => void }) {
       <button onClick={() => setScreen('HOW_TO_PLAY')} className="bg-white text-black hover:bg-gray-100 hover:-translate-y-1 transition-all text-lg font-bold py-3 px-8 border-[3px] border-black shadow-[4px_4px_0_#222222]">
         วิธีการเล่น
       </button>
+      <button onClick={() => setScreen('SETTINGS')} className="bg-white text-black hover:bg-gray-100 hover:-translate-y-1 transition-all text-lg font-bold py-3 px-8 border-[3px] border-black shadow-[4px_4px_0_#222222]">
+        ⚙️ ตั้งค่า
+      </button>
+    </div>
+  );
+}
+
+function SettingsScreen({ setScreen, setSolvedCases }: { setScreen: (s: ScreenState) => void, setSolvedCases: (c: string[]) => void }) {
+  const handleResetAll = () => {
+    if (window.confirm('คุณแน่ใจหรือไม่ที่จะรีเซ็ตคดีทั้งหมด? ข้อมูลการปลดล็อกจะหายไปทั้งหมด!')) {
+      setSolvedCases([]);
+      localStorage.removeItem('solvedCases');
+      setScreen('MENU');
+    }
+  };
+
+  const handleUnlockAll = () => {
+    const password = window.prompt('กรุณากรอกรหัสผ่านเพื่อปลดล็อก:');
+    if (password === 'UNLOCK') {
+      const allIds = Array.from({ length: 100 }, (_, i) => 'case_' + String(i + 1).padStart(2, '0'));
+      setSolvedCases(allIds);
+      localStorage.setItem('solvedCases', JSON.stringify(allIds));
+      window.alert('ปลดล็อกทุกด่านสำเร็จ!');
+    }
+  };
+
+  return (
+    <div className="animate-fadeIn max-w-xl mx-auto pb-24 px-4">
+      <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6 sm:p-8 flex flex-col items-center">
+        <h2 className="text-3xl font-black mb-8 border-b-[4px] border-black pb-4 text-black text-center w-full">
+          ⚙️ ตั้งค่า
+        </h2>
+
+        <div className="flex flex-col space-y-6 w-full">
+          <button
+            onClick={handleResetAll}
+            className="bg-[#FF4500] text-white hover:bg-red-700 hover:-translate-y-1 transition-all text-lg font-bold py-4 px-6 border-[3px] border-black shadow-[4px_4px_0_#222222] w-full text-center"
+          >
+            🧹 รีเซ็ตข้อมูลการเล่นทั้งหมด
+          </button>
+
+          <button
+            onClick={handleUnlockAll}
+            className="bg-black text-white hover:bg-gray-800 hover:-translate-y-1 transition-all text-lg font-bold py-4 px-6 border-[3px] border-black shadow-[4px_4px_0_#222222] w-full text-center"
+          >
+            🔓 ปลดล็อกทุกด่าน (Admin Only)
+          </button>
+        </div>
+
+        <button
+          onClick={() => setScreen('MENU')}
+          className="mt-12 bg-white text-black hover:bg-gray-100 hover:-translate-y-1 transition-all text-lg font-bold py-3 px-8 border-[3px] border-black shadow-[4px_4px_0_#222222] w-full text-center"
+        >
+          ⬅️ กลับหน้าหลัก
+        </button>
+      </div>
     </div>
   );
 }
