@@ -9,6 +9,7 @@ import { LogicGrid } from '../components/LogicGrid';
 import { allCases } from '../data/allCases';
 import { ImageWithFallback } from '../components/ImageWithFallback';
 import exhibitBData from '../data/ExhibitB.json';
+import anagramDict from '../data/anagramDictionary.json';
 
 type ScreenState = 'MENU' | 'HOW_TO_PLAY' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME';
 
@@ -237,6 +238,8 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [showExhibitB, setShowExhibitB] = useState(false);
   const [showExhibitC, setShowExhibitC] = useState(false);
   const [showExhibitD, setShowExhibitD] = useState(false);
+  const [showDecrypter, setShowDecrypter] = useState(false);
+  const [cipherInput, setCipherInput] = useState('');
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -539,7 +542,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
           {/* Grid Action Menu */}
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-4 sm:px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-3 sm:gap-4 max-w-[95vw] overflow-x-auto whitespace-nowrap">
-            <button onClick={() => console.log('Hint clicked')} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
+            <button onClick={() => setShowDecrypter(true)} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
               <span className="text-xl">💡</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">คำใบ้</span>
             </button>
@@ -628,74 +631,35 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
         </div>
       )}
 
-      {/* Exhibit C Modal */}
+      {/* Exhibit C Modal (Image View) */}
       {showExhibitC && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowExhibitC(false)}>
           <div
-            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] p-6 max-w-md max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
+            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] p-6 max-w-4xl max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest">
-              🏛️ คู่มือ Exhibit C: วงกตบนซากปรักหักพังโบราณ
+            <h3 className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
+              Exhibit C: วงกตบนซากปรักหักพังโบราณ
             </h3>
             <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
-              แผนผังความสัมพันธ์เชิงตรรกะที่สลักไว้บนหินโบราณ โดยใช้การเชื่อมโยงระหว่าง "หมายเลขห้อง (Chambers)" และ "กลุ่มตัวอักษร (Letters)" เพื่อใช้ถอดรหัสคำใบ้
+              แผนผังความสัมพันธ์เชิงตรรกะที่สลักไว้บนหินโบราณ
             </p>
 
-            <div className="mb-6">
-              <h4 className="text-xl font-bold mb-4 bg-black text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#222222]">
-                โครงสร้างการเชื่อมต่อ (Chamber Mapping)
-              </h4>
-              <ul className="list-none space-y-3 font-bold text-black">
-                <li className="flex items-start gap-2"><span className="text-xl">▪️</span> <span><strong>ห้องหมายเลข 1:</strong> เชื่อมต่อกับกลุ่มตัวอักษร O, A และ N</span></li>
-                <li className="flex items-start gap-2"><span className="text-xl">▪️</span> <span><strong>ห้องหมายเลข 2:</strong> เชื่อมต่อกับกลุ่มตัวอักษร N, I และ R</span></li>
-                <li className="flex items-start gap-2"><span className="text-xl">▪️</span> <span><strong>ห้องหมายเลข 3:</strong> เชื่อมต่อกับกลุ่มตัวอักษร U, L และ E</span></li>
-              </ul>
+            <div className="mb-6 flex justify-center w-full relative h-[50vh] sm:h-[60vh] md:h-[70vh]">
+              <div className="relative w-full h-full border-[3px] border-black shadow-[4px_4px_0_rgba(0,0,0,1)] bg-white overflow-hidden">
+                <Image
+                  src="/Exhibit C.webp"
+                  alt="Exhibit C"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </div>
 
-            <div className="mb-6">
-              <h4 className="text-xl font-bold mb-4 bg-black text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#222222]">
-                ตารางอ้างอิงตัวอักษร (Letter Lookup)
-              </h4>
-              <table className="border-[2px] border-black w-full text-center text-black font-bold">
-                <thead>
-                  <tr className="bg-white border-b-[2px] border-black">
-                    <th className="border-r-[2px] border-black p-2">ตัวอักษร</th>
-                    <th className="p-2">ห้องที่สังกัด (Chamber)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b-[2px] border-black bg-neo-bg">
-                    <td className="border-r-[2px] border-black p-2">U, L, E</td>
-                    <td className="p-2">ห้องหมายเลข 3</td>
-                  </tr>
-                  <tr className="border-b-[2px] border-black bg-white">
-                    <td className="border-r-[2px] border-black p-2">I, R, N</td>
-                    <td className="p-2">ห้องหมายเลข 2</td>
-                  </tr>
-                  <tr className="bg-neo-bg">
-                    <td className="border-r-[2px] border-black p-2">O, A, N</td>
-                    <td className="p-2">ห้องหมายเลข 1</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className="bg-yellow-200 p-4 border-[2px] border-black mt-4 mb-6 shadow-[4px_4px_0_#222222]">
-              <h4 className="text-lg font-black text-black mb-2 flex items-center gap-2">💡 วิธีใช้งานเพื่อการสืบสวน</h4>
-              <p className="text-black font-bold text-sm leading-relaxed mb-2">ในการไขคดีระดับสูง คำใบ้มักจะไม่บอกความจริงตรงๆ เช่น:</p>
-              <ul className="list-none space-y-1 text-black font-bold text-sm italic mb-2 ml-4">
-                <li>- "ตัวอักษรลำดับที่ X ของชื่อผู้ต้องสงสัย เชื่อมต่อกับห้องหมายเลข Y"</li>
-              </ul>
-              <p className="text-black font-bold text-sm leading-relaxed">
-                เพียงแค่ดูว่า <strong>ตัวอักษร</strong> ที่โจทย์ให้มา ตรงกับ <strong>เลขห้อง</strong> ใดใน Exhibit นี้ แล้วนำเลขห้องนั้นไปเทียบหาความเชื่อมโยงถัดไป!
-              </p>
-            </div>
-
-            {/* Close Button */}
             <button
               onClick={() => setShowExhibitC(false)}
-              className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest sticky bottom-0"
+              className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase tracking-widest sticky bottom-0"
             >
               ❌ ปิด
             </button>
@@ -733,6 +697,77 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <button
               onClick={() => setShowExhibitD(false)}
               className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase tracking-widest sticky bottom-0"
+            >
+              ❌ ปิด
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Decrypter Modal */}
+      {showDecrypter && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowDecrypter(false)}>
+          <div
+            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] max-w-md w-full p-6 flex flex-col relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-2xl font-black text-black mb-4 border-b-[4px] border-black pb-2 flex items-center gap-2">
+              <span className="text-3xl">🧮</span> เครื่องมือถอดรหัส
+            </h3>
+
+            <div className="mb-6">
+              <label className="block text-black font-bold mb-2 uppercase tracking-widest text-sm">ใส่รหัสลับที่นี่:</label>
+              <textarea
+                className="w-full bg-white border-[3px] border-black p-3 font-mono text-black font-bold h-24 focus:outline-none focus:border-neo-accent shadow-[inset_2px_2px_0_#ccc]"
+                placeholder="เช่น ZTVMG..."
+                value={cipherInput}
+                onChange={(e) => setCipherInput(e.target.value)}
+              />
+            </div>
+
+            <div className="space-y-4 mb-8">
+              <div className="bg-white border-[2px] border-black p-3 shadow-[2px_2px_0_#222222]">
+                <div className="text-[10px] bg-black text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2">Atbash (A=Z, Z=A)</div>
+                <div className="font-mono text-neo-accent font-bold break-words min-h-[1.5rem]">
+                  {cipherInput.split('').map((char, idx) => {
+                    if (/[a-zA-Z]/.test(char)) {
+                      const isUpper = char === char.toUpperCase();
+                      const code = char.charCodeAt(0);
+                      const base = isUpper ? 65 : 97;
+                      return <span key={idx}>{String.fromCharCode(base + (25 - (code - base)))}</span>;
+                    }
+                    return <span key={idx}>{char}</span>;
+                  })}
+                  {!cipherInput && '-'}
+                </div>
+              </div>
+
+              <div className="bg-white border-[2px] border-black p-3 shadow-[2px_2px_0_#222222]">
+                <div className="text-[10px] bg-black text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2">Smart Anagram (ค้นหาคำศัพท์)</div>
+                <div className="font-mono font-bold break-words min-h-[1.5rem] flex flex-wrap gap-1">
+                  {cipherInput.split(/\s+/).map((word, idx) => {
+                    const cleanWord = word.replace(/[^a-zA-Z]/g, '');
+                    if (!cleanWord) return <span key={idx} className="text-black">{word}</span>;
+
+                    const sorted = cleanWord.toLowerCase().split('').sort().join('');
+                    const matched = (anagramDict as Record<string, string>)[sorted];
+
+                    return matched
+                      ? <span key={idx} className="text-green-600 bg-green-100 px-1 border border-green-600">{matched}</span>
+                      : <span key={idx} className="text-blue-500">{sorted}</span>;
+                  })}
+                  {!cipherInput && '-'}
+                </div>
+                <div className="text-[10px] text-gray-500 mt-2 font-bold leading-tight">
+                  <span className="text-green-600">สีเขียว:</span> เจอคำศัพท์ในฐานข้อมูล <br/>
+                  <span className="text-blue-500">สีฟ้า:</span> ไม่เจอคำศัพท์ (เรียง A-Z ให้เฉยๆ)
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => { setShowDecrypter(false); setCipherInput(''); }}
+              className="bg-black text-white w-full border-[3px] border-black py-3 font-black text-lg shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest"
             >
               ❌ ปิด
             </button>
