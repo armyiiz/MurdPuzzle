@@ -122,7 +122,7 @@ function SettingsScreen({ setScreen, setSolvedCases }: { setScreen: (s: ScreenSt
             onClick={handleUnlockAll}
             className="bg-black text-white hover:bg-gray-800 hover:-translate-y-1 transition-all text-lg font-bold py-4 px-6 border-[3px] border-black shadow-[4px_4px_0_#222222] w-full text-center"
           >
-            🔓 ปลดล็อกทุกด่าน (Admin Only)
+            🔓 (ADMIN) ปลดล็อกทุกด่าน
           </button>
         </div>
 
