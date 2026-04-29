@@ -57,7 +57,7 @@ export default function Home() {
       <main className="max-w-6xl mx-auto mt-6">
         {screen === 'MENU' && <MainMenu setScreen={setScreen} />}
         {screen === 'HOW_TO_PLAY' && <HowToPlay />}
-        {screen === 'LEVEL_SELECT' && <LevelSelect setScreen={setScreen} setSelectedLevel={setSelectedLevel} />}
+        {screen === 'LEVEL_SELECT' && <LevelSelect setScreen={setScreen} setSelectedLevel={setSelectedLevel} solvedCases={solvedCases} />}
         {screen === 'CASE_SELECT' && <CaseSelect level={selectedLevel} setScreen={setScreen} setSelectedCase={setSelectedCase} solvedCases={solvedCases} />}
         {screen === 'GAME' && selectedCase && <GamePlay levelData={selectedCase} setSolvedCases={setSolvedCases} solvedCases={solvedCases} />}
       </main>
@@ -174,25 +174,41 @@ function HowToPlay() {
   );
 }
 
-function LevelSelect({ setScreen, setSelectedLevel }: { setScreen: (s: ScreenState) => void, setSelectedLevel: (l: number) => void }) {
+function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setScreen: (s: ScreenState) => void, setSelectedLevel: (l: number) => void, solvedCases: string[] }) {
   const levels = [
-    { id: 1, name: "ระดับ 1: มือใหม่หัดสืบ", desc: "ผู้ต้องสงสัย 3 คน" },
-    { id: 2, name: "ระดับ 2: นักสืบฝึกหัด", desc: "ผู้ต้องสงสัย 3 คน พร้อมคำให้การ แต่จะมี 1 คนที่โกหก" },
-    { id: 3, name: "ระดับ 3: ยอดนักสืบ", desc: "ผู้ต้องสงสัย 4 คน พร้อมแรงจูงใจ" },
-    { id: 4, name: "ระดับ 4: ปรมาจารย์", desc: "ผู้ต้องสงสัย 4 คน พร้อมแรงจูงใจและคำให้การ" },
+    { id: 1, name: "Level 1 (Cases 1-25) มือใหม่หัดสืบ", desc: "หา \"ใคร\", \"อย่างไร\" และ \"ที่ไหน\" เบาะแสทุกอย่างเป็นความจริง 100% ฝึกใช้ Deduction Grid ตัดตัวเลือกอย่างเป็นระบบ", reqCase: null },
+    { id: 2, name: "Level 2 (Cases 26-50) นักสืบฝึกหัด", desc: "มี \"ผู้ต้องสงสัย 1 คนที่โกหกเสมอ\" วิเคราะห์คำให้การและทดสอบสมมติฐาน", reqCase: "case_25" },
+    { id: 3, name: "Level 3 (Cases 51-75) ยอดนักสืบ", desc: "เพิ่มการหา \"แรงจูงใจ\" ข้อมูลซับซ้อนขึ้นและต้องคิดเชื่อมโยงหลายชั้น", reqCase: "case_50" },
+    { id: 4, name: "Level 4 (Cases 76-100) ปรมาจารย์", desc: "รวมทุกกลไก (คนโกหก + แรงจูงใจ) พร้อม \"Exhibit D\" ข้อมูลย้อนแย้งสูงสุดระดับท้าทายขีดจำกัด", reqCase: "case_75" },
   ];
 
   return (
     <div className="animate-fadeIn">
       <h2 className="text-2xl font-bold mb-6 text-center">เลือกระดับความยาก</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {levels.map(l => (
-          <button key={l.id} onClick={() => { setSelectedLevel(l.id); setScreen('CASE_SELECT'); }} 
-            className="bg-neo-notebook p-6 border-[3px] border-black shadow-[4px_4px_0_#222222] text-left transition hover:-translate-y-1">
-            <h3 className="text-xl font-bold text-black">{l.name}</h3>
-            <p className="text-black mt-2 text-sm">{l.desc}</p>
-          </button>
-        ))}
+        {levels.map(l => {
+          const isUnlocked = !l.reqCase || solvedCases.includes(l.reqCase);
+          return (
+            <button key={l.id}
+              onClick={() => { if (isUnlocked) { setSelectedLevel(l.id); setScreen('CASE_SELECT'); } }}
+              disabled={!isUnlocked}
+              className={`relative p-6 border-[3px] border-black text-left flex flex-col justify-between ${isUnlocked ? 'bg-neo-notebook shadow-[4px_4px_0_#222222] transition hover:-translate-y-1 cursor-pointer' : 'opacity-50 bg-gray-300 cursor-not-allowed'}`}>
+
+              {!isUnlocked && (
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <span className="text-6xl drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">🔒</span>
+                </div>
+              )}
+
+              <div className={!isUnlocked ? "opacity-30" : ""}>
+                <h3 className="text-xl font-black text-black mb-4">{l.name}</h3>
+                <div className="bg-white border-[2px] border-black p-3 shadow-[2px_2px_0_#222222]">
+                  <p className="text-black text-sm font-bold">{l.desc}</p>
+                </div>
+              </div>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -207,10 +223,28 @@ function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level:
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cases.map((c: LevelData) => {
           const isSolved = solvedCases.includes(c.id);
+
+          const caseNum = parseInt(c.id.replace('case_', ''), 10);
+          const isUnlocked = caseNum === 1 || solvedCases.includes('case_' + String(caseNum - 1).padStart(2, '0'));
+
           return (
-            <button key={c.id} onClick={() => { setSelectedCase(c); setScreen('GAME'); }} 
-              className={`p-5 border-[3px] border-black shadow-[4px_4px_0_#222222] text-left flex flex-col justify-between h-full transition hover:-translate-y-1 ${isSolved ? 'bg-green-200' : 'bg-neo-notebook'}`}>
-              <div>
+            <button key={c.id}
+              onClick={() => { if (isUnlocked) { setSelectedCase(c); setScreen('GAME'); } }}
+              disabled={!isUnlocked}
+              className={`relative p-5 border-[3px] border-black text-left flex flex-col justify-between h-full
+                ${!isUnlocked
+                  ? 'opacity-50 bg-gray-300 cursor-not-allowed'
+                  : isSolved
+                    ? 'bg-green-200 shadow-[4px_4px_0_#222222] transition hover:-translate-y-1 cursor-pointer'
+                    : 'bg-neo-notebook shadow-[4px_4px_0_#222222] transition hover:-translate-y-1 cursor-pointer'}`}>
+
+              {!isUnlocked && (
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <span className="text-6xl drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">🔒</span>
+                </div>
+              )}
+
+              <div className={!isUnlocked ? "opacity-30" : ""}>
                 <h3 className="font-bold text-lg leading-tight text-black">{c.level_name}</h3>
                 <div className="mt-3 flex items-center gap-2">
                   <span className="text-[10px] font-bold px-2 py-0.5 border border-black text-black uppercase tracking-wider bg-white">หมายเลขคดี: {c.id}</span>
