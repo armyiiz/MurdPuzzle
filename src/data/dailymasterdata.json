@@ -1768,7 +1768,7 @@
       "appearIn": [
         "Case 50: The Killing of Irratino (การสังหารอิร์ราติโน)"
       ],
-      "icon": "fa-solid fa-barrel"
+      "icon": "fa-solid fa-bottle-droplet"
     },
     {
       "name": "ขวดน้ำมันศักดิ์สิทธิ์",
@@ -5220,7 +5220,7 @@
         "Case 03: The Art of the Kill (ศิลปะแห่งการสังหาร)",
         "Case 80: The Cost of the Rent is the Real Killer (ค่าเช่าบ้านนี่แหละฆาตกรตัวจริง)"
       ],
-      "icon": "fa-solid fa-roof-top"
+      "icon": "fa-solid fa-arrow-up"
     },
     {
       "name": "สวนในคฤหาสน์",
