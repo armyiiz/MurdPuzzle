@@ -2,17 +2,30 @@ import React, { ReactNode } from 'react';
 import dailyMasterData from '../data/dailymasterdata.json';
 
 const TINT_COLORS = [
-  '#000000', // Black
-  '#A30B37', // Deep Red
-  '#228B22', // Forest Green
-  '#1E90FF', // Royal Blue
-  '#FF1493', // Hot Pink
-  '#FF4500', // Orange Red
-  '#8A2BE2', // Blue Violet
-  '#FFD700', // Bright Gold
-  '#00CED1', // Dark Turquoise
-  '#8B4513', // Saddle Brown
+  '#000000', // 0 Black
+  '#A30B37', // 1 Deep Red
+  '#228B22', // 2 Forest Green
+  '#1E90FF', // 3 Royal Blue
+  '#FF1493', // 4 Hot Pink
+  '#FF4500', // 5 Orange Red
+  '#8A2BE2', // 6 Blue Violet
+  '#B8860B', // 7 Dark Goldenrod
+  '#00CED1', // 8 Dark Turquoise
+  '#8B4513', // 9 Saddle Brown
+  '#4682B4', // 10 Steel Blue
+  '#DC143C', // 11 Crimson
+  '#556B2F', // 12 Dark Olive Green
+  '#4B0082', // 13 Indigo
+  '#D2691E', // 14 Chocolate
+  '#708090', // 15 Slate Gray
 ];
+
+const CAT_OFFSETS: Record<string, number> = {
+  suspects: 0,
+  weapons: 4,
+  locations: 8,
+  motives: 12,
+};
 
 const BASE_ICONS: Record<string, string> = {
   suspects: 'fa-solid fa-user',
@@ -73,8 +86,9 @@ export const getIconClass = (category: string, itemName?: string): string => {
 };
 
 export const getIconColor = (index: number, seedString: string = '', categoryId: string = ''): string => {
-  const combinedSeed = seedString + categoryId;
+  const catOffset = CAT_OFFSETS[categoryId] || 0;
+  const combinedSeed = seedString; // Use only level ID for hashing to keep shifts consistent within the case
   const hash = combinedSeed.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const offsetIndex = (index + hash) % TINT_COLORS.length;
-  return TINT_COLORS[offsetIndex];
+  const finalIndex = (index + catOffset + hash) % TINT_COLORS.length;
+  return TINT_COLORS[finalIndex];
 };

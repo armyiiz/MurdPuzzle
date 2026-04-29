@@ -332,7 +332,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                         ${isActive ? 'bg-black text-white shadow-[2px_2px_0_#A30B37]' : 'bg-white text-black hover:bg-neo-notebook shadow-[2px_2px_0_#222222]'}
                       `}
                     >
-                      <i className={`${getIconClass(tabKey)} text-base sm:text-2xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(0, String(levelData.id)) }}></i> {label}
+                      <i className={`${getIconClass(tabKey)} text-base sm:text-2xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(0, String(levelData.id), tabKey) }}></i> {label}
                     </button>
                   );
                 })}
@@ -341,6 +341,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               {/* Active Tab Content (Mini-Tiles) */}
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
                 {levelData.profiles && (levelData.profiles as any)[activeTab]?.map((item: any, index: number) => {
+                  const catData = levelData.categories.find(c => c.id === activeTab);
+                  const trueIndex = catData ? catData.items.findIndex(i => i.replace(/\s*\(.*?\)\s*/g, '').trim() === item.name.replace(/\s*\(.*?\)\s*/g, '').trim()) : index;
+                  const finalIndex = trueIndex >= 0 ? trueIndex : index;
+
                   return (
                     <button
                       key={item.name}
@@ -348,7 +352,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                       className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] hover:-translate-y-1 hover:shadow-[6px_6px_0_#222222] transition-all flex flex-col items-center justify-center p-3 aspect-square"
                     >
                       <div className="mb-2">
-                        <i className={`${getIconClass(activeTab, item.name)} text-3xl sm:text-4xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(index, String(levelData.id)) }}></i>
+                        <i className={`${getIconClass(activeTab, item.name)} text-3xl sm:text-4xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(finalIndex, String(levelData.id), activeTab) }}></i>
                       </div>
                       <div className="font-black text-black text-xs text-center break-words w-full">
                         {extractEmojiAndText(item.name).text}
@@ -369,7 +373,15 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               >
                 {/* Modal Content */}
                 <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] w-24 h-24 flex items-center justify-center mb-4">
-                  <i className={`${getIconClass(activeTab, (levelData.profiles as any)[activeTab][selectedProfileIndex].name)} text-5xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(selectedProfileIndex, String(levelData.id)) }}></i>
+                  {(() => {
+                    const itemName = (levelData.profiles as any)[activeTab][selectedProfileIndex].name;
+                    const catData = levelData.categories.find(c => c.id === activeTab);
+                    const trueIndex = catData ? catData.items.findIndex(i => i.replace(/\s*\(.*?\)\s*/g, '').trim() === itemName.replace(/\s*\(.*?\)\s*/g, '').trim()) : selectedProfileIndex;
+                    const finalIndex = trueIndex >= 0 ? trueIndex : selectedProfileIndex;
+                    return (
+                      <i className={`${getIconClass(activeTab, itemName)} text-5xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(finalIndex, String(levelData.id), activeTab) }}></i>
+                    );
+                  })()}
                 </div>
 
                 <h3 className="text-2xl font-black text-black mb-4 border-b-[3px] border-black pb-2 text-center w-full">
@@ -726,6 +738,22 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             </div>
 
             <div className="space-y-4 mb-8">
+              <div className="bg-white border-[2px] border-black p-3 shadow-[2px_2px_0_#222222]">
+                <div className="text-[10px] bg-black text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2">Next Letter Code (ขยับอักษร +1)</div>
+                <div className="font-mono text-purple-600 font-bold break-words min-h-[1.5rem]">
+                  {cipherInput.split('').map((char, idx) => {
+                    if (/[a-zA-Z]/.test(char)) {
+                      const isUpper = char === char.toUpperCase();
+                      const code = char.charCodeAt(0);
+                      const base = isUpper ? 65 : 97;
+                      return <span key={idx}>{String.fromCharCode(base + ((code - base + 1) % 26))}</span>;
+                    }
+                    return <span key={idx}>{char}</span>;
+                  })}
+                  {!cipherInput && '-'}
+                </div>
+              </div>
+
               <div className="bg-white border-[2px] border-black p-3 shadow-[2px_2px_0_#222222]">
                 <div className="text-[10px] bg-black text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2">Atbash (A=Z, Z=A)</div>
                 <div className="font-mono text-neo-accent font-bold break-words min-h-[1.5rem]">
