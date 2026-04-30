@@ -324,6 +324,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [feedback, setFeedback] = useState<{ message: string; type: 'success' | 'error' | null }>({ message: '', type: null });
   const [activeView, setActiveView] = useState<'clues' | 'grid'>('clues');
   const [activeTab, setActiveTab] = useState<'suspects' | 'weapons' | 'locations' | 'motives'>('suspects');
+  const [selectedLegendCategory, setSelectedLegendCategory] = useState<Category | null>(null);
   const [notes, setNotes] = useState<string>('');
   const [cluesScrollY, setCluesScrollY] = useState(0);
   const [selectedProfileIndex, setSelectedProfileIndex] = useState<number | null>(null);
@@ -633,9 +634,28 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       )}
 
       {activeView === 'grid' && (
-        <div className="fixed inset-0 top-[65px] bottom-0 overflow-hidden flex flex-col items-center justify-center bg-neo-bg z-0 animate-in fade-in duration-300">
+        <div className="fixed inset-0 top-[65px] bottom-0 overflow-hidden flex flex-col items-center justify-center bg-neo-bg z-0 animate-in fade-in duration-300 gap-4">
+
+          {/* Smart Legend Bar */}
+          <div className="flex gap-2 sm:gap-4 overflow-x-auto w-full max-w-3xl px-4 py-2 shrink-0">
+            {levelData.categories.map(cat => {
+              const catEmojis: Record<string, string> = { suspects: '👤', weapons: '🔪', locations: '📍', motives: '💬' };
+              const emoji = catEmojis[cat.id] || '❓';
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedLegendCategory(cat)}
+                  className="flex items-center gap-2 bg-white border-[3px] border-black shadow-[4px_4px_0_#000] px-3 py-2 hover:bg-neo-notebook transition-colors whitespace-nowrap active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_#000]"
+                >
+                  <span className="text-xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]">{emoji}</span>
+                  <span className="font-bold uppercase tracking-wide text-sm">{cat.name}</span>
+                </button>
+              );
+            })}
+          </div>
+
           {/* Logic Grid */}
-          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-hidden mb-24 max-h-[calc(100vh-180px)] flex flex-col w-full max-w-3xl">
+          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-hidden mb-24 max-h-[calc(100vh-260px)] flex flex-col w-full max-w-3xl">
             <div className="bg-neo-notebook p-2 sm:p-3 text-[10px] text-black border-b-[3px] border-black text-center uppercase tracking-widest font-bold shrink-0">
               คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
             </div>
@@ -891,6 +911,37 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             >
               ❌ ปิด
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Smart Legend Modal */}
+      {selectedLegendCategory && (
+        <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4" onClick={() => setSelectedLegendCategory(null)}>
+          <div
+            className="bg-neo-notebook border-[4px] border-black shadow-[8px_8px_0_#000] p-6 max-w-sm w-full relative max-h-[80vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedLegendCategory(null)}
+              className="absolute top-2 right-2 p-2 text-2xl font-black hover:text-neo-accent transition-colors"
+            >
+              ❌
+            </button>
+            <h3 className="text-xl sm:text-2xl font-black text-black mb-4 border-b-[4px] border-black pb-2 uppercase tracking-widest text-center">
+              {selectedLegendCategory.name}
+            </h3>
+            <div className="overflow-y-auto pr-2 flex flex-col gap-3 custom-scrollbar">
+              {selectedLegendCategory.items.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3 bg-white p-3 border-[2px] border-black shadow-[2px_2px_0_#000]">
+                  <i
+                    className={`${getIconClass(selectedLegendCategory.id, item)} text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`}
+                    style={{ color: getIconColor(idx, String(levelData.id), selectedLegendCategory.id) }}
+                  ></i>
+                  <span className="font-bold text-sm">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
