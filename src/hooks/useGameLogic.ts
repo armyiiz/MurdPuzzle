@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { Category } from '../types/level';
 
-export type CellState = 'empty' | 'O' | 'X';
+export type CellState = 'empty' | 'O' | 'X' | '?' | 'A';
 
 // To uniquely identify a sub-grid block
 export type BlockId = `${string}-${string}`;
@@ -27,6 +27,73 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
     return `${sorted[0]}-${sorted[1]}`;
   };
 
+  const calculateAutoCrosses = useCallback((state: GridState): GridState => {
+    const newState = JSON.parse(JSON.stringify(state)) as GridState;
+
+    // Step A: Strip away ALL current 'A' states on the entire board
+    for (const block in newState) {
+      for (const cell in newState[block]) {
+        if (newState[block][cell] === 'A') {
+          newState[block][cell] = 'empty';
+        }
+      }
+    }
+
+    // Step B: Loop through the board and process 'O's
+    for (const blockId in newState) {
+      for (const cellKey in newState[blockId]) {
+        if (newState[blockId][cellKey] === 'O') {
+          // Identify the two items from cellKey and two categories from blockId
+          // However, we have blockId like "catId1-catId2" and cellKey like "item1-item2".
+          // We need a way to reliably iterate the rows and columns for that subgrid.
+          // Since we need to know the categories' items, we can find them from the `categories` array.
+
+          const [id1, id2] = blockId.split('-');
+          const cat1 = categories.find(c => String(c.id) === id1);
+          const cat2 = categories.find(c => String(c.id) === id2);
+
+          if (!cat1 || !cat2) continue;
+
+          // Now find which item belongs to which category
+          const [itemA, itemB] = cellKey.split('-');
+          let item1 = '', item2 = '';
+
+          if (cat1.items.includes(itemA) && cat2.items.includes(itemB)) {
+            item1 = itemA;
+            item2 = itemB;
+          } else if (cat1.items.includes(itemB) && cat2.items.includes(itemA)) {
+            item1 = itemB;
+            item2 = itemA;
+          } else {
+            // Might happen if item names overlap but generally we can assume they match one of the permutations
+            continue;
+          }
+
+          // Step C: Change any 'empty' cells in that subgrid's row and column to 'A'
+          cat1.items.forEach(i1 => {
+            if (i1 !== item1) {
+              const rowCellKey = getCellKey(i1, item2);
+              if (!newState[blockId][rowCellKey] || newState[blockId][rowCellKey] === 'empty') {
+                newState[blockId][rowCellKey] = 'A';
+              }
+            }
+          });
+
+          cat2.items.forEach(i2 => {
+            if (i2 !== item2) {
+              const colCellKey = getCellKey(item1, i2);
+              if (!newState[blockId][colCellKey] || newState[blockId][colCellKey] === 'empty') {
+                newState[blockId][colCellKey] = 'A';
+              }
+            }
+          });
+        }
+      }
+    }
+
+    return newState;
+  }, [categories]);
+
   const toggleCell = useCallback((cat1: Category, cat2: Category, item1: string, item2: string) => {
     setGridState(prev => {
       // First, capture the previous state and save to history
@@ -35,7 +102,7 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
       // do setGridHistory outside the setGridState updater.
       // Let's refactor:
 
-      const newState = { ...prev };
+      let newState = JSON.parse(JSON.stringify(prev)) as GridState;
       const blockId = getBlockId(cat1, cat2);
 
       if (!newState[blockId]) {
@@ -43,38 +110,47 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
       }
 
       const cellKey = getCellKey(item1, item2);
-      const currentState = newState[blockId][cellKey] || 'empty';
+      let currentState = newState[blockId][cellKey] || 'empty';
+      if (currentState === 'A') {
+        currentState = 'empty';
+      }
 
       let nextState: CellState;
       if (currentState === 'empty') nextState = 'X';
       else if (currentState === 'X') nextState = 'O';
+      else if (currentState === 'O') nextState = '?';
       else nextState = 'empty';
 
-      newState[blockId] = { ...newState[blockId], [cellKey]: nextState };
-
-      // Auto-fill logic when placing an 'O'
+      // Unique 'O' Rule: clear existing 'O's in the row and col
       if (nextState === 'O') {
-        // Fill row and column with 'X'
         cat1.items.forEach(i1 => {
           if (i1 !== item1) {
             const rowCellKey = getCellKey(i1, item2);
-            if (!newState[blockId][rowCellKey] || newState[blockId][rowCellKey] === 'empty') newState[blockId][rowCellKey] = 'X';
+            if (newState[blockId][rowCellKey] === 'O') {
+              newState[blockId][rowCellKey] = 'empty';
+            }
           }
         });
-
         cat2.items.forEach(i2 => {
           if (i2 !== item2) {
             const colCellKey = getCellKey(item1, i2);
-            if (!newState[blockId][colCellKey] || newState[blockId][colCellKey] === 'empty') newState[blockId][colCellKey] = 'X';
+            if (newState[blockId][colCellKey] === 'O') {
+              newState[blockId][colCellKey] = 'empty';
+            }
           }
         });
       }
+
+      newState[blockId][cellKey] = nextState;
+
+      // Recalculate auto crosses
+      newState = calculateAutoCrosses(newState);
 
       return newState;
     });
     // Push the current state to history BEFORE we update it via setGridState
     setGridHistory(h => [...h, gridState]);
-  }, [gridState]);
+  }, [gridState, calculateAutoCrosses]);
 
   const undo = useCallback(() => {
     setGridHistory(prevHistory => {
@@ -99,7 +175,13 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
     const saved = localStorage.getItem(`murdle_save_${levelId}`);
     if (saved) {
       const parsed = JSON.parse(saved);
-      setGridState(parsed.gridState || {});
+      const loadedGridState = parsed.gridState || {};
+
+      // Calculate auto crosses immediately after loading a saved state
+      // to act as a self-healing mechanism.
+      const recalculatedState = calculateAutoCrosses(loadedGridState);
+
+      setGridState(recalculatedState);
       setGridHistory([]);
       return {
         testimonyStates: parsed.testimonyStates || {},
@@ -107,7 +189,7 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
       };
     }
     return null;
-  }, []);
+  }, [calculateAutoCrosses]);
 
   const getCellState = useCallback((cat1: Category, cat2: Category, item1: string, item2: string): CellState => {
     const blockId = getBlockId(cat1, cat2);
