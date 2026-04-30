@@ -637,7 +637,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
         <div className="fixed inset-0 top-[65px] bottom-0 overflow-hidden flex flex-col items-center justify-center bg-neo-bg z-0 animate-in fade-in duration-300 gap-4">
 
           {/* Smart Legend Bar */}
-          <div className="flex gap-2 sm:gap-4 overflow-x-auto w-full max-w-3xl px-4 py-2 shrink-0">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 w-full max-w-3xl px-2 sm:px-4 py-2 shrink-0">
             {levelData.categories.map(cat => {
               const catEmojis: Record<string, string> = { suspects: '👤', weapons: '🔪', locations: '📍', motives: '💬' };
               const emoji = catEmojis[cat.id] || '❓';
@@ -645,10 +645,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 <button
                   key={cat.id}
                   onClick={() => setSelectedLegendCategory(cat)}
-                  className="flex items-center gap-2 bg-white border-[3px] border-black shadow-[4px_4px_0_#000] px-3 py-2 hover:bg-neo-notebook transition-colors whitespace-nowrap active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_#000]"
+                  className="flex items-center gap-1 sm:gap-2 bg-white border-[2px] sm:border-[3px] border-black shadow-[2px_2px_0_#000] sm:shadow-[4px_4px_0_#000] px-2 sm:px-3 py-1.5 sm:py-2 hover:bg-neo-notebook transition-colors whitespace-nowrap active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                 >
-                  <span className="text-xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]">{emoji}</span>
-                  <span className="font-bold uppercase tracking-wide text-sm">{cat.name}</span>
+                  <span className="text-lg sm:text-xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]">{emoji}</span>
+                  <span className="font-bold uppercase tracking-wide text-[10px] sm:text-sm">{cat.name}</span>
                 </button>
               );
             })}
@@ -656,9 +656,6 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
           {/* Logic Grid */}
           <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-hidden mb-24 max-h-[calc(100vh-260px)] flex flex-col w-full max-w-3xl">
-            <div className="bg-neo-notebook p-2 sm:p-3 text-[10px] text-black border-b-[3px] border-black text-center uppercase tracking-widest font-bold shrink-0">
-              คลิก 1 ครั้ง = ❌ | คลิก 2 ครั้ง = ⭕
-            </div>
             <div className="overflow-auto p-0 flex justify-center items-center bg-neo-bg flex-1 min-h-0 w-full">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
             </div>
