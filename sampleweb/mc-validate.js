@@ -28,7 +28,7 @@
 		if ($fields.filter(':filled').length == 0 && this.optional(element)) {
 			isValid = true; // None have been filled out, so no error	
 		} else {
-			var dateArray = new Array();
+			var dateArray = [];
 			dateArray['month'] = $fields.filter("input[name*='[month]']").val();
 			dateArray['day'] = $fields.filter("input[name*='[day]']").val();
 		      
@@ -51,7 +51,7 @@
 		if ($fields.filter(':filled').length == 0 && this.optional(element)) {
 			isValid = true; // None have been filled out, so no error	
 		} else {
-			var dateArray = new Array();
+			var dateArray = [];
 			dateArray['month'] = $fields.filter("input[name*='[month]']").val();
 			dateArray['day'] = $fields.filter("input[name*='[day]']").val();
 			dateArray['year'] = $fields.filter("input[name*='[year]']").val();

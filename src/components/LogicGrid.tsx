@@ -39,7 +39,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
             <td style={cellStyle} className={`p-1 ${labelSizeScale} sm:text-[8px] text-black font-bold tracking-tighter leading-none text-center border border-transparent align-middle`}>
               LOGIC GRID
             </td>
-            {topCategories.map((cat, catIndex) => (
+            {topCategories.map((cat) => (
               cat.items.map((item, itemIndex) => {
                 const isFirstOfBlock = itemIndex === 0;
                 return (
@@ -102,8 +102,10 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                             hover:bg-gray-200
                           `}
                         >
-                          {state === 'O' && <span className={`${textSizeScale} sm:text-2xl [text-shadow:2px_2px_0_#000]`}>✅</span>}
-                          {state === 'X' && <span className={`${textSizeScale} sm:text-2xl [text-shadow:2px_2px_0_#000]`}>❌</span>}
+                          {state === 'O' && <i className={`fa-solid fa-check text-green-500 ${textSizeScale} sm:text-xl`}></i>}
+                          {state === 'X' && <i className={`fa-solid fa-xmark text-red-500 ${textSizeScale} sm:text-xl`}></i>}
+                          {state === '?' && <i className={`fa-solid fa-question text-orange-400 ${textSizeScale} sm:text-xl`}></i>}
+                          {state === 'A' && <i className={`fa-solid fa-xmark text-purple-500 text-sm opacity-80 ${textSizeScale} sm:text-lg`}></i>}
                         </td>
                       );
                     });

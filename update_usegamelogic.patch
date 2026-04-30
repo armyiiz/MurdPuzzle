@@ -1,0 +1,66 @@
+<<<<<<< SEARCH
+export type CellState = 'empty' | 'O' | 'X';
+=======
+export type CellState = 'empty' | 'O' | 'X' | '?' | 'A';
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+      const currentState = newState[blockId][cellKey] || 'empty';
+
+      let nextState: CellState;
+      if (currentState === 'empty') nextState = 'X';
+      else if (currentState === 'X') nextState = 'O';
+      else nextState = 'empty';
+
+      newState[blockId] = { ...newState[blockId], [cellKey]: nextState };
+
+      // Auto-fill logic when placing an 'O'
+      if (nextState === 'O') {
+        // Fill row and column with 'X'
+        cat1.items.forEach(i1 => {
+          if (i1 !== item1) {
+            const rowCellKey = getCellKey(i1, item2);
+            if (!newState[blockId][rowCellKey] || newState[blockId][rowCellKey] === 'empty') newState[blockId][rowCellKey] = 'X';
+          }
+        });
+
+        cat2.items.forEach(i2 => {
+          if (i2 !== item2) {
+            const colCellKey = getCellKey(item1, i2);
+            if (!newState[blockId][colCellKey] || newState[blockId][colCellKey] === 'empty') newState[blockId][colCellKey] = 'X';
+          }
+        });
+      }
+
+      return newState;
+=======
+      let currentState = newState[blockId][cellKey] || 'empty';
+      if (currentState === 'A') {
+        currentState = 'empty';
+      }
+
+      let nextState: CellState;
+      if (currentState === 'empty') nextState = 'X';
+      else if (currentState === 'X') nextState = 'O';
+      else if (currentState === 'O') nextState = '?';
+      else nextState = 'empty';
+
+      // Unique 'O' Rule
+      if (nextState === 'O') {
+        cat1.items.forEach(i1 => {
+          if (i1 !== item1) {
+            const rowCellKey = getCellKey(i1, item2);
+            if (newState[blockId][rowCellKey] === 'O') newState[blockId][rowCellKey] = 'empty';
+          }
+        });
+        cat2.items.forEach(i2 => {
+          if (i2 !== item2) {
+            const colCellKey = getCellKey(item1, i2);
+            if (newState[blockId][colCellKey] === 'O') newState[blockId][colCellKey] = 'empty';
+          }
+        });
+      }
+
+      newState[blockId] = { ...newState[blockId], [cellKey]: nextState };
+
+      return calculateAutoCrosses(newState);
+>>>>>>> REPLACE
