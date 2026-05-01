@@ -839,7 +839,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 ? '✅ คัดลอกกระดานสำเร็จ!'
                 : gridExportStatus === 'error'
                   ? '❌ คัดลอกไม่สำเร็จ'
-                  : '📊 ให้ AI ช่วยตรวจกระดาน'}
+                  : '📊 ให้คู่หูช่วยตรวจกระดาน'}
             </button>
           </div>
 
