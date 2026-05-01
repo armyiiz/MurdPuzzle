@@ -662,10 +662,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 }`}
               >
                 {exportStatus === 'success'
-                  ? '✅ คัดลอกสำเร็จ! (ไปวางใน AI ได้เลย)'
+                  ? '✅ คัดลอกสำเร็จ!'
                   : exportStatus === 'error'
-                    ? '❌ ก๊อปปี้ไม่สำเร็จ (เบราว์เซอร์ไม่อนุญาต)'
-                    : '🤖 คัดลอกข้อมูลไปปรึกษา AI'}
+                    ? '❌ คัดลอกไม่สำเร็จ'
+                    : '🕵🏻‍♀️ ปรึกษาผู้ช่วย'}
               </button>
             </div>
           </div>
