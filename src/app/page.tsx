@@ -333,6 +333,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [showExhibitD, setShowExhibitD] = useState(false);
   const [showDecrypter, setShowDecrypter] = useState(false);
   const [cipherInput, setCipherInput] = useState('');
+  const [exportStatus, setExportStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -377,6 +378,74 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   };
 
   const getOptions = (catId: string) => levelData.categories.find(c => c.id === catId)?.items || [];
+
+  const exportToAI = () => {
+    const caseNumber = parseInt(levelData.id.replace('case_', ''), 10);
+    const hasMotives = levelData.categories.some(c => c.id === 'motives');
+
+    let prompt = `ฉันกำลังเล่นเกมสืบสวนตรรกะ (Logic Puzzle) ระดับความยาก Level ${levelData.difficulty}\n`;
+    prompt += `ชื่อคดี: คดีที่ ${caseNumber}\n\n`;
+
+    if (levelData.story_intro) {
+      prompt += `เนื้อเรื่อง: ${levelData.story_intro}\n\n`;
+    }
+
+    prompt += `📌 ข้อมูลที่ต้องสืบหา:\n`;
+
+    const suspects = levelData.categories.find(c => c.id === 'suspects')?.items || [];
+    prompt += `- 👤 ผู้ต้องสงสัย: ${suspects.join(', ')}\n`;
+
+    const locations = levelData.categories.find(c => c.id === 'locations')?.items || [];
+    prompt += `- 📍 สถานที่: ${locations.join(', ')}\n`;
+
+    const weapons = levelData.categories.find(c => c.id === 'weapons')?.items || [];
+    prompt += `- 🔪 อาวุธ: ${weapons.join(', ')}\n`;
+
+    if (hasMotives) {
+      const motives = levelData.categories.find(c => c.id === 'motives')?.items || [];
+      prompt += `- 💡 แรงจูงใจ: ${motives.join(', ')}\n`;
+    }
+
+    prompt += `\n📝 คำให้การและเบาะแส:\n`;
+    levelData.clues.forEach((clue, index) => {
+      prompt += `${index + 1}. ${clue}\n`;
+    });
+
+    if (levelData.testimonies && levelData.testimonies.length > 0) {
+      levelData.testimonies.forEach((t, index) => {
+        prompt += `${levelData.clues.length + index + 1}. คำให้การของ ${t.suspect}: "${t.statement}"\n`;
+      });
+    }
+
+    prompt += `\n⚠️ กฎของคดีนี้:\n`;
+    if (levelData.difficulty === 1 || levelData.difficulty === 3) {
+      prompt += `เบาะแสและคำให้การทุกอย่างเป็นความจริง 100%\n`;
+    } else if (levelData.difficulty === 2 || levelData.difficulty === 4) {
+      prompt += `มีผู้ต้องสงสัย 1 คนที่โกหกเสมอ และคนที่โกหกคือ "คนร้าย" เท่านั้น ส่วนคนบริสุทธิ์จะพูดความจริงเสมอ\n`;
+    }
+
+    prompt += `\n🤖 คำสั่งสำหรับคุณ (AI):\n`;
+    prompt += `คุณคือ "อลิซ" ผู้ช่วยนักสืบสุดร่าเริงของฉัน\n`;
+    prompt += `1. **ห้ามเฉลยคำตอบ ตัวคนร้าย หรือสรุปตารางให้ฉันเด็ดขาด!** (สำคัญมาก)\n`;
+    prompt += `2. ให้คุณอ่านข้อมูลคดีนี้เพื่อทำความเข้าใจเงียบๆ\n`;
+    prompt += `3. ทักทายฉันแบบร่าเริง แล้วถามฉันว่า "คุณพี่นักสืบสงสัยใครเป็นพิเศษไหมคะ? เรามาลองสมมติว่าคนนั้นโกหกดูไหม?"\n`;
+    prompt += `4. ช่วยฉันคิดวิเคราะห์ทีละสเตป เพื่อฝึกให้ฉันหาจุดขัดแย้งของตรรกะด้วยตัวเอง`;
+
+    return prompt;
+  };
+
+  const handleExportAI = async () => {
+    const textToCopy = exportToAI();
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      setExportStatus('success');
+      setTimeout(() => setExportStatus('idle'), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+      setExportStatus('error');
+      setTimeout(() => setExportStatus('idle'), 3000);
+    }
+  };
 
   const handleToggleView = () => {
     if (activeView === 'clues') {
@@ -579,6 +648,26 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 </ul>
               </div>
             )}
+
+            {/* AI Export Button */}
+            <div className="mt-8 mb-4">
+              <button
+                onClick={handleExportAI}
+                className={`w-full py-4 px-6 text-xl font-black border-[4px] border-black shadow-[4px_4px_0_#000] uppercase tracking-widest transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
+                  exportStatus === 'success'
+                    ? 'bg-green-400 text-black'
+                    : exportStatus === 'error'
+                      ? 'bg-red-500 text-white'
+                      : 'bg-blue-400 text-black hover:bg-blue-500'
+                }`}
+              >
+                {exportStatus === 'success'
+                  ? '✅ คัดลอกสำเร็จ! (ไปวางใน AI ได้เลย)'
+                  : exportStatus === 'error'
+                    ? '❌ ก๊อปปี้ไม่สำเร็จ (เบราว์เซอร์ไม่อนุญาต)'
+                    : '🤖 คัดลอกข้อมูลไปปรึกษา AI'}
+              </button>
+            </div>
           </div>
 
           {/* Final Accusation */}
