@@ -472,34 +472,38 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   };
 
   const exportGridStateToAI = () => {
-    let prompt = `ฉันกำลังไขคดีปริศนา และนี่คือสถานะตาราง (Logic Grid) ที่ฉันทดไว้ในตอนนี้:\n`;
+    if (levelData.categories.length === 0) return '';
+    const primaryCat = levelData.categories[0];
+    const otherCats = levelData.categories.slice(1);
 
-    let hasInputs = false;
-    Object.values(gridState).forEach(block => {
-      Object.entries(block).forEach(([cellKey, state]) => {
-        if (state === 'empty' || state === 'A') return;
+    const catEmojis: Record<string, string> = { suspects: '👤', weapons: '🔪', locations: '📍', motives: '💬' };
 
-        hasInputs = true;
-        const [itemA, itemB] = cellKey.split('-');
-        let stateText = '';
-        if (state === 'O') stateText = '✅ ใช่';
-        else if (state === 'X') stateText = '❌ ไม่ใช่';
-        else if (state === '?') stateText = '❓ กำลังสงสัย';
+    // Build Headers
+    const headers = [
+      `${catEmojis[primaryCat.id] || ''} ${primaryCat.name}`,
+      ...otherCats.map(c => `${catEmojis[c.id] || ''} ${c.name}`)
+    ];
 
-        prompt += `- ${itemA} กับ ${itemB} = ${stateText}\n`;
+    let prompt = `| ${headers.join(' | ')} |\n`;
+    prompt += `|${headers.map(() => '---').join('|')}|\n`;
+
+    // Build Rows
+    primaryCat.items.forEach(primaryItem => {
+      const rowData = [primaryItem];
+      otherCats.forEach(otherCat => {
+        const cellInputs: string[] = [];
+        otherCat.items.forEach(otherItem => {
+          const state = getCellState(primaryCat, otherCat, primaryItem, otherItem);
+          if (state === 'O') cellInputs.push(`✅ ${otherItem}`);
+          else if (state === 'X') cellInputs.push(`❌ ${otherItem}`);
+          else if (state === '?') cellInputs.push(`❓ ${otherItem}`);
+        });
+        rowData.push(cellInputs.length > 0 ? cellInputs.join(', ') : '-');
       });
+      prompt += `| ${rowData.join(' | ')} |\n`;
     });
 
-    if (!hasInputs) {
-      prompt += `- (ยังไม่มีการทดข้อมูลลงในตาราง)\n`;
-    }
-
-    prompt += `\n🤖 คำสั่งสำหรับคุณ (อลิซ):\n`;
-    prompt += `1. ห้ามเฉลยคำตอบสุดท้ายเด็ดขาด\n`;
-    prompt += `2. จากข้อมูลที่ฉันทดไว้ มีจุดไหนที่ตรรกะขัดแย้งกันเอง (Logic Clash) ไหม?\n`;
-    prompt += `3. จากสิ่งที่ฉันทดไว้ มีช่องไหนที่ฉันควรจะสรุปเพิ่มได้แล้วแต่ฉันยังไม่ได้กากบาทบ้าง? ช่วยไกด์ฉันทีละสเตป`;
-
-    return prompt;
+    return prompt.trim();
   };
 
   const handleGridExportAI = async () => {
