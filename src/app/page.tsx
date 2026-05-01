@@ -10,6 +10,7 @@ import { allCases } from '../data/allCases';
 import { ImageWithFallback } from '../components/ImageWithFallback';
 import exhibitBData from '../data/ExhibitB.json';
 import anagramDict from '../data/anagramDictionary.json';
+import dailyMasterData from '../data/dailymasterdata.json';
 
 type ScreenState = 'MENU' | 'HOW_TO_PLAY' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME' | 'SETTINGS';
 
@@ -318,7 +319,7 @@ function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level:
 }
 
 function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: LevelData, setSolvedCases: any, solvedCases: string[] }) {
-  const { getCellState, toggleCell, resetGrid, undo, saveGridState, loadGridState, canUndo } = useGameLogic(levelData.categories, []);
+  const { getCellState, toggleCell, resetGrid, undo, saveGridState, loadGridState, canUndo, gridState } = useGameLogic(levelData.categories, []);
   const [testimonyStates, setTestimonyStates] = useState<Record<number, number>>({});
   const [accusation, setAccusation] = useState({ suspect: '', weapon: '', location: '', motive: '' });
   const [feedback, setFeedback] = useState<{ message: string; type: 'success' | 'error' | null }>({ message: '', type: null });
@@ -334,6 +335,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [showDecrypter, setShowDecrypter] = useState(false);
   const [cipherInput, setCipherInput] = useState('');
   const [exportStatus, setExportStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [gridExportStatus, setGridExportStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -393,17 +395,39 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
     prompt += `📌 ข้อมูลที่ต้องสืบหา:\n`;
 
     const suspects = levelData.categories.find(c => c.id === 'suspects')?.items || [];
-    prompt += `- 👤 ผู้ต้องสงสัย: ${suspects.join(', ')}\n`;
+    prompt += `- 👤 ผู้ต้องสงสัย: ${suspects.map(name => {
+      const data = dailyMasterData.suspects.find(s => s.name === name);
+      if (!data) return name;
+      const attrs = [];
+      if (data.height) attrs.push(`สูง: ${data.height}`);
+      if (data.hair) attrs.push(`ผม: ${data.hair}`);
+      if (data.eye) attrs.push(`ตา: ${data.eye}`);
+      if (data.zodiac) attrs.push(`ราศี: ${data.zodiac}`);
+      return attrs.length > 0 ? `${name} (${attrs.join(', ')})` : name;
+    }).join('\n  ')}\n`;
 
     const locations = levelData.categories.find(c => c.id === 'locations')?.items || [];
-    prompt += `- 📍 สถานที่: ${locations.join(', ')}\n`;
+    prompt += `- 📍 สถานที่: ${locations.map(name => {
+      const data = dailyMasterData.locations.find(l => l.name === name);
+      if (!data) return name;
+      const attrs = [];
+      if (data.type) attrs.push(`โซน: ${data.type}`);
+      return attrs.length > 0 ? `${name} (${attrs.join(', ')})` : name;
+    }).join('\n  ')}\n`;
 
     const weapons = levelData.categories.find(c => c.id === 'weapons')?.items || [];
-    prompt += `- 🔪 อาวุธ: ${weapons.join(', ')}\n`;
+    prompt += `- 🔪 อาวุธ: ${weapons.map(name => {
+      const data = dailyMasterData.weapons.find(w => w.name === name);
+      if (!data) return name;
+      const attrs = [];
+      if (data.weight) attrs.push(`น้ำหนัก: ${data.weight}`);
+      if (data.material) attrs.push(`ชนิด: ${data.material}`);
+      return attrs.length > 0 ? `${name} (${attrs.join(', ')})` : name;
+    }).join('\n  ')}\n`;
 
     if (hasMotives) {
       const motives = levelData.categories.find(c => c.id === 'motives')?.items || [];
-      prompt += `- 💡 แรงจูงใจ: ${motives.join(', ')}\n`;
+      prompt += `- 💡 แรงจูงใจ: ${motives.join('\n  ')}\n`;
     }
 
     prompt += `\n📝 คำให้การและเบาะแส:\n`;
@@ -444,6 +468,54 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       console.error('Failed to copy text: ', err);
       setExportStatus('error');
       setTimeout(() => setExportStatus('idle'), 3000);
+    }
+  };
+
+  const exportGridStateToAI = () => {
+    if (levelData.categories.length === 0) return '';
+    const primaryCat = levelData.categories[0];
+    const otherCats = levelData.categories.slice(1);
+
+    const catEmojis: Record<string, string> = { suspects: '👤', weapons: '🔪', locations: '📍', motives: '💬' };
+
+    // Build Headers
+    const headers = [
+      `${catEmojis[primaryCat.id] || ''} ${primaryCat.name}`,
+      ...otherCats.map(c => `${catEmojis[c.id] || ''} ${c.name}`)
+    ];
+
+    let prompt = `| ${headers.join(' | ')} |\n`;
+    prompt += `|${headers.map(() => '---').join('|')}|\n`;
+
+    // Build Rows
+    primaryCat.items.forEach(primaryItem => {
+      const rowData = [primaryItem];
+      otherCats.forEach(otherCat => {
+        const cellInputs: string[] = [];
+        otherCat.items.forEach(otherItem => {
+          const state = getCellState(primaryCat, otherCat, primaryItem, otherItem);
+          if (state === 'O') cellInputs.push(`✅ ${otherItem}`);
+          else if (state === 'X') cellInputs.push(`❌ ${otherItem}`);
+          else if (state === '?') cellInputs.push(`❓ ${otherItem}`);
+        });
+        rowData.push(cellInputs.length > 0 ? cellInputs.join(', ') : '-');
+      });
+      prompt += `| ${rowData.join(' | ')} |\n`;
+    });
+
+    return prompt.trim();
+  };
+
+  const handleGridExportAI = async () => {
+    const textToCopy = exportGridStateToAI();
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      setGridExportStatus('success');
+      setTimeout(() => setGridExportStatus('idle'), 2000);
+    } catch (err) {
+      console.error('Failed to copy grid state: ', err);
+      setGridExportStatus('error');
+      setTimeout(() => setGridExportStatus('idle'), 3000);
     }
   };
 
@@ -649,25 +721,6 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               </div>
             )}
 
-            {/* AI Export Button */}
-            <div className="mt-8 mb-4">
-              <button
-                onClick={handleExportAI}
-                className={`w-full py-4 px-6 text-xl font-black border-[4px] border-black shadow-[4px_4px_0_#000] uppercase tracking-widest transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
-                  exportStatus === 'success'
-                    ? 'bg-green-400 text-black'
-                    : exportStatus === 'error'
-                      ? 'bg-red-500 text-white'
-                      : 'bg-blue-400 text-black hover:bg-blue-500'
-                }`}
-              >
-                {exportStatus === 'success'
-                  ? '✅ คัดลอกสำเร็จ!'
-                  : exportStatus === 'error'
-                    ? '❌ คัดลอกไม่สำเร็จ'
-                    : '🕵🏻‍♀️ ปรึกษาผู้ช่วย'}
-              </button>
-            </div>
           </div>
 
           {/* Final Accusation */}
@@ -718,6 +771,26 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 {feedback.message}
               </div>
             )}
+
+            {/* AI Export Button */}
+            <div className="mt-8 mb-4 w-full">
+              <button
+                onClick={handleExportAI}
+                className={`w-full py-4 px-6 text-xl font-black border-[4px] border-black shadow-[4px_4px_0_#000] uppercase tracking-widest transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
+                  exportStatus === 'success'
+                    ? 'bg-green-400 text-black'
+                    : exportStatus === 'error'
+                      ? 'bg-red-500 text-white'
+                      : 'bg-blue-400 text-black hover:bg-blue-500'
+                }`}
+              >
+                {exportStatus === 'success'
+                  ? '✅ คัดลอกสำเร็จ!'
+                  : exportStatus === 'error'
+                    ? '❌ คัดลอกไม่สำเร็จ'
+                    : '🕵🏻‍♀️ ปรึกษาผู้ช่วยอลิซ'}
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -744,11 +817,31 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           </div>
 
           {/* Logic Grid */}
-          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-hidden mb-24 max-h-[calc(100vh-260px)] flex flex-col w-full max-w-3xl">
+          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-hidden flex flex-col w-full max-w-3xl">
             <div className="overflow-auto p-0 flex justify-center items-center bg-neo-bg flex-1 min-h-0 w-full">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
             </div>
           </section>
+
+          {/* AI Grid Export Button */}
+          <div className="w-full max-w-3xl px-2 sm:px-4 mt-4 mb-24">
+            <button
+              onClick={handleGridExportAI}
+              className={`w-full py-3 sm:py-4 px-4 sm:px-6 text-lg sm:text-xl font-black border-[4px] border-black shadow-[4px_4px_0_#000] uppercase tracking-widest transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
+                gridExportStatus === 'success'
+                  ? 'bg-green-400 text-black'
+                  : gridExportStatus === 'error'
+                    ? 'bg-red-500 text-white'
+                    : 'bg-yellow-400 text-black hover:bg-yellow-500'
+              }`}
+            >
+              {gridExportStatus === 'success'
+                ? '✅ คัดลอกกระดานสำเร็จ!'
+                : gridExportStatus === 'error'
+                  ? '❌ คัดลอกไม่สำเร็จ'
+                  : '📊 ให้ AI ช่วยตรวจกระดาน'}
+            </button>
+          </div>
 
           {/* Grid Action Menu */}
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-4 sm:px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-3 sm:gap-4 max-w-[95vw] overflow-x-auto whitespace-nowrap">
