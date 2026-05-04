@@ -395,39 +395,63 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
     prompt += `📌 ข้อมูลที่ต้องสืบหา:\n`;
 
     const suspects = levelData.categories.find(c => c.id === 'suspects')?.items || [];
-    prompt += `- 👤 ผู้ต้องสงสัย: ${suspects.map(name => {
-      const data = dailyMasterData.suspects.find(s => s.name === name);
-      if (!data) return name;
-      const attrs = [];
-      if (data.height) attrs.push(`สูง: ${data.height}`);
-      if (data.hair) attrs.push(`ผม: ${data.hair}`);
-      if (data.eye) attrs.push(`ตา: ${data.eye}`);
-      if (data.zodiac) attrs.push(`ราศี: ${data.zodiac}`);
-      return attrs.length > 0 ? `${name} (${attrs.join(', ')})` : name;
-    }).join('\n  ')}\n`;
+    if (suspects.length > 0) {
+      prompt += `${suspects.map(name => {
+        const data = dailyMasterData.suspects.find(s => s.name === name);
+        if (!data) return `- 👤 ${name}`;
+        const attrs = [];
+        if (data.height && data.height !== '-') attrs.push(`สูง: ${data.height}`);
+        if (data.hair && data.hair !== '-') attrs.push(`ผม: ${data.hair}`);
+        if (data.eye && data.eye !== '-') attrs.push(`ตา: ${data.eye}`);
+        if (data.zodiac && data.zodiac !== '-') attrs.push(`ราศี: ${data.zodiac}`);
+
+        let result = `- 👤 ${name}`;
+        if (attrs.length > 0) result += ` (${attrs.join(', ')})`;
+        if (data.lore) result += `: ${data.lore}`;
+        return result;
+      }).join('\n')}\n`;
+    }
 
     const locations = levelData.categories.find(c => c.id === 'locations')?.items || [];
-    prompt += `- 📍 สถานที่: ${locations.map(name => {
-      const data = dailyMasterData.locations.find(l => l.name === name);
-      if (!data) return name;
-      const attrs = [];
-      if (data.type) attrs.push(`โซน: ${data.type}`);
-      return attrs.length > 0 ? `${name} (${attrs.join(', ')})` : name;
-    }).join('\n  ')}\n`;
+    if (locations.length > 0) {
+      prompt += `${locations.map(name => {
+        const data = dailyMasterData.locations.find(l => l.name === name);
+        if (!data) return `- 📍 ${name}`;
+        const attrs = [];
+        if (data.type && data.type !== '-') attrs.push(`โซน: ${data.type}`);
+
+        let result = `- 📍 ${name}`;
+        if (attrs.length > 0) result += ` (${attrs.join(', ')})`;
+        if (data.lore) result += `: ${data.lore}`;
+        return result;
+      }).join('\n')}\n`;
+    }
 
     const weapons = levelData.categories.find(c => c.id === 'weapons')?.items || [];
-    prompt += `- 🔪 อาวุธ: ${weapons.map(name => {
-      const data = dailyMasterData.weapons.find(w => w.name === name);
-      if (!data) return name;
-      const attrs = [];
-      if (data.weight) attrs.push(`น้ำหนัก: ${data.weight}`);
-      if (data.material) attrs.push(`ชนิด: ${data.material}`);
-      return attrs.length > 0 ? `${name} (${attrs.join(', ')})` : name;
-    }).join('\n  ')}\n`;
+    if (weapons.length > 0) {
+      prompt += `${weapons.map(name => {
+        const data = dailyMasterData.weapons.find(w => w.name === name);
+        if (!data) return `- 🔪 ${name}`;
+        const attrs = [];
+        if (data.weight && data.weight !== '-') attrs.push(`น้ำหนัก: ${data.weight}`);
+        if (data.material && data.material !== '-') attrs.push(`วัสดุ/ชนิด: ${data.material}`);
+
+        let result = `- 🔪 ${name}`;
+        if (attrs.length > 0) result += ` (${attrs.join(', ')})`;
+        if (data.lore) result += `: ${data.lore}`;
+        return result;
+      }).join('\n')}\n`;
+    }
 
     if (hasMotives) {
       const motives = levelData.categories.find(c => c.id === 'motives')?.items || [];
-      prompt += `- 💡 แรงจูงใจ: ${motives.join('\n  ')}\n`;
+      if (motives.length > 0) {
+        prompt += `${motives.map(name => {
+          const data = dailyMasterData.motives.find(m => m.name === name);
+          if (!data || !data.detail) return `- 💡 ${name}`;
+          return `- 💡 ${name}: ${data.detail}`;
+        }).join('\n')}\n`;
+      }
     }
 
     prompt += `\n📝 คำให้การและเบาะแส:\n`;
