@@ -876,7 +876,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       )}
 
       {activeView === 'grid' && (
-        <div className="fixed inset-x-0 bottom-0 top-[var(--app-header-height)] overflow-y-auto overflow-x-hidden flex flex-col items-center justify-start sm:justify-center bg-neo-bg z-0 animate-in fade-in duration-300 gap-3 sm:gap-4 px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+7rem)]">
+        <div className="fixed inset-x-0 bottom-0 top-[var(--app-header-height)] overflow-y-auto overflow-x-hidden flex flex-col items-center justify-start sm:justify-center bg-neo-bg z-0 animate-in fade-in duration-300 gap-3 sm:gap-4 px-1 pt-3 pb-[calc(env(safe-area-inset-bottom)+7rem)]">
 
           {/* Smart Legend Bar */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4 w-full max-w-3xl px-2 sm:px-4 py-2 shrink-0">
@@ -897,8 +897,8 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           </div>
 
           {/* Logic Grid */}
-          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-visible flex flex-col w-full max-w-3xl">
-            <div className="overflow-auto p-0 flex justify-start sm:justify-center items-start bg-neo-bg flex-1 min-h-0 w-full">
+          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-hidden flex flex-col w-[calc(100vw-0.5rem)] max-w-3xl">
+            <div className="overflow-hidden p-0 flex justify-center items-start bg-neo-bg flex-1 min-h-0 w-full">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
             </div>
           </section>

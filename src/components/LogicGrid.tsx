@@ -26,14 +26,16 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
   const topCategories = categories.slice(1);
   const leftCategories = [categories[0], ...[...categories.slice(2)].reverse()];
 
-  const cellStyle = {
-    width: 'clamp(32px, 8vw, 44px)',
-    height: 'clamp(32px, 8vw, 44px)',
-    minWidth: '32px',
+  const totalCols = 1 + topCategories.reduce((count, cat) => count + cat.items.length, 0);
+  const fittedCellSize = `min(44px, calc((100vw - 1rem) / ${totalCols}))`;
+  const cellStyle: React.CSSProperties = {
+    boxSizing: 'border-box',
+    width: fittedCellSize,
+    height: fittedCellSize,
   };
 
   return (
-    <div className="logic-grid-scroll w-full max-w-full overflow-auto p-1 flex justify-start sm:justify-center touch-pan-x touch-pan-y" aria-label="ตารางตรรกะสำหรับตัดตัวเลือก">
+    <div className="logic-grid-scroll w-full max-w-full overflow-hidden p-0 flex justify-center touch-pan-y" aria-label="ตารางตรรกะสำหรับตัดตัวเลือก">
       <table className="border-collapse table-fixed w-max mx-auto">
         <tbody>
           {/* Top Header Row */}
@@ -53,7 +55,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full" title={`${cat.name}: ${item}`}>
-                      <i aria-hidden="true" className={`${getIconClass(cat.id, item)} text-lg sm:text-xl md:text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(itemIndex, seedString, cat.id) }}></i>
+                      <i aria-hidden="true" className={`${getIconClass(cat.id, item)} text-[clamp(0.75rem,4vw,1.5rem)] [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(itemIndex, seedString, cat.id) }}></i>
                     </div>
                   </td>
                 );
@@ -79,7 +81,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full" title={`${rowCat.name}: ${rowItem}`}>
-                      <i aria-hidden="true" className={`${getIconClass(rowCat.id, rowItem)} text-lg sm:text-xl md:text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(rowItemIndex, seedString, rowCat.id) }}></i>
+                      <i aria-hidden="true" className={`${getIconClass(rowCat.id, rowItem)} text-[clamp(0.75rem,4vw,1.5rem)] [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(rowItemIndex, seedString, rowCat.id) }}></i>
                     </div>
                   </td>
 
@@ -106,13 +108,13 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                           <button
                             type="button"
                             onClick={() => toggleCell(rowCat, colCat, rowItem, colItem)}
-                            className="flex h-full min-h-8 w-full min-w-8 items-center justify-center font-bold transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-neo-accent focus:ring-inset"
+                            className="flex h-full w-full items-center justify-center font-bold transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-neo-accent focus:ring-inset"
                             aria-label={`${rowCat.name}: ${rowItem} กับ ${colCat.name}: ${colItem}, สถานะปัจจุบัน: ${stateLabel}. กดเพื่อเปลี่ยนสถานะ`}
                           >
-                            {state === 'O' && <i aria-hidden="true" className="fa-solid fa-check text-green-500 text-lg sm:text-xl"></i>}
-                            {state === 'X' && <i aria-hidden="true" className="fa-solid fa-xmark text-red-500 text-lg sm:text-xl"></i>}
-                            {state === '?' && <i aria-hidden="true" className="fa-solid fa-question text-orange-400 text-lg sm:text-xl"></i>}
-                            {state === 'A' && <i aria-hidden="true" className="fa-solid fa-xmark text-purple-500 text-base sm:text-lg opacity-80"></i>}
+                            {state === 'O' && <i aria-hidden="true" className="fa-solid fa-check text-green-500 text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
+                            {state === 'X' && <i aria-hidden="true" className="fa-solid fa-xmark text-red-500 text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
+                            {state === '?' && <i aria-hidden="true" className="fa-solid fa-question text-orange-400 text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
+                            {state === 'A' && <i aria-hidden="true" className="fa-solid fa-xmark text-purple-500 text-[clamp(0.7rem,3.5vw,1.125rem)] opacity-80"></i>}
                           </button>
                         </td>
                       );
