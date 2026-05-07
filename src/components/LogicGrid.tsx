@@ -11,6 +11,14 @@ interface LogicGridProps {
   seedString?: string;
 }
 
+const STATE_LABELS: Record<CellState, string> = {
+  empty: 'ยังไม่ระบุ',
+  O: 'ใช่',
+  X: 'ไม่ใช่',
+  '?': 'ไม่แน่ใจ',
+  A: 'ตัดออกอัตโนมัติ',
+};
+
 export function LogicGrid({ categories, getCellState, toggleCell, isCellError, seedString }: LogicGridProps) {
   const numCats = categories.length;
   if (numCats < 3) return null;
@@ -18,25 +26,19 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
   const topCategories = categories.slice(1);
   const leftCategories = [categories[0], ...[...categories.slice(2)].reverse()];
 
-  // Calculate dynamic width based on total columns
-  // 1 label column + (number of top categories * number of items per category)
-  // We use a slight safety margin (95vw instead of 100vw) to account for borders/padding.
-  const numItemsPerCat = topCategories.length > 0 ? topCategories[0].items.length : 1;
-  const totalCols = 1 + (topCategories.length * numItemsPerCat);
   const cellStyle = {
-    width: `min(40px, max(24px, 95vw / ${totalCols}))`,
-    height: `min(40px, max(24px, 95vw / ${totalCols}))`
+    width: 'clamp(32px, 8vw, 44px)',
+    height: 'clamp(32px, 8vw, 44px)',
+    minWidth: '32px',
   };
-  const textSizeScale = totalCols > 10 ? 'text-[3vw]' : 'text-[4vw]';
-  const labelSizeScale = totalCols > 10 ? 'text-[1.5vw]' : 'text-[2vw]';
 
   return (
-    <div className="w-full max-w-3xl mx-auto overflow-hidden p-0 flex justify-center">
+    <div className="logic-grid-scroll w-full max-w-full overflow-auto p-1 flex justify-start sm:justify-center touch-pan-x touch-pan-y" aria-label="ตารางตรรกะสำหรับตัดตัวเลือก">
       <table className="border-collapse table-fixed w-max mx-auto">
         <tbody>
           {/* Top Header Row */}
           <tr>
-            <td style={cellStyle} className={`p-1 ${labelSizeScale} sm:text-[8px] text-black font-bold tracking-tighter leading-none text-center border border-transparent align-middle`}>
+            <td style={cellStyle} className="p-1 text-[8px] sm:text-[9px] text-black font-bold tracking-tighter leading-none text-center border border-transparent align-middle">
               LOGIC GRID
             </td>
             {topCategories.map((cat) => (
@@ -50,8 +52,8 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                       border-t-[4px] ${isFirstOfBlock ? 'border-l-[4px]' : ''}
                     `}
                   >
-                    <div className="flex items-center justify-center w-full h-full">
-                      <i className={`${getIconClass(cat.id, item)} text-[3vw] sm:text-[2vw] md:text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(itemIndex, seedString, cat.id) }}></i>
+                    <div className="flex items-center justify-center w-full h-full" title={`${cat.name}: ${item}`}>
+                      <i aria-hidden="true" className={`${getIconClass(cat.id, item)} text-lg sm:text-xl md:text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(itemIndex, seedString, cat.id) }}></i>
                     </div>
                   </td>
                 );
@@ -76,8 +78,8 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                       border-l-[4px] ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
                     `}
                   >
-                    <div className="flex items-center justify-center w-full h-full">
-                      <i className={`${getIconClass(rowCat.id, rowItem)} text-[3vw] sm:text-[2vw] md:text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(rowItemIndex, seedString, rowCat.id) }}></i>
+                    <div className="flex items-center justify-center w-full h-full" title={`${rowCat.name}: ${rowItem}`}>
+                      <i aria-hidden="true" className={`${getIconClass(rowCat.id, rowItem)} text-lg sm:text-xl md:text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(rowItemIndex, seedString, rowCat.id) }}></i>
                     </div>
                   </td>
 
@@ -89,27 +91,45 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                       const state = getCellState(rowCat, colCat, rowItem, colItem);
                       const isError = isCellError ? isCellError(rowCat, colCat, rowItem, colItem) : false;
                       const isFirstColOfBlock = colItemIndex === 0;
+                      const stateLabel = STATE_LABELS[state];
 
                       return (
                         <td
                           key={`cell-${rowCat.id}-${rowItem}-${colCat.id}-${colItem}`}
-                          onClick={() => toggleCell(rowCat, colCat, rowItem, colItem)}
                           style={cellStyle}
-                          className={`border border-black align-middle text-center p-0 cursor-pointer select-none font-bold transition-colors
+                          className={`border border-black align-middle text-center p-0 select-none font-bold transition-colors
                             ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
                             ${isFirstColOfBlock ? 'border-l-[4px]' : ''}
                             ${isError ? 'bg-red-400' : isDark ? 'bg-neo-notebook' : 'bg-white'}
-                            hover:bg-gray-200
                           `}
                         >
-                          {state === 'O' && <i className={`fa-solid fa-check text-green-500 ${textSizeScale} sm:text-xl`}></i>}
-                          {state === 'X' && <i className={`fa-solid fa-xmark text-red-500 ${textSizeScale} sm:text-xl`}></i>}
-                          {state === '?' && <i className={`fa-solid fa-question text-orange-400 ${textSizeScale} sm:text-xl`}></i>}
-                          {state === 'A' && <i className={`fa-solid fa-xmark text-purple-500 text-sm opacity-80 ${textSizeScale} sm:text-lg`}></i>}
+                          <button
+                            type="button"
+                            onClick={() => toggleCell(rowCat, colCat, rowItem, colItem)}
+                            className="flex h-full min-h-8 w-full min-w-8 items-center justify-center font-bold transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-neo-accent focus:ring-inset"
+                            aria-label={`${rowCat.name}: ${rowItem} กับ ${colCat.name}: ${colItem}, สถานะปัจจุบัน: ${stateLabel}. กดเพื่อเปลี่ยนสถานะ`}
+                          >
+                            {state === 'O' && <i aria-hidden="true" className="fa-solid fa-check text-green-500 text-lg sm:text-xl"></i>}
+                            {state === 'X' && <i aria-hidden="true" className="fa-solid fa-xmark text-red-500 text-lg sm:text-xl"></i>}
+                            {state === '?' && <i aria-hidden="true" className="fa-solid fa-question text-orange-400 text-lg sm:text-xl"></i>}
+                            {state === 'A' && <i aria-hidden="true" className="fa-solid fa-xmark text-purple-500 text-base sm:text-lg opacity-80"></i>}
+                          </button>
                         </td>
                       );
                     });
                   })}
+
+                  {/* Empty space for triangular grid */}
+                  {topCategories.slice(numCols).map((cat) => (
+                    cat.items.map((item, idx) => (
+                      <td
+                        key={`empty-${rowCat.id}-${rowItem}-${cat.id}-${item}`}
+                        style={cellStyle}
+                        className={`border border-transparent p-0 ${idx === 0 ? 'border-l-[4px]' : ''}`}
+                        aria-hidden="true"
+                      ></td>
+                    ))
+                  ))}
                 </tr>
               );
             });

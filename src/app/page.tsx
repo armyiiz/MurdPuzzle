@@ -2,15 +2,28 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { LevelData, Category } from '../types/level';
+import { LevelData, Category, ProfileItem, Profiles } from '../types/level';
 import { getIconClass, getIconColor, extractEmojiAndText } from '../utils/emojiHelper';
 import { useGameLogic } from '../hooks/useGameLogic';
 import { LogicGrid } from '../components/LogicGrid';
 import { allCases } from '../data/allCases';
-import { ImageWithFallback } from '../components/ImageWithFallback';
 import exhibitBData from '../data/ExhibitB.json';
 import anagramDict from '../data/anagramDictionary.json';
 import dailyMasterData from '../data/dailymasterdata.json';
+
+type ZodiacSign = {
+  name_en: string;
+  symbol: string;
+  name_th: string;
+  element_th: string;
+  dates_th: string;
+};
+
+type AlchemicalSymbol = {
+  name_en: string;
+  symbol: string;
+  name_th: string;
+};
 
 type ScreenState = 'MENU' | 'HOW_TO_PLAY' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME' | 'SETTINGS';
 
@@ -18,12 +31,11 @@ export default function Home() {
   const [screen, setScreen] = useState<ScreenState>('MENU');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [selectedCase, setSelectedCase] = useState<LevelData | null>(null);
-  const [solvedCases, setSolvedCases] = useState<string[]>([]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('solvedCases');
-    if (saved) setSolvedCases(JSON.parse(saved));
-  }, []);
+  const [solvedCases, setSolvedCases] = useState<string[]>(() => {
+    if (typeof window === 'undefined') return [];
+    const saved = window.localStorage.getItem('solvedCases');
+    return saved ? JSON.parse(saved) as string[] : [];
+  });
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -40,23 +52,23 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-neo-bg text-black font-mono pb-24">
-      <header className="bg-black text-white p-4 sticky top-0 z-10 flex justify-between items-center border-b-[3px] border-black shadow-[0_4px_0_#222222]">
-        <div className="flex items-center gap-3">
+      <header className="bg-black text-white px-3 py-3 sm:p-4 sticky top-0 z-10 flex justify-between items-center gap-2 border-b-[3px] border-black shadow-[0_4px_0_#222222] min-h-[var(--app-header-height)]">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           {screen !== 'MENU' && (
-            <button onClick={handleBack} className="p-2 hover:text-neo-accent transition-colors text-xl font-bold">
+            <button onClick={handleBack} aria-label="กลับไปหน้าก่อนหน้า" className="shrink-0 p-2 hover:text-neo-accent transition-colors text-xl font-bold">
               ⬅️
             </button>
           )}
-          <h1 className="text-xl font-bold tracking-widest uppercase">🕵️‍♂️ ไขคดีปริศนา</h1>
+          <h1 className="min-w-0 truncate text-base sm:text-xl font-bold tracking-widest uppercase">🕵️‍♂️ ไขคดีปริศนา</h1>
         </div>
         {screen !== 'MENU' && (
-          <button onClick={() => setScreen('MENU')} className="text-xs bg-white text-black px-3 py-1 border-[2px] border-black hover:bg-neo-accent hover:text-white transition-colors uppercase font-bold tracking-wider">
+          <button onClick={() => setScreen('MENU')} aria-label="กลับหน้าหลัก" className="shrink-0 text-[10px] sm:text-xs bg-white text-black px-2 sm:px-3 py-1 border-[2px] border-black hover:bg-neo-accent hover:text-white transition-colors uppercase font-bold tracking-wider">
             หน้าหลัก
           </button>
         )}
       </header>
 
-      <main className="max-w-6xl mx-auto mt-6">
+      <main className="w-full max-w-6xl mx-auto mt-6 px-4 sm:px-6 lg:px-8">
         {screen === 'MENU' && <MainMenu setScreen={setScreen} />}
         {screen === 'HOW_TO_PLAY' && <HowToPlay />}
         {screen === 'LEVEL_SELECT' && <LevelSelect setScreen={setScreen} setSelectedLevel={setSelectedLevel} solvedCases={solvedCases} />}
@@ -274,7 +286,7 @@ function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setScreen: 
 }
 
 function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level: number, setScreen: (s: ScreenState) => void, setSelectedCase: (c: LevelData) => void, solvedCases: string[] }) {
-  const cases = (allCases as any)[level] || [];
+  const cases = allCases[level as keyof typeof allCases] || [];
 
   return (
     <div className="animate-fadeIn">
@@ -318,8 +330,15 @@ function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level:
   );
 }
 
-function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: LevelData, setSolvedCases: any, solvedCases: string[] }) {
-  const { getCellState, toggleCell, resetGrid, undo, saveGridState, loadGridState, canUndo, gridState } = useGameLogic(levelData.categories, []);
+type ProfileCategoryKey = keyof Profiles;
+type SetSolvedCases = React.Dispatch<React.SetStateAction<string[]>>;
+
+function getProfileItems(profiles: Profiles | undefined, key: ProfileCategoryKey): ProfileItem[] {
+  return profiles?.[key] ?? [];
+}
+
+function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: LevelData, setSolvedCases: SetSolvedCases, solvedCases: string[] }) {
+  const { getCellState, toggleCell, resetGrid, undo, saveGridState, loadGridState, canUndo } = useGameLogic(levelData.categories, []);
   const [testimonyStates, setTestimonyStates] = useState<Record<number, number>>({});
   const [accusation, setAccusation] = useState({ suspect: '', weapon: '', location: '', motive: '' });
   const [feedback, setFeedback] = useState<{ message: string; type: 'success' | 'error' | null }>({ message: '', type: null });
@@ -336,12 +355,15 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const [cipherInput, setCipherInput] = useState('');
   const [exportStatus, setExportStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [gridExportStatus, setGridExportStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [manualCopyText, setManualCopyText] = useState('');
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
     if (loaded) {
-      setTestimonyStates(loaded.testimonyStates);
-      setNotes(loaded.notes);
+      window.setTimeout(() => {
+        setTestimonyStates(loaded.testimonyStates);
+        setNotes(loaded.notes);
+      }, 0);
     }
   }, [levelData.id, loadGridState]);
 
@@ -488,14 +510,38 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
     return prompt;
   };
 
+  const copyTextWithFallback = async (textToCopy: string) => {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(textToCopy);
+      return;
+    }
+
+    const textarea = document.createElement('textarea');
+    textarea.value = textToCopy;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copied = document.execCommand('copy');
+    document.body.removeChild(textarea);
+
+    if (!copied) throw new Error('Clipboard fallback failed');
+  };
+
+  const handleCopyFailure = (textToCopy: string) => {
+    setManualCopyText(textToCopy);
+  };
+
   const handleExportAI = async () => {
     const textToCopy = exportToAI();
     try {
-      await navigator.clipboard.writeText(textToCopy);
+      await copyTextWithFallback(textToCopy);
       setExportStatus('success');
       setTimeout(() => setExportStatus('idle'), 2000);
     } catch (err) {
       console.error('Failed to copy text: ', err);
+      handleCopyFailure(textToCopy);
       setExportStatus('error');
       setTimeout(() => setExportStatus('idle'), 3000);
     }
@@ -539,11 +585,12 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
   const handleGridExportAI = async () => {
     const textToCopy = exportGridStateToAI();
     try {
-      await navigator.clipboard.writeText(textToCopy);
+      await copyTextWithFallback(textToCopy);
       setGridExportStatus('success');
       setTimeout(() => setGridExportStatus('idle'), 2000);
     } catch (err) {
       console.error('Failed to copy grid state: ', err);
+      handleCopyFailure(textToCopy);
       setGridExportStatus('error');
       setTimeout(() => setGridExportStatus('idle'), 3000);
     }
@@ -584,7 +631,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               {/* Tabs Row */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {(['suspects', 'weapons', 'locations', 'motives'] as const).map(tabKey => {
-                  if (!levelData.profiles || !(levelData.profiles as any)[tabKey]) return null;
+                  if (getProfileItems(levelData.profiles, tabKey).length === 0) return null;
                   const isActive = activeTab === tabKey;
                   const label = tabKey === 'suspects' ? 'ผู้ต้องสงสัย' : tabKey === 'weapons' ? 'อาวุธ' : tabKey === 'locations' ? 'สถานที่' : 'แรงจูงใจ';
 
@@ -596,7 +643,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                         ${isActive ? 'bg-black text-white shadow-[2px_2px_0_#A30B37]' : 'bg-white text-black hover:bg-neo-notebook shadow-[2px_2px_0_#222222]'}
                       `}
                     >
-                      <i className={`${getIconClass(tabKey)} text-base sm:text-2xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(0, String(levelData.id), tabKey) }}></i> {label}
+                      <i aria-hidden="true" className={`${getIconClass(tabKey)} text-base sm:text-2xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(0, String(levelData.id), tabKey) }}></i> {label}
                     </button>
                   );
                 })}
@@ -604,7 +651,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
               {/* Active Tab Content (Mini-Tiles) */}
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
-                {levelData.profiles && (levelData.profiles as any)[activeTab]?.map((item: any, index: number) => {
+                {getProfileItems(levelData.profiles, activeTab).map((item, index) => {
                   const catData = levelData.categories.find(c => c.id === activeTab);
                   const trueIndex = catData ? catData.items.findIndex(i => i.replace(/\s*\(.*?\)\s*/g, '').trim() === item.name.replace(/\s*\(.*?\)\s*/g, '').trim()) : index;
                   const finalIndex = trueIndex >= 0 ? trueIndex : index;
@@ -616,7 +663,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                       className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] hover:-translate-y-1 hover:shadow-[6px_6px_0_#222222] transition-all flex flex-col items-center justify-center p-3 aspect-square"
                     >
                       <div className="mb-2">
-                        <i className={`${getIconClass(activeTab, item.name)} text-3xl sm:text-4xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(finalIndex, String(levelData.id), activeTab) }}></i>
+                        <i aria-hidden="true" className={`${getIconClass(activeTab, item.name)} text-3xl sm:text-4xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(finalIndex, String(levelData.id), activeTab) }}></i>
                       </div>
                       <div className="font-black text-black text-xs text-center break-words w-full">
                         {extractEmojiAndText(item.name).text}
@@ -632,35 +679,38 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           {selectedProfileIndex !== null && levelData.profiles && (
             <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setSelectedProfileIndex(null)}>
               <div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="profile-modal-title"
                 className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] max-w-sm w-full p-6 flex flex-col items-center relative"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Modal Content */}
                 <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] w-24 h-24 flex items-center justify-center mb-4">
                   {(() => {
-                    const itemName = (levelData.profiles as any)[activeTab][selectedProfileIndex].name;
+                    const itemName = getProfileItems(levelData.profiles, activeTab)[selectedProfileIndex].name;
                     const catData = levelData.categories.find(c => c.id === activeTab);
                     const trueIndex = catData ? catData.items.findIndex(i => i.replace(/\s*\(.*?\)\s*/g, '').trim() === itemName.replace(/\s*\(.*?\)\s*/g, '').trim()) : selectedProfileIndex;
                     const finalIndex = trueIndex >= 0 ? trueIndex : selectedProfileIndex;
                     return (
-                      <i className={`${getIconClass(activeTab, itemName)} text-5xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(finalIndex, String(levelData.id), activeTab) }}></i>
+                      <i aria-hidden="true" className={`${getIconClass(activeTab, itemName)} text-5xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(finalIndex, String(levelData.id), activeTab) }}></i>
                     );
                   })()}
                 </div>
 
-                <h3 className="text-2xl font-black text-black mb-4 border-b-[3px] border-black pb-2 text-center w-full">
-                  {extractEmojiAndText((levelData.profiles as any)[activeTab][selectedProfileIndex].name).text}
+                <h3 id="profile-modal-title" className="text-2xl font-black text-black mb-4 border-b-[3px] border-black pb-2 text-center w-full">
+                  {extractEmojiAndText(getProfileItems(levelData.profiles, activeTab)[selectedProfileIndex].name).text}
                 </h3>
 
                 <p className="text-black text-base leading-relaxed mb-8 w-full">
-                  {(levelData.profiles as any)[activeTab][selectedProfileIndex].detail}
+                  {getProfileItems(levelData.profiles, activeTab)[selectedProfileIndex].detail}
                 </p>
 
                 {/* Navigation Buttons */}
                 <div className="flex justify-between w-full mb-4">
                   <button
                     onClick={() => {
-                      const total = (levelData.profiles as any)[activeTab].length;
+                      const total = getProfileItems(levelData.profiles, activeTab).length;
                       setSelectedProfileIndex((selectedProfileIndex - 1 + total) % total);
                     }}
                     className="bg-white border-[3px] border-black text-black px-4 py-2 font-bold shadow-[4px_4px_0_#222222] hover:bg-gray-100 hover:-translate-y-1 transition-all"
@@ -669,7 +719,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                   </button>
                   <button
                     onClick={() => {
-                      const total = (levelData.profiles as any)[activeTab].length;
+                      const total = getProfileItems(levelData.profiles, activeTab).length;
                       setSelectedProfileIndex((selectedProfileIndex + 1) % total);
                     }}
                     className="bg-white border-[3px] border-black text-black px-4 py-2 font-bold shadow-[4px_4px_0_#222222] hover:bg-gray-100 hover:-translate-y-1 transition-all"
@@ -758,24 +808,24 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-neo-accent">⚖️ สรุปรูปคดี</h3>
             <div className="flex flex-wrap items-center justify-center gap-6 text-xl mb-10">
               <div className="flex flex-col items-center gap-2">
-                <span className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">คนร้าย</span>
-                <select className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
+                <label htmlFor="accuse-suspect" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">คนร้าย</label>
+                <select id="accuse-suspect" className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
                   <option value="">- เลือกผู้ต้องสงสัย -</option>
                   {getOptions('suspects').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
 
               <div className="flex flex-col items-center gap-2">
-                <span className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">อาวุธ</span>
-                <select className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
+                <label htmlFor="accuse-weapon" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">อาวุธ</label>
+                <select id="accuse-weapon" className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
                   <option value="">- เลือกอาวุธ -</option>
                   {getOptions('weapons').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
 
               <div className="flex flex-col items-center gap-2">
-                <span className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">สถานที่</span>
-                <select className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
+                <label htmlFor="accuse-location" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">สถานที่</label>
+                <select id="accuse-location" className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
                   <option value="">- เลือกสถานที่ -</option>
                   {getOptions('locations').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
@@ -783,8 +833,8 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
               {hasMotives && (
                 <div className="flex flex-col items-center gap-2">
-                  <span className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">แรงจูงใจ</span>
-                  <select className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
+                  <label htmlFor="accuse-motive" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">แรงจูงใจ</label>
+                  <select id="accuse-motive" className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
                     <option value="">- เลือกแรงจูงใจ -</option>
                     {getOptions('motives').map(i => <option key={i} value={i}>{i}</option>)}
                   </select>
@@ -826,7 +876,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       )}
 
       {activeView === 'grid' && (
-        <div className="fixed inset-0 top-[65px] bottom-0 overflow-hidden flex flex-col items-center justify-center bg-neo-bg z-0 animate-in fade-in duration-300 gap-4">
+        <div className="fixed inset-x-0 bottom-0 top-[var(--app-header-height)] overflow-y-auto overflow-x-hidden flex flex-col items-center justify-start sm:justify-center bg-neo-bg z-0 animate-in fade-in duration-300 gap-3 sm:gap-4 px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+7rem)]">
 
           {/* Smart Legend Bar */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4 w-full max-w-3xl px-2 sm:px-4 py-2 shrink-0">
@@ -847,8 +897,8 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           </div>
 
           {/* Logic Grid */}
-          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-hidden flex flex-col w-full max-w-3xl">
-            <div className="overflow-auto p-0 flex justify-center items-center bg-neo-bg flex-1 min-h-0 w-full">
+          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-visible flex flex-col w-full max-w-3xl">
+            <div className="overflow-auto p-0 flex justify-start sm:justify-center items-start bg-neo-bg flex-1 min-h-0 w-full">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
             </div>
           </section>
@@ -874,23 +924,23 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           </div>
 
           {/* Grid Action Menu */}
-          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-4 sm:px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-3 sm:gap-4 max-w-[95vw] overflow-x-auto whitespace-nowrap">
-            <button onClick={() => setShowDecrypter(true)} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
+          <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] left-1/2 -translate-x-1/2 z-50 bg-black text-white px-4 sm:px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-3 sm:gap-4 max-w-[95vw] overflow-x-auto whitespace-nowrap">
+            <button onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส" className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
               <span className="text-xl">💡</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">คำใบ้</span>
             </button>
             <div className="w-[3px] h-8 bg-white"></div>
-            <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
+            <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกกระดานปัจจุบัน" className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
               <span className="text-xl">💾</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">บันทึก</span>
             </button>
             <div className="w-[3px] h-8 bg-white"></div>
-            <button onClick={undo} disabled={!canUndo} className={`transition-colors flex flex-col items-center gap-1 ${canUndo ? 'hover:text-neo-accent' : 'opacity-50 cursor-not-allowed'}`}>
+            <button onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด" className={`transition-colors flex flex-col items-center gap-1 ${canUndo ? 'hover:text-neo-accent' : 'opacity-50 cursor-not-allowed'}`}>
               <span className="text-xl">♻️</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">ย้อน</span>
             </button>
             <div className="w-[3px] h-8 bg-white"></div>
-            <button onClick={resetGrid} className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1 text-neo-accent">
+            <button onClick={resetGrid} aria-label="รีเซ็ตกระดานตรรกะ" className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1 text-neo-accent">
               <span className="text-xl">🗑️</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">ล้าง</span>
             </button>
@@ -901,7 +951,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {/* Main View Toggle FAB */}
       <button
         onClick={handleToggleView}
-        className="fixed bottom-6 right-6 z-50 border-[3px] border-black shadow-[4px_4px_0_#222222] p-4 bg-black text-white text-2xl hover:bg-neo-accent transition-colors flex items-center justify-center w-14 h-14"
+        className="fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] right-4 sm:right-6 z-50 border-[3px] border-black shadow-[4px_4px_0_#222222] p-4 bg-black text-white text-2xl hover:bg-neo-accent transition-colors flex items-center justify-center w-14 h-14"
         aria-label={activeView === 'clues' ? "Switch to Grid" : "Switch to Clues"}
       >
         {activeView === 'clues' ? '📔' : '🔍'}
@@ -911,10 +961,13 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {showExhibitB && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowExhibitB(false)}>
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="exhibit-b-title"
             className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 flex flex-col relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest">
+            <h3 id="exhibit-b-title" className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest">
               {exhibitBData.exhibit_b.title_th}
             </h3>
             <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
@@ -927,7 +980,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 ✨ จักรราศี
               </h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {Object.values(exhibitBData.exhibit_b.zodiac_signs).map((sign: any) => (
+                {(Object.values(exhibitBData.exhibit_b.zodiac_signs) as ZodiacSign[]).map((sign) => (
                   <div key={sign.name_en} className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-3 flex flex-col items-center text-center">
                     <span className="text-4xl mb-2">{sign.symbol}</span>
                     <span className="font-black text-black text-sm">{sign.name_th}</span>
@@ -944,7 +997,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 ⚗️ สัญลักษณ์การเล่นแร่แปรธาตุ
               </h4>
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                {Object.values(exhibitBData.exhibit_b.alchemical_symbols).map((symbol: any) => (
+                {(Object.values(exhibitBData.exhibit_b.alchemical_symbols) as AlchemicalSymbol[]).map((symbol) => (
                   <div key={symbol.name_en} className="bg-white border-[3px] border-black shadow-[2px_2px_0_#222222] p-2 flex flex-col items-center text-center">
                     <span className="text-3xl mb-1">{symbol.symbol}</span>
                     <span className="font-black text-black text-[10px] sm:text-xs leading-tight">{symbol.name_th}</span>
@@ -956,6 +1009,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             {/* Close Button */}
             <button
               onClick={() => setShowExhibitB(false)}
+              aria-label="ปิดเอกสาร Exhibit B"
               className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest sticky bottom-0"
             >
               ❌ ปิดเอกสาร
@@ -968,10 +1022,13 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {showExhibitC && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowExhibitC(false)}>
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="exhibit-c-title"
             className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] p-6 max-w-4xl max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
+            <h3 id="exhibit-c-title" className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
               Exhibit C: วงกตบนซากปรักหักพังโบราณ
             </h3>
             <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
@@ -992,6 +1049,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
             <button
               onClick={() => setShowExhibitC(false)}
+              aria-label="ปิดเอกสาร Exhibit C"
               className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase tracking-widest sticky bottom-0"
             >
               ❌ ปิด
@@ -1004,10 +1062,13 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {showExhibitD && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowExhibitD(false)}>
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="exhibit-d-title"
             className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] p-6 max-w-4xl max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
+            <h3 id="exhibit-d-title" className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
               Exhibit D: แผนผังประกอบคดี
             </h3>
             <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
@@ -1029,6 +1090,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             {/* Close Button */}
             <button
               onClick={() => setShowExhibitD(false)}
+              aria-label="ปิดเอกสาร Exhibit D"
               className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase tracking-widest sticky bottom-0"
             >
               ❌ ปิด
@@ -1041,10 +1103,13 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {showDecrypter && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowDecrypter(false)}>
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="decrypter-title"
             className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] max-w-md w-full p-6 flex flex-col relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-2xl font-black text-black mb-4 border-b-[4px] border-black pb-2 flex items-center gap-2">
+            <h3 id="decrypter-title" className="text-2xl font-black text-black mb-4 border-b-[4px] border-black pb-2 flex items-center gap-2">
               <span className="text-3xl">🧮</span> เครื่องมือถอดรหัส
             </h3>
 
@@ -1116,9 +1181,40 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
             <button
               onClick={() => { setShowDecrypter(false); setCipherInput(''); }}
+              aria-label="ปิดเครื่องมือถอดรหัส"
               className="bg-black text-white w-full border-[3px] border-black py-3 font-black text-lg shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest"
             >
               ❌ ปิด
+            </button>
+          </div>
+        </div>
+      )}
+
+
+      {/* Manual Clipboard Fallback Modal */}
+      {manualCopyText && (
+        <div className="fixed inset-0 bg-black/80 z-[110] flex items-center justify-center p-4" onClick={() => setManualCopyText('')}>
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="manual-copy-title"
+            className="bg-neo-notebook border-[4px] border-black shadow-[8px_8px_0_#000] p-6 max-w-lg w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 id="manual-copy-title" className="text-xl font-black text-black mb-3 border-b-[4px] border-black pb-2">คัดลอกด้วยตนเอง</h3>
+            <p className="text-sm font-bold mb-3">เบราว์เซอร์ไม่อนุญาตให้คัดลอกอัตโนมัติ กรุณาเลือกข้อความด้านล่างแล้วคัดลอกเอง</p>
+            <textarea
+              className="w-full h-56 bg-white border-[3px] border-black p-3 font-mono text-sm text-black focus:outline-none focus:border-neo-accent"
+              value={manualCopyText}
+              readOnly
+              onFocus={(e) => e.currentTarget.select()}
+              aria-label="ข้อความสำหรับคัดลอกด้วยตนเอง"
+            />
+            <button
+              onClick={() => setManualCopyText('')}
+              className="mt-4 bg-black text-white w-full border-[3px] border-black py-3 font-black text-lg shadow-[4px_4px_0_#222222] hover:bg-neo-accent transition-all uppercase tracking-widest"
+            >
+              ปิด
             </button>
           </div>
         </div>
@@ -1128,16 +1224,20 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {selectedLegendCategory && (
         <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4" onClick={() => setSelectedLegendCategory(null)}>
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="legend-modal-title"
             className="bg-neo-notebook border-[4px] border-black shadow-[8px_8px_0_#000] p-6 max-w-sm w-full relative max-h-[80vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedLegendCategory(null)}
+              aria-label="ปิดคำอธิบายสัญลักษณ์"
               className="absolute top-2 right-2 p-2 text-2xl font-black hover:text-neo-accent transition-colors"
             >
               ❌
             </button>
-            <h3 className="text-xl sm:text-2xl font-black text-black mb-4 border-b-[4px] border-black pb-2 uppercase tracking-widest text-center">
+            <h3 id="legend-modal-title" className="text-xl sm:text-2xl font-black text-black mb-4 border-b-[4px] border-black pb-2 uppercase tracking-widest text-center">
               {selectedLegendCategory.name}
             </h3>
             <div className="overflow-y-auto pr-2 flex flex-col gap-3 custom-scrollbar">
