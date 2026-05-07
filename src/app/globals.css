@@ -8,7 +8,12 @@
 }
 
 @layer base {
+  :root {
+    --app-header-height: 68px;
+  }
+
   body {
-    @apply bg-neo-bg font-mono text-black;
+    @apply bg-neo-bg text-black;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", "Noto Sans Thai", "Th Sarabun New", monospace;
   }
 }

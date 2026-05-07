@@ -2,7 +2,9 @@
   "name": "แฟ้มคดีปริศนา โลจิโก",
   "short_name": "Murdle TH",
   "description": "เกมสืบสวนสอบสวน ไขคดีปริศนาฉบับภาษาไทย เล่นได้แม้ออฟไลน์",
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f8fafc",
   "theme_color": "#1e293b",
@@ -17,7 +19,8 @@
     {
       "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

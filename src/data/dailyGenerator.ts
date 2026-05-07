@@ -14,6 +14,26 @@ export interface MasterData {
   motives: DailyEntity[];
 }
 
+type CategoryId = 'suspect' | 'weapon' | 'location' | 'motive';
+
+type TruthRow = Record<CategoryId, number>;
+
+type GeneratedClue = {
+  cat1: number;
+  id1: number;
+  cat2: number;
+  id2: number;
+  isTrue: boolean;
+  text: string;
+};
+
+type SolutionGridRow = {
+  suspects: string;
+  weapons: string;
+  locations: string;
+  motives: string;
+};
+
 export interface GeneratedCase {
   id: string;
   level_name: string;
@@ -28,7 +48,7 @@ export interface GeneratedCase {
   categories: { id: string; name: string; items: string[] }[];
   clues: string[];
   testimonies: never[]; // Daily case ไม่มีคนโกหก ให้เป็น array ว่าง
-  solution_grid: any[];
+  solution_grid: SolutionGridRow[];
   correct_accusation: {
     suspect: string;
     weapon: string;
@@ -107,7 +127,7 @@ export class DailyMurdleEngine {
     const lIdx = this.shuffle([0, 1, 2, 3]);
     const mIdx = this.shuffle([0, 1, 2, 3]);
 
-    const table = [];
+    const table: TruthRow[] = [];
     for (let i = 0; i < 4; i++) {
       table.push({ suspect: i, weapon: wIdx[i], location: lIdx[i], motive: mIdx[i] });
     }
@@ -115,9 +135,9 @@ export class DailyMurdleEngine {
   }
 
   // สร้างคลังคำใบ้ทั้งหมดที่เป็นไปได้ (100% True)
-  private generateCluePool(entities: ReturnType<typeof this.selectEntities>, truthTable: any[]) {
-    const pool: any[] = [];
-    const categories = ['suspect', 'weapon', 'location', 'motive'];
+  private generateCluePool(entities: ReturnType<typeof this.selectEntities>, truthTable: TruthRow[]) {
+    const pool: GeneratedClue[] = [];
+    const categories: CategoryId[] = ['suspect', 'weapon', 'location', 'motive'];
     const names = [entities.suspects, entities.weapons, entities.locations, entities.motives];
 
     const addClue = (cat1: number, id1: number, cat2: number, id2: number, isTrue: boolean, text: string) => {
@@ -129,7 +149,8 @@ export class DailyMurdleEngine {
       for (let c2 = c1 + 1; c2 < 4; c2++) {
         for (let i = 0; i < 4; i++) {
           for (let j = 0; j < 4; j++) {
-            const isTrue = truthTable.find((t) => t[categories[c1]] === i)[categories[c2]] === j;
+            const matchedTruth = truthTable.find((t) => t[categories[c1]] === i);
+            const isTrue = matchedTruth?.[categories[c2]] === j;
             const name1 = names[c1][i].name;
             const name2 = names[c2][j].name;
 
@@ -181,7 +202,7 @@ export class DailyMurdleEngine {
   }
 
   // ตัวจำลองการไขคดีของ AI เพื่อเช็คว่าคำใบ้มี Unique Solution หรือไม่
-  private canSolve(cluesSelected: any[]): boolean {
+  private canSolve(cluesSelected: GeneratedClue[]): boolean {
     const grids: Record<string, number[][]> = {
       '0_1': Array(4).fill(null).map(() => Array(4).fill(0)),
       '0_2': Array(4).fill(null).map(() => Array(4).fill(0)),
