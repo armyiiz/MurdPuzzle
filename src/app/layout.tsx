@@ -1,25 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Logic Detective Puzzle",
-  description: "A mobile-friendly Logic Grid Puzzle game",
+  title: "ไขคดีปริศนา | เกมสืบสวนตรรกะภาษาไทย",
+  description: "เกม logic detective puzzle ภาษาไทยสำหรับมือถือ ไขคดีด้วยเบาะแส ตารางตรรกะ และสรุปรูปคดี",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Murdle TH",
+    title: "ไขคดีปริศนา",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/icons/icon-192x192.png",
   },
 };
 
@@ -33,12 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="th-TH" className="h-full antialiased">
       <head>
-        <link rel="stylesheet" href="/fontawesome/css/all.min.css" />
+        {/* eslint-disable-next-line @next/next/no-css-tags -- Font Awesome is a local vendor stylesheet served from public. */}
+        <link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css" />
+        {/* eslint-disable-next-line @next/next/no-css-tags -- Loading only the solid icon style keeps the previous icon rendering without all.min.css. */}
+        <link rel="stylesheet" href="/fontawesome/css/solid.min.css" />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

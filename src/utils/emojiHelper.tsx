@@ -1,4 +1,3 @@
-import React, { ReactNode } from 'react';
 import dailyMasterData from '../data/dailymasterdata.json';
 
 const TINT_COLORS = [
@@ -59,21 +58,16 @@ export const getIconClass = (category: string, itemName?: string): string => {
   if (itemName) {
     const cleanName = normalizeString(itemName);
 
-    // Look up in dailyMasterData
-    let foundIcon = null;
-    if (category === 'suspects' && dailyMasterData.suspects) {
-      const item = dailyMasterData.suspects.find((s: any) => normalizeString(s.name) === cleanName);
-      if (item && item.icon) foundIcon = item.icon;
-    } else if (category === 'weapons' && dailyMasterData.weapons) {
-      const item = dailyMasterData.weapons.find((w: any) => normalizeString(w.name) === cleanName);
-      if (item && item.icon) foundIcon = item.icon;
-    } else if (category === 'locations' && dailyMasterData.locations) {
-      const item = dailyMasterData.locations.find((l: any) => normalizeString(l.name) === cleanName);
-      if (item && item.icon) foundIcon = item.icon;
-    } else if (category === 'motives' && dailyMasterData.motives) {
-      const item = dailyMasterData.motives.find((m: any) => normalizeString(m.name) === cleanName);
-      if (item && item.icon) foundIcon = item.icon;
-    }
+    const masterDataByCategory = {
+      suspects: dailyMasterData.suspects,
+      weapons: dailyMasterData.weapons,
+      locations: dailyMasterData.locations,
+      motives: dailyMasterData.motives,
+    } satisfies Record<string, Array<{ name: string; icon?: string }>>;
+
+    const foundIcon = masterDataByCategory[category as keyof typeof masterDataByCategory]
+      ?.find((item) => normalizeString(item.name) === cleanName)
+      ?.icon;
 
     if (foundIcon) {
       iconClassToRender = foundIcon;
