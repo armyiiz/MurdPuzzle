@@ -1,5 +1,7 @@
 import dailyMasterData from '../data/dailymasterdata.json';
 
+// Icon identity colors intentionally remain broader than the UI palette so repeated
+// suspects/items stay distinguishable in dense profile cards and logic grids.
 const TINT_COLORS = [
   '#000000', // 0 Black
   '#A30B37', // 1 Deep Red

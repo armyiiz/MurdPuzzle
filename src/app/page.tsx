@@ -52,17 +52,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-neo-bg text-black font-mono pb-24">
-      <header className="bg-black text-white px-3 py-3 sm:p-4 sticky top-0 z-10 flex justify-between items-center gap-2 border-b-[3px] border-black shadow-[0_4px_0_#222222] min-h-[var(--app-header-height)]">
+      <header className="murdle-nav sticky top-0 z-10 flex justify-between items-center gap-2 min-h-[var(--app-header-height)]">
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           {screen !== 'MENU' && (
-            <button onClick={handleBack} aria-label="กลับไปหน้าก่อนหน้า" className="shrink-0 p-2 hover:text-neo-accent transition-colors text-xl font-bold">
+            <button onClick={handleBack} aria-label="กลับไปหน้าก่อนหน้า" className="murdle-button-ghost shrink-0 !p-2 !min-h-11 !w-11 text-xl font-bold">
               ⬅️
             </button>
           )}
           <h1 className="min-w-0 truncate text-base sm:text-xl font-bold tracking-widest uppercase">🕵️‍♂️ ไขคดีปริศนา</h1>
         </div>
         {screen !== 'MENU' && (
-          <button onClick={() => setScreen('MENU')} aria-label="กลับหน้าหลัก" className="shrink-0 text-[10px] sm:text-xs bg-white text-black px-2 sm:px-3 py-1 border-[2px] border-black hover:bg-neo-accent hover:text-white transition-colors uppercase font-bold tracking-wider">
+          <button onClick={() => setScreen('MENU')} aria-label="กลับหน้าหลัก" className="murdle-button-secondary shrink-0 !px-3 !py-1 !min-h-11 text-[10px] sm:text-xs uppercase tracking-wider">
             หน้าหลัก
           </button>
         )}
@@ -82,15 +82,15 @@ export default function Home() {
 
 function MainMenu({ setScreen }: { setScreen: (s: ScreenState) => void }) {
   return (
-    <div className="flex flex-col items-center justify-center mt-20 space-y-6">
-      <h1 className="text-4xl font-extrabold text-black mb-8 tracking-tight text-center">🕵️‍♂️ ไขคดีปริศนา <br/> ฉบับภาษาไทย</h1>
-      <button onClick={() => setScreen('LEVEL_SELECT')} className="bg-black text-white hover:bg-[#A30B37] hover:-translate-y-1 transition-all text-xl font-bold py-4 px-12 border-[3px] border-black shadow-[4px_4px_0_#222222]">
+    <div className="murdle-card flex flex-col items-center justify-center mt-12 sm:mt-16 space-y-6 text-center max-w-3xl mx-auto">
+      <h1 className="murdle-display mb-4 text-center">🕵️‍♂️ ไขคดีปริศนา <br/> ฉบับภาษาไทย</h1>
+      <button onClick={() => setScreen('LEVEL_SELECT')} className="murdle-button-primary text-xl px-12">
         เริ่มไขคดี
       </button>
-      <button onClick={() => setScreen('HOW_TO_PLAY')} className="bg-white text-black hover:bg-gray-100 hover:-translate-y-1 transition-all text-lg font-bold py-3 px-8 border-[3px] border-black shadow-[4px_4px_0_#222222]">
+      <button onClick={() => setScreen('HOW_TO_PLAY')} className="murdle-button-secondary text-lg px-8">
         วิธีการเล่น
       </button>
-      <button onClick={() => setScreen('SETTINGS')} className="bg-white text-black hover:bg-gray-100 hover:-translate-y-1 transition-all text-lg font-bold py-3 px-8 border-[3px] border-black shadow-[4px_4px_0_#222222]">
+      <button onClick={() => setScreen('SETTINGS')} className="murdle-button-secondary text-lg px-8">
         ⚙️ ตั้งค่า
       </button>
     </div>
@@ -118,22 +118,22 @@ function SettingsScreen({ setScreen, setSolvedCases }: { setScreen: (s: ScreenSt
 
   return (
     <div className="animate-fadeIn max-w-xl mx-auto pb-24 px-4">
-      <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6 sm:p-8 flex flex-col items-center">
-        <h2 className="text-3xl font-black mb-8 border-b-[4px] border-black pb-4 text-black text-center w-full">
+      <div className="murdle-card flex flex-col items-center">
+        <h2 className="murdle-section-title mb-8 border-b-[4px] border-black pb-4 text-center w-full">
           ⚙️ ตั้งค่า
         </h2>
 
         <div className="flex flex-col space-y-6 w-full">
           <button
             onClick={handleResetAll}
-            className="bg-[#FF4500] text-white hover:bg-red-700 hover:-translate-y-1 transition-all text-lg font-bold py-4 px-6 border-[3px] border-black shadow-[4px_4px_0_#222222] w-full text-center"
+            className="murdle-button-primary w-full text-lg"
           >
             🧹 รีเซ็ตข้อมูลการเล่นทั้งหมด
           </button>
 
           <button
             onClick={handleUnlockAll}
-            className="bg-black text-white hover:bg-gray-800 hover:-translate-y-1 transition-all text-lg font-bold py-4 px-6 border-[3px] border-black shadow-[4px_4px_0_#222222] w-full text-center"
+            className="murdle-button-secondary w-full text-lg"
           >
             🔓 (ADMIN) ปลดล็อกทุกด่าน
           </button>
@@ -141,7 +141,7 @@ function SettingsScreen({ setScreen, setSolvedCases }: { setScreen: (s: ScreenSt
 
         <button
           onClick={() => setScreen('MENU')}
-          className="mt-12 bg-white text-black hover:bg-gray-100 hover:-translate-y-1 transition-all text-lg font-bold py-3 px-8 border-[3px] border-black shadow-[4px_4px_0_#222222] w-full text-center"
+          className="mt-12 murdle-button-secondary text-lg px-8 w-full text-center"
         >
           ⬅️ กลับหน้าหลัก
         </button>
@@ -153,36 +153,36 @@ function SettingsScreen({ setScreen, setSolvedCases }: { setScreen: (s: ScreenSt
 function HowToPlay() {
   return (
     <div className="animate-fadeIn max-w-4xl mx-auto pb-24 px-4">
-      <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6 sm:p-8">
-        <h2 className="text-3xl font-black mb-6 border-b-[4px] border-black pb-4 flex items-center gap-3 text-black">
+      <div className="murdle-card">
+        <h2 className="murdle-section-title mb-6 border-b-[4px] border-black pb-4 flex items-center gap-3">
           <span className="text-4xl">🔍</span> คู่มือการสืบสวน: วิธีไขคดี Murdle
         </h2>
 
-        <p className="text-lg text-black font-bold mb-8 leading-relaxed">
-          สวมบทเป็น <strong className="bg-yellow-200 px-2 py-1 border-[2px] border-black">&quot;นักสืบโลจิโก&quot;</strong> แล้วออกไปลากคอคนร้ายมาลงโทษ! ในแต่ละคดี คุณต้องไขปริศนาให้ได้ว่า <strong className="text-red-600">ใคร</strong> คือคนร้าย, ใช้ <strong className="text-red-600">อาวุธ</strong> ชิ้นไหน และลงมือที่ <strong className="text-red-600">สถานที่</strong> ใด
+        <p className="murdle-body font-bold mb-8">
+          สวมบทเป็น <strong className="bg-murdle-paper px-2 py-1 border-[2px] border-black">&quot;นักสืบโลจิโก&quot;</strong> แล้วออกไปลากคอคนร้ายมาลงโทษ! ในแต่ละคดี คุณต้องไขปริศนาให้ได้ว่า <strong className="text-murdle-accent">ใคร</strong> คือคนร้าย, ใช้ <strong className="text-murdle-accent">อาวุธ</strong> ชิ้นไหน และลงมือที่ <strong className="text-murdle-accent">สถานที่</strong> ใด
         </p>
 
-        <section className="mb-10 bg-neo-notebook border-[3px] border-black p-6 shadow-[4px_4px_0_#222222]">
+        <section className="murdle-panel mb-10">
           <h3 className="text-xl font-bold mb-4 text-black border-b-[2px] border-black pb-2 inline-block">1. เครื่องมือทำมาหากิน: ตารางตรรกะ</h3>
           <p className="text-black mb-4 font-bold">หัวใจของเกมนี้คือการเชื่อมโยงข้อมูล 3 หมวดหมู่ (ผู้ต้องสงสัย, อาวุธ, สถานที่) เข้าด้วยกัน</p>
           <ul className="space-y-3 text-black font-bold list-disc list-inside marker:text-black">
             <li><strong>แตะ 1 ครั้ง (❌):</strong> เพื่อตัดความเป็นไปได้ทิ้ง (เมื่อมั่นใจว่า &quot;ไม่ใช่&quot;)</li>
             <li><strong>แตะ 2 ครั้ง (✅):</strong> เพื่อยืนยันความถูกต้อง (เมื่อมั่นใจว่า &quot;ใช่!&quot;)</li>
-            <li className="mt-4 p-3 bg-red-100 border-[2px] border-black">
+            <li className="mt-4 p-3 bg-murdle-error border-[2px] border-black">
               <strong>🚨 กฎเหล็ก:</strong> ในหนึ่งแถวหรือคอลัมน์ จะมี ✅ ได้เพียงช่องเดียวเท่านั้น ถ้าคุณพี่ใส่ ✅ แล้ว ระบบจะช่วยตัดช่องอื่นในแถวนั้นเป็น ❌ ให้ทันทีค่ะ
             </li>
           </ul>
         </section>
 
         <section className="mb-10">
-          <h3 className="text-2xl font-black mb-6 text-black border-b-[3px] border-black pb-2">2. ตัวอย่างประเภทคำใบ้และการตีความ</h3>
+          <h3 className="text-2xl font-bold mb-6 text-black border-b-[3px] border-black pb-2">2. ตัวอย่างประเภทคำใบ้และการตีความ</h3>
           <p className="text-black mb-6 font-bold">ใน Murdle คำใบ้จะไม่บอกตรงๆ เสมอไป คุณพี่ต้องหัดอ่านใจคนร้ายและสังเกตสิ่งแวดล้อม ดังนี้ค่ะ:</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white border-[3px] border-black p-5 shadow-[4px_4px_0_#222222]">
+            <div className="murdle-card-compact">
               <h4 className="text-lg font-bold mb-3 text-black flex items-center gap-2"><span className="text-2xl">📌</span> คำใบ้จากประวัติ</h4>
               <p className="text-black mb-2">บางครั้งคำใบ้จะพูดถึง &quot;ลักษณะทางกายภาพ&quot; ของผู้ต้องสงสัย</p>
-              <div className="bg-gray-100 p-3 border-[2px] border-black mb-2 text-sm italic">
+              <div className="bg-murdle-paper p-3 border-[2px] border-black mb-2 text-sm italic">
                 <strong>ตัวอย่าง:</strong> &quot;ผู้ต้องสงสัยที่ตัวสูงที่สุดไม่เคยเฉียดเข้าไปในตู้โดยสารท้ายขบวนเลย&quot;
               </div>
               <p className="text-black text-sm">
@@ -190,9 +190,9 @@ function HowToPlay() {
               </p>
             </div>
 
-            <div className="bg-white border-[3px] border-black p-5 shadow-[4px_4px_0_#222222]">
+            <div className="murdle-card-compact">
               <h4 className="text-lg font-bold mb-3 text-black flex items-center gap-2"><span className="text-2xl">📌</span> คำใบ้จากสถานที่และวัตถุพยาน</h4>
-              <div className="bg-gray-100 p-3 border-[2px] border-black mb-2 text-sm italic">
+              <div className="bg-murdle-paper p-3 border-[2px] border-black mb-2 text-sm italic">
                 <strong>ตัวอย่าง:</strong> &quot;ศพถูกพบอยู่ภายในอ่างอาบน้ำหินอ่อน&quot;
               </div>
               <p className="text-black text-sm">
@@ -200,9 +200,9 @@ function HowToPlay() {
               </p>
             </div>
 
-            <div className="bg-white border-[3px] border-black p-5 shadow-[4px_4px_0_#222222]">
+            <div className="murdle-card-compact">
               <h4 className="text-lg font-bold mb-3 text-black flex items-center gap-2"><span className="text-2xl">📌</span> คำใบ้แบบ &quot;ถ้า...ไม่ใช่...ก็คือ...&quot;</h4>
-              <div className="bg-gray-100 p-3 border-[2px] border-black mb-2 text-sm italic">
+              <div className="bg-murdle-paper p-3 border-[2px] border-black mb-2 text-sm italic">
                 <strong>ตัวอย่าง:</strong> &quot;ไม่เชือกก็ลูกดอกอาบยาพิษนี่แหละที่ถูกพบอยู่ใกล้กำแพงกราฟฟิตี้&quot;
               </div>
               <p className="text-black text-sm">
@@ -210,22 +210,22 @@ function HowToPlay() {
               </p>
             </div>
 
-            <div className="bg-black text-white border-[3px] border-black p-5 shadow-[4px_4px_0_#A30B37]">
-              <h4 className="text-lg font-bold mb-3 text-white flex items-center gap-2"><span className="text-2xl">📌</span> คำใบ้รหัสลับ - ระดับยาก!</h4>
-              <p className="text-gray-300 mb-2">บางครั้งชมรมนักสืบจะส่งรหัสลับมาให้ ซึ่งมักจะเป็นรหัสแบบแทนที่ตัวอักษร หรือผสมคำในชุดเดียวกัน</p>
-              <div className="bg-gray-800 p-3 border-[2px] border-gray-600 mb-2 text-sm font-mono text-green-400">
+            <div className="murdle-panel">
+              <h4 className="text-lg font-bold mb-3 text-black flex items-center gap-2"><span className="text-2xl">📌</span> คำใบ้รหัสลับ - ระดับยาก!</h4>
+              <p className="text-murdle-muted mb-2">บางครั้งชมรมนักสืบจะส่งรหัสลับมาให้ ซึ่งมักจะเป็นรหัสแบบแทนที่ตัวอักษร หรือผสมคำในชุดเดียวกัน</p>
+              <div className="bg-murdle-bg p-3 border-[2px] border-black mb-2 text-sm font-mono text-murdle-accent">
                 <strong>ตัวอย่าง:</strong> &quot;ZTVMG RMP SZW Z NVWRFN-DVRTSG DVZKLM&quot;
               </div>
-              <p className="text-gray-300 text-sm">
+              <p className="text-murdle-muted text-sm">
                 <strong>วิธีคิด:</strong> เมื่อถอดรหัสออกมาจะได้ความว่า <em>&quot;AGENT INK HAD A MEDIUM-WEIGHT WEAPON&quot;</em> (เอเยนต์อิงค์พกอาวุธน้ำหนักปานกลาง) คุณพี่ต้องลองสังเกตตัวอักษรที่สลับกันดูนะคะ!
               </p>
             </div>
           </div>
         </section>
 
-        <section className="mb-10 bg-white border-[3px] border-black p-6 shadow-[4px_4px_0_#222222]">
+        <section className="murdle-card mb-10">
           <h3 className="text-xl font-bold mb-4 text-black border-b-[2px] border-black pb-2 inline-block">3. ขั้นตอนการลงมือสืบ</h3>
-          <ol className="space-y-4 text-black font-bold list-decimal list-inside marker:font-black marker:text-lg">
+          <ol className="space-y-4 text-black font-bold list-decimal list-inside marker:font-bold marker:text-lg">
             <li className="pl-2 border-l-[3px] border-black mb-2"><strong className="text-lg">อ่านเนื้อเรื่อง:</strong> เพื่อหาจุดเริ่มต้น (เช่น พบศพที่ไหน หรือใครทำอะไรอยู่)</li>
             <li className="pl-2 border-l-[3px] border-black mb-2"><strong className="text-lg">เก็บข้อมูลประวัติ:</strong> ดูว่าใครสูงเท่าไหร่, ถนัดข้างไหน หรือตาสีอะไร ข้อมูลพวกนี้ใช้ร่วมกับคำใบ้ได้บ่อยมาก</li>
             <li className="pl-2 border-l-[3px] border-black mb-2"><strong className="text-lg">เติมตาราง:</strong> ค่อยๆ ไล่จากคำใบ้ที่ชัดเจนที่สุดไปหาจุดที่ซับซ้อน</li>
@@ -233,10 +233,10 @@ function HowToPlay() {
           </ol>
         </section>
 
-        <section className="bg-neo-accent text-white p-6 border-[3px] border-black shadow-[4px_4px_0_#222222]">
-          <h3 className="text-2xl font-black mb-3 flex items-center gap-2">✨ ทริคจากอลิซ:</h3>
+        <section className="murdle-card !bg-murdle-accent text-white">
+          <h3 className="text-2xl font-bold mb-3 flex items-center gap-2">✨ ทริคจากอลิซ:</h3>
           <p className="text-lg font-bold italic leading-relaxed">
-            &quot;อย่าลืมดู <strong className="bg-black px-2 py-1">น้ำหนักอาวุธ</strong> (เบา, ปานกลาง, มาก) ในรายละเอียดอาวุธนะคะ บางคำใบ้จะบอกแค่น้ำหนัก ไม่บอกชื่ออาวุธโดยตรง เป็นจุดที่คนร้ายมักจะพลาดทิ้งร่องรอยไว้บ่อยๆ ค่ะ!&quot;
+            &quot;อย่าลืมดู <strong className="bg-murdle-paper text-black px-2 py-1 border border-black">น้ำหนักอาวุธ</strong> (เบา, ปานกลาง, มาก) ในรายละเอียดอาวุธนะคะ บางคำใบ้จะบอกแค่น้ำหนัก ไม่บอกชื่ออาวุธโดยตรง เป็นจุดที่คนร้ายมักจะพลาดทิ้งร่องรอยไว้บ่อยๆ ค่ะ!&quot;
           </p>
         </section>
 
@@ -255,7 +255,7 @@ function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setScreen: 
 
   return (
     <div className="animate-fadeIn">
-      <h2 className="text-2xl font-bold mb-6 text-center">เลือกระดับความยาก</h2>
+      <h2 className="murdle-section-title mb-6 text-center">เลือกระดับความยาก</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {levels.map(l => {
           const isUnlocked = !l.reqCase || solvedCases.includes(l.reqCase);
@@ -263,7 +263,7 @@ function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setScreen: 
             <button key={l.id}
               onClick={() => { if (isUnlocked) { setSelectedLevel(l.id); setScreen('CASE_SELECT'); } }}
               disabled={!isUnlocked}
-              className={`relative p-6 border-[3px] border-black text-left flex flex-col justify-between ${isUnlocked ? 'bg-neo-notebook shadow-[4px_4px_0_#222222] transition hover:-translate-y-1 cursor-pointer' : 'opacity-50 bg-gray-300 cursor-not-allowed'}`}>
+              className={`murdle-card relative text-left flex flex-col justify-between min-h-44 transition ${isUnlocked ? 'hover:-translate-y-1 cursor-pointer' : 'opacity-60 !bg-murdle-surface text-murdle-muted cursor-not-allowed'}`}>
 
               {!isUnlocked && (
                 <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -272,8 +272,8 @@ function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setScreen: 
               )}
 
               <div className={!isUnlocked ? "opacity-30" : ""}>
-                <h3 className="text-xl font-black text-black mb-4">{l.name}</h3>
-                <div className="bg-white border-[2px] border-black p-3 shadow-[2px_2px_0_#222222]">
+                <h3 className="text-xl font-bold text-black mb-4">{l.name}</h3>
+                <div className="murdle-card-compact !border-[2px] !p-3 !shadow-[2px_2px_0_#1DACD6]">
                   <p className="text-black text-sm font-bold">{l.desc}</p>
                 </div>
               </div>
@@ -290,7 +290,7 @@ function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level:
 
   return (
     <div className="animate-fadeIn">
-      <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">📂 รายการคดีระดับ {level}</h2>
+      <h2 className="murdle-section-title mb-6 flex items-center gap-2">📂 รายการคดีระดับ {level}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cases.map((c: LevelData) => {
           const isSolved = solvedCases.includes(c.id);
@@ -302,12 +302,12 @@ function CaseSelect({ level, setScreen, setSelectedCase, solvedCases }: { level:
             <button key={c.id}
               onClick={() => { if (isUnlocked) { setSelectedCase(c); setScreen('GAME'); } }}
               disabled={!isUnlocked}
-              className={`relative p-5 border-[3px] border-black text-left flex flex-col justify-between h-full
+              className={`murdle-card-compact relative text-left flex flex-col justify-between h-full min-h-36 transition
                 ${!isUnlocked
-                  ? 'opacity-50 bg-gray-300 cursor-not-allowed'
+                  ? 'opacity-60 !bg-murdle-surface text-murdle-muted cursor-not-allowed'
                   : isSolved
-                    ? 'bg-green-200 shadow-[4px_4px_0_#222222] transition hover:-translate-y-1 cursor-pointer'
-                    : 'bg-neo-notebook shadow-[4px_4px_0_#222222] transition hover:-translate-y-1 cursor-pointer'}`}>
+                    ? '!bg-murdle-success hover:-translate-y-1 cursor-pointer'
+                    : 'hover:-translate-y-1 cursor-pointer'}`}>
 
               {!isUnlocked && (
                 <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -616,16 +616,16 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {activeView === 'clues' && (
         <div className="animate-in fade-in duration-300">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-            <h2 className="text-2xl font-bold text-black">{levelData.level_name}</h2>
+            <h2 className="murdle-section-title text-black">{levelData.level_name}</h2>
           </div>
 
-          <div className="bg-white p-5 border-[3px] border-black shadow-[4px_4px_0_#222222] italic mb-8 text-lg text-black leading-relaxed">
+          <div className="murdle-card mb-8 italic text-lg">
             {levelData.story_intro}
           </div>
 
           {/* แฟ้มประวัติ Profiles (Tabbed View) */}
           {levelData.profiles && (
-            <div className="bg-white p-6 border-[3px] border-black shadow-[4px_4px_0_#222222] mb-8">
+            <div className="murdle-card mb-8">
               <h3 className="text-lg font-bold mb-4 border-b-[3px] border-black pb-2 flex items-center gap-2 text-black uppercase tracking-widest">📋 ข้อมูลเพิ่มเติม</h3>
 
               {/* Tabs Row */}
@@ -639,8 +639,8 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                     <button
                       key={tabKey}
                       onClick={() => setActiveTab(tabKey)}
-                      className={`px-4 py-2 border-[2px] border-black text-sm font-bold transition-colors flex items-center gap-2 tracking-wider
-                        ${isActive ? 'bg-black text-white shadow-[2px_2px_0_#A30B37]' : 'bg-white text-black hover:bg-neo-notebook shadow-[2px_2px_0_#222222]'}
+                      className={`murdle-tab flex items-center gap-2 tracking-wider
+                        ${isActive ? 'murdle-tab-active' : ''}
                       `}
                     >
                       <i aria-hidden="true" className={`${getIconClass(tabKey)} text-base sm:text-2xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(0, String(levelData.id), tabKey) }}></i> {label}
@@ -660,12 +660,12 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                     <button
                       key={item.name}
                       onClick={() => setSelectedProfileIndex(index)}
-                      className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] hover:-translate-y-1 hover:shadow-[6px_6px_0_#222222] transition-all flex flex-col items-center justify-center p-3 aspect-square"
+                      className="murdle-card-compact hover:-translate-y-1 hover:shadow-[6px_6px_0_#1DACD6] transition-all flex flex-col items-center justify-center !p-3 aspect-square"
                     >
                       <div className="mb-2">
                         <i aria-hidden="true" className={`${getIconClass(activeTab, item.name)} text-3xl sm:text-4xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(finalIndex, String(levelData.id), activeTab) }}></i>
                       </div>
-                      <div className="font-black text-black text-xs text-center break-words w-full">
+                      <div className="font-bold text-black text-xs text-center break-words w-full">
                         {extractEmojiAndText(item.name).text}
                       </div>
                     </button>
@@ -682,11 +682,11 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="profile-modal-title"
-                className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] max-w-sm w-full p-6 flex flex-col items-center relative"
+                className="murdle-modal max-w-sm w-full p-6 flex flex-col items-center relative"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Modal Content */}
-                <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] w-24 h-24 flex items-center justify-center mb-4">
+                <div className="murdle-card-compact w-24 h-24 flex items-center justify-center mb-4 !p-2">
                   {(() => {
                     const itemName = getProfileItems(levelData.profiles, activeTab)[selectedProfileIndex].name;
                     const catData = levelData.categories.find(c => c.id === activeTab);
@@ -698,7 +698,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                   })()}
                 </div>
 
-                <h3 id="profile-modal-title" className="text-2xl font-black text-black mb-4 border-b-[3px] border-black pb-2 text-center w-full">
+                <h3 id="profile-modal-title" className="murdle-section-title text-black mb-4 border-b-[3px] border-black pb-2 text-center w-full">
                   {extractEmojiAndText(getProfileItems(levelData.profiles, activeTab)[selectedProfileIndex].name).text}
                 </h3>
 
@@ -713,7 +713,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                       const total = getProfileItems(levelData.profiles, activeTab).length;
                       setSelectedProfileIndex((selectedProfileIndex - 1 + total) % total);
                     }}
-                    className="bg-white border-[3px] border-black text-black px-4 py-2 font-bold shadow-[4px_4px_0_#222222] hover:bg-gray-100 hover:-translate-y-1 transition-all"
+                    className="murdle-button-secondary !px-4 !py-2"
                   >
                     ⬅️ ก่อนหน้า
                   </button>
@@ -722,7 +722,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                       const total = getProfileItems(levelData.profiles, activeTab).length;
                       setSelectedProfileIndex((selectedProfileIndex + 1) % total);
                     }}
-                    className="bg-white border-[3px] border-black text-black px-4 py-2 font-bold shadow-[4px_4px_0_#222222] hover:bg-gray-100 hover:-translate-y-1 transition-all"
+                    className="murdle-button-secondary !px-4 !py-2"
                   >
                     ถัดไป ➡️
                   </button>
@@ -731,7 +731,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 {/* Close Button */}
                 <button
                   onClick={() => setSelectedProfileIndex(null)}
-                  className="bg-black text-white w-full border-[3px] border-black py-3 font-black text-lg shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest"
+                  className="murdle-button-primary w-full text-lg uppercase tracking-widest"
                 >
                   ❌ ปิด
                 </button>
@@ -741,21 +741,21 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
           {/* Clues & Testimonies */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6">
+            <div className="murdle-card">
               <div className="flex items-center justify-between mb-5 border-b-[3px] border-black pb-2">
                 <h3 className="text-xl font-bold flex items-center gap-2 text-black">🔍 เบาะแส</h3>
                 {levelData.difficulty === 2 && (
-                  <button onClick={() => setShowExhibitB(true)} className="ml-auto bg-neo-accent text-white px-3 py-1 text-sm font-bold border-[2px] border-black shadow-[2px_2px_0_#222222] hover:-translate-y-0.5 transition-transform flex items-center gap-1">
+                  <button onClick={() => setShowExhibitB(true)} className="murdle-button-primary ml-auto !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
                     📖 คู่มือ Exhibit B
                   </button>
                 )}
                 {levelData.difficulty === 3 && (
-                  <button onClick={() => setShowExhibitC(true)} className="ml-auto bg-neo-accent text-white px-3 py-1 text-sm font-bold border-[2px] border-black shadow-[2px_2px_0_#222222] hover:-translate-y-0.5 transition-transform flex items-center gap-1">
+                  <button onClick={() => setShowExhibitC(true)} className="murdle-button-primary ml-auto !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
                     📖 คู่มือ Exhibit C
                   </button>
                 )}
                 {levelData.difficulty === 4 && (
-                  <button onClick={() => setShowExhibitD(true)} className="ml-auto bg-neo-accent text-white px-3 py-1 text-sm font-bold border-[2px] border-black shadow-[2px_2px_0_#222222] hover:-translate-y-0.5 transition-transform flex items-center gap-1">
+                  <button onClick={() => setShowExhibitD(true)} className="murdle-button-primary ml-auto !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
                     📖 แผนผัง Exhibit D
                   </button>
                 )}
@@ -764,7 +764,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 {levelData.clues.map((clue, idx) => {
                   return (
                     <li key={idx} className="flex gap-4 items-start text-black">
-                      <span className="font-black text-black bg-white border-[2px] border-black px-2 py-1 text-xl leading-none shadow-[2px_2px_0_#222222]">{idx + 1}</span>
+                      <span className="font-bold text-black bg-murdle-paper border-[2px] border-black px-2 py-1 text-xl leading-none shadow-[2px_2px_0_#1DACD6]">{idx + 1}</span>
                       <span className="leading-relaxed font-bold">{clue}</span>
                     </li>
                   );
@@ -773,20 +773,20 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             </div>
 
             {levelData.testimonies && levelData.testimonies.length > 0 && (
-              <div className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-6 border-l-[8px] border-l-neo-accent">
-                <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 text-neo-accent flex items-center gap-2">🗣️ คำให้การ</h3>
+              <div className="murdle-card border-l-[8px] border-l-neo-accent">
+                <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 text-murdle-accent flex items-center gap-2">🗣️ คำให้การ</h3>
                 <ul className="space-y-4">
                   {levelData.testimonies.map((t, idx) => {
                     const state = testimonyStates[idx] || 0;
                     return (
-                      <li key={idx} className="bg-neo-notebook p-4 border-[2px] border-black flex flex-col gap-3 shadow-[2px_2px_0_#222222]">
+                      <li key={idx} className="murdle-panel flex flex-col gap-3">
                         <div className="flex justify-between items-center border-b-[2px] border-black pb-2">
                           <span className="font-bold text-black">{t.suspect}</span>
                           <button
                             onClick={() => setTestimonyStates({...testimonyStates, [idx]: (state + 1) % 3})}
-                            className={`text-[10px] px-3 py-1 font-black border-[2px] border-black transition-all uppercase tracking-widest ${
-                              state === 1 ? 'bg-green-400 text-black shadow-[2px_2px_0_#222222]' :
-                              state === 2 ? 'bg-neo-accent text-white shadow-[2px_2px_0_#222222]' :
+                            className={`text-[10px] px-3 py-1 font-bold border-[2px] border-black transition-all uppercase tracking-widest ${
+                              state === 1 ? 'murdle-status-success shadow-[2px_2px_0_#1DACD6]' :
+                              state === 2 ? 'bg-murdle-accent text-white shadow-[2px_2px_0_#1DACD6]' :
                               'bg-white text-black'
                             }`}
                           >
@@ -804,12 +804,12 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           </div>
 
           {/* Final Accusation */}
-          <div className="bg-neo-notebook text-black p-10 border-[3px] border-black shadow-[4px_4px_0_#222222] flex flex-col items-center">
-            <h3 className="text-2xl font-black mb-8 tracking-[0.2em] uppercase text-neo-accent">⚖️ สรุปรูปคดี</h3>
+          <div className="murdle-card !bg-murdle-paper flex flex-col items-center">
+            <h3 className="text-2xl font-bold mb-8 tracking-[0.2em] uppercase text-murdle-accent">⚖️ สรุปรูปคดี</h3>
             <div className="flex flex-wrap items-center justify-center gap-6 text-xl mb-10">
               <div className="flex flex-col items-center gap-2">
                 <label htmlFor="accuse-suspect" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">คนร้าย</label>
-                <select id="accuse-suspect" className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
+                <select id="accuse-suspect" className="murdle-input !min-h-11 !py-2 text-sm" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
                   <option value="">- เลือกผู้ต้องสงสัย -</option>
                   {getOptions('suspects').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
@@ -817,7 +817,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
               <div className="flex flex-col items-center gap-2">
                 <label htmlFor="accuse-weapon" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">อาวุธ</label>
-                <select id="accuse-weapon" className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
+                <select id="accuse-weapon" className="murdle-input !min-h-11 !py-2 text-sm" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
                   <option value="">- เลือกอาวุธ -</option>
                   {getOptions('weapons').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
@@ -825,7 +825,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
               <div className="flex flex-col items-center gap-2">
                 <label htmlFor="accuse-location" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">สถานที่</label>
-                <select id="accuse-location" className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
+                <select id="accuse-location" className="murdle-input !min-h-11 !py-2 text-sm" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
                   <option value="">- เลือกสถานที่ -</option>
                   {getOptions('locations').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
@@ -834,7 +834,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               {hasMotives && (
                 <div className="flex flex-col items-center gap-2">
                   <label htmlFor="accuse-motive" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">แรงจูงใจ</label>
-                  <select id="accuse-motive" className="bg-white border-[3px] border-black p-2 outline-none focus:border-neo-accent transition-colors text-sm text-black" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
+                  <select id="accuse-motive" className="murdle-input !min-h-11 !py-2 text-sm" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
                     <option value="">- เลือกแรงจูงใจ -</option>
                     {getOptions('motives').map(i => <option key={i} value={i}>{i}</option>)}
                   </select>
@@ -842,12 +842,12 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
               )}
             </div>
 
-            <button onClick={handleCheckAnswer} className="bg-black hover:bg-neo-accent text-white px-12 py-5 font-black text-xl border-[3px] border-black shadow-[4px_4px_0_#222222] transition-transform hover:-translate-y-1 uppercase tracking-widest">
+            <button onClick={handleCheckAnswer} className="murdle-button-primary px-12 py-5 text-xl uppercase tracking-widest">
               ตรวจคำตอบ
             </button>
 
             {feedback.type && (
-              <div className={`mt-8 w-full max-w-md px-6 py-4 font-bold text-center text-lg shadow-[4px_4px_0_#222222] border-[3px] border-black ${feedback.type === 'success' ? 'bg-green-400 text-black' : 'bg-red-500 text-white'}`}>
+              <div className={`mt-8 w-full max-w-md px-6 py-4 font-bold text-center text-lg shadow-[4px_4px_0_#1DACD6] border-[3px] border-black ${feedback.type === 'success' ? 'murdle-status-success' : 'murdle-status-error'}`}>
                 {feedback.message}
               </div>
             )}
@@ -856,12 +856,12 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <div className="mt-8 mb-4 w-full">
               <button
                 onClick={handleExportAI}
-                className={`w-full py-4 px-6 text-xl font-black border-[4px] border-black shadow-[4px_4px_0_#000] uppercase tracking-widest transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
+                className={`murdle-button-primary w-full text-xl uppercase tracking-widest ${
                   exportStatus === 'success'
-                    ? 'bg-green-400 text-black'
+                    ? 'murdle-status-success'
                     : exportStatus === 'error'
-                      ? 'bg-red-500 text-white'
-                      : 'bg-blue-400 text-black hover:bg-blue-500'
+                      ? 'murdle-status-error'
+                      : 'bg-murdle-teal text-black hover:bg-murdle-shadow'
                 }`}
               >
                 {exportStatus === 'success'
@@ -887,7 +887,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 <button
                   key={cat.id}
                   onClick={() => setSelectedLegendCategory(cat)}
-                  className="flex items-center gap-1 sm:gap-2 bg-white border-[2px] sm:border-[3px] border-black shadow-[2px_2px_0_#000] sm:shadow-[4px_4px_0_#000] px-2 sm:px-3 py-1.5 sm:py-2 hover:bg-neo-notebook transition-colors whitespace-nowrap active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+                  className="murdle-button-secondary !px-2 sm:!px-3 !py-1.5 sm:!py-2 !min-h-11 flex items-center gap-1 sm:gap-2 whitespace-nowrap"
                 >
                   <span className="text-lg sm:text-xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]">{emoji}</span>
                   <span className="font-bold uppercase tracking-wide text-[10px] sm:text-sm">{cat.name}</span>
@@ -897,7 +897,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           </div>
 
           {/* Logic Grid */}
-          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] overflow-hidden flex shrink-0 flex-col w-[calc(100vw-0.5rem)] max-w-3xl">
+          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#1DACD6] overflow-hidden flex shrink-0 flex-col w-[calc(100vw-0.5rem)] max-w-3xl">
             <div className="overflow-hidden p-0 flex justify-center items-start bg-neo-bg flex-1 min-h-0 w-full">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
             </div>
@@ -907,12 +907,12 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           <div className="w-full max-w-3xl px-2 sm:px-4 mt-1 mb-1 shrink-0">
             <button
               onClick={handleGridExportAI}
-              className={`w-full py-2 sm:py-3 px-4 sm:px-6 text-sm sm:text-lg font-black border-[4px] border-black shadow-[4px_4px_0_#000] uppercase tracking-widest transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
+              className={`murdle-button-secondary w-full text-sm sm:text-lg uppercase tracking-widest ${
                 gridExportStatus === 'success'
-                  ? 'bg-green-400 text-black'
+                  ? 'murdle-status-success'
                   : gridExportStatus === 'error'
-                    ? 'bg-red-500 text-white'
-                    : 'bg-yellow-400 text-black hover:bg-yellow-500'
+                    ? 'murdle-status-error'
+                    : 'bg-murdle-paper text-black hover:bg-murdle-teal'
               }`}
             >
               {gridExportStatus === 'success'
@@ -924,23 +924,23 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
           </div>
 
           {/* Grid Action Menu */}
-          <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] left-1/2 -translate-x-1/2 z-50 bg-black text-white px-4 sm:px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#222222] flex items-center gap-3 sm:gap-4 max-w-[95vw] overflow-x-auto whitespace-nowrap">
-            <button onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส" className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
+          <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] left-1/2 -translate-x-1/2 z-50 bg-murdle-surface text-black px-4 sm:px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#1DACD6] flex items-center gap-3 sm:gap-4 max-w-[95vw] overflow-x-auto whitespace-nowrap">
+            <button onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส" className="hover:text-murdle-accent transition-colors flex flex-col items-center gap-1">
               <span className="text-xl">💡</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">คำใบ้</span>
             </button>
-            <div className="w-[3px] h-8 bg-white"></div>
-            <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกกระดานปัจจุบัน" className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1">
+            <div className="w-[3px] h-8 bg-black"></div>
+            <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกกระดานปัจจุบัน" className="hover:text-murdle-accent transition-colors flex flex-col items-center gap-1">
               <span className="text-xl">💾</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">บันทึก</span>
             </button>
-            <div className="w-[3px] h-8 bg-white"></div>
-            <button onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด" className={`transition-colors flex flex-col items-center gap-1 ${canUndo ? 'hover:text-neo-accent' : 'opacity-50 cursor-not-allowed'}`}>
+            <div className="w-[3px] h-8 bg-black"></div>
+            <button onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด" className={`transition-colors flex flex-col items-center gap-1 ${canUndo ? 'hover:text-murdle-accent' : 'opacity-50 cursor-not-allowed'}`}>
               <span className="text-xl">♻️</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">ย้อน</span>
             </button>
-            <div className="w-[3px] h-8 bg-white"></div>
-            <button onClick={resetGrid} aria-label="รีเซ็ตกระดานตรรกะ" className="hover:text-neo-accent transition-colors flex flex-col items-center gap-1 text-neo-accent">
+            <div className="w-[3px] h-8 bg-black"></div>
+            <button onClick={resetGrid} aria-label="รีเซ็ตกระดานตรรกะ" className="hover:text-murdle-accent transition-colors flex flex-col items-center gap-1 text-murdle-accent">
               <span className="text-xl">🗑️</span>
               <span className="text-[10px] font-bold uppercase tracking-widest">ล้าง</span>
             </button>
@@ -951,7 +951,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
       {/* Main View Toggle FAB */}
       <button
         onClick={handleToggleView}
-        className="fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] right-4 sm:right-6 z-50 border-[3px] border-black shadow-[4px_4px_0_#222222] p-4 bg-black text-white text-2xl hover:bg-neo-accent transition-colors flex items-center justify-center w-14 h-14"
+        className="murdle-button-primary fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] right-4 sm:right-6 z-50 !p-4 text-2xl flex items-center justify-center w-14 h-14"
         aria-label={activeView === 'clues' ? "Switch to Grid" : "Switch to Clues"}
       >
         {activeView === 'clues' ? '📔' : '🔍'}
@@ -964,10 +964,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             role="dialog"
             aria-modal="true"
             aria-labelledby="exhibit-b-title"
-            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 flex flex-col relative"
+            className="murdle-modal max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 flex flex-col relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 id="exhibit-b-title" className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest">
+            <h3 id="exhibit-b-title" className="text-2xl sm:text-3xl font-bold text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest">
               {exhibitBData.exhibit_b.title_th}
             </h3>
             <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
@@ -976,15 +976,15 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
             {/* Astrological Primer */}
             <div className="mb-8">
-              <h4 className="text-xl font-bold mb-4 bg-black text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#222222]">
+              <h4 className="murdle-section-title mb-4 bg-murdle-accent text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#1DACD6]">
                 ✨ จักรราศี
               </h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {(Object.values(exhibitBData.exhibit_b.zodiac_signs) as ZodiacSign[]).map((sign) => (
-                  <div key={sign.name_en} className="bg-white border-[3px] border-black shadow-[4px_4px_0_#222222] p-3 flex flex-col items-center text-center">
+                  <div key={sign.name_en} className="murdle-card-compact !p-3 flex flex-col items-center text-center">
                     <span className="text-4xl mb-2">{sign.symbol}</span>
-                    <span className="font-black text-black text-sm">{sign.name_th}</span>
-                    <span className="text-xs font-bold bg-gray-200 px-2 py-0.5 mt-1 border border-black">{sign.element_th}</span>
+                    <span className="font-bold text-black text-sm">{sign.name_th}</span>
+                    <span className="text-xs font-bold bg-murdle-paper px-2 py-0.5 mt-1 border border-black">{sign.element_th}</span>
                     <span className="text-[10px] mt-2 font-bold">{sign.dates_th}</span>
                   </div>
                 ))}
@@ -993,14 +993,14 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
 
             {/* Alchemical Symbols */}
             <div className="mb-6">
-              <h4 className="text-xl font-bold mb-4 bg-black text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#222222]">
+              <h4 className="murdle-section-title mb-4 bg-murdle-accent text-white inline-block px-4 py-1 border-[2px] border-black shadow-[4px_4px_0_#1DACD6]">
                 ⚗️ สัญลักษณ์การเล่นแร่แปรธาตุ
               </h4>
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
                 {(Object.values(exhibitBData.exhibit_b.alchemical_symbols) as AlchemicalSymbol[]).map((symbol) => (
-                  <div key={symbol.name_en} className="bg-white border-[3px] border-black shadow-[2px_2px_0_#222222] p-2 flex flex-col items-center text-center">
+                  <div key={symbol.name_en} className="murdle-card-compact !border-[3px] !shadow-[2px_2px_0_#1DACD6] !p-2 flex flex-col items-center text-center">
                     <span className="text-3xl mb-1">{symbol.symbol}</span>
-                    <span className="font-black text-black text-[10px] sm:text-xs leading-tight">{symbol.name_th}</span>
+                    <span className="font-bold text-black text-[10px] sm:text-xs leading-tight">{symbol.name_th}</span>
                   </div>
                 ))}
               </div>
@@ -1010,7 +1010,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <button
               onClick={() => setShowExhibitB(false)}
               aria-label="ปิดเอกสาร Exhibit B"
-              className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest sticky bottom-0"
+              className="murdle-button-primary mt-auto w-full text-xl uppercase tracking-widest sticky bottom-0"
             >
               ❌ ปิดเอกสาร
             </button>
@@ -1025,10 +1025,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             role="dialog"
             aria-modal="true"
             aria-labelledby="exhibit-c-title"
-            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] p-6 max-w-4xl max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
+            className="murdle-modal p-6 max-w-4xl max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 id="exhibit-c-title" className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
+            <h3 id="exhibit-c-title" className="text-2xl sm:text-3xl font-bold text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
               Exhibit C: วงกตบนซากปรักหักพังโบราณ
             </h3>
             <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
@@ -1036,7 +1036,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             </p>
 
             <div className="mb-6 flex justify-center w-full relative h-[50vh] sm:h-[60vh] md:h-[70vh]">
-              <div className="relative w-full h-full border-[3px] border-black shadow-[4px_4px_0_rgba(0,0,0,1)] bg-white overflow-hidden">
+              <div className="relative w-full h-full border-[3px] border-black shadow-[4px_4px_0_#1DACD6] bg-white overflow-hidden">
                 <Image
                   src="/Exhibit C.webp"
                   alt="Exhibit C"
@@ -1050,7 +1050,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <button
               onClick={() => setShowExhibitC(false)}
               aria-label="ปิดเอกสาร Exhibit C"
-              className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase tracking-widest sticky bottom-0"
+              className="murdle-button-primary mt-auto w-full text-xl uppercase tracking-widest sticky bottom-0"
             >
               ❌ ปิด
             </button>
@@ -1065,10 +1065,10 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             role="dialog"
             aria-modal="true"
             aria-labelledby="exhibit-d-title"
-            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] p-6 max-w-4xl max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
+            className="murdle-modal p-6 max-w-4xl max-h-[90vh] overflow-y-auto w-full flex flex-col relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 id="exhibit-d-title" className="text-2xl sm:text-3xl font-black text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
+            <h3 id="exhibit-d-title" className="text-2xl sm:text-3xl font-bold text-black mb-2 border-b-[4px] border-black pb-2 text-center w-full uppercase tracking-widest font-mono">
               Exhibit D: แผนผังประกอบคดี
             </h3>
             <p className="text-black text-sm sm:text-base font-bold text-center mb-6">
@@ -1076,7 +1076,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             </p>
 
             <div className="mb-6 flex justify-center w-full relative h-[50vh] sm:h-[60vh] md:h-[70vh]">
-              <div className="relative w-full h-full border-[3px] border-black shadow-[4px_4px_0_rgba(0,0,0,1)] bg-white overflow-hidden">
+              <div className="relative w-full h-full border-[3px] border-black shadow-[4px_4px_0_#1DACD6] bg-white overflow-hidden">
                 <Image
                   src="/Exhibit D.webp"
                   alt="Exhibit D"
@@ -1091,7 +1091,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <button
               onClick={() => setShowExhibitD(false)}
               aria-label="ปิดเอกสาร Exhibit D"
-              className="mt-auto bg-black text-white w-full border-[3px] border-black py-4 font-black text-xl shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase tracking-widest sticky bottom-0"
+              className="murdle-button-primary mt-auto w-full text-xl uppercase tracking-widest sticky bottom-0"
             >
               ❌ ปิด
             </button>
@@ -1106,17 +1106,17 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             role="dialog"
             aria-modal="true"
             aria-labelledby="decrypter-title"
-            className="bg-neo-notebook border-[3px] border-black shadow-[8px_8px_0_#222222] max-w-md w-full p-6 flex flex-col relative"
+            className="murdle-modal max-w-md w-full p-6 flex flex-col relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 id="decrypter-title" className="text-2xl font-black text-black mb-4 border-b-[4px] border-black pb-2 flex items-center gap-2">
+            <h3 id="decrypter-title" className="murdle-section-title text-black mb-4 border-b-[4px] border-black pb-2 flex items-center gap-2">
               <span className="text-3xl">🧮</span> เครื่องมือถอดรหัส
             </h3>
 
             <div className="mb-6">
               <label className="block text-black font-bold mb-2 uppercase tracking-widest text-sm">ใส่รหัสลับที่นี่:</label>
               <textarea
-                className="w-full bg-white border-[3px] border-black p-3 font-mono text-black font-bold h-24 focus:outline-none focus:border-neo-accent shadow-[inset_2px_2px_0_#ccc]"
+                className="murdle-input h-24 font-bold"
                 placeholder="เช่น ZTVMG..."
                 value={cipherInput}
                 onChange={(e) => setCipherInput(e.target.value)}
@@ -1124,9 +1124,9 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             </div>
 
             <div className="space-y-4 mb-8">
-              <div className="bg-white border-[2px] border-black p-3 shadow-[2px_2px_0_#222222]">
-                <div className="text-[10px] bg-black text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2">Next Letter Code (ขยับอักษร +1)</div>
-                <div className="font-mono text-purple-600 font-bold break-words min-h-[1.5rem]">
+              <div className="murdle-card-compact !border-[2px] !p-3 !shadow-[2px_2px_0_#1DACD6]">
+                <div className="text-[10px] bg-murdle-accent text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2 border border-black">Next Letter Code (ขยับอักษร +1)</div>
+                <div className="font-mono text-murdle-accent font-bold break-words min-h-[1.5rem]">
                   {cipherInput.split('').map((char, idx) => {
                     if (/[a-zA-Z]/.test(char)) {
                       const isUpper = char === char.toUpperCase();
@@ -1140,9 +1140,9 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 </div>
               </div>
 
-              <div className="bg-white border-[2px] border-black p-3 shadow-[2px_2px_0_#222222]">
-                <div className="text-[10px] bg-black text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2">Atbash (A=Z, Z=A)</div>
-                <div className="font-mono text-neo-accent font-bold break-words min-h-[1.5rem]">
+              <div className="murdle-card-compact !border-[2px] !p-3 !shadow-[2px_2px_0_#1DACD6]">
+                <div className="text-[10px] bg-murdle-accent text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2 border border-black">Atbash (A=Z, Z=A)</div>
+                <div className="font-mono text-murdle-accent font-bold break-words min-h-[1.5rem]">
                   {cipherInput.split('').map((char, idx) => {
                     if (/[a-zA-Z]/.test(char)) {
                       const isUpper = char === char.toUpperCase();
@@ -1156,8 +1156,8 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                 </div>
               </div>
 
-              <div className="bg-white border-[2px] border-black p-3 shadow-[2px_2px_0_#222222]">
-                <div className="text-[10px] bg-black text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2">Smart Anagram (ค้นหาคำศัพท์)</div>
+              <div className="murdle-card-compact !border-[2px] !p-3 !shadow-[2px_2px_0_#1DACD6]">
+                <div className="text-[10px] bg-murdle-accent text-white px-2 py-1 inline-block font-bold uppercase tracking-widest mb-2 border border-black">Smart Anagram (ค้นหาคำศัพท์)</div>
                 <div className="font-mono font-bold break-words min-h-[1.5rem] flex flex-wrap gap-1">
                   {cipherInput.split(/\s+/).map((word, idx) => {
                     const cleanWord = word.replace(/[^a-zA-Z]/g, '');
@@ -1167,14 +1167,14 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
                     const matched = (anagramDict as Record<string, string>)[sorted];
 
                     return matched
-                      ? <span key={idx} className="text-green-600 bg-green-100 px-1 border border-green-600">{matched}</span>
-                      : <span key={idx} className="text-blue-500">{sorted}</span>;
+                      ? <span key={idx} className="text-black bg-murdle-success px-1 border border-green-600">{matched}</span>
+                      : <span key={idx} className="text-murdle-accent">{sorted}</span>;
                   })}
                   {!cipherInput && '-'}
                 </div>
-                <div className="text-[10px] text-gray-500 mt-2 font-bold leading-tight">
-                  <span className="text-green-600">สีเขียว:</span> เจอคำศัพท์ในฐานข้อมูล <br/>
-                  <span className="text-blue-500">สีฟ้า:</span> ไม่เจอคำศัพท์ (เรียง A-Z ให้เฉยๆ)
+                <div className="text-[10px] text-murdle-muted mt-2 font-bold leading-tight">
+                  <span className="text-black">สีเขียว:</span> เจอคำศัพท์ในฐานข้อมูล <br/>
+                  <span className="text-murdle-accent">สีฟ้า:</span> ไม่เจอคำศัพท์ (เรียง A-Z ให้เฉยๆ)
                 </div>
               </div>
             </div>
@@ -1182,7 +1182,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             <button
               onClick={() => { setShowDecrypter(false); setCipherInput(''); }}
               aria-label="ปิดเครื่องมือถอดรหัส"
-              className="bg-black text-white w-full border-[3px] border-black py-3 font-black text-lg shadow-[4px_4px_0_#222222] hover:bg-neo-accent hover:-translate-y-1 transition-all uppercase tracking-widest"
+              className="murdle-button-primary w-full text-lg uppercase tracking-widest"
             >
               ❌ ปิด
             </button>
@@ -1198,13 +1198,13 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             role="dialog"
             aria-modal="true"
             aria-labelledby="manual-copy-title"
-            className="bg-neo-notebook border-[4px] border-black shadow-[8px_8px_0_#000] p-6 max-w-lg w-full"
+            className="murdle-modal p-6 max-w-lg w-full"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 id="manual-copy-title" className="text-xl font-black text-black mb-3 border-b-[4px] border-black pb-2">คัดลอกด้วยตนเอง</h3>
+            <h3 id="manual-copy-title" className="text-xl font-bold text-black mb-3 border-b-[4px] border-black pb-2">คัดลอกด้วยตนเอง</h3>
             <p className="text-sm font-bold mb-3">เบราว์เซอร์ไม่อนุญาตให้คัดลอกอัตโนมัติ กรุณาเลือกข้อความด้านล่างแล้วคัดลอกเอง</p>
             <textarea
-              className="w-full h-56 bg-white border-[3px] border-black p-3 font-mono text-sm text-black focus:outline-none focus:border-neo-accent"
+              className="murdle-input h-56 text-sm"
               value={manualCopyText}
               readOnly
               onFocus={(e) => e.currentTarget.select()}
@@ -1212,7 +1212,7 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             />
             <button
               onClick={() => setManualCopyText('')}
-              className="mt-4 bg-black text-white w-full border-[3px] border-black py-3 font-black text-lg shadow-[4px_4px_0_#222222] hover:bg-neo-accent transition-all uppercase tracking-widest"
+              className="murdle-button-primary mt-4 w-full text-lg uppercase tracking-widest"
             >
               ปิด
             </button>
@@ -1227,22 +1227,22 @@ function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData: Level
             role="dialog"
             aria-modal="true"
             aria-labelledby="legend-modal-title"
-            className="bg-neo-notebook border-[4px] border-black shadow-[8px_8px_0_#000] p-6 max-w-sm w-full relative max-h-[80vh] flex flex-col"
+            className="murdle-modal p-6 max-w-sm w-full relative max-h-[80vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedLegendCategory(null)}
               aria-label="ปิดคำอธิบายสัญลักษณ์"
-              className="absolute top-2 right-2 p-2 text-2xl font-black hover:text-neo-accent transition-colors"
+              className="absolute top-2 right-2 p-2 text-2xl font-bold hover:text-murdle-accent transition-colors"
             >
               ❌
             </button>
-            <h3 id="legend-modal-title" className="text-xl sm:text-2xl font-black text-black mb-4 border-b-[4px] border-black pb-2 uppercase tracking-widest text-center">
+            <h3 id="legend-modal-title" className="murdle-section-title text-black mb-4 border-b-[4px] border-black pb-2 uppercase tracking-widest text-center">
               {selectedLegendCategory.name}
             </h3>
             <div className="overflow-y-auto pr-2 flex flex-col gap-3 custom-scrollbar">
               {selectedLegendCategory.items.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3 bg-white p-3 border-[2px] border-black shadow-[2px_2px_0_#000]">
+                <div key={idx} className="murdle-card-compact !border-[2px] !p-3 flex items-center gap-3">
                   <i
                     className={`${getIconClass(selectedLegendCategory.id, item)} text-2xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`}
                     style={{ color: getIconColor(idx, String(levelData.id), selectedLegendCategory.id) }}
