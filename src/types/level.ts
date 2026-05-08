@@ -40,3 +40,4 @@ export type LevelData = {
   solution_grid?: Record<string, string>[];
   correct_accusation: CorrectAccusation;
 };
+export type ScreenState = 'MENU' | 'HOW_TO_PLAY' | 'LEVEL_SELECT' | 'CASE_SELECT' | 'GAME' | 'SETTINGS';

@@ -28,7 +28,7 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
   };
 
   const calculateAutoCrosses = useCallback((state: GridState): GridState => {
-    const newState = JSON.parse(JSON.stringify(state)) as GridState;
+    const newState = structuredClone(state) as GridState;
 
     // Step A: Strip away ALL current 'A' states on the entire board
     for (const block in newState) {
@@ -102,7 +102,7 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
       // do setGridHistory outside the setGridState updater.
       // Let's refactor:
 
-      let newState = JSON.parse(JSON.stringify(prev)) as GridState;
+      let newState = structuredClone(prev) as GridState;
       const blockId = getBlockId(cat1, cat2);
 
       if (!newState[blockId]) {
@@ -149,7 +149,7 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
       return newState;
     });
     // Push the current state to history BEFORE we update it via setGridState
-    setGridHistory(h => [...h, gridState]);
+    setGridHistory(h => h.length >= 50 ? [...h.slice(1), gridState] : [...h, gridState]);
   }, [gridState, calculateAutoCrosses]);
 
   const undo = useCallback(() => {
@@ -248,7 +248,7 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
   // ----------------------------------------------------
   const resetGrid = useCallback(() => {
     if (window.confirm('คุณต้องการล้างข้อมูลในตารางทั้งหมดใช่หรือไม่?')) {
-      setGridHistory(h => [...h, gridState]);
+      setGridHistory(h => h.length >= 50 ? [...h.slice(1), gridState] : [...h, gridState]);
       setGridState({});
     }
   }, [gridState]);
