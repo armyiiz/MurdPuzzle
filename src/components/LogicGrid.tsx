@@ -37,7 +37,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
 
   return (
     <div className="logic-grid-scroll w-full max-w-full overflow-hidden p-0 flex justify-center touch-pan-y" aria-label="ตารางตรรกะสำหรับตัดตัวเลือก">
-      <table className="border-collapse table-fixed w-max mx-auto">
+      <table className="border-collapse table-fixed w-max mx-auto border-[4px] border-black shadow-[8px_8px_0_#1DACD6]">
         <tbody>
           {/* Top Header Row */}
           <tr>
@@ -51,7 +51,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                   <td
                     key={`top-${cat.id}-${item}`}
                     style={cellStyle}
-                    className={`border border-black bg-murdle-bg align-middle text-center p-0
+                    className={`border border-black bg-murdle-paper align-middle text-center p-0
                       border-t-[4px] ${isFirstOfBlock ? 'border-l-[4px]' : ''}
                     `}
                   >
@@ -77,7 +77,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                   {/* Left Header Cell */}
                   <td
                     style={cellStyle}
-                    className={`border border-black bg-murdle-bg align-middle text-center p-0
+                    className={`border border-black bg-murdle-paper align-middle text-center p-0
                       border-l-[4px] ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
                     `}
                   >
@@ -109,13 +109,13 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                           <button
                             type="button"
                             onClick={() => toggleCell(rowCat, colCat, rowItem, colItem)}
-                            className="flex h-full w-full items-center justify-center font-bold transition-colors hover:bg-murdle-surface focus:outline-none focus:ring-2 focus:ring-murdle-accent focus:ring-inset"
+                            className={`flex h-full w-full items-center justify-center font-bold transition-all focus:outline-none focus:ring-2 focus:ring-murdle-accent focus:ring-inset ${state === 'O' || state === 'X' ? 'shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] bg-black/5' : 'hover:bg-murdle-surface'}`}
                             aria-label={`${rowCat.name}: ${rowItem} กับ ${colCat.name}: ${colItem}, สถานะปัจจุบัน: ${stateLabel}. กดเพื่อเปลี่ยนสถานะ`}
                           >
-                            {state === 'O' && <i aria-hidden="true" className="fa-solid fa-check text-black text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
-                            {state === 'X' && <i aria-hidden="true" className="fa-solid fa-xmark text-murdle-accent text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
-                            {state === '?' && <i aria-hidden="true" className="fa-solid fa-question text-murdle-muted text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
-                            {state === 'A' && <i aria-hidden="true" className="fa-solid fa-xmark text-murdle-purple text-[clamp(0.7rem,3.5vw,1.125rem)] opacity-80"></i>}
+                            {state === 'O' && <i aria-hidden="true" className="fa-solid fa-check text-black text-[clamp(1rem,5vw,1.5rem)] [text-shadow:1px_1px_0_#fff]"></i>}
+                            {state === 'X' && <i aria-hidden="true" className="fa-solid fa-xmark text-murdle-accent text-[clamp(1rem,5vw,1.5rem)] [text-shadow:1px_1px_0_#fff]"></i>}
+                            {state === '?' && <i aria-hidden="true" className="fa-solid fa-question text-murdle-muted text-[clamp(0.85rem,4.5vw,1.35rem)]"></i>}
+                            {state === 'A' && <i aria-hidden="true" className="fa-solid fa-xmark text-murdle-purple text-[clamp(0.8rem,4vw,1.25rem)] opacity-80"></i>}
                           </button>
                         </td>
                       );
