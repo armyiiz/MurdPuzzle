@@ -51,7 +51,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                   <td
                     key={`top-${cat.id}-${item}`}
                     style={cellStyle}
-                    className={`border border-black bg-white align-middle text-center p-0
+                    className={`border border-black bg-murdle-bg align-middle text-center p-0
                       border-t-[4px] ${isFirstOfBlock ? 'border-l-[4px]' : ''}
                     `}
                   >
@@ -77,7 +77,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                   {/* Left Header Cell */}
                   <td
                     style={cellStyle}
-                    className={`border border-black bg-white align-middle text-center p-0
+                    className={`border border-black bg-murdle-bg align-middle text-center p-0
                       border-l-[4px] ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
                     `}
                   >
@@ -103,19 +103,19 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                           className={`border border-black align-middle text-center p-0 select-none font-bold transition-colors
                             ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
                             ${isFirstColOfBlock ? 'border-l-[4px]' : ''}
-                            ${isError ? 'bg-red-400' : isDark ? 'bg-neo-notebook' : 'bg-white'}
+                            ${isError ? 'bg-murdle-error' : isDark ? 'bg-murdle-paper' : 'bg-murdle-bg'}
                           `}
                         >
                           <button
                             type="button"
                             onClick={() => toggleCell(rowCat, colCat, rowItem, colItem)}
-                            className="flex h-full w-full items-center justify-center font-bold transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-neo-accent focus:ring-inset"
+                            className="flex h-full w-full items-center justify-center font-bold transition-colors hover:bg-murdle-surface focus:outline-none focus:ring-2 focus:ring-murdle-accent focus:ring-inset"
                             aria-label={`${rowCat.name}: ${rowItem} กับ ${colCat.name}: ${colItem}, สถานะปัจจุบัน: ${stateLabel}. กดเพื่อเปลี่ยนสถานะ`}
                           >
-                            {state === 'O' && <i aria-hidden="true" className="fa-solid fa-check text-green-500 text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
-                            {state === 'X' && <i aria-hidden="true" className="fa-solid fa-xmark text-red-500 text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
-                            {state === '?' && <i aria-hidden="true" className="fa-solid fa-question text-orange-400 text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
-                            {state === 'A' && <i aria-hidden="true" className="fa-solid fa-xmark text-purple-500 text-[clamp(0.7rem,3.5vw,1.125rem)] opacity-80"></i>}
+                            {state === 'O' && <i aria-hidden="true" className="fa-solid fa-check text-black text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
+                            {state === 'X' && <i aria-hidden="true" className="fa-solid fa-xmark text-murdle-accent text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
+                            {state === '?' && <i aria-hidden="true" className="fa-solid fa-question text-murdle-muted text-[clamp(0.75rem,4vw,1.25rem)]"></i>}
+                            {state === 'A' && <i aria-hidden="true" className="fa-solid fa-xmark text-murdle-purple text-[clamp(0.7rem,3.5vw,1.125rem)] opacity-80"></i>}
                           </button>
                         </td>
                       );

@@ -63,10 +63,10 @@ const missingLog = categories.flatMap((cat) => {
 
 export default function DebugIconsPage() {
   return (
-    <div className="min-h-screen bg-[#FDFBF7] p-8 font-mono text-black">
+    <div className="min-h-screen bg-murdle-bg p-5 sm:p-8 font-mono text-black">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-[#FF90E8] border-4 border-black p-6 mb-8 shadow-[4px_4px_0_0_#000]">
-          <h1 className="text-3xl font-black uppercase tracking-widest mb-2">
+        <div className="murdle-card mb-8">
+          <h1 className="murdle-section-title uppercase tracking-widest mb-2">
             🕵️‍♀️ ศูนย์บัญชาการเช็กไอคอน (Debug V.2)
           </h1>
           <p className="font-bold">
@@ -77,7 +77,7 @@ export default function DebugIconsPage() {
         </div>
 
         {missingLog.length > 0 ? (
-          <div className="bg-red-400 border-4 border-black p-4 mb-8 shadow-[4px_4px_0_0_#000]">
+          <div className="murdle-card mb-8 !bg-murdle-error">
             <h2 className="font-bold text-xl mb-2">🚨 พบปัญหา {missingLog.length} รายการ!</h2>
             <div className="max-h-64 overflow-y-auto bg-white border-2 border-black p-4">
               <ul className="list-disc pl-6 space-y-1">
@@ -88,14 +88,14 @@ export default function DebugIconsPage() {
             </div>
           </div>
         ) : (
-          <div className="bg-green-400 border-4 border-black p-4 mb-8 shadow-[4px_4px_0_0_#000]">
+          <div className="murdle-card mb-8 !bg-murdle-success">
             <h2 className="font-bold text-xl">✅ เยี่ยมมาก! ข้อมูลเป๊ะ ไอคอนครบทุกตัว!</h2>
           </div>
         )}
 
         {categories.map((cat) => (
           <div key={cat.id} className="mb-12">
-            <h2 className="text-2xl font-black mb-4 border-b-4 border-black inline-block pb-1">
+            <h2 className="text-2xl font-bold mb-4 border-b-4 border-black inline-block pb-1">
               {cat.title} ({cat.items.length} รายการในเกม)
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -107,14 +107,14 @@ export default function DebugIconsPage() {
                 const isPlaceholder = foundInMaster?.icon?.includes("fa-circle-question");
                 const iconClass = foundInMaster?.icon || "fa-solid fa-circle-question";
 
-                let boxStyle = "bg-white text-black";
-                if (isNotFound) boxStyle = "bg-red-500 text-white";
-                else if (isPlaceholder) boxStyle = "bg-yellow-300 text-black";
+                let boxStyle = "bg-murdle-bg text-black";
+                if (isNotFound) boxStyle = "bg-murdle-error text-black";
+                else if (isPlaceholder) boxStyle = "bg-murdle-paper text-black";
 
                 return (
                   <div
                     key={index}
-                    className={`flex flex-col items-center justify-center p-4 border-4 border-black shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1 ${boxStyle}`}
+                    className={`flex flex-col items-center justify-center p-4 border-[5px] border-black rounded-[5px] shadow-[4px_4px_0_#1DACD6] transition-transform hover:-translate-y-1 ${boxStyle}`}
                   >
                     <i aria-hidden="true" className={`${iconClass} text-4xl mb-3`}></i>
                     <span className="text-center font-bold text-sm leading-tight">
