@@ -10,16 +10,34 @@ export function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setS
   ];
 
   return (
-    <div className="animate-fadeIn">
-      <h2 className="murdle-section-title mb-6 text-center">เลือกระดับความยาก</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="animate-fadeIn mx-auto max-w-5xl">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <div className="murdle-paper-strip murdle-mono mb-3 inline-flex px-3 py-1 text-xs font-bold uppercase tracking-widest">
+            Difficulty Board
+          </div>
+          <h2 className="murdle-section-title text-3xl">เลือกระดับความยาก</h2>
+        </div>
+        <div className="murdle-stat-chip self-start sm:self-auto">
+          ปิดคดีแล้ว {solvedCases.length}/100
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {levels.map(l => {
           const isUnlocked = !l.reqCase || solvedCases.includes(l.reqCase);
+          const levelStart = (l.id - 1) * 25 + 1;
+          const levelEnd = l.id * 25;
+          const solvedInLevel = solvedCases.filter(id => {
+            const caseNum = parseInt(id.replace('case_', ''), 10);
+            return caseNum >= levelStart && caseNum <= levelEnd;
+          }).length;
+
           return (
             <button key={l.id}
               onClick={() => { if (isUnlocked) { setSelectedLevel(l.id); setScreen('CASE_SELECT'); } }}
               disabled={!isUnlocked}
-              className={`murdle-card relative text-left flex flex-col justify-between min-h-44 transition ${isUnlocked ? 'hover:-translate-y-1 cursor-pointer' : 'opacity-60 !bg-murdle-surface text-murdle-muted cursor-not-allowed'}`}>
+              className={`murdle-card murdle-case-tile relative min-h-52 text-left transition ${isUnlocked ? 'cursor-pointer' : 'opacity-60 !bg-murdle-surface text-murdle-muted cursor-not-allowed'}`}>
 
               {!isUnlocked && (
                 <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -27,10 +45,16 @@ export function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setS
                 </div>
               )}
 
-              <div className={!isUnlocked ? "opacity-30" : ""}>
-                <h3 className="text-xl font-bold text-black mb-4">{l.name}</h3>
-                <div className="murdle-card-compact !border-[2px] !p-3 !shadow-[2px_2px_0_#1DACD6]">
-                  <p className="text-black text-sm font-bold">{l.desc}</p>
+              <div className={`flex h-full flex-col gap-4 ${!isUnlocked ? "opacity-30" : ""}`}>
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-xl font-bold leading-tight text-black">{l.name}</h3>
+                  <span className="murdle-stat-chip shrink-0 !min-h-9 !px-2 !py-1 text-[10px]">
+                    {solvedInLevel}/25
+                  </span>
+                </div>
+                <p className="text-sm font-bold leading-relaxed text-black">{l.desc}</p>
+                <div className="mt-auto h-3 border-2 border-black bg-white">
+                  <div className="h-full bg-murdle-accent" style={{ width: `${Math.round((solvedInLevel / 25) * 100)}%` }} />
                 </div>
               </div>
             </button>

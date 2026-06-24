@@ -1,6 +1,6 @@
 import React from 'react';
 import FocusTrap from 'focus-trap-react';
-import { Profiles, ProfileItem } from '../../types/level';
+import { Profiles } from '../../types/level';
 import { extractEmojiAndText, getIconClass, getIconColor } from '../../utils/emojiHelper';
 
 type ProfileCategoryKey = keyof Profiles;

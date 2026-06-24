@@ -19,7 +19,9 @@ export default function Home() {
     if (typeof window !== 'undefined') {
       const saved = window.localStorage.getItem('solvedCases');
       if (saved) {
-        setSolvedCases(JSON.parse(saved) as string[]);
+        window.setTimeout(() => {
+          setSolvedCases(JSON.parse(saved) as string[]);
+        }, 0);
       }
     }
   }, []);
@@ -38,25 +40,27 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-neo-bg text-black font-mono pb-24">
-      <header className="murdle-nav sticky top-0 z-10 flex justify-between items-center gap-2 min-h-[var(--app-header-height)]">
-        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+    <div className="murdle-app-shell text-black pb-28">
+      <header className="murdle-nav sticky top-0 z-40 min-h-[var(--app-header-height)]">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+            {screen !== 'MENU' && (
+              <button onClick={handleBack} aria-label="กลับไปหน้าก่อนหน้า" className="murdle-button-ghost shrink-0 !p-2 !min-h-11 !w-11 text-xl font-bold">
+                ⬅️
+              </button>
+            )}
+            <h1 className="murdle-topbar-title min-w-0 truncate text-base sm:text-xl font-bold uppercase">🕵️‍♂️ ไขคดีปริศนา</h1>
+          </div>
           {screen !== 'MENU' && (
-            <button onClick={handleBack} aria-label="กลับไปหน้าก่อนหน้า" className="murdle-button-ghost shrink-0 !p-2 !min-h-11 !w-11 text-xl font-bold">
-              ⬅️
+            <button onClick={() => setScreen('MENU')} aria-label="กลับหน้าหลัก" className="murdle-button-secondary shrink-0 !px-3 !py-1 !min-h-11 text-[10px] sm:text-xs uppercase tracking-wider">
+              หน้าหลัก
             </button>
           )}
-          <h1 className="min-w-0 truncate text-base sm:text-xl font-bold tracking-widest uppercase">🕵️‍♂️ ไขคดีปริศนา</h1>
         </div>
-        {screen !== 'MENU' && (
-          <button onClick={() => setScreen('MENU')} aria-label="กลับหน้าหลัก" className="murdle-button-secondary shrink-0 !px-3 !py-1 !min-h-11 text-[10px] sm:text-xs uppercase tracking-wider">
-            หน้าหลัก
-          </button>
-        )}
       </header>
 
-      <main className="w-full max-w-6xl mx-auto mt-6 px-4 sm:px-6 lg:px-8">
-        {screen === 'MENU' && <MainMenu setScreen={setScreen} />}
+      <main className="w-full max-w-6xl mx-auto mt-5 sm:mt-7 px-3 sm:px-6 lg:px-8">
+        {screen === 'MENU' && <MainMenu setScreen={setScreen} solvedCases={solvedCases} />}
         {screen === 'HOW_TO_PLAY' && <HowToPlay />}
         {screen === 'LEVEL_SELECT' && <LevelSelect setScreen={setScreen} setSelectedLevel={setSelectedLevel} solvedCases={solvedCases} />}
         {screen === 'CASE_SELECT' && <CaseSelect level={selectedLevel} setScreen={setScreen} setSelectedCase={setSelectedCase} solvedCases={solvedCases} />}

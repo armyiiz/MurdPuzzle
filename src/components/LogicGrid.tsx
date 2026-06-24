@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Category } from '../types/level';
 import { CellState } from '../hooks/useGameLogic';
 import { getIconClass, getIconColor } from '../utils/emojiHelper';
@@ -19,7 +19,15 @@ const STATE_LABELS: Record<CellState, string> = {
   A: 'ตัดออกอัตโนมัติ',
 };
 
+type SelectedGridCell = {
+  rowCatId: string;
+  rowItem: string;
+  colCatId: string;
+  colItem: string;
+};
+
 export function LogicGrid({ categories, getCellState, toggleCell, isCellError, seedString }: LogicGridProps) {
+  const [selectedCell, setSelectedCell] = useState<SelectedGridCell | null>(null);
   const numCats = categories.length;
   if (numCats < 3) return null;
 
@@ -28,21 +36,34 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
 
   const totalCols = 1 + topCategories.reduce((count, cat) => count + cat.items.length, 0);
   const totalRows = 1 + leftCategories.reduce((count, cat) => count + cat.items.length, 0);
-  const fittedCellSize = `min(44px, calc((100vw - 1.25rem) / ${totalCols}), calc((100dvh - var(--app-header-height) - var(--grid-vertical-chrome, 13rem) - env(safe-area-inset-bottom)) / ${totalRows}))`;
+  const isCompactGrid = totalCols > 10 || totalRows > 10;
+  const fittedCellSize = `min(${isCompactGrid ? '42px' : '48px'}, calc((100vw - 1.25rem) / ${totalCols}), calc((100dvh - var(--app-header-height) - var(--grid-vertical-chrome, 13rem) - env(safe-area-inset-bottom)) / ${totalRows}))`;
   const cellStyle: React.CSSProperties = {
     boxSizing: 'border-box',
     width: fittedCellSize,
     height: fittedCellSize,
   };
+  const tableStyle = {
+    '--logic-cell-size': fittedCellSize,
+    '--logic-grid-border': isCompactGrid ? '3px' : '4px',
+    '--logic-block-border': isCompactGrid ? '3px' : '4px',
+    '--logic-cell-inset': isCompactGrid ? '2px' : '3px',
+  } as React.CSSProperties;
+  const isSelectedItem = (cat: Category, item: string) => {
+    return Boolean(selectedCell && (
+      (selectedCell.rowCatId === cat.id && selectedCell.rowItem === item) ||
+      (selectedCell.colCatId === cat.id && selectedCell.colItem === item)
+    ));
+  };
 
   return (
     <div className="logic-grid-scroll w-full max-w-full overflow-hidden p-0 flex justify-center touch-pan-y" aria-label="ตารางตรรกะสำหรับตัดตัวเลือก">
-      <table className="border-collapse table-fixed w-max mx-auto border-[4px] border-black shadow-[8px_8px_0_#1DACD6]">
+      <table style={tableStyle} className={`logic-grid-table border-collapse table-fixed w-max mx-auto ${isCompactGrid ? 'logic-grid-compact' : ''}`}>
         <tbody>
           {/* Top Header Row */}
           <tr>
-            <td style={cellStyle} className="p-1 text-[8px] sm:text-[9px] text-black font-bold tracking-[-0.08em] leading-none text-center border border-transparent align-middle">
-              LOGIC GRID
+            <td style={cellStyle} className="p-1 murdle-mono text-[8px] sm:text-[9px] text-black font-bold tracking-normal leading-none text-center border border-transparent align-middle">
+              GRID
             </td>
             {topCategories.map((cat) => (
               cat.items.map((item, itemIndex) => {
@@ -52,11 +73,12 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                     key={`top-${cat.id}-${item}`}
                     style={cellStyle}
                     className={`border border-black bg-murdle-paper align-middle text-center p-0
-                      border-t-[4px] ${isFirstOfBlock ? 'border-l-[4px]' : ''}
+                      logic-grid-block-top ${isFirstOfBlock ? 'logic-grid-block-left' : ''}
+                      ${isSelectedItem(cat, item) ? 'logic-grid-cell-selected' : ''}
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full" title={`${cat.name}: ${item}`}>
-                      <i aria-hidden="true" className={`${getIconClass(cat.id, item)} text-[clamp(0.75rem,4vw,1.5rem)] [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(itemIndex, seedString, cat.id) }}></i>
+                      <i aria-hidden="true" className={`${getIconClass(cat.id, item)} logic-grid-icon [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(itemIndex, seedString, cat.id) }}></i>
                     </div>
                   </td>
                 );
@@ -78,11 +100,12 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                   <td
                     style={cellStyle}
                     className={`border border-black bg-murdle-paper align-middle text-center p-0
-                      border-l-[4px] ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
+                      logic-grid-block-left ${isFirstOfRowBlock ? 'logic-grid-block-top' : ''}
+                      ${isSelectedItem(rowCat, rowItem) ? 'logic-grid-cell-selected' : ''}
                     `}
                   >
                     <div className="flex items-center justify-center w-full h-full" title={`${rowCat.name}: ${rowItem}`}>
-                      <i aria-hidden="true" className={`${getIconClass(rowCat.id, rowItem)} text-[clamp(0.75rem,4vw,1.5rem)] [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(rowItemIndex, seedString, rowCat.id) }}></i>
+                      <i aria-hidden="true" className={`${getIconClass(rowCat.id, rowItem)} logic-grid-icon [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]`} style={{ color: getIconColor(rowItemIndex, seedString, rowCat.id) }}></i>
                     </div>
                   </td>
 
@@ -95,27 +118,41 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                       const isError = isCellError ? isCellError(rowCat, colCat, rowItem, colItem) : false;
                       const isFirstColOfBlock = colItemIndex === 0;
                       const stateLabel = STATE_LABELS[state];
+                      const isSelected = Boolean(selectedCell &&
+                        selectedCell.rowCatId === rowCat.id &&
+                        selectedCell.rowItem === rowItem &&
+                        selectedCell.colCatId === colCat.id &&
+                        selectedCell.colItem === colItem
+                      );
+                      const isLane = !isSelected && (isSelectedItem(rowCat, rowItem) || isSelectedItem(colCat, colItem));
 
                       return (
                         <td
                           key={`cell-${rowCat.id}-${rowItem}-${colCat.id}-${colItem}`}
                           style={cellStyle}
-                          className={`border border-black align-middle text-center p-0 select-none font-bold transition-colors
-                            ${isFirstOfRowBlock ? 'border-t-[4px]' : ''}
-                            ${isFirstColOfBlock ? 'border-l-[4px]' : ''}
+                          className={`logic-grid-play-cell border border-black align-middle text-center p-0 select-none font-bold transition-colors
+                            ${isFirstOfRowBlock ? 'logic-grid-block-top' : ''}
+                            ${isFirstColOfBlock ? 'logic-grid-block-left' : ''}
                             ${isError ? 'bg-murdle-error' : isDark ? 'bg-murdle-paper' : 'bg-murdle-bg'}
+                            ${isLane ? 'logic-grid-cell-lane' : ''}
+                            ${isSelected ? 'logic-grid-cell-selected' : ''}
+                            ${state !== 'empty' ? 'logic-grid-marked-cell' : ''}
                           `}
                         >
                           <button
                             type="button"
-                            onClick={() => toggleCell(rowCat, colCat, rowItem, colItem)}
+                            onClick={() => {
+                              setSelectedCell({ rowCatId: rowCat.id, rowItem, colCatId: colCat.id, colItem });
+                              toggleCell(rowCat, colCat, rowItem, colItem);
+                            }}
+                            aria-pressed={state !== 'empty'}
                             className={`flex h-full w-full items-center justify-center font-bold transition-all focus:outline-none focus:ring-2 focus:ring-murdle-accent focus:ring-inset ${state === 'O' || state === 'X' ? 'shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] bg-black/5' : 'hover:bg-murdle-surface'}`}
                             aria-label={`${rowCat.name}: ${rowItem} กับ ${colCat.name}: ${colItem}, สถานะปัจจุบัน: ${stateLabel}. กดเพื่อเปลี่ยนสถานะ`}
                           >
-                            {state === 'O' && <i aria-hidden="true" className="fa-solid fa-check text-black text-[clamp(1rem,5vw,1.5rem)] [text-shadow:1px_1px_0_#fff]"></i>}
-                            {state === 'X' && <i aria-hidden="true" className="fa-solid fa-xmark text-murdle-accent text-[clamp(1rem,5vw,1.5rem)] [text-shadow:1px_1px_0_#fff]"></i>}
-                            {state === '?' && <i aria-hidden="true" className="fa-solid fa-question text-murdle-muted text-[clamp(0.85rem,4.5vw,1.35rem)]"></i>}
-                            {state === 'A' && <i aria-hidden="true" className="fa-solid fa-xmark text-murdle-purple text-[clamp(0.8rem,4vw,1.25rem)] opacity-80"></i>}
+                            {state === 'O' && <i aria-hidden="true" className="logic-grid-mark logic-grid-state-mark fa-solid fa-check text-black [text-shadow:1px_1px_0_#fff]"></i>}
+                            {state === 'X' && <i aria-hidden="true" className="logic-grid-mark logic-grid-state-mark fa-solid fa-xmark text-murdle-accent [text-shadow:1px_1px_0_#fff]"></i>}
+                            {state === '?' && <i aria-hidden="true" className="logic-grid-mark logic-grid-note-mark fa-solid fa-question text-murdle-muted"></i>}
+                            {state === 'A' && <i aria-hidden="true" className="logic-grid-mark logic-grid-note-mark fa-solid fa-xmark text-murdle-purple opacity-80"></i>}
                           </button>
                         </td>
                       );
@@ -128,7 +165,7 @@ export function LogicGrid({ categories, getCellState, toggleCell, isCellError, s
                       <td
                         key={`empty-${rowCat.id}-${rowItem}-${cat.id}-${item}`}
                         style={cellStyle}
-                        className={`border border-transparent p-0 ${idx === 0 ? 'border-l-[4px]' : ''}`}
+                        className={`border border-transparent p-0 ${idx === 0 ? 'logic-grid-block-left' : ''}`}
                         aria-hidden="true"
                       ></td>
                     ))

@@ -36,6 +36,12 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
   const [exportStatus, setExportStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [gridExportStatus, setGridExportStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [manualCopyText, setManualCopyText] = useState('');
+  const caseNumber = parseInt(levelData.id.replace('case_', ''), 10);
+  const testimonyCount = levelData.testimonies?.length ?? 0;
+  const profileCount = Object.values(levelData.profiles ?? {}).reduce((total, items) => total + (items?.length ?? 0), 0);
+  const largestGridGroup = Math.max(...levelData.categories.map(category => category.items.length));
+  const gridShapeLabel = `${levelData.categories.length}x${largestGridGroup}`;
+  const gridChromeSize = levelData.categories.length >= 4 ? '13rem' : '12rem';
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -276,12 +282,16 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
     }
   };
 
-  const handleToggleView = () => {
-    if (activeView === 'clues') {
+  const showGridView = () => {
+    if (activeView !== 'grid') {
       setCluesScrollY(window.scrollY);
       setActiveView('grid');
       window.scrollTo({ top: 0, behavior: 'instant' });
-    } else {
+    }
+  };
+
+  const showCluesView = () => {
+    if (activeView !== 'clues') {
       setActiveView('clues');
       setTimeout(() => {
         window.scrollTo({ top: cluesScrollY, behavior: 'instant' });
@@ -289,25 +299,66 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
     }
   };
 
+  const handleToggleView = () => {
+    if (activeView === 'clues') {
+      showGridView();
+    } else {
+      showCluesView();
+    }
+  };
+
   return (
-    <div className="animate-fadeIn max-w-4xl mx-auto relative pb-24">
+    <div className="animate-fadeIn relative mx-auto max-w-5xl pb-28">
       {activeView === 'clues' && (
         <div className="animate-in fade-in duration-300">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-            <h2 className="murdle-section-title text-black">{levelData.level_name}</h2>
-          </div>
+          <section className="murdle-case-hero mb-6 px-4 py-5 sm:px-6 sm:py-6">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+              <div className="min-w-0">
+                <div className="murdle-paper-strip murdle-mono mb-3 inline-flex px-3 py-1 text-xs font-bold uppercase tracking-widest">
+                  Case {caseNumber}
+                </div>
+                <h2 className="murdle-section-title text-2xl sm:text-3xl">{levelData.level_name}</h2>
+              </div>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <div className="murdle-stat-chip flex-col">
+                  <span className="text-[10px] text-murdle-muted">Level</span>
+                  <span className="text-lg">{levelData.difficulty}</span>
+                </div>
+                <div className="murdle-stat-chip flex-col">
+                  <span className="text-[10px] text-murdle-muted">Clues</span>
+                  <span className="text-lg">{levelData.clues.length}</span>
+                </div>
+                <div className="murdle-stat-chip flex-col">
+                  <span className="text-[10px] text-murdle-muted">Profiles</span>
+                  <span className="text-lg">{profileCount}</span>
+                </div>
+                <button onClick={showGridView} className="murdle-stat-chip flex-col hover:bg-murdle-paper">
+                  <span className="text-[10px] text-murdle-muted">Open</span>
+                  <span className="text-lg">Grid</span>
+                </button>
+              </div>
+            </div>
+          </section>
 
-          <div className="murdle-card mb-8 italic text-lg">
-            {levelData.story_intro}
+          <div className="murdle-card mb-8 !bg-white text-base font-bold leading-relaxed sm:text-lg">
+            <div className="murdle-paper-strip murdle-mono mb-3 inline-flex px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
+              Story Brief
+            </div>
+            <p>{levelData.story_intro}</p>
           </div>
 
           {/* แฟ้มประวัติ Profiles (Tabbed View) */}
           {levelData.profiles && (
             <div className="murdle-card mb-8">
-              <h3 className="text-lg font-bold mb-4 border-b-[3px] border-black pb-2 flex items-center gap-2 text-black uppercase tracking-widest">📋 ข้อมูลเพิ่มเติม</h3>
+              <div className="mb-5 flex flex-col gap-3 border-b-[3px] border-black pb-4 sm:flex-row sm:items-center sm:justify-between">
+                <h3 className="text-lg font-bold flex items-center gap-2 text-black uppercase tracking-widest">📋 ข้อมูลเพิ่มเติม</h3>
+                <span className="murdle-stat-chip self-start !min-h-9 !px-2 !py-1 text-[10px] sm:self-auto">
+                  {profileCount} records
+                </span>
+              </div>
 
               {/* Tabs Row */}
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="mb-6 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
                 {(['suspects', 'weapons', 'locations', 'motives'] as const).map(tabKey => {
                   if (getProfileItems(levelData.profiles, tabKey).length === 0) return null;
                   const isActive = activeTab === tabKey;
@@ -328,7 +379,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
               </div>
 
               {/* Active Tab Content (Mini-Tiles) */}
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
+              <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
                 {getProfileItems(levelData.profiles, activeTab).map((item, index) => {
                   const catData = levelData.categories.find(c => c.id === activeTab);
                   const trueIndex = catData ? catData.items.findIndex(i => i.replace(/\s*\(.*?\)\s*/g, '').trim() === item.name.replace(/\s*\(.*?\)\s*/g, '').trim()) : index;
@@ -338,7 +389,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                     <button
                       key={item.name}
                       onClick={() => setSelectedProfileIndex(index)}
-                      className="murdle-card-compact hover:-translate-y-1 hover:shadow-[6px_6px_0_#1DACD6] transition-all flex flex-col items-center justify-center !p-3 aspect-square"
+                      className="murdle-card-compact murdle-case-tile flex aspect-square flex-col items-center justify-center !p-3 transition-all"
                     >
                       <div className="mb-2">
                         <i aria-hidden="true" className={`${getIconClass(activeTab, item.name)} text-3xl sm:text-4xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(finalIndex, String(levelData.id), activeTab) }}></i>
@@ -366,31 +417,34 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
           )}
 
           {/* Clues & Testimonies */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 mb-12">
             <div className="murdle-card">
-              <div className="flex items-center justify-between mb-5 border-b-[3px] border-black pb-2">
-                <h3 className="text-xl font-bold flex items-center gap-2 text-black">🔍 เบาะแส</h3>
+              <div className="mb-5 flex flex-col gap-3 border-b-[3px] border-black pb-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3 className="text-xl font-bold flex items-center gap-2 text-black">🔍 เบาะแส</h3>
+                  <p className="murdle-mono mt-1 text-[10px] font-bold uppercase tracking-widest text-murdle-muted">{levelData.clues.length} clues on file</p>
+                </div>
                 {levelData.difficulty === 2 && (
-                  <button onClick={() => setShowExhibitB(true)} className="murdle-button-primary ml-auto !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
+                  <button onClick={() => setShowExhibitB(true)} className="murdle-button-primary !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
                     📖 คู่มือ Exhibit B
                   </button>
                 )}
                 {levelData.difficulty === 3 && (
-                  <button onClick={() => setShowExhibitC(true)} className="murdle-button-primary ml-auto !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
+                  <button onClick={() => setShowExhibitC(true)} className="murdle-button-primary !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
                     📖 คู่มือ Exhibit C
                   </button>
                 )}
                 {levelData.difficulty === 4 && (
-                  <button onClick={() => setShowExhibitD(true)} className="murdle-button-primary ml-auto !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
+                  <button onClick={() => setShowExhibitD(true)} className="murdle-button-primary !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
                     📖 แผนผัง Exhibit D
                   </button>
                 )}
               </div>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {levelData.clues.map((clue, idx) => {
                   return (
-                    <li key={idx} className="flex gap-4 items-start text-black">
-                      <span className="font-bold text-black bg-murdle-paper border-[2px] border-black px-2 py-1 text-xl leading-none shadow-[2px_2px_0_#1DACD6]">{idx + 1}</span>
+                    <li key={idx} className="murdle-clue-item text-black">
+                      <span className="murdle-clue-number">{idx + 1}</span>
                       <span className="leading-relaxed font-bold">{clue}</span>
                     </li>
                   );
@@ -400,7 +454,10 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
 
             {levelData.testimonies && levelData.testimonies.length > 0 && (
               <div className="murdle-card border-l-[8px] border-l-neo-accent">
-                <h3 className="text-xl font-bold mb-5 border-b-[3px] border-black pb-2 text-murdle-accent flex items-center gap-2">🗣️ คำให้การ</h3>
+                <div className="mb-5 flex items-center justify-between gap-3 border-b-[3px] border-black pb-4">
+                  <h3 className="text-xl font-bold text-murdle-accent flex items-center gap-2">🗣️ คำให้การ</h3>
+                  <span className="murdle-stat-chip !min-h-9 !px-2 !py-1 text-[10px]">{testimonyCount} logs</span>
+                </div>
                 <ul className="space-y-4">
                   {levelData.testimonies.map((t, idx) => {
                     const state = testimonyStates[idx] || 0;
@@ -427,30 +484,52 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
               </div>
             )}
 
+            <div className={`murdle-card !bg-white ${levelData.testimonies && levelData.testimonies.length > 0 ? 'lg:col-span-2' : ''}`}>
+              <div className="mb-4 flex flex-col gap-3 border-b-[3px] border-black pb-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3 className="text-xl font-bold flex items-center gap-2 text-black">📝 สมุดโน้ต</h3>
+                  <p className="murdle-mono mt-1 text-[10px] font-bold uppercase tracking-widest text-murdle-muted">Saved with this case</p>
+                </div>
+                <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} className="murdle-button-secondary !min-h-11 !px-4 !py-2 text-sm">
+                  💾 บันทึก
+                </button>
+              </div>
+              <textarea
+                className="murdle-input min-h-36 resize-y text-sm leading-relaxed"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="จดสมมติฐาน จุดขัดแย้ง หรือคู่ที่ตัดออกแล้ว..."
+                aria-label="สมุดโน้ตสำหรับคดีนี้"
+              />
+            </div>
+
           </div>
 
           {/* Final Accusation */}
-          <div className="murdle-card !bg-murdle-paper flex flex-col items-center">
-            <h3 className="text-2xl font-bold mb-8 tracking-[0.2em] uppercase text-murdle-accent">⚖️ สรุปรูปคดี</h3>
-            <div className="flex flex-wrap items-center justify-center gap-6 text-xl mb-10">
-              <div className="flex flex-col items-center gap-2">
-                <label htmlFor="accuse-suspect" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">คนร้าย</label>
+          <div className="murdle-card !bg-murdle-paper">
+            <div className="mb-6 flex flex-col gap-3 border-b-[3px] border-black pb-4 sm:flex-row sm:items-center sm:justify-between">
+              <h3 className="text-2xl font-bold tracking-[0.12em] uppercase text-murdle-accent">⚖️ สรุปรูปคดี</h3>
+              <span className="murdle-stat-chip self-start !min-h-9 !px-2 !py-1 text-[10px] sm:self-auto">Final report</span>
+            </div>
+            <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="accuse-suspect" className="murdle-mono text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2 self-start">คนร้าย</label>
                 <select id="accuse-suspect" className="murdle-input !min-h-11 !py-2 text-sm" value={accusation.suspect} onChange={e => setAccusation({...accusation, suspect: e.target.value})}>
                   <option value="">- เลือกผู้ต้องสงสัย -</option>
                   {getOptions('suspects').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
 
-              <div className="flex flex-col items-center gap-2">
-                <label htmlFor="accuse-weapon" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">อาวุธ</label>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="accuse-weapon" className="murdle-mono text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2 self-start">อาวุธ</label>
                 <select id="accuse-weapon" className="murdle-input !min-h-11 !py-2 text-sm" value={accusation.weapon} onChange={e => setAccusation({...accusation, weapon: e.target.value})}>
                   <option value="">- เลือกอาวุธ -</option>
                   {getOptions('weapons').map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
 
-              <div className="flex flex-col items-center gap-2">
-                <label htmlFor="accuse-location" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">สถานที่</label>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="accuse-location" className="murdle-mono text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2 self-start">สถานที่</label>
                 <select id="accuse-location" className="murdle-input !min-h-11 !py-2 text-sm" value={accusation.location} onChange={e => setAccusation({...accusation, location: e.target.value})}>
                   <option value="">- เลือกสถานที่ -</option>
                   {getOptions('locations').map(i => <option key={i} value={i}>{i}</option>)}
@@ -458,8 +537,8 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
               </div>
 
               {hasMotives && (
-                <div className="flex flex-col items-center gap-2">
-                  <label htmlFor="accuse-motive" className="text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2">แรงจูงใจ</label>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="accuse-motive" className="murdle-mono text-[10px] uppercase font-bold text-black tracking-widest bg-white border-2 border-black px-2 self-start">แรงจูงใจ</label>
                   <select id="accuse-motive" className="murdle-input !min-h-11 !py-2 text-sm" value={accusation.motive} onChange={e => setAccusation({...accusation, motive: e.target.value})}>
                     <option value="">- เลือกแรงจูงใจ -</option>
                     {getOptions('motives').map(i => <option key={i} value={i}>{i}</option>)}
@@ -468,12 +547,12 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
               )}
             </div>
 
-            <button onClick={handleCheckAnswer} className="murdle-button-primary px-12 py-5 text-xl uppercase tracking-widest">
+            <button onClick={handleCheckAnswer} className="murdle-button-primary w-full px-12 py-5 text-xl uppercase tracking-widest">
               ตรวจคำตอบ
             </button>
 
             {feedback.type && (
-              <div className={`mt-8 w-full max-w-md px-6 py-4 font-bold text-center text-lg shadow-[4px_4px_0_#1DACD6] border-[3px] border-black ${feedback.type === 'success' ? 'murdle-status-success' : 'murdle-status-error'}`}>
+              <div className={`mt-6 w-full px-6 py-4 font-bold text-center text-lg shadow-[4px_4px_0_#1DACD6] border-[3px] border-black ${feedback.type === 'success' ? 'murdle-status-success' : 'murdle-status-error'}`}>
                 {feedback.message}
               </div>
             )}
@@ -502,10 +581,42 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
       )}
 
       {activeView === 'grid' && (
-        <div className="fixed inset-x-0 bottom-0 top-[var(--app-header-height)] [--grid-vertical-chrome:13rem] overflow-y-auto overflow-x-hidden flex flex-col items-center justify-start bg-neo-bg z-0 animate-in fade-in duration-300 gap-2 px-1 pt-2 pb-[calc(env(safe-area-inset-bottom)+5.5rem)]">
+        <div
+          className="murdle-grid-stage fixed inset-x-0 bottom-0 top-[var(--app-header-height)] overflow-y-auto overflow-x-hidden flex flex-col items-center justify-start z-0 animate-in fade-in duration-300 gap-3 px-2 pt-3 pb-[calc(env(safe-area-inset-bottom)+6.75rem)]"
+          style={{ '--grid-vertical-chrome': gridChromeSize } as React.CSSProperties}
+        >
+          <div className="murdle-grid-hud w-full max-w-3xl">
+            <div className="murdle-grid-stat">
+              <span>Case</span>
+              <strong>{caseNumber}</strong>
+            </div>
+            <div className="murdle-grid-stat">
+              <span>Grid</span>
+              <strong>{gridShapeLabel}</strong>
+            </div>
+            <button
+              onClick={handleGridExportAI}
+              className={`murdle-grid-stat ${
+                gridExportStatus === 'success'
+                  ? 'murdle-status-success'
+                  : gridExportStatus === 'error'
+                    ? 'murdle-status-error'
+                    : ''
+              }`}
+            >
+              <span>Export</span>
+              <strong>
+                {gridExportStatus === 'success'
+                  ? 'Copied'
+                  : gridExportStatus === 'error'
+                    ? 'Retry'
+                    : 'AI'}
+              </strong>
+            </button>
+          </div>
 
           {/* Smart Legend Bar */}
-          <div className="flex flex-nowrap justify-start sm:justify-center gap-2 w-full max-w-3xl overflow-x-auto px-2 sm:px-4 py-1 shrink-0">
+          <div className="flex flex-nowrap justify-start sm:justify-center gap-2 w-full max-w-3xl overflow-x-auto px-1 py-1 shrink-0">
             {levelData.categories.map(cat => {
               const catEmojis: Record<string, string> = { suspects: '👤', weapons: '🔪', locations: '📍', motives: '💬' };
               const emoji = catEmojis[cat.id] || '❓';
@@ -523,65 +634,41 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
           </div>
 
           {/* Logic Grid */}
-          <section className="bg-white border-[3px] border-black shadow-[4px_4px_0_#1DACD6] overflow-hidden flex shrink-0 flex-col w-[calc(100vw-0.5rem)] max-w-3xl">
-            <div className="overflow-hidden p-0 flex justify-center items-start bg-neo-bg flex-1 min-h-0 w-full">
+          <section className="murdle-grid-board overflow-hidden flex shrink-0 flex-col w-fit max-w-[calc(100vw-1rem)]">
+            <div className="overflow-hidden p-1 sm:p-2 flex justify-center items-start bg-white flex-1 min-h-0 w-full">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
             </div>
           </section>
-
-          {/* AI Grid Export Button */}
-          <div className="w-full max-w-3xl px-2 sm:px-4 mt-1 mb-1 shrink-0">
-            <button
-              onClick={handleGridExportAI}
-              className={`murdle-button-secondary w-full text-sm sm:text-lg uppercase tracking-widest ${
-                gridExportStatus === 'success'
-                  ? 'murdle-status-success'
-                  : gridExportStatus === 'error'
-                    ? 'murdle-status-error'
-                    : 'bg-murdle-paper text-black hover:bg-murdle-teal'
-              }`}
-            >
-              {gridExportStatus === 'success'
-                ? '✅ คัดลอกกระดานสำเร็จ!'
-                : gridExportStatus === 'error'
-                  ? '❌ คัดลอกไม่สำเร็จ'
-                  : '📊 ให้คู่หูช่วยตรวจกระดาน'}
-            </button>
-          </div>
-
-          {/* Grid Action Menu */}
-          <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] left-1/2 -translate-x-1/2 z-50 bg-murdle-surface text-black px-4 sm:px-6 py-3 border-[3px] border-black shadow-[4px_4px_0_#1DACD6] flex items-center gap-3 sm:gap-4 max-w-[95vw] overflow-x-auto whitespace-nowrap">
-            <button onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส" className="hover:text-murdle-accent transition-colors flex flex-col items-center gap-1">
-              <span className="text-xl">💡</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest">คำใบ้</span>
-            </button>
-            <div className="w-[3px] h-8 bg-black"></div>
-            <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกกระดานปัจจุบัน" className="hover:text-murdle-accent transition-colors flex flex-col items-center gap-1">
-              <span className="text-xl">💾</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest">บันทึก</span>
-            </button>
-            <div className="w-[3px] h-8 bg-black"></div>
-            <button onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด" className={`transition-colors flex flex-col items-center gap-1 ${canUndo ? 'hover:text-murdle-accent' : 'opacity-50 cursor-not-allowed'}`}>
-              <span className="text-xl">♻️</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest">ย้อน</span>
-            </button>
-            <div className="w-[3px] h-8 bg-black"></div>
-            <button onClick={resetGrid} aria-label="รีเซ็ตกระดานตรรกะ" className="hover:text-murdle-accent transition-colors flex flex-col items-center gap-1 text-murdle-accent">
-              <span className="text-xl">🗑️</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest">ล้าง</span>
-            </button>
-          </div>
         </div>
       )}
 
-      {/* Main View Toggle FAB */}
-      <button
-        onClick={handleToggleView}
-        className="murdle-button-primary fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] right-4 sm:right-6 z-50 !p-4 text-2xl flex items-center justify-center w-14 h-14"
-        aria-label={activeView === 'clues' ? "Switch to Grid" : "Switch to Clues"}
-      >
-        {activeView === 'clues' ? '📔' : '🔍'}
-      </button>
+      {/* Main Game Dock */}
+      <nav className="murdle-bottom-dock" aria-label="เครื่องมือเล่นคดี">
+        <button
+          onClick={handleToggleView}
+          className={`murdle-dock-button ${activeView === 'grid' ? 'murdle-dock-button-active' : ''}`}
+          aria-label={activeView === 'clues' ? "เปิดกระดานตรรกะ" : "กลับไปหน้าเบาะแส"}
+        >
+          <span className="text-xl">{activeView === 'clues' ? '▦' : '⌕'}</span>
+          <span>{activeView === 'clues' ? 'Grid' : 'Clues'}</span>
+        </button>
+        <button onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส" className="murdle-dock-button">
+          <span className="text-xl">💡</span>
+          <span>Hint</span>
+        </button>
+        <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกกระดานปัจจุบัน" className="murdle-dock-button">
+          <span className="text-xl">💾</span>
+          <span>Save</span>
+        </button>
+        <button onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด" className="murdle-dock-button">
+          <span className="text-xl">↶</span>
+          <span>Undo</span>
+        </button>
+        <button onClick={resetGrid} aria-label="รีเซ็ตกระดานตรรกะ" className="murdle-dock-button text-murdle-accent">
+          <span className="text-xl">×</span>
+          <span>Clear</span>
+        </button>
+      </nav>
 
       {/* Exhibit B Modal */}
       {showExhibitB && <ExhibitB onClose={() => setShowExhibitB(false)} />}
