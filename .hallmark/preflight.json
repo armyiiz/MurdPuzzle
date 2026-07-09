@@ -1,0 +1,22 @@
+{
+  "date": "2026-07-09",
+  "framework": "Next.js 16.2.4 App Router",
+  "react": "19.2.4",
+  "css": "Tailwind CSS v4 via src/app/globals.css",
+  "font_stack": "Noto Sans Thai / Leelawadee UI body, Courier mono labels",
+  "palette": "Existing Murdle warm paper, crimson accent, cyan shadow, expanded through tokens.css",
+  "motion": "No external motion library; CSS transform/opacity only",
+  "spacing": "4-point token scale",
+  "preserve": [
+    "single client page flow",
+    "game logic and data files",
+    "Font Awesome local styles",
+    "Murdle detective identity"
+  ],
+  "introduce": [
+    "case hub visual system",
+    "clearer CTA hierarchy",
+    "lighter card rhythm",
+    "portable tokens.css"
+  ]
+}

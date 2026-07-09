@@ -1,0 +1,10 @@
+[
+  {
+    "date": "2026-07-09",
+    "scope": "app",
+    "macrostructure": "Workbench Hub",
+    "theme": "custom case hub",
+    "enrichment": "Tier-A CSS evidence board",
+    "brief": "Refresh MurdPuzzle UX/UI using party game hub reference without changing game logic"
+  }
+]

@@ -1,0 +1,57 @@
+/* Hallmark - tokens: MurdPuzzle case hub - genre: playful - anchor hue: crimson */
+:root {
+  --color-paper: oklch(0.985 0.018 88);
+  --color-paper-2: oklch(0.955 0.035 82);
+  --color-surface: oklch(0.994 0.008 98);
+  --color-surface-2: oklch(0.932 0.032 81);
+  --color-ink: oklch(0.19 0.035 38);
+  --color-ink-2: oklch(0.43 0.037 44);
+  --color-muted: oklch(0.58 0.028 58);
+  --color-rule: oklch(0.84 0.034 80);
+  --color-accent: oklch(0.47 0.17 18);
+  --color-accent-2: oklch(0.61 0.145 223);
+  --color-accent-3: oklch(0.68 0.145 321);
+  --color-accent-ink: oklch(0.99 0.01 96);
+  --color-success: oklch(0.88 0.075 142);
+  --color-error: oklch(0.82 0.092 26);
+  --color-grid-hot: oklch(0.82 0.16 333);
+  --color-grid-lane: oklch(0.965 0.037 334);
+  --color-focus: oklch(0.64 0.16 223);
+
+  --font-display: "Leelawadee UI", "Noto Sans Thai", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Noto Sans Thai", "Leelawadee UI", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 7rem;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.6rem;
+  --text-2xl: 2rem;
+  --text-display: clamp(2.8rem, 9vw, 6.4rem);
+  --text-display-s: clamp(2.3rem, 6vw, 4.5rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 140ms;
+  --dur-short: 220ms;
+  --dur-medium: 360ms;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-card: 8px;
+  --radius-pill: 999px;
+  --rule-thin: 1px;
+  --rule-strong: 2px;
+}

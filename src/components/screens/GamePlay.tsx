@@ -41,7 +41,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
   const profileCount = Object.values(levelData.profiles ?? {}).reduce((total, items) => total + (items?.length ?? 0), 0);
   const largestGridGroup = Math.max(...levelData.categories.map(category => category.items.length));
   const gridShapeLabel = `${levelData.categories.length}x${largestGridGroup}`;
-  const gridChromeSize = levelData.categories.length >= 4 ? '13rem' : '12rem';
+  const gridChromeSize = levelData.categories.length >= 4 ? '14.75rem' : '12.75rem';
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -582,16 +582,16 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
 
       {activeView === 'grid' && (
         <div
-          className="murdle-grid-stage fixed inset-x-0 bottom-0 top-[var(--app-header-height)] overflow-y-auto overflow-x-hidden flex flex-col items-center justify-start z-0 animate-in fade-in duration-300 gap-3 px-2 pt-3 pb-[calc(env(safe-area-inset-bottom)+6.75rem)]"
+          className="murdle-grid-stage fixed inset-x-0 bottom-0 top-[var(--app-header-height)] overflow-hidden flex flex-col items-center justify-start z-0 animate-in fade-in duration-300 gap-1.5 px-2 pt-2 pb-[calc(env(safe-area-inset-bottom)+6.25rem)]"
           style={{ '--grid-vertical-chrome': gridChromeSize } as React.CSSProperties}
         >
-          <div className="murdle-grid-hud w-full max-w-3xl">
+          <div className="murdle-grid-hud w-full max-w-4xl">
             <div className="murdle-grid-stat">
-              <span>Case</span>
+              <span><i className="fa-solid fa-folder-open" aria-hidden="true"></i> Case</span>
               <strong>{caseNumber}</strong>
             </div>
             <div className="murdle-grid-stat">
-              <span>Grid</span>
+              <span><i className="fa-solid fa-table-cells" aria-hidden="true"></i> Grid</span>
               <strong>{gridShapeLabel}</strong>
             </div>
             <button
@@ -604,7 +604,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                     : ''
               }`}
             >
-              <span>Export</span>
+              <span><i className="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Export</span>
               <strong>
                 {gridExportStatus === 'success'
                   ? 'Copied'
@@ -616,17 +616,17 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
           </div>
 
           {/* Smart Legend Bar */}
-          <div className="flex flex-nowrap justify-start sm:justify-center gap-2 w-full max-w-3xl overflow-x-auto px-1 py-1 shrink-0">
+          <div className="flex flex-nowrap justify-start sm:justify-center gap-2 w-full max-w-4xl overflow-x-auto px-1 py-1 shrink-0 custom-scrollbar">
             {levelData.categories.map(cat => {
-              const catEmojis: Record<string, string> = { suspects: '👤', weapons: '🔪', locations: '📍', motives: '💬' };
-              const emoji = catEmojis[cat.id] || '❓';
+              const catIcons: Record<string, string> = { suspects: 'fa-user-secret', weapons: 'fa-gavel', locations: 'fa-location-dot', motives: 'fa-comment-dots' };
+              const icon = catIcons[cat.id] || 'fa-circle-question';
               return (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedLegendCategory(cat)}
-                  className="murdle-button-secondary !px-2 sm:!px-3 !py-1.5 sm:!py-2 !min-h-11 flex items-center gap-1 sm:gap-2 whitespace-nowrap"
+                  className="murdle-grid-legend-button murdle-button-secondary !px-2 sm:!px-3 !py-1.5 sm:!py-2 !min-h-11 flex items-center gap-1 sm:gap-2 whitespace-nowrap"
                 >
-                  <span className="text-lg sm:text-xl [text-shadow:2px_2px_0_#000] max-md:[text-shadow:none]">{emoji}</span>
+                  <i className={`fa-solid ${icon} text-base sm:text-lg`} aria-hidden="true"></i>
                   <span className="font-bold uppercase tracking-wide text-[10px] sm:text-sm">{cat.name}</span>
                 </button>
               );
@@ -634,8 +634,8 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
           </div>
 
           {/* Logic Grid */}
-          <section className="murdle-grid-board overflow-hidden flex shrink-0 flex-col w-fit max-w-[calc(100vw-1rem)]">
-            <div className="overflow-hidden p-1 sm:p-2 flex justify-center items-start bg-white flex-1 min-h-0 w-full">
+          <section className="murdle-grid-board flex min-h-0 w-full max-w-5xl flex-1 shrink overflow-hidden">
+            <div className="flex min-h-0 w-full flex-1 items-start justify-center overflow-hidden bg-transparent p-1 sm:p-2">
               <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
             </div>
           </section>
@@ -649,23 +649,23 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
           className={`murdle-dock-button ${activeView === 'grid' ? 'murdle-dock-button-active' : ''}`}
           aria-label={activeView === 'clues' ? "เปิดกระดานตรรกะ" : "กลับไปหน้าเบาะแส"}
         >
-          <span className="text-xl">{activeView === 'clues' ? '▦' : '⌕'}</span>
+          <i className={`fa-solid ${activeView === 'clues' ? 'fa-table-cells-large' : 'fa-magnifying-glass'} text-lg`} aria-hidden="true"></i>
           <span>{activeView === 'clues' ? 'Grid' : 'Clues'}</span>
         </button>
         <button onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส" className="murdle-dock-button">
-          <span className="text-xl">💡</span>
+          <i className="fa-solid fa-lightbulb text-lg" aria-hidden="true"></i>
           <span>Hint</span>
         </button>
         <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกกระดานปัจจุบัน" className="murdle-dock-button">
-          <span className="text-xl">💾</span>
+          <i className="fa-solid fa-floppy-disk text-lg" aria-hidden="true"></i>
           <span>Save</span>
         </button>
         <button onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด" className="murdle-dock-button">
-          <span className="text-xl">↶</span>
+          <i className="fa-solid fa-rotate-left text-lg" aria-hidden="true"></i>
           <span>Undo</span>
         </button>
         <button onClick={resetGrid} aria-label="รีเซ็ตกระดานตรรกะ" className="murdle-dock-button text-murdle-accent">
-          <span className="text-xl">×</span>
+          <i className="fa-solid fa-eraser text-lg" aria-hidden="true"></i>
           <span>Clear</span>
         </button>
       </nav>

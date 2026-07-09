@@ -3,17 +3,45 @@ import { ScreenState } from '../../types/level';
 
 export function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setScreen: (s: ScreenState) => void, setSelectedLevel: (l: number) => void, solvedCases: string[] }) {
   const levels = [
-    { id: 1, name: "Level 1 (Cases 1-25) มือใหม่หัดสืบ", desc: "หา \"ใคร\", \"อย่างไร\" และ \"ที่ไหน\" เบาะแสทุกอย่างเป็นความจริง 100% ฝึกใช้ Deduction Grid ตัดตัวเลือกอย่างเป็นระบบ", reqCase: null },
-    { id: 2, name: "Level 2 (Cases 26-50) นักสืบฝึกหัด", desc: "มี \"ผู้ต้องสงสัย 1 คนที่โกหกเสมอ\" วิเคราะห์คำให้การและทดสอบสมมติฐาน", reqCase: "case_25" },
-    { id: 3, name: "Level 3 (Cases 51-75) ยอดนักสืบ", desc: "เพิ่มการหา \"แรงจูงใจ\" ข้อมูลซับซ้อนขึ้นและต้องคิดเชื่อมโยงหลายชั้น", reqCase: "case_50" },
-    { id: 4, name: "Level 4 (Cases 76-100) ปรมาจารย์", desc: "รวมทุกกลไก (คนโกหก + แรงจูงใจ) พร้อม \"Exhibit D\" ข้อมูลย้อนแย้งสูงสุดระดับท้าทายขีดจำกัด", reqCase: "case_75" },
+    {
+      id: 1,
+      name: "Level 1",
+      title: "มือใหม่หัดสืบ",
+      desc: "เบาะแสทุกอย่างเป็นจริง เหมาะสำหรับตั้งหลักกับตารางตรรกะ",
+      reqCase: null,
+      icon: "fa-magnifying-glass",
+    },
+    {
+      id: 2,
+      name: "Level 2",
+      title: "นักสืบฝึกหัด",
+      desc: "มีผู้ต้องสงสัยหนึ่งคนที่โกหกเสมอ ต้องอ่านคำให้การให้คมขึ้น",
+      reqCase: "case_25",
+      icon: "fa-user-secret",
+    },
+    {
+      id: 3,
+      name: "Level 3",
+      title: "ยอดนักสืบ",
+      desc: "เพิ่มแรงจูงใจและข้อมูลหลายชั้น ต้องเชื่อมหลักฐานเป็นระบบ",
+      reqCase: "case_50",
+      icon: "fa-fingerprint",
+    },
+    {
+      id: 4,
+      name: "Level 4",
+      title: "ปรมาจารย์",
+      desc: "รวมทุกกลไกและ Exhibit D สำหรับคดีที่ท้าทายที่สุด",
+      reqCase: "case_75",
+      icon: "fa-scale-balanced",
+    },
   ];
 
   return (
-    <div className="animate-fadeIn mx-auto max-w-5xl">
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div className="animate-fadeIn mx-auto max-w-6xl">
+      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <div className="murdle-paper-strip murdle-mono mb-3 inline-flex px-3 py-1 text-xs font-bold uppercase tracking-widest">
+          <div className="murdle-paper-strip murdle-mono mb-3 inline-flex px-3 py-1 text-xs font-bold uppercase">
             Difficulty Board
           </div>
           <h2 className="murdle-section-title text-3xl">เลือกระดับความยาก</h2>
@@ -23,7 +51,7 @@ export function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setS
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
         {levels.map(l => {
           const isUnlocked = !l.reqCase || solvedCases.includes(l.reqCase);
           const levelStart = (l.id - 1) * 25 + 1;
@@ -32,29 +60,46 @@ export function LevelSelect({ setScreen, setSelectedLevel, solvedCases }: { setS
             const caseNum = parseInt(id.replace('case_', ''), 10);
             return caseNum >= levelStart && caseNum <= levelEnd;
           }).length;
+          const levelProgress = Math.round((solvedInLevel / 25) * 100);
 
           return (
-            <button key={l.id}
+            <button
+              key={l.id}
               onClick={() => { if (isUnlocked) { setSelectedLevel(l.id); setScreen('CASE_SELECT'); } }}
               disabled={!isUnlocked}
-              className={`murdle-card murdle-case-tile relative min-h-52 text-left transition ${isUnlocked ? 'cursor-pointer' : 'opacity-60 !bg-murdle-surface text-murdle-muted cursor-not-allowed'}`}>
-
+              className={`case-level-card min-h-56 p-5 text-left ${isUnlocked ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'}`}
+            >
               {!isUnlocked && (
-                <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <span className="text-6xl drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">🔒</span>
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-murdle-surface/60 backdrop-blur-[1px]">
+                  <span className="murdle-stat-chip !min-h-10 gap-2 px-3 text-sm font-bold">
+                    <i className="fa-solid fa-lock" aria-hidden="true"></i>
+                    ล็อกอยู่
+                  </span>
                 </div>
               )}
 
-              <div className={`flex h-full flex-col gap-4 ${!isUnlocked ? "opacity-30" : ""}`}>
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-xl font-bold leading-tight text-black">{l.name}</h3>
-                  <span className="murdle-stat-chip shrink-0 !min-h-9 !px-2 !py-1 text-[10px]">
+              <div className={!isUnlocked ? "opacity-40" : ""}>
+                <div className="mb-5 flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className="murdle-wordmark-mark !h-12 !w-12 text-xl">
+                      <i className={`fa-solid ${l.icon}`} aria-hidden="true"></i>
+                    </span>
+                    <div>
+                      <span className="murdle-paper-strip murdle-mono inline-flex px-2.5 py-0.5 text-[10px] font-bold uppercase">
+                        {l.name}
+                      </span>
+                      <h3 className="mt-2 text-2xl font-black leading-tight text-black">{l.title}</h3>
+                    </div>
+                  </div>
+                  <span className="murdle-stat-chip shrink-0 !min-h-10 !px-3 text-xs font-black">
                     {solvedInLevel}/25
                   </span>
                 </div>
-                <p className="text-sm font-bold leading-relaxed text-black">{l.desc}</p>
-                <div className="mt-auto h-3 border-2 border-black bg-white">
-                  <div className="h-full bg-murdle-accent" style={{ width: `${Math.round((solvedInLevel / 25) * 100)}%` }} />
+
+                <p className="mb-5 text-sm font-semibold leading-relaxed text-murdle-muted">{l.desc}</p>
+
+                <div className="case-progress-track h-2">
+                  <div className="case-progress-bar" style={{ width: `${levelProgress}%` }} />
                 </div>
               </div>
             </button>
