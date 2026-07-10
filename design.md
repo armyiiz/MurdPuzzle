@@ -7,7 +7,7 @@ playful
 
 ## Macrostructure family
 - Marketing pages: Marquee Case Desk with a progress/status rail.
-- App pages: Workbench Hub with a sticky command bar and dense evidence panels.
+- App pages: Mobile-first Case Reader with a dedicated full-screen Detective Notebook; desktop may expand the same model into a split workspace.
 - Content pages: Long Document with compact teaching cards.
 
 ## Theme
@@ -27,13 +27,16 @@ playful
 
 ## Motion
 - Hover: transform and shadow only.
-- Reveal: opacity only for screen transitions.
+- Reveal: opacity only for screen transitions; opening the notebook must feel immediate and must preserve the reader scroll position.
 - Reduced motion: duration collapses to near-zero.
 
 ## Microinteractions stance
 - Primary actions should read as game-start controls.
 - Success is clear but quiet.
-- Sticky tools should stay compact and predictable.
+- The case reader has one persistent primary control: เปิดสมุดนักสืบ.
+- Notebook controls keep stable names and positions; never swap Grid/Clues labels based on current mode.
+- Grid cells are at least 44px on touch screens, and four-category cases compare one category pair at a time on mobile.
+- Save case progress quietly; Undo and Clear live inside the notebook rather than global navigation.
 
 ## CTA voice
 - Primary CTA: crimson filled button, 8px radius, short action text.

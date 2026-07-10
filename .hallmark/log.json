@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-07-10",
+    "scope": "app",
+    "macrostructure": "Mobile Case Reader + Detective Notebook",
+    "theme": "studied-DNA with MurdPuzzle tokens",
+    "enrichment": "none",
+    "brief": "Rebuild the full case-playing flow for mobile using the Murdle reader-and-notebook interaction model and optimize grid response"
+  },
+  {
     "date": "2026-07-09",
     "scope": "app",
     "macrostructure": "Workbench Hub",

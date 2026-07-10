@@ -56,11 +56,14 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
   useEffect(() => {
     if (activeView === 'grid') {
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('murdle-notebook-open');
     } else {
       document.body.style.overflow = '';
+      document.body.classList.remove('murdle-notebook-open');
     }
     return () => {
       document.body.style.overflow = '';
+      document.body.classList.remove('murdle-notebook-open');
     };
   }, [activeView]);
 
@@ -75,14 +78,14 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
       (!hasMotives || accusation.motive === correct.motive);
 
     if (isCorrect) {
-      setFeedback({ message: "🎉 ยินดีด้วย! คุณไขคดีสำเร็จแล้ว!", type: 'success' });
+      setFeedback({ message: "ยินดีด้วย! คุณไขคดีสำเร็จแล้ว", type: 'success' });
       if (!solvedCases.includes(levelData.id)) {
         const newSolved = [...solvedCases, levelData.id];
         setSolvedCases(newSolved);
         localStorage.setItem('solvedCases', JSON.stringify(newSolved));
       }
     } else {
-      setFeedback({ message: "❌ สรุปรูปคดีของคุณยังไม่ถูกต้อง ลองทบทวนเบาะแสอีกครั้งนะ", type: 'error' });
+      setFeedback({ message: "สรุปรูปคดีของคุณยังไม่ถูกต้อง ลองทบทวนเบาะแสอีกครั้งนะ", type: 'error' });
       setTimeout(() => setFeedback({ message: '', type: null }), 3000);
     }
   };
@@ -299,19 +302,11 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
     }
   };
 
-  const handleToggleView = () => {
-    if (activeView === 'clues') {
-      showGridView();
-    } else {
-      showCluesView();
-    }
-  };
-
   return (
-    <div className="animate-fadeIn relative mx-auto max-w-5xl pb-28">
+    <div className="murdle-case-reader relative mx-auto max-w-5xl pb-32">
       {activeView === 'clues' && (
-        <div className="animate-in fade-in duration-300">
-          <section className="murdle-case-hero mb-6 px-4 py-5 sm:px-6 sm:py-6">
+        <article className="murdle-case-document">
+          <section className="murdle-case-hero mb-5 px-4 py-5 sm:px-6 sm:py-6">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
               <div className="min-w-0">
                 <div className="murdle-paper-strip murdle-mono mb-3 inline-flex px-3 py-1 text-xs font-bold uppercase tracking-widest">
@@ -319,7 +314,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                 </div>
                 <h2 className="murdle-section-title text-2xl sm:text-3xl">{levelData.level_name}</h2>
               </div>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              <div className="murdle-case-meta">
                 <div className="murdle-stat-chip flex-col">
                   <span className="text-[10px] text-murdle-muted">Level</span>
                   <span className="text-lg">{levelData.difficulty}</span>
@@ -332,26 +327,22 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                   <span className="text-[10px] text-murdle-muted">Profiles</span>
                   <span className="text-lg">{profileCount}</span>
                 </div>
-                <button onClick={showGridView} className="murdle-stat-chip flex-col hover:bg-murdle-paper">
-                  <span className="text-[10px] text-murdle-muted">Open</span>
-                  <span className="text-lg">Grid</span>
-                </button>
               </div>
             </div>
           </section>
 
-          <div className="murdle-card mb-8 !bg-white text-base font-bold leading-relaxed sm:text-lg">
+          <section className="murdle-story-brief case-reader-section mb-5 text-base font-bold leading-relaxed sm:text-lg">
             <div className="murdle-paper-strip murdle-mono mb-3 inline-flex px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
               Story Brief
             </div>
             <p>{levelData.story_intro}</p>
-          </div>
+          </section>
 
           {/* แฟ้มประวัติ Profiles (Tabbed View) */}
           {levelData.profiles && (
-            <div className="murdle-card mb-8">
+            <section className="case-reader-section mb-5">
               <div className="mb-5 flex flex-col gap-3 border-b-[3px] border-black pb-4 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-lg font-bold flex items-center gap-2 text-black uppercase tracking-widest">📋 ข้อมูลเพิ่มเติม</h3>
+                <h3 className="text-lg font-bold flex items-center gap-2 text-black"><i className="fa-solid fa-address-card" aria-hidden="true"></i> แฟ้มบุคคลและวัตถุ</h3>
                 <span className="murdle-stat-chip self-start !min-h-9 !px-2 !py-1 text-[10px] sm:self-auto">
                   {profileCount} records
                 </span>
@@ -389,7 +380,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                     <button
                       key={item.name}
                       onClick={() => setSelectedProfileIndex(index)}
-                      className="murdle-card-compact murdle-case-tile flex aspect-square flex-col items-center justify-center !p-3 transition-all"
+                      className="murdle-card-compact murdle-case-tile flex aspect-square flex-col items-center justify-center !p-3"
                     >
                       <div className="mb-2">
                         <i aria-hidden="true" className={`${getIconClass(activeTab, item.name)} text-3xl sm:text-4xl leading-none inline-block [text-shadow:2px_2px_0_#000]`} style={{ color: getIconColor(finalIndex, String(levelData.id), activeTab) }}></i>
@@ -401,7 +392,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                   );
                 })}
               </div>
-            </div>
+            </section>
           )}
 
           {/* Pop-up Modal Profile */}
@@ -417,26 +408,26 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
           )}
 
           {/* Clues & Testimonies */}
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 mb-12">
-            <div className="murdle-card">
+          <div className="case-reader-flow mb-8">
+            <section className="case-reader-section">
               <div className="mb-5 flex flex-col gap-3 border-b-[3px] border-black pb-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <h3 className="text-xl font-bold flex items-center gap-2 text-black">🔍 เบาะแส</h3>
+                  <h3 className="text-xl font-bold flex items-center gap-2 text-black"><i className="fa-solid fa-magnifying-glass" aria-hidden="true"></i> เบาะแส</h3>
                   <p className="murdle-mono mt-1 text-[10px] font-bold uppercase tracking-widest text-murdle-muted">{levelData.clues.length} clues on file</p>
                 </div>
                 {levelData.difficulty === 2 && (
                   <button onClick={() => setShowExhibitB(true)} className="murdle-button-primary !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
-                    📖 คู่มือ Exhibit B
+                    <i className="fa-solid fa-book-open" aria-hidden="true"></i> คู่มือ Exhibit B
                   </button>
                 )}
                 {levelData.difficulty === 3 && (
                   <button onClick={() => setShowExhibitC(true)} className="murdle-button-primary !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
-                    📖 คู่มือ Exhibit C
+                    <i className="fa-solid fa-book-open" aria-hidden="true"></i> คู่มือ Exhibit C
                   </button>
                 )}
                 {levelData.difficulty === 4 && (
                   <button onClick={() => setShowExhibitD(true)} className="murdle-button-primary !px-3 !py-1 !min-h-11 text-sm flex items-center gap-1">
-                    📖 แผนผัง Exhibit D
+                    <i className="fa-solid fa-map" aria-hidden="true"></i> แผนผัง Exhibit D
                   </button>
                 )}
               </div>
@@ -450,12 +441,12 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                   );
                 })}
               </ul>
-            </div>
+            </section>
 
             {levelData.testimonies && levelData.testimonies.length > 0 && (
-              <div className="murdle-card border-l-[8px] border-l-neo-accent">
+              <section className="case-reader-section">
                 <div className="mb-5 flex items-center justify-between gap-3 border-b-[3px] border-black pb-4">
-                  <h3 className="text-xl font-bold text-murdle-accent flex items-center gap-2">🗣️ คำให้การ</h3>
+                  <h3 className="text-xl font-bold text-murdle-accent flex items-center gap-2"><i className="fa-solid fa-comments" aria-hidden="true"></i> คำให้การ</h3>
                   <span className="murdle-stat-chip !min-h-9 !px-2 !py-1 text-[10px]">{testimonyCount} logs</span>
                 </div>
                 <ul className="space-y-4">
@@ -467,7 +458,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                           <span className="font-bold text-black">{t.suspect}</span>
                           <button
                             onClick={() => setTestimonyStates({...testimonyStates, [idx]: (state + 1) % 3})}
-                            className={`text-[10px] px-3 py-1 font-bold border-[2px] border-black transition-all uppercase tracking-widest ${
+                            className={`text-[10px] px-3 py-1 font-bold border-[2px] border-black uppercase tracking-widest ${
                               state === 1 ? 'murdle-status-success shadow-[2px_2px_0_#1DACD6]' :
                               state === 2 ? 'bg-murdle-accent text-white shadow-[2px_2px_0_#1DACD6]' :
                               'bg-white text-black'
@@ -481,34 +472,15 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                     );
                   })}
                 </ul>
-              </div>
+              </section>
             )}
-
-            <div className={`murdle-card !bg-white ${levelData.testimonies && levelData.testimonies.length > 0 ? 'lg:col-span-2' : ''}`}>
-              <div className="mb-4 flex flex-col gap-3 border-b-[3px] border-black pb-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h3 className="text-xl font-bold flex items-center gap-2 text-black">📝 สมุดโน้ต</h3>
-                  <p className="murdle-mono mt-1 text-[10px] font-bold uppercase tracking-widest text-murdle-muted">Saved with this case</p>
-                </div>
-                <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} className="murdle-button-secondary !min-h-11 !px-4 !py-2 text-sm">
-                  💾 บันทึก
-                </button>
-              </div>
-              <textarea
-                className="murdle-input min-h-36 resize-y text-sm leading-relaxed"
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                placeholder="จดสมมติฐาน จุดขัดแย้ง หรือคู่ที่ตัดออกแล้ว..."
-                aria-label="สมุดโน้ตสำหรับคดีนี้"
-              />
-            </div>
 
           </div>
 
           {/* Final Accusation */}
-          <div className="murdle-card !bg-murdle-paper">
+          <section className="case-reader-section murdle-accusation-sheet">
             <div className="mb-6 flex flex-col gap-3 border-b-[3px] border-black pb-4 sm:flex-row sm:items-center sm:justify-between">
-              <h3 className="text-2xl font-bold tracking-[0.12em] uppercase text-murdle-accent">⚖️ สรุปรูปคดี</h3>
+              <h3 className="text-2xl font-bold text-murdle-accent"><i className="fa-solid fa-scale-balanced" aria-hidden="true"></i> สรุปรูปคดี</h3>
               <span className="murdle-stat-chip self-start !min-h-9 !px-2 !py-1 text-[10px] sm:self-auto">Final report</span>
             </div>
             <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -570,105 +542,80 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
                 }`}
               >
                 {exportStatus === 'success'
-                  ? '✅ คัดลอกสำเร็จ!'
+                  ? 'คัดลอกสำเร็จ'
                   : exportStatus === 'error'
-                    ? '❌ คัดลอกไม่สำเร็จ'
-                    : '🕵🏻‍♀️ ปรึกษาผู้ช่วยอลิซ'}
+                    ? 'คัดลอกไม่สำเร็จ'
+                    : 'ปรึกษาผู้ช่วยอลิซ'}
               </button>
             </div>
-          </div>
-        </div>
+          </section>
+
+          <button type="button" onClick={showGridView} className="detective-notebook-launch">
+            <span className="detective-notebook-launch-icon"><i className="fa-solid fa-book-open" aria-hidden="true"></i></span>
+            <span>
+              <strong>เปิดสมุดนักสืบ</strong>
+              <small>ตารางตรรกะ · โน้ต · เครื่องมือ</small>
+            </span>
+            <i className="fa-solid fa-chevron-up" aria-hidden="true"></i>
+          </button>
+        </article>
       )}
 
       {activeView === 'grid' && (
-        <div
-          className="murdle-grid-stage fixed inset-x-0 bottom-0 top-[var(--app-header-height)] overflow-hidden flex flex-col items-center justify-start z-0 animate-in fade-in duration-300 gap-1.5 px-2 pt-2 pb-[calc(env(safe-area-inset-bottom)+6.25rem)]"
-          style={{ '--grid-vertical-chrome': gridChromeSize } as React.CSSProperties}
-        >
-          <div className="murdle-grid-hud w-full max-w-4xl">
-            <div className="murdle-grid-stat">
-              <span><i className="fa-solid fa-folder-open" aria-hidden="true"></i> Case</span>
-              <strong>{caseNumber}</strong>
+        <aside className="detective-notebook" role="dialog" aria-modal="true" aria-labelledby="detective-notebook-title">
+          <header className="detective-notebook-header">
+            <button type="button" onClick={showCluesView} className="detective-notebook-back" aria-label="กลับไปอ่านคดี">
+              <i className="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              <span>กลับไปอ่านคดี</span>
+            </button>
+            <div className="detective-notebook-title-wrap">
+              <span>คดี {caseNumber} · {gridShapeLabel}</span>
+              <h2 id="detective-notebook-title">สมุดนักสืบ</h2>
             </div>
-            <div className="murdle-grid-stat">
-              <span><i className="fa-solid fa-table-cells" aria-hidden="true"></i> Grid</span>
-              <strong>{gridShapeLabel}</strong>
+            <div className="detective-notebook-actions">
+              <button type="button" onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส"><i className="fa-solid fa-lightbulb" aria-hidden="true"></i><span>เครื่องมือ</span></button>
+              <button type="button" onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด"><i className="fa-solid fa-rotate-left" aria-hidden="true"></i><span>ย้อนกลับ</span></button>
+              <button type="button" onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกสมุดนักสืบ"><i className="fa-solid fa-floppy-disk" aria-hidden="true"></i><span>บันทึก</span></button>
+              <button type="button" onClick={resetGrid} aria-label="ล้างตารางตรรกะ"><i className="fa-solid fa-eraser" aria-hidden="true"></i><span>ล้าง</span></button>
             </div>
-            <button
-              onClick={handleGridExportAI}
-              className={`murdle-grid-stat ${
-                gridExportStatus === 'success'
-                  ? 'murdle-status-success'
-                  : gridExportStatus === 'error'
-                    ? 'murdle-status-error'
-                    : ''
-              }`}
-            >
-              <span><i className="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Export</span>
-              <strong>
-                {gridExportStatus === 'success'
-                  ? 'Copied'
-                  : gridExportStatus === 'error'
-                    ? 'Retry'
-                    : 'AI'}
-              </strong>
+          </header>
+
+          <div className="detective-notebook-body" style={{ '--grid-vertical-chrome': gridChromeSize } as React.CSSProperties}>
+            <nav className="detective-notebook-categories" aria-label="เปิดรายละเอียดหมวดหมู่">
+              {levelData.categories.map(cat => {
+                const catIcons: Record<string, string> = { suspects: 'fa-user-secret', weapons: 'fa-gavel', locations: 'fa-location-dot', motives: 'fa-comment-dots' };
+                const icon = catIcons[cat.id] || 'fa-circle-question';
+                return (
+                  <button key={cat.id} type="button" onClick={() => setSelectedLegendCategory(cat)}>
+                    <i className={`fa-solid ${icon}`} aria-hidden="true"></i>
+                    <span>{cat.name}</span>
+                  </button>
+                );
+              })}
+            </nav>
+
+            <section className="detective-notebook-grid" aria-label="ตารางตรรกะ">
+              <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
+            </section>
+
+            <details className="detective-notebook-notes">
+              <summary><i className="fa-solid fa-note-sticky" aria-hidden="true"></i> โน้ตคดี <span>แตะเพื่อเปิด</span></summary>
+              <textarea
+                value={notes}
+                onChange={(event) => setNotes(event.target.value)}
+                onBlur={() => saveGridState(testimonyStates, notes, levelData.id)}
+                placeholder="จดสมมติฐาน จุดขัดแย้ง หรือคู่ที่ตัดออกแล้ว..."
+                aria-label="สมุดโน้ตสำหรับคดีนี้"
+              />
+            </details>
+
+            <button type="button" onClick={handleGridExportAI} className={`detective-notebook-export ${gridExportStatus === 'success' ? 'murdle-status-success' : gridExportStatus === 'error' ? 'murdle-status-error' : ''}`}>
+              <i className="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+              {gridExportStatus === 'success' ? 'คัดลอกแล้ว' : gridExportStatus === 'error' ? 'ลองอีกครั้ง' : 'คัดลอกข้อมูลให้ผู้ช่วยอลิซ'}
             </button>
           </div>
-
-          {/* Smart Legend Bar */}
-          <div className="flex flex-nowrap justify-start sm:justify-center gap-2 w-full max-w-4xl overflow-x-auto px-1 py-1 shrink-0 custom-scrollbar">
-            {levelData.categories.map(cat => {
-              const catIcons: Record<string, string> = { suspects: 'fa-user-secret', weapons: 'fa-gavel', locations: 'fa-location-dot', motives: 'fa-comment-dots' };
-              const icon = catIcons[cat.id] || 'fa-circle-question';
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedLegendCategory(cat)}
-                  className="murdle-grid-legend-button murdle-button-secondary !px-2 sm:!px-3 !py-1.5 sm:!py-2 !min-h-11 flex items-center gap-1 sm:gap-2 whitespace-nowrap"
-                >
-                  <i className={`fa-solid ${icon} text-base sm:text-lg`} aria-hidden="true"></i>
-                  <span className="font-bold uppercase tracking-wide text-[10px] sm:text-sm">{cat.name}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Logic Grid */}
-          <section className="murdle-grid-board flex min-h-0 w-full max-w-5xl flex-1 shrink overflow-hidden">
-            <div className="flex min-h-0 w-full flex-1 items-start justify-center overflow-hidden bg-transparent p-1 sm:p-2">
-              <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
-            </div>
-          </section>
-        </div>
+        </aside>
       )}
-
-      {/* Main Game Dock */}
-      <nav className="murdle-bottom-dock" aria-label="เครื่องมือเล่นคดี">
-        <button
-          onClick={handleToggleView}
-          className={`murdle-dock-button ${activeView === 'grid' ? 'murdle-dock-button-active' : ''}`}
-          aria-label={activeView === 'clues' ? "เปิดกระดานตรรกะ" : "กลับไปหน้าเบาะแส"}
-        >
-          <i className={`fa-solid ${activeView === 'clues' ? 'fa-table-cells-large' : 'fa-magnifying-glass'} text-lg`} aria-hidden="true"></i>
-          <span>{activeView === 'clues' ? 'Grid' : 'Clues'}</span>
-        </button>
-        <button onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส" className="murdle-dock-button">
-          <i className="fa-solid fa-lightbulb text-lg" aria-hidden="true"></i>
-          <span>Hint</span>
-        </button>
-        <button onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกกระดานปัจจุบัน" className="murdle-dock-button">
-          <i className="fa-solid fa-floppy-disk text-lg" aria-hidden="true"></i>
-          <span>Save</span>
-        </button>
-        <button onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด" className="murdle-dock-button">
-          <i className="fa-solid fa-rotate-left text-lg" aria-hidden="true"></i>
-          <span>Undo</span>
-        </button>
-        <button onClick={resetGrid} aria-label="รีเซ็ตกระดานตรรกะ" className="murdle-dock-button text-murdle-accent">
-          <i className="fa-solid fa-eraser text-lg" aria-hidden="true"></i>
-          <span>Clear</span>
-        </button>
-      </nav>
 
       {/* Exhibit B Modal */}
       {showExhibitB && <ExhibitB onClose={() => setShowExhibitB(false)} />}
@@ -727,7 +674,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
               aria-label="ปิดคำอธิบายสัญลักษณ์"
               className="absolute top-2 right-2 p-2 text-2xl font-bold hover:text-murdle-accent transition-colors"
             >
-              ❌
+              <i className="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
             <h3 id="legend-modal-title" className="murdle-section-title text-black mb-4 border-b-[4px] border-black pb-2 uppercase tracking-widest text-center">
               {selectedLegendCategory.name}

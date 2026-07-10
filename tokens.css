@@ -17,6 +17,9 @@
   --color-grid-hot: oklch(0.82 0.16 333);
   --color-grid-lane: oklch(0.965 0.037 334);
   --color-focus: oklch(0.64 0.16 223);
+  --color-notebook-paper: oklch(0.975 0.026 86);
+  --color-notebook-rule: oklch(0.76 0.045 78);
+  --color-notebook-ink-soft: oklch(0.36 0.04 42);
 
   --font-display: "Leelawadee UI", "Noto Sans Thai", "Segoe UI", system-ui, sans-serif;
   --font-body: "Noto Sans Thai", "Leelawadee UI", "Segoe UI", system-ui, sans-serif;

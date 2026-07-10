@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Category } from '../types/level';
 
 export type CellState = 'empty' | 'O' | 'X' | '?' | 'A';
@@ -13,6 +13,7 @@ export type GridState = Record<string, Record<string, CellState>>;
 export function useGameLogic(categories: Category[], solution: Record<string, string>[]) {
   const [gridState, setGridState] = useState<GridState>({});
   const [gridHistory, setGridHistory] = useState<GridState[]>([]);
+  const gridStateRef = useRef<GridState>({});
 
   // Helper to generate the unique ID for a block
   const getBlockId = (cat1: Category | string, cat2: Category | string): BlockId => {
@@ -28,7 +29,9 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
   };
 
   const calculateAutoCrosses = useCallback((state: GridState): GridState => {
-    const newState = structuredClone(state) as GridState;
+    const newState = Object.fromEntries(
+      Object.entries(state).map(([blockId, cells]) => [blockId, { ...cells }])
+    ) as GridState;
 
     // Step A: Strip away ALL current 'A' states on the entire board
     for (const block in newState) {
@@ -95,68 +98,62 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
   }, [categories]);
 
   const toggleCell = useCallback((cat1: Category, cat2: Category, item1: string, item2: string) => {
-    setGridState(prev => {
-      // First, capture the previous state and save to history
-      // Note: We use a separate effect/callback for history normally to avoid side effects in updater,
-      // but since toggleCell is an action, we can capture prev here. A cleaner way in React is to
-      // do setGridHistory outside the setGridState updater.
-      // Let's refactor:
+    const previousState = gridStateRef.current;
+    const blockId = getBlockId(cat1, cat2);
+    let newState: GridState = {
+      ...previousState,
+      [blockId]: { ...(previousState[blockId] ?? {}) },
+    };
 
-      let newState = structuredClone(prev) as GridState;
-      const blockId = getBlockId(cat1, cat2);
+    const cellKey = getCellKey(item1, item2);
+    let currentState = newState[blockId][cellKey] || 'empty';
+    if (currentState === 'A') {
+      currentState = 'empty';
+    }
 
-      if (!newState[blockId]) {
-        newState[blockId] = {};
-      }
+    let nextState: CellState;
+    if (currentState === 'empty') nextState = 'X';
+    else if (currentState === 'X') nextState = 'O';
+    else if (currentState === 'O') nextState = '?';
+    else nextState = 'empty';
 
-      const cellKey = getCellKey(item1, item2);
-      let currentState = newState[blockId][cellKey] || 'empty';
-      if (currentState === 'A') {
-        currentState = 'empty';
-      }
-
-      let nextState: CellState;
-      if (currentState === 'empty') nextState = 'X';
-      else if (currentState === 'X') nextState = 'O';
-      else if (currentState === 'O') nextState = '?';
-      else nextState = 'empty';
-
-      // Unique 'O' Rule: clear existing 'O's in the row and col
-      if (nextState === 'O') {
-        cat1.items.forEach(i1 => {
-          if (i1 !== item1) {
-            const rowCellKey = getCellKey(i1, item2);
-            if (newState[blockId][rowCellKey] === 'O') {
-              newState[blockId][rowCellKey] = 'empty';
-            }
+    // Unique 'O' Rule: clear existing 'O's in the row and column.
+    if (nextState === 'O') {
+      cat1.items.forEach(i1 => {
+        if (i1 !== item1) {
+          const rowCellKey = getCellKey(i1, item2);
+          if (newState[blockId][rowCellKey] === 'O') {
+            newState[blockId][rowCellKey] = 'empty';
           }
-        });
-        cat2.items.forEach(i2 => {
-          if (i2 !== item2) {
-            const colCellKey = getCellKey(item1, i2);
-            if (newState[blockId][colCellKey] === 'O') {
-              newState[blockId][colCellKey] = 'empty';
-            }
+        }
+      });
+      cat2.items.forEach(i2 => {
+        if (i2 !== item2) {
+          const colCellKey = getCellKey(item1, i2);
+          if (newState[blockId][colCellKey] === 'O') {
+            newState[blockId][colCellKey] = 'empty';
           }
-        });
-      }
+        }
+      });
+    }
 
-      newState[blockId][cellKey] = nextState;
+    newState[blockId][cellKey] = nextState;
+    newState = calculateAutoCrosses(newState);
 
-      // Recalculate auto crosses
-      newState = calculateAutoCrosses(newState);
-
-      return newState;
-    });
-    // Push the current state to history BEFORE we update it via setGridState
-    setGridHistory(h => h.length >= 50 ? [...h.slice(1), gridState] : [...h, gridState]);
-  }, [gridState, calculateAutoCrosses]);
+    setGridHistory(history => history.length >= 50
+      ? [...history.slice(1), previousState]
+      : [...history, previousState]
+    );
+    gridStateRef.current = newState;
+    setGridState(newState);
+  }, [calculateAutoCrosses]);
 
   const undo = useCallback(() => {
     setGridHistory(prevHistory => {
       if (prevHistory.length === 0) return prevHistory;
       const newHistory = [...prevHistory];
       const previousState = newHistory.pop()!;
+      gridStateRef.current = previousState;
       setGridState(previousState);
       return newHistory;
     });
@@ -181,6 +178,7 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
       // to act as a self-healing mechanism.
       const recalculatedState = calculateAutoCrosses(loadedGridState);
 
+      gridStateRef.current = recalculatedState;
       setGridState(recalculatedState);
       setGridHistory([]);
       return {
@@ -247,10 +245,9 @@ export function useGameLogic(categories: Category[], solution: Record<string, st
   // ฟังก์ชันใหม่สำหรับล้างตาราง (ที่อลิซเพิ่มเข้าไป)
   // ----------------------------------------------------
   const resetGrid = useCallback(() => {
-    if (window.confirm('คุณต้องการล้างข้อมูลในตารางทั้งหมดใช่หรือไม่?')) {
-      setGridHistory(h => h.length >= 50 ? [...h.slice(1), gridState] : [...h, gridState]);
-      setGridState({});
-    }
+    setGridHistory(h => h.length >= 50 ? [...h.slice(1), gridState] : [...h, gridState]);
+    gridStateRef.current = {};
+    setGridState({});
   }, [gridState]);
 
   return {

@@ -1,4 +1,5 @@
-/* Hallmark - genre: playful - macrostructure: Workbench Hub - design-system: design.md - designed-as-app */
+/* Hallmark - pre-emit critique: P5 H5 E4 S5 R5 V5 */
+/* Hallmark - genre: playful - macrostructure: Mobile Case Reader + Detective Notebook - theme: studied-DNA (source: https://murdle.com/index.html) - design-system: design.md - designed-as-app - contrast: pass - mobile: pass */
 @import "../../tokens.css";
 @import "tailwindcss";
 
@@ -667,6 +668,10 @@
 }
 
 @layer components {
+  .murdle-notebook-open .murdle-nav {
+    display: none;
+  }
+
   .murdle-app-shell {
     position: relative;
     isolation: isolate;
@@ -1137,6 +1142,573 @@
 
   .murdle-wordmark-sub {
     display: none;
+  }
+}
+
+/* Hallmark - mobile case reader + detective notebook - design-system: design.md */
+@layer components {
+  .murdle-case-reader {
+    width: 100%;
+    max-width: 54rem;
+  }
+
+  .murdle-case-document {
+    animation: murdle-fade-in var(--dur-fast) var(--ease-out) both;
+  }
+
+  .murdle-case-document h1,
+  .murdle-case-document h2,
+  .murdle-case-document h3 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-style: normal;
+  }
+
+  .murdle-case-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-2xs);
+    min-width: min(100%, 20rem);
+  }
+
+  .case-reader-flow {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .case-reader-section,
+  .murdle-story-brief {
+    border: var(--rule-thin) solid var(--color-rule);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    padding: clamp(var(--space-sm), 4vw, var(--space-md));
+    box-shadow: 0 12px 28px color-mix(in oklch, var(--color-ink) 7%, transparent);
+  }
+
+  .case-reader-section > div:first-child,
+  .murdle-accusation-sheet > div:first-child {
+    border-color: var(--color-rule) !important;
+    border-bottom-width: var(--rule-strong) !important;
+  }
+
+  .case-reader-section .murdle-card-compact {
+    border: var(--rule-thin) solid var(--color-rule);
+    border-radius: var(--radius-card);
+    background: var(--color-notebook-paper);
+    box-shadow: none;
+  }
+
+  .case-reader-section .murdle-panel {
+    border: var(--rule-thin) solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    background: var(--color-notebook-paper);
+  }
+
+  .murdle-accusation-sheet {
+    margin-bottom: 6.5rem;
+    background: var(--color-notebook-paper);
+  }
+
+  .detective-notebook-launch {
+    position: fixed;
+    z-index: 50;
+    right: max(var(--space-xs), env(safe-area-inset-right));
+    bottom: max(var(--space-xs), env(safe-area-inset-bottom));
+    left: max(var(--space-xs), env(safe-area-inset-left));
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-xs);
+    width: min(calc(100% - 1.5rem), 32rem);
+    min-height: 4.25rem;
+    margin-inline: auto;
+    border: var(--rule-strong) solid color-mix(in oklch, var(--color-accent) 78%, var(--color-ink));
+    border-radius: var(--radius-card);
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+    padding: var(--space-2xs) var(--space-xs);
+    box-shadow: 0 14px 32px color-mix(in oklch, var(--color-accent) 28%, transparent);
+    text-align: left;
+    transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+  }
+
+  .detective-notebook-launch:hover {
+    background: color-mix(in oklch, var(--color-accent) 88%, var(--color-ink));
+    transform: translateY(-1px);
+  }
+
+  .detective-notebook-launch:active {
+    transform: translateY(1px);
+  }
+
+  .detective-notebook-launch-icon {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: var(--radius-sm);
+    background: color-mix(in oklch, var(--color-accent-ink) 13%, transparent);
+    font-size: 1.2rem;
+  }
+
+  .detective-notebook-launch strong,
+  .detective-notebook-launch small {
+    display: block;
+  }
+
+  .detective-notebook-launch strong {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .detective-notebook-launch small {
+    margin-top: 0.15rem;
+    color: color-mix(in oklch, var(--color-accent-ink) 76%, transparent);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .detective-notebook {
+    position: fixed;
+    z-index: 90;
+    inset: 0;
+    display: flex;
+    min-width: 320px;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--color-notebook-paper);
+    color: var(--color-ink);
+    animation: murdle-fade-in var(--dur-fast) var(--ease-out) both;
+  }
+
+  .detective-notebook-header {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-xs);
+    min-height: 4.25rem;
+    border-bottom: var(--rule-thin) solid var(--color-notebook-rule);
+    background: var(--color-surface);
+    padding: max(var(--space-2xs), env(safe-area-inset-top)) var(--space-xs) var(--space-2xs);
+    box-shadow: 0 8px 18px color-mix(in oklch, var(--color-ink) 6%, transparent);
+  }
+
+  .detective-notebook-back,
+  .detective-notebook-actions button,
+  .detective-notebook-categories button,
+  .detective-notebook-export {
+    min-height: 2.75rem;
+    border: var(--rule-thin) solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-weight: 700;
+    transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  }
+
+  .detective-notebook-back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding-inline: var(--space-xs);
+    white-space: nowrap;
+  }
+
+  .detective-notebook-back:hover,
+  .detective-notebook-actions button:hover:not(:disabled),
+  .detective-notebook-categories button:hover,
+  .detective-notebook-export:hover {
+    border-color: var(--color-accent-2);
+    background: color-mix(in oklch, var(--color-accent-2) 10%, var(--color-surface));
+  }
+
+  .detective-notebook-back:active,
+  .detective-notebook-actions button:active:not(:disabled),
+  .detective-notebook-categories button:active,
+  .detective-notebook-export:active {
+    transform: translateY(1px);
+  }
+
+  .detective-notebook-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  .detective-notebook-title-wrap {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .detective-notebook-title-wrap span {
+    display: block;
+    overflow: hidden;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .detective-notebook-title-wrap h2 {
+    margin-top: 0.2rem;
+    overflow-wrap: anywhere;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 4vw, 1.35rem);
+    font-style: normal;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .detective-notebook-actions {
+    display: flex;
+    gap: var(--space-3xs);
+  }
+
+  .detective-notebook-actions button {
+    display: inline-flex;
+    min-width: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding-inline: var(--space-2xs);
+  }
+
+  .detective-notebook-actions span {
+    font-size: var(--text-xs);
+    white-space: nowrap;
+  }
+
+  .detective-notebook-body {
+    display: flex;
+    width: min(100%, 72rem);
+    min-height: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    margin-inline: auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--space-2xs) var(--space-2xs) max(var(--space-sm), env(safe-area-inset-bottom));
+  }
+
+  .detective-notebook-categories {
+    display: flex;
+    flex: none;
+    gap: var(--space-3xs);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .detective-notebook-categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .detective-notebook-categories button {
+    display: inline-flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3xs);
+    padding-inline: var(--space-2xs);
+    white-space: nowrap;
+  }
+
+  .detective-notebook-grid {
+    display: flex;
+    min-height: 0;
+    flex: 1 0 auto;
+    justify-content: center;
+    border: var(--rule-thin) solid var(--color-notebook-rule);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    padding: var(--space-3xs);
+  }
+
+  .detective-notebook-notes {
+    flex: none;
+    border: var(--rule-thin) solid var(--color-notebook-rule);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+  }
+
+  .detective-notebook-notes summary {
+    display: flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-2xs) var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 800;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .detective-notebook-notes summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .detective-notebook-notes summary span {
+    margin-left: auto;
+    color: var(--color-muted);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 500;
+  }
+
+  .detective-notebook-notes textarea {
+    display: block;
+    width: calc(100% - var(--space-sm));
+    min-height: 7rem;
+    margin: 0 var(--space-2xs) var(--space-2xs);
+    border: var(--rule-thin) solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    background: var(--color-notebook-paper);
+    padding: var(--space-xs);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    resize: vertical;
+  }
+
+  .detective-notebook-export {
+    flex: none;
+    padding-inline: var(--space-xs);
+  }
+
+  .logic-grid-mobile {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .logic-grid-pair-picker {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: end;
+    gap: var(--space-2xs);
+    margin-bottom: var(--space-2xs);
+  }
+
+  .logic-grid-pair-picker > i {
+    margin-bottom: 0.85rem;
+    color: var(--color-muted);
+  }
+
+  .logic-grid-pair-picker label span {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+  }
+
+  .logic-grid-pair-picker select {
+    width: 100%;
+    min-height: 2.75rem;
+    border: var(--rule-thin) solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    padding-inline: var(--space-2xs);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .logic-grid-current-pair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2xs);
+    margin-bottom: var(--space-2xs);
+    color: var(--color-notebook-ink-soft);
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 800;
+  }
+
+  .logic-grid-mobile-scroll {
+    width: 100%;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+
+  .logic-grid-pair-table {
+    width: max-content;
+    min-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0.2rem;
+    table-layout: fixed;
+  }
+
+  .logic-grid-pair-table th,
+  .logic-grid-pair-table td {
+    width: 3rem;
+    min-width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    border: var(--rule-thin) solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    text-align: center;
+  }
+
+  .logic-grid-pair-table th {
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    color: var(--color-ink);
+  }
+
+  .logic-grid-pair-table tbody th,
+  .logic-grid-pair-corner {
+    z-index: 3;
+    left: 0;
+    background: var(--color-notebook-paper);
+  }
+
+  .logic-grid-pair-table th i {
+    display: block;
+    font-size: 1.15rem;
+  }
+
+  .logic-grid-pair-table th span {
+    display: block;
+    max-width: 2.65rem;
+    margin: 0.15rem auto 0;
+    overflow: hidden;
+    font-family: var(--font-body);
+    font-size: 0.55rem;
+    font-weight: 700;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .logic-grid-pair-table .logic-grid-play-cell {
+    background: var(--color-surface);
+  }
+
+  .logic-grid-pair-table .logic-grid-cell-button {
+    min-width: 2.875rem;
+    min-height: 2.875rem;
+  }
+
+  .logic-grid-selection-readout {
+    display: flex;
+    min-height: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2xs);
+    margin-top: var(--space-2xs);
+    border-radius: var(--radius-sm);
+    background: color-mix(in oklch, var(--color-accent-2) 10%, var(--color-surface));
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    background-attachment: scroll;
+    background-image: linear-gradient(180deg, var(--color-paper), var(--color-paper-2));
+  }
+
+  .murdle-case-document {
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+
+  .murdle-case-hero {
+    border-radius: var(--radius-card);
+  }
+
+  .murdle-case-meta .murdle-stat-chip {
+    min-height: 3.1rem;
+    border-color: var(--color-rule);
+    box-shadow: none;
+  }
+
+  .case-reader-section,
+  .murdle-story-brief {
+    box-shadow: none;
+  }
+
+  .detective-notebook-header {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .detective-notebook-back span {
+    display: none;
+  }
+
+  .detective-notebook-back {
+    width: 2.75rem;
+    padding-inline: 0;
+    justify-content: center;
+  }
+
+  .detective-notebook-actions {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .detective-notebook-actions button {
+    min-height: 2.55rem;
+  }
+
+  .detective-notebook-actions button span {
+    display: inline;
+  }
+
+  .detective-notebook-body {
+    padding-top: var(--space-3xs);
+  }
+
+  .detective-notebook-grid {
+    display: block;
+    flex: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .case-reader-flow {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .detective-notebook-body {
+    overflow: hidden;
+  }
+
+  .detective-notebook-grid {
+    overflow: hidden;
+  }
+
+  .detective-notebook-notes[open] {
+    position: absolute;
+    right: var(--space-sm);
+    bottom: var(--space-sm);
+    width: min(28rem, calc(100% - var(--space-lg)));
+    box-shadow: 0 16px 36px color-mix(in oklch, var(--color-ink) 14%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .murdle-case-document,
+  .detective-notebook {
+    animation-duration: 1ms;
   }
 }
 
