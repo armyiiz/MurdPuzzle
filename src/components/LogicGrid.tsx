@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import { Category } from '../types/level';
 import { CellState } from '../hooks/useGameLogic';
 import { getIconClass, getIconColor } from '../utils/emojiHelper';
@@ -35,10 +35,12 @@ function getStateClass(state: CellState) {
 }
 
 function StateMark({ state }: { state: CellState }) {
-  if (state === 'O') return <i aria-hidden="true" className="logic-grid-mark logic-grid-state-mark fa-solid fa-circle-check" />;
-  if (state === 'X') return <i aria-hidden="true" className="logic-grid-mark logic-grid-state-mark fa-solid fa-circle-xmark" />;
-  if (state === '?') return <i aria-hidden="true" className="logic-grid-mark logic-grid-note-mark fa-solid fa-circle-question" />;
-  if (state === 'A') return <i aria-hidden="true" className="logic-grid-mark logic-grid-note-mark fa-solid fa-ban" />;
+  const iconClass = 'logic-grid-mark fa-sharp fa-solid fa-fw';
+
+  if (state === 'O') return <i aria-hidden="true" className={`${iconClass} logic-grid-state-mark fa-check`} />;
+  if (state === 'X') return <i aria-hidden="true" className={`${iconClass} logic-grid-state-mark fa-xmark`} />;
+  if (state === '?') return <i aria-hidden="true" className={`${iconClass} logic-grid-note-mark fa-question`} />;
+  if (state === 'A') return <i aria-hidden="true" className={`${iconClass} logic-grid-note-mark fa-ban`} />;
   return null;
 }
 
@@ -90,135 +92,9 @@ const GridCellButton = memo(function GridCellButton({
   );
 });
 
-function useCompactGrid() {
-  const [isCompact, setIsCompact] = useState(() => (
-    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
-  ));
-
-  useEffect(() => {
-    const media = window.matchMedia('(max-width: 767px)');
-    const update = () => setIsCompact(media.matches);
-    update();
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
-  }, []);
-
-  return isCompact;
-}
-
 export function LogicGrid({ categories, getCellState, toggleCell, isCellError, seedString }: LogicGridProps) {
-  const isCompact = useCompactGrid();
   const [selectedCell, setSelectedCell] = useState<SelectedGridCell | null>(null);
-  const [rowCategoryId, setRowCategoryId] = useState(categories[0]?.id ?? '');
-  const [columnCategoryId, setColumnCategoryId] = useState(categories[1]?.id ?? '');
-
-  const rowCategory = categories.find(category => category.id === rowCategoryId) ?? categories[0];
-  const columnCategory = categories.find(category => category.id === columnCategoryId)
-    ?? categories.find(category => category.id !== rowCategory?.id)
-    ?? categories[1];
-
-  const selectRowCategory = (categoryId: string) => {
-    setRowCategoryId(categoryId);
-    if (categoryId === columnCategoryId) {
-      const replacement = categories.find(category => category.id !== categoryId);
-      if (replacement) setColumnCategoryId(replacement.id);
-    }
-    setSelectedCell(null);
-  };
-
-  const selectColumnCategory = (categoryId: string) => {
-    setColumnCategoryId(categoryId);
-    if (categoryId === rowCategoryId) {
-      const replacement = categories.find(category => category.id !== categoryId);
-      if (replacement) setRowCategoryId(replacement.id);
-    }
-    setSelectedCell(null);
-  };
-
-  if (categories.length < 3 || !rowCategory || !columnCategory) return null;
-
-  if (isCompact) {
-    return (
-      <section className="logic-grid-mobile" aria-label="สมุดตารางตรรกะ">
-        <div className="logic-grid-pair-picker">
-          <label>
-            <span>แถว</span>
-            <select value={rowCategory.id} onChange={event => selectRowCategory(event.target.value)}>
-              {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-            </select>
-          </label>
-          <i className="fa-solid fa-xmark" aria-hidden="true" />
-          <label>
-            <span>คอลัมน์</span>
-            <select value={columnCategory.id} onChange={event => selectColumnCategory(event.target.value)}>
-              {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-            </select>
-          </label>
-        </div>
-
-        <p className="logic-grid-current-pair" aria-live="polite">
-          <span>{rowCategory.name}</span>
-          <i className="fa-solid fa-arrow-right-arrow-left" aria-hidden="true" />
-          <span>{columnCategory.name}</span>
-        </p>
-
-        <div className="logic-grid-mobile-scroll">
-          <table className="logic-grid-pair-table">
-            <thead>
-              <tr>
-                <th className="logic-grid-pair-corner" aria-label={`${rowCategory.name} เทียบกับ ${columnCategory.name}`}>
-                  <i className="fa-solid fa-table-cells" aria-hidden="true" />
-                </th>
-                {columnCategory.items.map((item, index) => (
-                  <th key={item} scope="col" title={item}>
-                    <i className={getIconClass(columnCategory.id, item)} style={{ color: getIconColor(index, seedString, columnCategory.id) }} aria-hidden="true" />
-                    <span>{item}</span>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rowCategory.items.map((rowItem, rowIndex) => (
-                <tr key={rowItem}>
-                  <th scope="row" title={rowItem}>
-                    <i className={getIconClass(rowCategory.id, rowItem)} style={{ color: getIconColor(rowIndex, seedString, rowCategory.id) }} aria-hidden="true" />
-                    <span>{rowItem}</span>
-                  </th>
-                  {columnCategory.items.map(colItem => {
-                    const state = getCellState(rowCategory, columnCategory, rowItem, colItem);
-                    const isSelected = Boolean(selectedCell && selectedCell.rowCatId === rowCategory.id && selectedCell.rowItem === rowItem && selectedCell.colCatId === columnCategory.id && selectedCell.colItem === colItem);
-                    const isLane = Boolean(selectedCell && selectedCell.rowCatId === rowCategory.id && selectedCell.colCatId === columnCategory.id && (selectedCell.rowItem === rowItem || selectedCell.colItem === colItem));
-                    return (
-                      <GridCellButton
-                        key={colItem}
-                        rowCat={rowCategory}
-                        colCat={columnCategory}
-                        rowItem={rowItem}
-                        colItem={colItem}
-                        state={state}
-                        isError={isCellError ? isCellError(rowCategory, columnCategory, rowItem, colItem) : false}
-                        isLane={isLane}
-                        isSelected={isSelected}
-                        onToggle={toggleCell}
-                        onSelect={setSelectedCell}
-                      />
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {selectedCell && (
-          <p className="logic-grid-selection-readout">
-            <i className="fa-solid fa-crosshairs" aria-hidden="true" />
-            {selectedCell.rowItem} × {selectedCell.colItem}
-          </p>
-        )}
-      </section>
-    );
-  }
+  if (categories.length < 3) return null;
 
   return (
     <DesktopLogicGrid
@@ -247,17 +123,11 @@ function DesktopLogicGrid({ categories, getCellState, toggleCell, isCellError, s
   const isCompactGrid = totalCols > 10 || totalRows > 10;
   const isDenseGrid = totalCols > 12 || totalRows > 12;
   const cellGapRem = isDenseGrid ? 0.1 : isCompactGrid ? 0.14 : 0.18;
-  const maxCellSize = isDenseGrid ? '3rem' : isCompactGrid ? '3.5rem' : '4rem';
-  const fittedCellSize = `min(${maxCellSize}, calc((100vw - 3rem) / ${totalCols}), calc((100dvh - 12rem) / ${totalRows}))`;
-  const cellStyle = useMemo<React.CSSProperties>(() => ({
-    boxSizing: 'border-box',
-    width: fittedCellSize,
-    height: fittedCellSize,
-  }), [fittedCellSize]);
+  const cellStyle = useMemo<React.CSSProperties>(() => ({ boxSizing: 'border-box' }), []);
   const tableStyle = useMemo(() => ({
-    '--logic-cell-size': fittedCellSize,
     '--logic-cell-gap': `${cellGapRem}rem`,
-  }) as React.CSSProperties, [cellGapRem, fittedCellSize]);
+    '--logic-grid-columns': totalCols,
+  }) as React.CSSProperties, [cellGapRem, totalCols]);
 
   return (
     <div className="logic-grid-scroll" aria-label="ตารางตรรกะสำหรับตัดตัวเลือก">

@@ -32,6 +32,8 @@ export default function RootLayout({
         <link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css" />
         {/* eslint-disable-next-line @next/next/no-css-tags -- Loading only the solid icon style keeps the previous icon rendering without all.min.css. */}
         <link rel="stylesheet" href="/fontawesome/css/solid.min.css" />
+        {/* eslint-disable-next-line @next/next/no-css-tags -- Font Awesome Pro Sharp Solid is used for compact logic-grid state marks. */}
+        <link rel="stylesheet" href="/fontawesome/css/sharp-solid.min.css" />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

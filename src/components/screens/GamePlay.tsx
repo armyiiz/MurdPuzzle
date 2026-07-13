@@ -22,11 +22,9 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
   const [testimonyStates, setTestimonyStates] = useState<Record<number, number>>({});
   const [accusation, setAccusation] = useState({ suspect: '', weapon: '', location: '', motive: '' });
   const [feedback, setFeedback] = useState<{ message: string; type: 'success' | 'error' | null }>({ message: '', type: null });
-  const [activeView, setActiveView] = useState<'clues' | 'grid'>('clues');
   const [activeTab, setActiveTab] = useState<'suspects' | 'weapons' | 'locations' | 'motives'>('suspects');
   const [selectedLegendCategory, setSelectedLegendCategory] = useState<Category | null>(null);
   const [notes, setNotes] = useState<string>('');
-  const [cluesScrollY, setCluesScrollY] = useState(0);
   const [selectedProfileIndex, setSelectedProfileIndex] = useState<number | null>(null);
   const [showExhibitB, setShowExhibitB] = useState(false);
   const [showExhibitC, setShowExhibitC] = useState(false);
@@ -41,7 +39,6 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
   const profileCount = Object.values(levelData.profiles ?? {}).reduce((total, items) => total + (items?.length ?? 0), 0);
   const largestGridGroup = Math.max(...levelData.categories.map(category => category.items.length));
   const gridShapeLabel = `${levelData.categories.length}x${largestGridGroup}`;
-  const gridChromeSize = levelData.categories.length >= 4 ? '14.75rem' : '12.75rem';
 
   useEffect(() => {
     const loaded = loadGridState(levelData.id);
@@ -52,20 +49,6 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
       }, 0);
     }
   }, [levelData.id, loadGridState]);
-
-  useEffect(() => {
-    if (activeView === 'grid') {
-      document.body.style.overflow = 'hidden';
-      document.body.classList.add('murdle-notebook-open');
-    } else {
-      document.body.style.overflow = '';
-      document.body.classList.remove('murdle-notebook-open');
-    }
-    return () => {
-      document.body.style.overflow = '';
-      document.body.classList.remove('murdle-notebook-open');
-    };
-  }, [activeView]);
 
   const hasMotives = levelData.categories.some(c => c.id === 'motives');
 
@@ -285,26 +268,8 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
     }
   };
 
-  const showGridView = () => {
-    if (activeView !== 'grid') {
-      setCluesScrollY(window.scrollY);
-      setActiveView('grid');
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    }
-  };
-
-  const showCluesView = () => {
-    if (activeView !== 'clues') {
-      setActiveView('clues');
-      setTimeout(() => {
-        window.scrollTo({ top: cluesScrollY, behavior: 'instant' });
-      }, 10);
-    }
-  };
-
   return (
-    <div className="murdle-case-reader relative mx-auto max-w-5xl pb-32">
-      {activeView === 'clues' && (
+    <div className="murdle-case-reader relative mx-auto pb-20">
         <article className="murdle-case-document">
           <section className="murdle-case-hero mb-5 px-4 py-5 sm:px-6 sm:py-6">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -477,6 +442,56 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
 
           </div>
 
+          <aside className="detective-notebook detective-notebook-inline" aria-labelledby="detective-notebook-title">
+            <header className="detective-notebook-header">
+              <div className="detective-notebook-title-wrap">
+                <span>คดี {caseNumber} · {gridShapeLabel}</span>
+                <h2 id="detective-notebook-title">ตารางนักสืบ</h2>
+              </div>
+              <div className="detective-notebook-actions">
+                <button type="button" onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส"><i className="fa-solid fa-lightbulb" aria-hidden="true"></i><span>เครื่องมือ</span></button>
+                <button type="button" onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด"><i className="fa-solid fa-rotate-left" aria-hidden="true"></i><span>ย้อนกลับ</span></button>
+                <button type="button" onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกตารางนักสืบ"><i className="fa-solid fa-floppy-disk" aria-hidden="true"></i><span>บันทึก</span></button>
+                <button type="button" onClick={resetGrid} aria-label="ล้างตารางตรรกะ"><i className="fa-solid fa-eraser" aria-hidden="true"></i><span>ล้าง</span></button>
+              </div>
+            </header>
+
+            <div className="detective-notebook-body">
+              <nav className="detective-notebook-categories" aria-label="เปิดรายละเอียดหมวดหมู่">
+                {levelData.categories.map(cat => {
+                  const catIcons: Record<string, string> = { suspects: 'fa-user-secret', weapons: 'fa-gavel', locations: 'fa-location-dot', motives: 'fa-comment-dots' };
+                  const icon = catIcons[cat.id] || 'fa-circle-question';
+                  return (
+                    <button key={cat.id} type="button" onClick={() => setSelectedLegendCategory(cat)}>
+                      <i className={`fa-solid ${icon}`} aria-hidden="true"></i>
+                      <span>{cat.name}</span>
+                    </button>
+                  );
+                })}
+              </nav>
+
+              <section className="detective-notebook-grid" aria-label="ตารางตรรกะ">
+                <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
+              </section>
+
+              <details className="detective-notebook-notes">
+                <summary><i className="fa-solid fa-note-sticky" aria-hidden="true"></i> โน้ตคดี <span>แตะเพื่อเปิด</span></summary>
+                <textarea
+                  value={notes}
+                  onChange={(event) => setNotes(event.target.value)}
+                  onBlur={() => saveGridState(testimonyStates, notes, levelData.id)}
+                  placeholder="จดสมมติฐาน จุดขัดแย้ง หรือคู่ที่ตัดออกแล้ว…"
+                  aria-label="สมุดโน้ตสำหรับคดีนี้"
+                />
+              </details>
+
+              <button type="button" onClick={handleGridExportAI} className={`detective-notebook-export ${gridExportStatus === 'success' ? 'murdle-status-success' : gridExportStatus === 'error' ? 'murdle-status-error' : ''}`}>
+                <i className="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                {gridExportStatus === 'success' ? 'คัดลอกแล้ว' : gridExportStatus === 'error' ? 'ลองอีกครั้ง' : 'ส่งตารางให้อลิซ'}
+              </button>
+            </div>
+          </aside>
+
           {/* Final Accusation */}
           <section className="case-reader-section murdle-accusation-sheet">
             <div className="mb-6 flex flex-col gap-3 border-b-[3px] border-black pb-4 sm:flex-row sm:items-center sm:justify-between">
@@ -550,72 +565,7 @@ export function GamePlay({ levelData, setSolvedCases, solvedCases }: { levelData
             </div>
           </section>
 
-          <button type="button" onClick={showGridView} className="detective-notebook-launch">
-            <span className="detective-notebook-launch-icon"><i className="fa-solid fa-book-open" aria-hidden="true"></i></span>
-            <span>
-              <strong>เปิดสมุดนักสืบ</strong>
-              <small>ตารางตรรกะ · โน้ต · เครื่องมือ</small>
-            </span>
-            <i className="fa-solid fa-chevron-up" aria-hidden="true"></i>
-          </button>
         </article>
-      )}
-
-      {activeView === 'grid' && (
-        <aside className="detective-notebook" role="dialog" aria-modal="true" aria-labelledby="detective-notebook-title">
-          <header className="detective-notebook-header">
-            <button type="button" onClick={showCluesView} className="detective-notebook-back" aria-label="กลับไปอ่านคดี">
-              <i className="fa-solid fa-arrow-left" aria-hidden="true"></i>
-              <span>กลับไปอ่านคดี</span>
-            </button>
-            <div className="detective-notebook-title-wrap">
-              <span>คดี {caseNumber} · {gridShapeLabel}</span>
-              <h2 id="detective-notebook-title">สมุดนักสืบ</h2>
-            </div>
-            <div className="detective-notebook-actions">
-              <button type="button" onClick={() => setShowDecrypter(true)} aria-label="เปิดเครื่องมือคำใบ้และถอดรหัส"><i className="fa-solid fa-lightbulb" aria-hidden="true"></i><span>เครื่องมือ</span></button>
-              <button type="button" onClick={undo} disabled={!canUndo} aria-label="ย้อนกลับการแก้ไขล่าสุด"><i className="fa-solid fa-rotate-left" aria-hidden="true"></i><span>ย้อนกลับ</span></button>
-              <button type="button" onClick={() => saveGridState(testimonyStates, notes, levelData.id)} aria-label="บันทึกสมุดนักสืบ"><i className="fa-solid fa-floppy-disk" aria-hidden="true"></i><span>บันทึก</span></button>
-              <button type="button" onClick={resetGrid} aria-label="ล้างตารางตรรกะ"><i className="fa-solid fa-eraser" aria-hidden="true"></i><span>ล้าง</span></button>
-            </div>
-          </header>
-
-          <div className="detective-notebook-body" style={{ '--grid-vertical-chrome': gridChromeSize } as React.CSSProperties}>
-            <nav className="detective-notebook-categories" aria-label="เปิดรายละเอียดหมวดหมู่">
-              {levelData.categories.map(cat => {
-                const catIcons: Record<string, string> = { suspects: 'fa-user-secret', weapons: 'fa-gavel', locations: 'fa-location-dot', motives: 'fa-comment-dots' };
-                const icon = catIcons[cat.id] || 'fa-circle-question';
-                return (
-                  <button key={cat.id} type="button" onClick={() => setSelectedLegendCategory(cat)}>
-                    <i className={`fa-solid ${icon}`} aria-hidden="true"></i>
-                    <span>{cat.name}</span>
-                  </button>
-                );
-              })}
-            </nav>
-
-            <section className="detective-notebook-grid" aria-label="ตารางตรรกะ">
-              <LogicGrid categories={levelData.categories} getCellState={getCellState} toggleCell={toggleCell} seedString={String(levelData.id)} />
-            </section>
-
-            <details className="detective-notebook-notes">
-              <summary><i className="fa-solid fa-note-sticky" aria-hidden="true"></i> โน้ตคดี <span>แตะเพื่อเปิด</span></summary>
-              <textarea
-                value={notes}
-                onChange={(event) => setNotes(event.target.value)}
-                onBlur={() => saveGridState(testimonyStates, notes, levelData.id)}
-                placeholder="จดสมมติฐาน จุดขัดแย้ง หรือคู่ที่ตัดออกแล้ว..."
-                aria-label="สมุดโน้ตสำหรับคดีนี้"
-              />
-            </details>
-
-            <button type="button" onClick={handleGridExportAI} className={`detective-notebook-export ${gridExportStatus === 'success' ? 'murdle-status-success' : gridExportStatus === 'error' ? 'murdle-status-error' : ''}`}>
-              <i className="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
-              {gridExportStatus === 'success' ? 'คัดลอกแล้ว' : gridExportStatus === 'error' ? 'ลองอีกครั้ง' : 'คัดลอกข้อมูลให้ผู้ช่วยอลิซ'}
-            </button>
-          </div>
-        </aside>
-      )}
 
       {/* Exhibit B Modal */}
       {showExhibitB && <ExhibitB onClose={() => setShowExhibitB(false)} />}

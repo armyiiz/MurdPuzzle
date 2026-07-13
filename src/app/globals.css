@@ -1,5 +1,5 @@
-/* Hallmark - pre-emit critique: P5 H5 E4 S5 R5 V5 */
-/* Hallmark - genre: playful - macrostructure: Mobile Case Reader + Detective Notebook - theme: studied-DNA (source: https://murdle.com/index.html) - design-system: design.md - designed-as-app - contrast: pass - mobile: pass */
+/* Hallmark - pre-emit critique: P5 H5 E5 S5 R5 V5 */
+/* Hallmark - genre: playful - macrostructure: Workbench - theme: studied-DNA (source: https://murdle.com/index.html) - design-system: design.md - designed-as-app - contrast: pass - mobile: pass */
 @import "../../tokens.css";
 @import "tailwindcss";
 
@@ -1946,5 +1946,169 @@
 
   .murdle-grid-legend-button {
     min-height: 2.35rem !important;
+  }
+}
+
+/* Inline case workbench: the complete grid stays in the same reading flow. */
+@layer components {
+  .murdle-case-reader {
+    max-width: 74rem;
+  }
+
+  .murdle-case-document {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .murdle-accusation-sheet {
+    margin-bottom: 0;
+  }
+
+  .detective-notebook.detective-notebook-inline {
+    position: relative;
+    z-index: auto;
+    inset: auto;
+    display: block;
+    min-width: 0;
+    overflow: visible;
+    border: var(--rule-thin) solid var(--color-notebook-rule);
+    border-radius: var(--radius-card);
+    background: var(--color-notebook-paper);
+    box-shadow: 0 12px 28px color-mix(in oklch, var(--color-ink) 7%, transparent);
+    animation: none;
+  }
+
+  .detective-notebook-inline .detective-notebook-header {
+    position: static;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+    padding: var(--space-xs);
+    box-shadow: none;
+  }
+
+  .detective-notebook-inline .detective-notebook-title-wrap {
+    text-align: start;
+  }
+
+  .detective-notebook-inline .detective-notebook-actions {
+    display: grid;
+    grid-column: auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .detective-notebook-inline .detective-notebook-actions button {
+    min-width: 0;
+    padding-inline: var(--space-3xs);
+  }
+
+  .detective-notebook-inline .detective-notebook-body {
+    display: grid;
+    width: 100%;
+    min-height: 0;
+    gap: var(--space-2xs);
+    overflow: visible;
+    padding: var(--space-2xs);
+  }
+
+  .detective-notebook-inline .detective-notebook-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    overflow: visible;
+  }
+
+  .detective-notebook-inline .detective-notebook-categories button {
+    min-width: 0;
+    min-height: 2.75rem;
+  }
+
+  .detective-notebook-inline .detective-notebook-grid {
+    display: block;
+    min-width: 0;
+    overflow: visible;
+    border: 0;
+    padding: 0;
+  }
+
+  .detective-notebook-inline .detective-notebook-export {
+    min-height: 2.75rem;
+    white-space: nowrap;
+  }
+
+  .logic-grid-scroll {
+    container-type: inline-size;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    overflow: clip;
+    padding: var(--space-3xs);
+  }
+
+  .logic-grid-table {
+    --logic-cell-size: min(4rem, calc(100cqw / var(--logic-grid-columns)));
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    border-spacing: clamp(0.05rem, 0.45vw, var(--logic-cell-gap, 0.18rem));
+  }
+
+  .logic-grid-table td {
+    width: calc(100% / var(--logic-grid-columns));
+    height: var(--logic-cell-size) !important;
+  }
+
+  .logic-grid-icon {
+    font-size: clamp(0.58rem, 4.2cqw, 1.25rem);
+  }
+
+  .logic-grid-state-mark {
+    font-size: clamp(0.64rem, 4.8cqw, 1.35rem);
+  }
+
+  .logic-grid-note-mark {
+    font-size: clamp(0.58rem, 4.2cqw, 1.15rem);
+  }
+}
+
+@media (min-width: 60rem) {
+  .murdle-case-document {
+    grid-template-columns: minmax(0, 1fr) minmax(27rem, 0.92fr);
+    align-items: start;
+  }
+
+  .murdle-case-hero,
+  .murdle-story-brief,
+  .murdle-case-document > .case-reader-section:not(.murdle-accusation-sheet) {
+    grid-column: 1 / -1;
+  }
+
+  .case-reader-flow {
+    grid-column: 1;
+    grid-row: 4;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detective-notebook-inline {
+    position: sticky;
+    top: calc(var(--space-sm) + var(--space-xl));
+    grid-column: 2;
+    grid-row: 4 / span 2;
+    max-height: calc(100dvh - var(--space-2xl) - var(--space-sm));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .murdle-accusation-sheet {
+    grid-column: 1;
+    grid-row: 5;
+  }
+}
+
+@media (pointer: coarse) {
+  .detective-notebook-inline .detective-notebook-actions button,
+  .detective-notebook-inline .detective-notebook-categories button,
+  .detective-notebook-inline .detective-notebook-export,
+  .detective-notebook-inline .detective-notebook-notes summary {
+    min-height: 2.75rem;
   }
 }

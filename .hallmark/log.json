@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-07-13",
+    "scope": "app",
+    "macrostructure": "Inline Case Workbench",
+    "theme": "studied-DNA with MurdPuzzle tokens",
+    "enrichment": "none",
+    "brief": "Keep clues and the complete responsive logic grid in one page on mobile, with a sticky split workspace on desktop"
+  },
+  {
     "date": "2026-07-10",
     "scope": "app",
     "macrostructure": "Mobile Case Reader + Detective Notebook",
