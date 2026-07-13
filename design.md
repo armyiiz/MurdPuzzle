@@ -7,7 +7,7 @@ playful
 
 ## Macrostructure family
 - Marketing pages: Marquee Case Desk with a progress/status rail.
-- App pages: Mobile-first inline Case Workbench with the complete logic grid in the reading flow; desktop expands the same model into a sticky split workspace.
+- App pages: Mobile-first Case Reader with a dedicated full-screen Detective Notebook; desktop may expand the same model into a split workspace.
 - Content pages: Long Document with compact teaching cards.
 
 ## Theme
@@ -33,9 +33,9 @@ playful
 ## Microinteractions stance
 - Primary actions should read as game-start controls.
 - Success is clear but quiet.
-- The complete logic grid stays visible in the case page; never require switching between Grid and Clues.
-- Workbench controls keep stable names and positions above the grid.
-- The grid always shows every category pair. Cells scale as a complete square on narrow screens, with prominent state marks and no horizontal page scroll.
+- The case reader has one persistent primary control: เปิดสมุดนักสืบ.
+- Notebook controls keep stable names and positions; never swap Grid/Clues labels based on current mode.
+- The full-screen notebook shows the complete grid on every viewport; do not replace it with category-pair selectors on mobile.
 - Save case progress quietly; Undo and Clear live inside the notebook rather than global navigation.
 
 ## CTA voice

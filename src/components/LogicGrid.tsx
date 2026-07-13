@@ -123,11 +123,17 @@ function DesktopLogicGrid({ categories, getCellState, toggleCell, isCellError, s
   const isCompactGrid = totalCols > 10 || totalRows > 10;
   const isDenseGrid = totalCols > 12 || totalRows > 12;
   const cellGapRem = isDenseGrid ? 0.1 : isCompactGrid ? 0.14 : 0.18;
-  const cellStyle = useMemo<React.CSSProperties>(() => ({ boxSizing: 'border-box' }), []);
+  const maxCellSize = isDenseGrid ? '3rem' : isCompactGrid ? '3.5rem' : '4rem';
+  const fittedCellSize = `min(${maxCellSize}, calc((100vw - 3rem) / ${totalCols}), calc((100dvh - 12rem) / ${totalRows}))`;
+  const cellStyle = useMemo<React.CSSProperties>(() => ({
+    boxSizing: 'border-box',
+    width: fittedCellSize,
+    height: fittedCellSize,
+  }), [fittedCellSize]);
   const tableStyle = useMemo(() => ({
+    '--logic-cell-size': fittedCellSize,
     '--logic-cell-gap': `${cellGapRem}rem`,
-    '--logic-grid-columns': totalCols,
-  }) as React.CSSProperties, [cellGapRem, totalCols]);
+  }) as React.CSSProperties, [cellGapRem, fittedCellSize]);
 
   return (
     <div className="logic-grid-scroll" aria-label="ตารางตรรกะสำหรับตัดตัวเลือก">
