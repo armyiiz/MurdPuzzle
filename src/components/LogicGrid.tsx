@@ -53,6 +53,7 @@ type GridCellButtonProps = {
   isError: boolean;
   isLane: boolean;
   isSelected: boolean;
+  isGroupOrigin: boolean;
   onToggle: LogicGridProps['toggleCell'];
   onSelect: React.Dispatch<React.SetStateAction<SelectedGridCell | null>>;
   cellStyle?: React.CSSProperties;
@@ -67,6 +68,7 @@ const GridCellButton = memo(function GridCellButton({
   isError,
   isLane,
   isSelected,
+  isGroupOrigin,
   onToggle,
   onSelect,
   cellStyle,
@@ -74,7 +76,7 @@ const GridCellButton = memo(function GridCellButton({
   return (
     <td
       style={cellStyle}
-      className={`logic-grid-play-cell ${getStateClass(state)} ${isError ? 'logic-grid-cell-error' : ''} ${isLane && !isSelected ? 'logic-grid-cell-lane' : ''} ${isSelected ? 'logic-grid-cell-selected' : ''} ${state !== 'empty' ? 'logic-grid-marked-cell' : ''}`}
+      className={`logic-grid-play-cell ${isGroupOrigin ? 'logic-grid-group-frame' : ''} ${getStateClass(state)} ${isError ? 'logic-grid-cell-error' : ''} ${isLane && !isSelected ? 'logic-grid-cell-lane' : ''} ${isSelected ? 'logic-grid-cell-selected' : ''} ${state !== 'empty' ? 'logic-grid-marked-cell' : ''}`}
     >
       <button
         type="button"
@@ -134,6 +136,11 @@ function DesktopLogicGrid({ categories, getCellState, toggleCell, isCellError, s
     '--logic-cell-size': fittedCellSize,
     '--logic-cell-gap': `${cellGapRem}rem`,
   }) as React.CSSProperties, [cellGapRem, fittedCellSize]);
+  const getGroupSpan = (itemCount: number) => {
+    const cellSizes = Array.from({ length: itemCount }, () => fittedCellSize).join(' + ');
+    const totalGap = Math.max(0, itemCount - 1) * cellGapRem;
+    return `calc(${cellSizes} + ${totalGap}rem)`;
+  };
 
   return (
     <div className="logic-grid-scroll" aria-label="ตารางตรรกะสำหรับตัดตัวเลือก">
@@ -160,10 +167,16 @@ function DesktopLogicGrid({ categories, getCellState, toggleCell, isCellError, s
                     <i aria-hidden="true" className={`${getIconClass(rowCat.id, rowItem)} logic-grid-icon`} style={{ color: getIconColor(rowItemIndex, seedString, rowCat.id) }} />
                   </div>
                 </td>
-                {rowTopCategories.flatMap(colCat => colCat.items.map(colItem => {
+                {rowTopCategories.flatMap(colCat => colCat.items.map((colItem, colItemIndex) => {
                   const state = getCellState(rowCat, colCat, rowItem, colItem);
                   const isSelected = Boolean(selectedCell && selectedCell.rowCatId === rowCat.id && selectedCell.rowItem === rowItem && selectedCell.colCatId === colCat.id && selectedCell.colItem === colItem);
                   const isLane = Boolean(selectedCell && selectedCell.rowCatId === rowCat.id && selectedCell.colCatId === colCat.id && (selectedCell.rowItem === rowItem || selectedCell.colItem === colItem));
+                  const isGroupOrigin = rowItemIndex === 0 && colItemIndex === 0;
+                  const groupCellStyle = isGroupOrigin ? ({
+                    ...cellStyle,
+                    '--logic-group-width': getGroupSpan(colCat.items.length),
+                    '--logic-group-height': getGroupSpan(rowCat.items.length),
+                  } as React.CSSProperties) : cellStyle;
                   return (
                     <GridCellButton
                       key={`${colCat.id}-${colItem}`}
@@ -175,9 +188,10 @@ function DesktopLogicGrid({ categories, getCellState, toggleCell, isCellError, s
                       isError={isCellError ? isCellError(rowCat, colCat, rowItem, colItem) : false}
                       isLane={isLane}
                       isSelected={isSelected}
+                      isGroupOrigin={isGroupOrigin}
                       onToggle={toggleCell}
                       onSelect={setSelectedCell}
-                      cellStyle={cellStyle}
+                      cellStyle={groupCellStyle}
                     />
                   );
                 }))}

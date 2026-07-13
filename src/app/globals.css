@@ -1973,3 +1973,28 @@
     font-size: 1.45rem;
   }
 }
+
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V4
+ * component: logic-grid group frame · genre: playful · theme: studied-DNA
+ * states preserved: default · hover · focus · active · disabled · error · success
+ * contrast: pass
+ */
+@layer components {
+  .logic-grid-play-cell.logic-grid-group-frame {
+    z-index: 2;
+  }
+
+  .logic-grid-play-cell.logic-grid-group-frame::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    inset-block-start: calc(0px - var(--rule-thin));
+    inset-inline-start: calc(0px - var(--rule-thin));
+    width: calc(var(--logic-group-width) + var(--rule-strong));
+    height: calc(var(--logic-group-height) + var(--rule-strong));
+    box-sizing: border-box;
+    border: calc(var(--rule-strong) + var(--rule-thin)) solid color-mix(in oklch, var(--color-ink) 82%, transparent);
+    border-radius: calc(var(--radius-card) + var(--rule-strong));
+    pointer-events: none;
+  }
+}
